@@ -11,23 +11,13 @@ struct MainView: View {
     var body: some View {
         TabView {
             NowPlayingBar(content: PodcastList()).tabItem {
-                Image(systemName: "square.grid.3x3.fill")
-                Text("Podcasts")
+                Image(systemName: "plus.circle.fill")
+                Text("Novo Podcast")
             }
 
             NowPlayingBar(content: FilterView()).tabItem {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                Text("Filters")
-            }
-
-            NowPlayingBar(content: DiscoverView()).tabItem {
-                Image(systemName: "magnifyingglass")
-                Text("Discover")
-            }
-
-            NowPlayingBar(content: ProfileView()).tabItem {
-                Image(systemName: "person")
-                Text("Profile")
+                Image(systemName: "archivebox.fill")
+                Text("Arquivados")
             }
         }
     }

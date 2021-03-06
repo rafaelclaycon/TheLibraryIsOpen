@@ -117,7 +117,7 @@ class DataManager {
             throw DataManagerError.podcastIDNotFound
         }
         guard podcast.episodes != nil else {
-            throw DataManagerError.episodeIDNotFound
+            throw DataManagerError.podcastHasNoEpisodes
         }
         
         podcast.episodes!.forEach({ episode in
@@ -245,4 +245,5 @@ enum DataManagerError: Error {
     case episodeIDNotFound
     case podcastArrayIsUninitialized
     case episodeArrayIsUninitialized
+    case podcastHasNoEpisodes
 }

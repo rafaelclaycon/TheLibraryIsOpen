@@ -60,7 +60,7 @@ struct PodcastDetail: View {
 //                    .padding()
                     
                     Button(action: {
-                        print("Download all button clicked.")
+                        viewModel.downloadAll()
                     }) {
                         Image(systemName: "icloud.and.arrow.down")
                             .foregroundColor(.white)
@@ -68,6 +68,9 @@ struct PodcastDetail: View {
                             .foregroundColor(.white)
                     }
                     .padding()
+                    .alert(isPresented: $viewModel.displayAlert) {
+                        Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                    }
                 }
                 .frame(height: 100)
                 .padding()

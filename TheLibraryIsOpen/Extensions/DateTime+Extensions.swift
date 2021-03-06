@@ -17,6 +17,7 @@ extension Date {
     // Possibilities for dateStyle: .short, .medium, .long, .full
     func asFullString() -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "pt-BR")
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: self)
     }
