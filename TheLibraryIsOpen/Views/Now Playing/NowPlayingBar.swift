@@ -77,6 +77,6 @@ struct NowPlayingBar<Content: View>: View {
 
 struct NowPlayingBar_Previews: PreviewProvider {
     static var previews: some View {
-        NowPlayingBar(content: ProfileView())
+        NowPlayingBar(content: ArquivoView())
     }
 }

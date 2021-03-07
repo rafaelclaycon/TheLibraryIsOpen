@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct FilterView: View {
+struct ArquivoView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: FilterDetailView()) {
+                NavigationLink(destination: ArquivoDetailView()) {
                     HStack {
                         Image(systemName: "clock")
                             .resizable()
@@ -31,6 +31,6 @@ struct FilterView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView()
+        ArquivoView()
     }
 }

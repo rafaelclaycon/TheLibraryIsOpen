@@ -10,14 +10,14 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            NowPlayingBar(content: PodcastList()).tabItem {
+            NowPlayingBar(content: NovoPodcastView()).tabItem {
                 Image(systemName: "plus.circle.fill")
                 Text("Novo Podcast")
             }
 
-            NowPlayingBar(content: FilterView()).tabItem {
+            NowPlayingBar(content: ArquivoView()).tabItem {
                 Image(systemName: "archivebox.fill")
-                Text("Arquivados")
+                Text("Arquivo")
             }
         }
     }

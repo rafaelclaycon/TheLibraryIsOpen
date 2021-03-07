@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FilterDetailView: View {
+struct ArquivoDetailView: View {
     var episodes = [Episode(id: "123", podcastID: 123, title: "Test Episode", pubDate: nil, duration: 0, remoteURL: "", localFilePath: nil)]
 
     var body: some View {
@@ -24,6 +24,6 @@ struct FilterDetailView: View {
 
 struct FilterDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterDetailView()
+        ArquivoDetailView()
     }
 }

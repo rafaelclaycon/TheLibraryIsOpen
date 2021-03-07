@@ -7,7 +7,8 @@
 
 import Combine
 
-class PodcastListViewModel: ObservableObject {
+class NovoPodcastViewModel: ObservableObject {
+    @Published var entrada = ""
     @Published var podcasts: [Podcast]?
     @Published var showOptions = false
     @Published var layout: GridLayout = .list
