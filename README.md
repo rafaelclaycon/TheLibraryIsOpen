@@ -1,5 +1,5 @@
-# The Library is Open! 💃🏼
+# The Library Is Open! 💃🏼
 
-![RuPaul dizendo: Because reading is what? Fundamental! - Porque ler é o quê? Fundamental!](TheLibraryIsOpen/Resources/reading-is-fundamental.gif)
+![RuPaul Charles dizendo: Because reading is what? Fundamental! - Porque ler é o quê? Fundamental!](TheLibraryIsOpen/Resources/reading-is-fundamental.gif)
 
 Arquive os episódios do seu podcast favorito com este app para iOS.
