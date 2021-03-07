@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            NowPlayingBar(content: NovoPodcastView()).tabItem {
+            NowPlayingBar(content: InstrucoesView()).tabItem {
                 Image(systemName: "plus.circle.fill")
                 Text("Novo Podcast")
             }

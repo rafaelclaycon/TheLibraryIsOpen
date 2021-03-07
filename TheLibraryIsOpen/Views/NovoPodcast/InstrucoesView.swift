@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct NovoPodcastView: View {
-    @ObservedObject var viewModel = NovoPodcastViewModel(podcasts: isRunningUnitTests ? nil : dataManager.podcasts)
+struct InstrucoesView: View {
+    @ObservedObject var viewModel = InstrucoesViewModel(podcasts: isRunningUnitTests ? nil : dataManager.podcasts)
+    
+    let bottomPadding: CGFloat = 15
 
     var body: some View {
         NavigationView {
@@ -17,37 +19,37 @@ struct NovoPodcastView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Para começar,")
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("1. Abra o app Podcasts")
                         .bold()
                         .foregroundColor(.purple)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("2. navegue até o podcast que deseja arquivar")
                         .bold()
                         .foregroundColor(.purple)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("3. toque no botão ...")
                         .bold()
                         .foregroundColor(.purple)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("4. toque na opção Copiar Link")
                         .bold()
                         .foregroundColor(.purple)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("5. volte para cá e cole o link no campo abaixo")
                         .bold()
                         .foregroundColor(.pink)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("6. toque em Inspecionar Link.")
                         .bold()
                         .foregroundColor(.pink)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, bottomPadding)
                     
                     Text("Cole o link aqui:")
                     
@@ -78,6 +80,6 @@ struct NovoPodcastView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NovoPodcastView()
+        InstrucoesView()
     }
 }

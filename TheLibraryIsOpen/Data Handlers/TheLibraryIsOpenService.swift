@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Essa é a "API mock" do app.
 class TheLibraryIsOpenService {
     static func getPodcasts() -> [Podcast] {
         load("podcasts.json")

@@ -7,7 +7,7 @@
 
 import Combine
 
-class NovoPodcastViewModel: ObservableObject {
+class InstrucoesViewModel: ObservableObject {
     @Published var entrada = ""
     @Published var podcasts: [Podcast]?
     @Published var showOptions = false
@@ -23,5 +23,17 @@ class NovoPodcastViewModel: ObservableObject {
             $0.title.localizedStandardCompare($1.title) == .orderedAscending
         }
         showGrid = true
+    }
+    
+    func extrairFeedURL() {
+        guard !entrada.isEmpty else {
+            return //exibirAlertaValorInvalidoCampoEmBranco()
+        }
+        guard entrada.contains("https://podcasts.apple.com") else {
+            return // Não é um link do Apple Podcasts
+        }
+        let podcastId = String(entrada.suffix(9))
+        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
+        
     }
 }
