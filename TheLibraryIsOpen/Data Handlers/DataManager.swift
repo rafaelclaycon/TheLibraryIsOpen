@@ -262,17 +262,27 @@ class DataManager {
         }
     }
     
-    func getFeedURL(applePodcastsURL: String, podcastID: Int) throws {
-        guard !applePodcastsURL.isEmpty else {
+    func getIDFromURL(_ url: String) throws -> Int {
+        guard !url.isEmpty else {
             throw DataManagerError.urlVazia
         }
-        guard applePodcastsURL.contains("https://podcasts.apple.com") else {
+        guard url.contains("https://podcasts.apple.com") else {
             throw DataManagerError.naoLinkApplePodcasts
         }
-        
-        guard let podcastId = Int(applePodcastsURL.suffix(9)) else {
-            throw DataManagerError.naoPodeObterPodcastID
+        guard let index = url.index(of: "/id") else {
+            throw DataManagerError.idNaoEncontrado
         }
+        let start = url.index(index, offsetBy: 3) // Offset by 3 para pular p "/id"
+        let end = url.index(url.endIndex, offsetBy: 0)
+        let range = start..<end
+        guard let id = Int(url[range]) else {
+            throw DataManagerError.erroObtendoIdAPartirDaURL
+        }
+        return id
+    }
+    
+    func getFeedURL(applePodcastsURL: String) throws {
+        let podcastId = try getIDFromURL(applePodcastsURL)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
@@ -339,4 +349,6 @@ enum DataManagerError: Error {
     case failedToProvideLocalFileURL
     case urlVazia
     case naoLinkApplePodcasts
+    case idNaoEncontrado
+    case erroObtendoIdAPartirDaURL
 }
