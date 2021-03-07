@@ -25,15 +25,15 @@ class InstrucoesViewModel: ObservableObject {
         showGrid = true
     }
     
-    func extrairFeedURL() {
-        guard !entrada.isEmpty else {
-            return //exibirAlertaValorInvalidoCampoEmBranco()
+    func processar() {
+        do {
+            try dataManager.obterPodcast(applePodcastsURL: entrada)
+        } catch DataManagerError.podcastIDNotFound {
+            //displayPodcastIDNotFoundAlert()
+        } catch DataManagerError.podcastHasNoEpisodes {
+            //displayPodcastHadNoEpisodesAlert()
+        } catch {
+            fatalError(error.localizedDescription)
         }
-        guard entrada.contains("https://podcasts.apple.com") else {
-            return // Não é um link do Apple Podcasts
-        }
-        let podcastId = String(entrada.suffix(9))
-        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
-        
     }
 }

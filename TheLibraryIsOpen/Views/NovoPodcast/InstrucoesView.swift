@@ -60,7 +60,7 @@ struct InstrucoesView: View {
                         Spacer()
                         
                         Button(action: {
-                            viewModel.extrairFeedURL()
+                            viewModel.processar()
                         }) {
                             Text("Inspecionar Link")
                         }

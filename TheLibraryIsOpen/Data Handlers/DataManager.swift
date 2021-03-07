@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class DataManager {
     typealias PodcastFetchMethod = () -> [Podcast]
@@ -238,6 +239,92 @@ class DataManager {
         }
         podcasts![podcastIndex].episodes![episodeIndex].localFilePath = filePath
     }
+    
+    private func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
+        let destination: DownloadRequest.Destination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent("Podcasts/\(podcastID)/ConsultaiTunes.json")
+
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+
+        AF.download(link, to: destination).response { response in
+            debugPrint(response)
+
+            guard response.error == nil else {
+                return completionHandler(nil, .downloadError)
+            }
+            guard let filePath = response.fileURL?.path else {
+                return completionHandler(nil, .failedToProvideLocalFileURL)
+            }
+
+            completionHandler(filePath, nil)
+        }
+    }
+    
+    func getFeedURL(applePodcastsURL: String, podcastID: Int) throws {
+        guard !applePodcastsURL.isEmpty else {
+            throw DataManagerError.urlVazia
+        }
+        guard applePodcastsURL.contains("https://podcasts.apple.com") else {
+            throw DataManagerError.naoLinkApplePodcasts
+        }
+        
+        guard let podcastId = Int(applePodcastsURL.suffix(9)) else {
+            throw DataManagerError.naoPodeObterPodcastID
+        }
+        
+        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
+        
+        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
+            guard let strongSelf = self else {
+                return
+            }
+            guard error == nil else {
+                fatalError(error!.localizedDescription)
+            }
+            guard filePath != nil else {
+                fatalError()
+            }
+            guard let url = URL(string: filePath!) else {
+                fatalError()
+            }
+
+            
+        }
+    }
+    
+    func obterPodcast(applePodcastsURL: String) throws {
+        guard !applePodcastsURL.isEmpty else {
+            throw DataManagerError.urlVazia
+        }
+        guard applePodcastsURL.contains("https://podcasts.apple.com") else {
+            throw DataManagerError.naoLinkApplePodcasts
+        }
+        
+        guard let podcastId = Int(applePodcastsURL.suffix(9)) else {
+            throw DataManagerError.naoPodeObterPodcastID
+        }
+        
+        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
+        
+        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
+            guard let strongSelf = self else {
+                return
+            }
+            guard error == nil else {
+                fatalError(error!.localizedDescription)
+            }
+            guard filePath != nil else {
+                fatalError()
+            }
+            guard let url = URL(string: filePath!) else {
+                fatalError()
+            }
+
+            
+        }
+    }
 }
 
 enum DataManagerError: Error {
@@ -246,4 +333,10 @@ enum DataManagerError: Error {
     case podcastArrayIsUninitialized
     case episodeArrayIsUninitialized
     case podcastHasNoEpisodes
+    case naoPodeObterPodcastID
+    case linkInvalido
+    case downloadError
+    case failedToProvideLocalFileURL
+    case urlVazia
+    case naoLinkApplePodcasts
 }
