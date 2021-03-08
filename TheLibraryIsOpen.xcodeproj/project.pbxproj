@@ -43,6 +43,7 @@
 		D9D3DBE2256EA2AE0035560E /* PodcastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBE1256EA2AE0035560E /* PodcastDetail.swift */; };
 		D9D3DBE8256EBB510035560E /* FeedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBE7256EBB510035560E /* FeedHelper.swift */; };
 		D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D9D3DBF0256EE9760035560E /* FeedKit */; };
+		D9E3849025F5A15800BE1373 /* iTunesQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3848F25F5A15800BE1373 /* iTunesQueryResult.swift */; };
 		D9EF7344257094FF00FC1C53 /* ArquivoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF7343257094FF00FC1C53 /* ArquivoView.swift */; };
 		D9F3A586257573C00082E4A3 /* EpisodeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3A585257573C00082E4A3 /* EpisodeRowViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		D9D3DBD9256E9C0D0035560E /* PodcastRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRow.swift; sourceTree = "<group>"; };
 		D9D3DBE1256EA2AE0035560E /* PodcastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetail.swift; sourceTree = "<group>"; };
 		D9D3DBE7256EBB510035560E /* FeedHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelper.swift; sourceTree = "<group>"; };
+		D9E3848F25F5A15800BE1373 /* iTunesQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesQueryResult.swift; sourceTree = "<group>"; };
 		D9EF7343257094FF00FC1C53 /* ArquivoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArquivoView.swift; sourceTree = "<group>"; };
 		D9F3A585257573C00082E4A3 /* EpisodeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +226,7 @@
 				D9D3DBBB256E8F930035560E /* Podcast.swift */,
 				D9D3DBC3256E92B40035560E /* Episode.swift */,
 				D97F448E2571997100ED4DAD /* GridLayout.swift */,
+				D9E3848F25F5A15800BE1373 /* iTunesQueryResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91AC97A25F56D450086396D /* String+RangeAccess.swift in Sources */,
+				D9E3849025F5A15800BE1373 /* iTunesQueryResult.swift in Sources */,
 				D911847E2573F48D008DB977 /* UIApplication+Extensions.swift in Sources */,
 				D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */,
 				D9D3DB81256E7BC00035560E /* InstrucoesView.swift in Sources */,

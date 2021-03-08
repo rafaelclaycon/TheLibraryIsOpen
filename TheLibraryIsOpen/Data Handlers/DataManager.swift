@@ -240,7 +240,7 @@ class DataManager {
         podcasts![podcastIndex].episodes![episodeIndex].localFilePath = filePath
     }
     
-    private func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
+    func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
         let destination: DownloadRequest.Destination = { _, _ in
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileURL = documentsURL.appendingPathComponent("Podcasts/\(podcastID)/ConsultaiTunes.json")
@@ -300,7 +300,20 @@ class DataManager {
                 fatalError()
             }
 
+            let data = try! Data(contentsOf: url)
             
+            do {
+                // make sure this JSON is in the format we expect
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    // try to read out a string array
+                    if let results = json["results"] as? [iTunesQueryResult] {
+                        //return results[0].feedUrl
+                        print(results[0].feedUrl)
+                    }
+                }
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+            }
         }
     }
     
