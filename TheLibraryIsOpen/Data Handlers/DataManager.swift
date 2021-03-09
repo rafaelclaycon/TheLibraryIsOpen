@@ -281,70 +281,50 @@ class DataManager {
         return id
     }
     
-    func getFeedURL(applePodcastsURL: String) throws {
+    func getFeedURL(applePodcastsURL: String, completionHandler: @escaping (String?, DataManagerError?) -> Void) throws {
         let podcastId = try getIDFromURL(applePodcastsURL)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
-        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
-            guard let strongSelf = self else {
-                return
-            }
+        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { filePath, error in
             guard error == nil else {
-                fatalError(error!.localizedDescription)
+                return completionHandler(nil, .downloadError)
             }
             guard filePath != nil else {
-                fatalError()
+                return completionHandler(nil, .filePathCameEmpty)
             }
-            guard let url = URL(string: filePath!) else {
-                fatalError()
-            }
-
-            let data = try! Data(contentsOf: url)
             
+            let url = URL(fileURLWithPath: filePath!)
+            let data = try! Data(contentsOf: url)
             do {
-                // make sure this JSON is in the format we expect
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    // try to read out a string array
-                    if let results = json["results"] as? [iTunesQueryResult] {
-                        //return results[0].feedUrl
-                        print(results[0].feedUrl)
+                    guard let resultCount = json["resultCount"] as? Int else {
+                        return completionHandler(nil, .queryiTunesSemResultados)
                     }
+                    guard resultCount == 1 else {
+                        return completionHandler(nil, .queryiTunesSemResultados)
+                    }
+                    guard let results = json["results"] as? [[String: Any]] else {
+                        return completionHandler(nil, .naoFoiPossivelInterpretarResultadoiTunes)
+                    }
+                    let podcast = results[0]
+                    completionHandler(podcast["feedUrl"] as? String, nil)
                 }
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
+                completionHandler(nil, .failedToLoadJSON)
             }
         }
     }
     
     func obterPodcast(applePodcastsURL: String) throws {
-        guard !applePodcastsURL.isEmpty else {
-            throw DataManagerError.urlVazia
-        }
-        guard applePodcastsURL.contains("https://podcasts.apple.com") else {
-            throw DataManagerError.naoLinkApplePodcasts
-        }
-        
-        guard let podcastId = Int(applePodcastsURL.suffix(9)) else {
-            throw DataManagerError.naoPodeObterPodcastID
-        }
-        
-        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
-        
-        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
-            guard let strongSelf = self else {
-                return
-            }
+        try getFeedURL(applePodcastsURL: applePodcastsURL) { feedUrl, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }
-            guard filePath != nil else {
+            guard feedUrl != nil else {
                 fatalError()
             }
-            guard let url = URL(string: filePath!) else {
-                fatalError()
-            }
-
             
         }
     }
@@ -364,4 +344,9 @@ enum DataManagerError: Error {
     case naoLinkApplePodcasts
     case idNaoEncontrado
     case erroObtendoIdAPartirDaURL
+    case failedToLoadJSON
+    case filePathCameEmpty
+    case couldNotCreateURLFromFilePath
+    case queryiTunesSemResultados
+    case naoFoiPossivelInterpretarResultadoiTunes
 }

@@ -73,7 +73,7 @@ struct InstrucoesView: View {
                 
                 Spacer()
             }
-            .navigationBarTitle(Text("Extrair Episódios ⛏"))
+            .navigationBarTitle(Text("Obter Episódios 🗂"))
         }
     }
 }
