@@ -143,6 +143,19 @@ class DataManager {
             try storage?.insert(episode: episode)
         }
     }
+    
+    func ajustar_URL_HTTP_Para_HTTPS(_ url: String) throws -> String {
+        guard !url.isEmpty else {
+            throw DataManagerError.urlVazia
+        }
+        guard let index = url.index(of: "http:") else {
+            throw DataManagerError.urlNaoEHTTP
+        }
+        let start = url.index(index, offsetBy: 5)
+        let end = url.index(url.endIndex, offsetBy: 0)
+        let range = start..<end
+        return "https:" + url[range]
+    }
 
     func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episode]?, FeedHelperError?) -> Void) {
         guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
@@ -172,8 +185,17 @@ class DataManager {
                 // 3. If that fails, tries to get them from the podcast's hosting server.
             } else {
                 print("REMOTE FETCH: podcast \(podcastID)")
+                
+                // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
+                // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
+                var feedUrlAjustado = ""
+                if feedURL.contains("https:") {
+                    feedUrlAjustado = feedURL
+                } else {
+                    feedUrlAjustado = try ajustar_URL_HTTP_Para_HTTPS(feedURL)
+                }
 
-                FeedHelper.fetchEpisodeList(feedURL: feedURL) { [weak self] result, error in
+                FeedHelper.fetchEpisodeList(feedURL: feedUrlAjustado) { [weak self] result, error in
                     guard let strongSelf = self else {
                         return
                     }
@@ -349,4 +371,5 @@ enum DataManagerError: Error {
     case couldNotCreateURLFromFilePath
     case queryiTunesSemResultados
     case naoFoiPossivelInterpretarResultadoiTunes
+    case urlNaoEHTTP
 }
