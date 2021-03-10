@@ -186,7 +186,7 @@ class DataManager {
             } else {
                 print("REMOTE FETCH: podcast \(podcastID)")
 
-                FeedHelper.fetchEpisodeList(feedURL: feedURL) { [weak self] result, error in
+                FeedHelper.fetchPodcast(feedURL: feedURL) { [weak self] result, error in
                     guard let strongSelf = self else {
                         return
                     }
@@ -294,7 +294,7 @@ class DataManager {
         return id
     }
     
-    func getFeedURL(applePodcastsURL: String, completionHandler: @escaping (String?, DataManagerError?) -> Void) throws {
+    func getFeedDetails(applePodcastsURL: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
         let podcastId = try getIDFromURL(applePodcastsURL)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
@@ -338,7 +338,7 @@ class DataManager {
                         feedUrlAjustado = try strongSelf.ajustar_URL_HTTP_Para_HTTPS(feedUrl)
                     }
                     
-                    completionHandler(feedUrlAjustado, nil)
+                    completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
                 }
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
@@ -347,15 +347,46 @@ class DataManager {
         }
     }
     
-    func obterPodcast(applePodcastsURL: String, completionHandler: @escaping (String?, DataManagerError?) -> Void) throws {
-        try getFeedURL(applePodcastsURL: applePodcastsURL) { feedUrl, error in
+    func obterPodcast(applePodcastsURL: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
+        try getFeedDetails(applePodcastsURL: applePodcastsURL) { feedDetails, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }
-            guard feedUrl != nil else {
+            guard let feedDetails = feedDetails else {
                 fatalError()
             }
-            
+            FeedHelper.fetchPodcast(feedURL: feedDetails.feedUrl) { result, error in
+                guard error == nil else {
+                    fatalError(error!.localizedDescription)
+                }
+
+                switch result {
+                case let .success(feed):
+                    guard let feed = feed.rssFeed else {
+                        return completionHandler(nil, FeedHelperError.notAnRSSFeed)
+                    }
+                    guard let items = feed.items else {
+                        return completionHandler(nil, FeedHelperError.emptyFeed)
+                    }
+
+                    var podcast = Podcast(id: feedDetails.podcastId)
+                    podcast.title = feed.title ?? "Sem Título"
+                    podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
+                    podcast.feedURL = feedDetails.feedUrl
+                    podcast.artworkURL = feed.image?.link ?? ""
+
+                    for item in items {
+                        podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
+                    }
+
+                    completionHandler(podcast, nil)
+
+                case let .failure(error):
+                    print(error.localizedDescription)
+                case .none:
+                    fatalError("None")
+                }
+            }
         }
     }
 }

@@ -31,6 +31,7 @@
 		D979F654257D162400011B64 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D979F653257D162400011B64 /* NowPlayingView.swift */; };
 		D97F448F2571997100ED4DAD /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97F448E2571997100ED4DAD /* GridLayout.swift */; };
 		D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99323412576931E00DB9A72 /* DataManagerTests.swift */; };
+		D9A6DF8B25F914AB00EE9D80 /* FeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */; };
 		D9CA71F625838BF9003D8A17 /* PodcastPraiadosOssosTrailer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D9CA71F525838BF9003D8A17 /* PodcastPraiadosOssosTrailer.mp3 */; };
 		D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */; };
 		D9D3DB81256E7BC00035560E /* InstrucoesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB80256E7BC00035560E /* InstrucoesView.swift */; };
@@ -80,6 +81,7 @@
 		D979F653257D162400011B64 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		D97F448E2571997100ED4DAD /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		D99323412576931E00DB9A72 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetail.swift; sourceTree = "<group>"; };
 		D9CA71F525838BF9003D8A17 /* PodcastPraiadosOssosTrailer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PodcastPraiadosOssosTrailer.mp3; sourceTree = "<group>"; };
 		D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheLibraryIsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenApp.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				D9D3DBC3256E92B40035560E /* Episode.swift */,
 				D97F448E2571997100ED4DAD /* GridLayout.swift */,
 				D9E3848F25F5A15800BE1373 /* iTunesQueryResult.swift */,
+				D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				D9F3A586257573C00082E4A3 /* EpisodeRowViewModel.swift in Sources */,
 				D91AC97325F51CCE0086396D /* ProcessandoView.swift in Sources */,
 				D94AEC482570BEE9001DEB9B /* MainView.swift in Sources */,
+				D9A6DF8B25F914AB00EE9D80 /* FeedDetail.swift in Sources */,
 				D9D3DBBC256E8F930035560E /* Podcast.swift in Sources */,
 				D9D3DBC4256E92B40035560E /* Episode.swift in Sources */,
 				D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */,
