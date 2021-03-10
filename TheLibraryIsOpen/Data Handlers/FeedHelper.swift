@@ -11,7 +11,7 @@ import Foundation
 
 class FeedHelper {
     static func fetchEpisodeList(feedURL: String, completionHandler: @escaping (Result<Feed, ParserError>?, FeedHelperError?) -> Void) {
-        guard feedURL != "" else {
+        guard !feedURL.isEmpty else {
             return completionHandler(nil, .emptyURL)
         }
 

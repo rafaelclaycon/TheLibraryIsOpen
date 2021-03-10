@@ -185,17 +185,8 @@ class DataManager {
                 // 3. If that fails, tries to get them from the podcast's hosting server.
             } else {
                 print("REMOTE FETCH: podcast \(podcastID)")
-                
-                // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
-                // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
-                var feedUrlAjustado = ""
-                if feedURL.contains("https:") {
-                    feedUrlAjustado = feedURL
-                } else {
-                    feedUrlAjustado = try ajustar_URL_HTTP_Para_HTTPS(feedURL)
-                }
 
-                FeedHelper.fetchEpisodeList(feedURL: feedUrlAjustado) { [weak self] result, error in
+                FeedHelper.fetchEpisodeList(feedURL: feedURL) { [weak self] result, error in
                     guard let strongSelf = self else {
                         return
                     }
@@ -308,7 +299,10 @@ class DataManager {
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
-        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { filePath, error in
+        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
+            guard let strongSelf = self else {
+                return
+            }
             guard error == nil else {
                 return completionHandler(nil, .downloadError)
             }
@@ -330,7 +324,21 @@ class DataManager {
                         return completionHandler(nil, .naoFoiPossivelInterpretarResultadoiTunes)
                     }
                     let podcast = results[0]
-                    completionHandler(podcast["feedUrl"] as? String, nil)
+                    
+                    guard let feedUrl = podcast["feedUrl"] as? String else {
+                        return completionHandler(nil, .resultadoiTunesInesperado)
+                    }
+                    
+                    // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
+                    // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
+                    var feedUrlAjustado = ""
+                    if feedUrl.contains("https:") {
+                        feedUrlAjustado = feedUrl
+                    } else {
+                        feedUrlAjustado = try strongSelf.ajustar_URL_HTTP_Para_HTTPS(feedUrl)
+                    }
+                    
+                    completionHandler(feedUrlAjustado, nil)
                 }
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
@@ -339,7 +347,7 @@ class DataManager {
         }
     }
     
-    func obterPodcast(applePodcastsURL: String) throws {
+    func obterPodcast(applePodcastsURL: String, completionHandler: @escaping (String?, DataManagerError?) -> Void) throws {
         try getFeedURL(applePodcastsURL: applePodcastsURL) { feedUrl, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
@@ -372,4 +380,5 @@ enum DataManagerError: Error {
     case queryiTunesSemResultados
     case naoFoiPossivelInterpretarResultadoiTunes
     case urlNaoEHTTP
+    case resultadoiTunesInesperado
 }

@@ -26,14 +26,16 @@ class InstrucoesViewModel: ObservableObject {
     }
     
     func processar() {
-        do {
-            try dataManager.obterPodcast(applePodcastsURL: entrada)
+        /*do {
+            try dataManager.obterPodcast(applePodcastsURL: entrada) {
+                
+            }
         } catch DataManagerError.podcastIDNotFound {
             //displayPodcastIDNotFoundAlert()
         } catch DataManagerError.podcastHasNoEpisodes {
             //displayPodcastHadNoEpisodesAlert()
         } catch {
             fatalError(error.localizedDescription)
-        }
+        }*/
     }
 }
