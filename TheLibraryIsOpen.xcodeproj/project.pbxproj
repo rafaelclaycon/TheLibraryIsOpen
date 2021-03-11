@@ -201,12 +201,12 @@
 		D9D3DB7D256E7BC00035560E /* TheLibraryIsOpen */ = {
 			isa = PBXGroup;
 			children = (
-				D9D3DBBA256E8F890035560E /* Model */,
+				D9D3DBBA256E8F890035560E /* Modelo */,
 				D9D3DBD8256E9BB40035560E /* Views */,
 				D911847A2573EEFA008DB977 /* Data Handlers */,
 				D94A05EB2572866B0065AE2C /* Extensions */,
-				D9D3DBC8256E96FD0035560E /* Resources */,
-				D9D3DBE6256EBAA40035560E /* Supporting Files */,
+				D9D3DBC8256E96FD0035560E /* Recursos */,
+				D9D3DBE6256EBAA40035560E /* Apoio */,
 			);
 			path = TheLibraryIsOpen;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			path = TheLibraryIsOpenTests;
 			sourceTree = "<group>";
 		};
-		D9D3DBBA256E8F890035560E /* Model */ = {
+		D9D3DBBA256E8F890035560E /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
 				D9D3DBBB256E8F930035560E /* Podcast.swift */,
@@ -231,17 +231,17 @@
 				D9E3848F25F5A15800BE1373 /* iTunesQueryResult.swift */,
 				D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */,
 			);
-			path = Model;
+			path = Modelo;
 			sourceTree = "<group>";
 		};
-		D9D3DBC8256E96FD0035560E /* Resources */ = {
+		D9D3DBC8256E96FD0035560E /* Recursos */ = {
 			isa = PBXGroup;
 			children = (
 				D9CA71F525838BF9003D8A17 /* PodcastPraiadosOssosTrailer.mp3 */,
 				D9D3DB82256E7BC30035560E /* Assets.xcassets */,
 				D9D3DBD3256E9B540035560E /* podcasts.json */,
 			);
-			path = Resources;
+			path = Recursos;
 			sourceTree = "<group>";
 		};
 		D9D3DBD8256E9BB40035560E /* Views */ = {
@@ -257,13 +257,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D9D3DBE6256EBAA40035560E /* Supporting Files */ = {
+		D9D3DBE6256EBAA40035560E /* Apoio */ = {
 			isa = PBXGroup;
 			children = (
 				D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */,
 				D9D3DB87256E7BC30035560E /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = Apoio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,7 +557,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L8X3H5XA82;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TheLibraryIsOpen/Supporting Files/Info.plist";
+				INFOPLIST_FILE = TheLibraryIsOpen/Apoio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -579,7 +579,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L8X3H5XA82;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TheLibraryIsOpen/Supporting Files/Info.plist";
+				INFOPLIST_FILE = TheLibraryIsOpen/Apoio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

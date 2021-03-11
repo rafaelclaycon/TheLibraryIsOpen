@@ -44,6 +44,7 @@ struct PodcastDetail: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 10)
+                .padding(.top, 12)
             
             Text(viewModel.details)
                 .foregroundColor(.gray)
