@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArquivoDetailView: View {
-    var episodes = [Episode(id: "123", podcastID: 123, title: "Test Episode", pubDate: nil, duration: 0, remoteURL: "", localFilePath: nil)]
+    var episodes = [Episode(id: "123", podcastID: 123, title: "Test Episode", pubDate: nil, duration: 0, remoteURL: "")]
 
     var body: some View {
         ScrollView {
