@@ -21,6 +21,10 @@ extension Date {
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: self)
     }
+    
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> String {
+        return String(calendar.component(component, from: self))
+    }
 }
 
 extension Double {

@@ -26,13 +26,13 @@ struct Episode: Hashable, Codable, Identifiable {
         self.localFilePath = nil
     }
     
-    init(id: String, title: String) {
+    init(id: String, title: String, pubDate: Date) {
         self.id = id
         podcastID = 0
         self.title = title
-        pubDate = Date()
+        self.pubDate = pubDate
         duration = 0
         remoteURL = ""
-        localFilePath = ""
+        localFilePath = nil
     }
 }
