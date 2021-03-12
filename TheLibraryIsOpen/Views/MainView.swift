@@ -8,17 +8,44 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var viewModel = MainViewViewModel()
+    
     var body: some View {
-        TabView {
-            NowPlayingBar(content: InstrucoesView()).tabItem {
-                Image(systemName: "plus.circle.fill")
-                Text("Novo Podcast")
+        let navBarItemSize: CGFloat = 36
+        
+        NavigationView {
+            VStack {
+                //Spacer()
+                
+                Image(systemName: "headphones")
+                    .font(.largeTitle)
+                    .foregroundColor(.pink)
+                
+                Text("Nenhum Podcast Arquivado")
+                    .font(.headline)
+                    .padding()
+                    //.foregroundColor(.gray)
+                
+                Text("Para arquivar um novo podcast, toque no + no canto superior direito.")
+                    .font(.body)
+                    .padding(.horizontal, 40)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
+                
+                //Spacer()
             }
-
-            NowPlayingBar(content: ArquivoView()).tabItem {
-                Image(systemName: "archivebox.fill")
-                Text("Arquivo")
-            }
+            .navigationBarItems(trailing:
+                Button(action: {
+                    print("Adicionar podcast pressionado!")
+                    viewModel.exibindoSheetNovoPodcast = true
+                }) {
+                    Image(systemName: "plus")
+                        .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                        .frame(width: 20, height: 20, alignment: .center)
+                }
+                .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
+            )
+            .navigationBarTitle(Text("Arquivo"))
         }
     }
 }
