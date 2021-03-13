@@ -41,7 +41,9 @@ struct InstrucoesBView: View {
                         //viewModel.processar()
                     }) {
                         Text("Analisar Link")
+                            .bold()
                     }
+                    .buttonStyle(PillButtonStyle())
                     
                     Spacer()
                 }

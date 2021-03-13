@@ -51,6 +51,12 @@ struct InstrucoesAView: View {
                     
                     NavigationLink(destination: InstrucoesBView(estaSendoExibido: $estaSendoExibido), tag: 1, selection: $action, label: {
                         Text("Avançar")
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding(.vertical, 14)
+                            .padding(.horizontal, 50)
+                            .background(Color.accentColor)
+                            .cornerRadius(50)
                     })
                     
                     Spacer()

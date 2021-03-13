@@ -29,6 +29,7 @@
 		D9D2D53925FBB8CC0099AE42 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */; };
 		D9D2D53F25FBE3CA0099AE42 /* InstrucoesBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* InstrucoesBView.swift */; };
 		D9D2D54325FBE42F0099AE42 /* InstrucoesBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D54225FBE42F0099AE42 /* InstrucoesBViewModel.swift */; };
+		D9D2D55725FC4D8E0099AE42 /* PillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */; };
 		D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */; };
 		D9D3DB81256E7BC00035560E /* InstrucoesAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB80256E7BC00035560E /* InstrucoesAView.swift */; };
 		D9D3DB83256E7BC30035560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D3DB82256E7BC30035560E /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		D9D2D53E25FBE3CA0099AE42 /* InstrucoesBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrucoesBView.swift; sourceTree = "<group>"; };
 		D9D2D54225FBE42F0099AE42 /* InstrucoesBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrucoesBViewModel.swift; sourceTree = "<group>"; };
+		D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButtonStyle.swift; sourceTree = "<group>"; };
 		D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheLibraryIsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenApp.swift; sourceTree = "<group>"; };
 		D9D3DB80256E7BC00035560E /* InstrucoesAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrucoesAView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				D94AEC6425719285001DEB9B /* NovoPodcast */,
 				D92A44BD256EF7F900731EEF /* EpisodeRow.swift */,
 				D9F3A585257573C00082E4A3 /* EpisodeRowViewModel.swift */,
+				D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				D9D3DBBC256E8F930035560E /* Podcast.swift in Sources */,
 				D9D3DBC4256E92B40035560E /* Episode.swift in Sources */,
 				D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */,
+				D9D2D55725FC4D8E0099AE42 /* PillButtonStyle.swift in Sources */,
 				D9D3DBDA256E9C0D0035560E /* PodcastRow.swift in Sources */,
 				D9D3DBE2256EA2AE0035560E /* PodcastDetail.swift in Sources */,
 				D94A05F62572B8020065AE2C /* LocalStorage.swift in Sources */,
