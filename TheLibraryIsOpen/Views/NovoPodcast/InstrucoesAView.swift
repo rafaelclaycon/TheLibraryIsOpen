@@ -9,25 +9,24 @@ import SwiftUI
 
 struct InstrucoesAView: View {
     @ObservedObject var viewModel = InstrucoesAViewModel()
+    @Binding var estaSendoExibido: Bool
+    @State private var action: Int? = 0
     
     let bottomPadding: CGFloat = 15
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Obter Episódios de Um Novo Podcast")
-                    .font(.system(size: 34, weight: .bold))
-                    .padding(.horizontal, 20)
-                
                 HStack {
                     Spacer()
                     
                     Image("podcasts")
                         .resizable()
-                        .frame(width: 365, height: 205)
+                        .frame(width: 350, height: 197)
                     
                     Spacer()
                 }
+                .padding(.vertical, 30)
                 
                 VStack(alignment: .leading) {
                     Text("1. Abra o app Podcasts")
@@ -45,27 +44,35 @@ struct InstrucoesAView: View {
                     Text("5. Volte para cá e toque em Avançar.")
                         .padding(.bottom, bottomPadding)
                 }
-                .padding(.all, 30)
+                .padding(.horizontal, 30)
                 
                 HStack {
                     Spacer()
                     
-                    Button(action: {
-                        //viewModel.processar()
-                    }) {
+                    NavigationLink(destination: InstrucoesBView(estaSendoExibido: $estaSendoExibido), tag: 1, selection: $action, label: {
                         Text("Avançar")
-                    }
+                    })
                     
                     Spacer()
                 }
+                .padding(.vertical, 10)
+                
+                Spacer()
             }
-            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationBarTitle(Text("Obter Link"))
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.estaSendoExibido = false
+                }) {
+                    Text("Cancelar")
+                }
+            )
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        InstrucoesAView()
+        InstrucoesAView(estaSendoExibido: .constant(true))
     }
 }
