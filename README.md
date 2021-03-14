@@ -4,11 +4,14 @@
 
 Arquive os episódios do seu podcast favorito com este app para iOS.
 
-![Tela de fundo branco com instruções coloridas sobre como obter o link do podcast no app da Apple para então inserí-lo no campo de texto.](TheLibraryIsOpen/Recursos/flow-principal.gif)
+![GIF mostrando o app sendo usado para inserir o link do Apple Podcasts.](TheLibraryIsOpen/Recursos/flow-principal.gif)
+
+![Protótipo: 5 telas dispostas horizontalmente apresentando o fluxo principal do app, indo desde a tela vazia sem podcasts até a tela com as informação de um podcast inserido pelo usuário.](TheLibraryIsOpen/Recursos/prototipo.png)
 
 ## Funcionalidades
 
 - [x] Obter URL do feed de um podcast a partir do link do Apple Podcasts
+- [x] Obter lista de episódios
 - [x] Baixar episódios
 - [ ] Armazenar episódios baixados em um arquivo .zip (em breve)
 - [ ] Upar o arquivo para um serviço de armazenamento na nuvem (em breve)
