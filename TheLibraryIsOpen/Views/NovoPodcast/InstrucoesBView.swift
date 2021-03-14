@@ -12,46 +12,60 @@ struct InstrucoesBView: View {
     @Binding var estaSendoExibido: Bool
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    
-                    Image("paste")
-                        .resizable()
-                        .frame(width: 350, height: 197)
-                        .border(Color.gray, width: 1)
-                    
-                    Spacer()
-                }
-                .padding(.vertical, 30)
-                
-                Text("6. Cole o link do podcast aqui:")
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 15)
-                
-                TextField("https://...", text: $viewModel.entrada)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 25)
-                
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        //viewModel.processar()
-                    }) {
-                        Text("Analisar Link")
-                            .bold()
+        ZStack {
+            NavigationView {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Spacer()
+                        
+                        Image("paste")
+                            .resizable()
+                            .frame(width: 350, height: 197)
+                            .border(Color.gray, width: 1)
+                        
+                        Spacer()
                     }
-                    .buttonStyle(PillButtonStyle())
+                    .padding(.vertical, 30)
+                    
+                    Text("6. Cole o link do podcast aqui:")
+                        .padding(.horizontal, 25)
+                        .padding(.bottom, 15)
+                    
+                    TextField("https://...", text: $viewModel.entrada)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal, 25)
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            viewModel.processar()
+                        }) {
+                            Text("Analisar Link")
+                                .bold()
+                        }
+                        .buttonStyle(PillButtonStyle())
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 10)
+                    
+                    VStack() {
+                        Text(viewModel.titulo)
+                        Text(viewModel.primeiroEp)
+                        Text(viewModel.ultimoEp)
+                        Text(viewModel.qtd)
+                    }
+                    .padding()
                     
                     Spacer()
                 }
-                .padding(.top, 10)
-                
-                Spacer()
+                .navigationBarTitle(Text("Obter Episódios"))
             }
-            .navigationBarTitle(Text("Obter Episódios"))
+            
+            if viewModel.processando {
+                ProcessandoView()
+            }
         }
     }
 }
