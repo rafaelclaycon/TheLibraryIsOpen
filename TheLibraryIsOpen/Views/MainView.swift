@@ -15,9 +15,9 @@ struct MainView: View {
         
         NavigationView {
             VStack {
-                Image(systemName: "headphones")
-                    .font(.system(size: 46))
-                    .foregroundColor(.pink)
+                Image("PodcastsEmptyState")
+                    .resizable()
+                    .frame(width: 350, height: 200)
                 
                 Text("Nenhum Podcast Arquivado")
                     .font(.title2)
