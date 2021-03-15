@@ -29,7 +29,7 @@ class FeedHelper {
     }
 
     static func fetchEpisodeFile(streamURL: String, podcastID: Int, episodeID _: String, completionHandler: @escaping (String?, FeedHelperError?) -> Void) {
-        guard streamURL != "" else {
+        guard !streamURL.isEmpty else {
             return completionHandler(nil, .emptyURL)
         }
         guard let url = URL(string: streamURL) else {

@@ -13,28 +13,28 @@ struct PodcastRow: View {
 
     var body: some View {
         HStack {
-//            KFImage(URL(string: podcast.artworkURL))
-//                .onSuccess { r in
-//                    print("success: \(r)")
-//                }
-//                .onFailure { e in
-//                    print("failure: \(e)")
-//                }
-//                .placeholder {
-//                    ZStack {
-//                        Rectangle()
-//                            .fill(Color.gray)
-//                            .frame(width: 70, height: 70)
-//                            .opacity(0.6)
-//
-//                        Image(systemName: "waveform")
-//                            .resizable()
-//                            .frame(width: 35, height: 35)
-//                            .foregroundColor(.white)
-//                    }
-//                }
-//                .resizable()
-//                .frame(width: 70, height: 70)
+            KFImage(URL(string: podcast.artworkURL))
+                .onSuccess { r in
+                    print("success: \(r)")
+                }
+                .onFailure { e in
+                    print("failure: \(e)")
+                }
+                .placeholder {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.gray)
+                            .frame(width: 70, height: 70)
+                            .opacity(0.6)
+
+                        Image(systemName: "waveform")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(.white)
+                    }
+                }
+                .resizable()
+                .frame(width: 70, height: 70)
 
             VStack(alignment: .leading) {
                 Text(podcast.title)

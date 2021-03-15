@@ -40,31 +40,6 @@ class DataManager {
         }
     }
 
-    private func playLocalFile(_: Episode) {
-//        print("Local file path name: \(episode.localFilePath!)")
-
-//        do {
-//            let documentsFolderString = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).absoluteString
-//            print(documentsFolderString)
-//            let newString = documentsFolderString.replacingOccurrences(of: "file://", with: "")
-//            print(newString)
-//            let documentsFolderURL = URL(string: newString)
-//            let episodeURL = documentsFolderURL!.appendingPathComponent("Podcasts/\(episode.podcastID)/").appendingPathComponent(episode.localFilePath!)
-
-        let path = Bundle.main.path(forResource: "PodcastPraiadosOssosTrailer.mp3", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
-
-        print(url)
-
-        player = Player(url: url, update: { state in
-            print(state?.activity as Any)
-        })
-
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-    }
-
     private func fetchRemoteFile(_ episode: Episode) {
         FeedHelper.fetchEpisodeFile(streamURL: episode.remoteURL, podcastID: episode.podcastID, episodeID: episode.id) { [weak self] filePath, error in
             guard let strongSelf = self else {
@@ -88,29 +63,11 @@ class DataManager {
             }
         }
     }
-
-    private func play(episode: Episode) {
-        if episode.localFilePath != nil {
-            playLocalFile(episode)
-        } else {
-            fetchRemoteFile(episode)
-        }
-    }
     
     private func download(episode: Episode) {
         if episode.localFilePath == nil {
             fetchRemoteFile(episode)
         }
-    }
-
-    func playEpisode(byID episodeID: String, podcastID: Int) throws {
-        guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
-            throw DataManagerError.podcastIDNotFound
-        }
-        guard let episode = podcast.episodes?.first(where: { $0.id == episodeID }) else {
-            throw DataManagerError.episodeIDNotFound
-        }
-        play(episode: episode)
     }
     
     func downloadAllEpisodes(from podcastID: Int) throws {

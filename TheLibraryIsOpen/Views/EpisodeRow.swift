@@ -21,40 +21,15 @@ struct EpisodeRow: View {
                 Text(viewModel.title)
                     .padding(.top, 0.1)
 
-                HStack {
-                    if viewModel.isAvailableOffline {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.green)
-                            .font(.footnote)
-                    } else {
-                        Image(systemName: "icloud.and.arrow.down")
-                            .foregroundColor(.gray)
-                            .font(.footnote)
-                    }
-
-                    Text(viewModel.duration)
-                        .foregroundColor(.gray)
-                        .bold()
-                        .font(.footnote)
-                }
-                .padding(.top, 0.1)
+                Text(viewModel.duration)
+                    .foregroundColor(.gray)
+                    .bold()
+                    .font(.footnote)
+                    .padding(.top, 0.1)
             }
             .padding(.leading)
 
             Spacer()
-
-            Button(action: {
-                viewModel.play()
-            }) {
-                Image(systemName: "play.circle")
-                    .foregroundColor(.red)
-                    .font(.title)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .padding()
-            .alert(isPresented: $viewModel.displayAlert) {
-                Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-            }
         }
     }
 }
