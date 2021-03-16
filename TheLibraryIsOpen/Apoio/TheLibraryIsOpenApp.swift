@@ -10,7 +10,6 @@ import SwiftUI
 let isRunningUnitTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
 let dataManager = DataManager(storage: isRunningUnitTests ? nil : LocalStorage(), fetchMethod: TheLibraryIsOpenService.getPodcasts)
-var player: Player?
 
 @main
 struct TheLibraryIsOpenApp: App {
