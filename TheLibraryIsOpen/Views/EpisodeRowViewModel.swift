@@ -17,13 +17,13 @@ class EpisodeRowViewModel: ObservableObject {
     @Published var duration: String
     @Published var isAvailableOffline: Bool = false
 
-    init(episode: Episode) {
-        podcastID = episode.podcastID
+    init(episode: Episodio) {
+        podcastID = episode.idPodcast
         episodeID = episode.id
 
-        title = episode.title
-        pubDate = episode.pubDate?.asFullString().uppercased() ?? "-"
-        duration = episode.duration.toDisplayString()
-        isAvailableOffline = episode.localFilePath != nil
+        title = episode.titulo
+        pubDate = episode.dataPublicacao?.asFullString().uppercased() ?? "-"
+        duration = episode.duracao.toDisplayString()
+        isAvailableOffline = episode.caminhoLocal != nil
     }
 }

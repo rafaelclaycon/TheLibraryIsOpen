@@ -8,9 +8,9 @@
 import Foundation
 
 class Utils {
-    static func getSubtituloPodcast(episodes: [Episode]) -> String {
-        let firstEpisodePubYear = episodes[episodes.count - 1].pubDate!.get(.year)
-        let lastEpisodePubYear = episodes[0].pubDate!.get(.year)
+    static func getSubtituloPodcast(episodes: [Episodio]) -> String {
+        let firstEpisodePubYear = episodes[episodes.count - 1].dataPublicacao!.get(.year)
+        let lastEpisodePubYear = episodes[0].dataPublicacao!.get(.year)
         
         var yearText = ""
         if firstEpisodePubYear == lastEpisodePubYear {

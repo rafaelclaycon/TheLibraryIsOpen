@@ -13,16 +13,16 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var details: String
     @Published var artworkURL: String
     @Published var displayEpisodeList: Bool = false
-    @Published var episodes = [Episode]()
+    @Published var episodes = [Episodio]()
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
 
     init(podcast: Podcast) {
-        title = podcast.title
-        details = "\(podcast.episodes?.count ?? 0) episódios · "
-        artworkURL = podcast.artworkURL
-        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.feedURL) { episodes, error in
+        title = podcast.titulo
+        details = "\(podcast.episodios?.count ?? 0) episódios · "
+        artworkURL = podcast.urlCapa
+        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
             guard error == nil else {
                 fatalError(error.debugDescription)
             }

@@ -37,8 +37,8 @@ struct EpisodeRow: View {
 struct EpisodeRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episode(id: "1", podcastID: 123, title: "Flat-Side Promoter", pubDate: Date(), duration: 300, remoteURL: "")))
-            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episode(id: "2", podcastID: 456, title: "With Four Hands Tied Behind Its Back", pubDate: Date(), duration: 3600, remoteURL: "")))
+            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episodio(id: "1", idPodcast: 123, titulo: "Flat-Side Promoter", dataPublicacao: Date(), duracao: 300, urlRemoto: "")))
+            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episodio(id: "2", idPodcast: 456, titulo: "With Four Hands Tied Behind Its Back", dataPublicacao: Date(), duracao: 3600, urlRemoto: "")))
         }
         .previewLayout(.fixed(width: 350, height: 70))
     }

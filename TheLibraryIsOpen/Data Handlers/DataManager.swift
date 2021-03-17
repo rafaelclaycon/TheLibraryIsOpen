@@ -40,8 +40,8 @@ class DataManager {
         }
     }
 
-    private func fetchRemoteFile(_ episode: Episode) {
-        FeedHelper.fetchEpisodeFile(streamURL: episode.remoteURL, podcastID: episode.podcastID, episodeID: episode.id) { [weak self] filePath, error in
+    private func fetchRemoteFile(_ episode: Episodio) {
+        FeedHelper.fetchEpisodeFile(streamURL: episode.urlRemoto, podcastID: episode.idPodcast, episodeID: episode.id) { [weak self] filePath, error in
             guard let strongSelf = self else {
                 return
             }
@@ -64,8 +64,8 @@ class DataManager {
         }
     }
     
-    private func download(episode: Episode) {
-        if episode.localFilePath == nil {
+    private func download(episode: Episodio) {
+        if episode.caminhoLocal == nil {
             fetchRemoteFile(episode)
         }
     }
@@ -74,16 +74,16 @@ class DataManager {
         guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
             throw DataManagerError.podcastIDNotFound
         }
-        guard podcast.episodes != nil else {
+        guard podcast.episodios != nil else {
             throw DataManagerError.podcastHasNoEpisodes
         }
         
-        podcast.episodes!.forEach({ episode in
+        podcast.episodios!.forEach({ episode in
             download(episode: episode)
         })
     }
 
-    func addEpisodes(_ episodes: [Episode], podcastID: Int) throws {
+    func addEpisodes(_ episodes: [Episodio], podcastID: Int) throws {
         guard podcasts != nil else {
             throw DataManagerError.podcastArrayIsUninitialized
         }
@@ -91,10 +91,10 @@ class DataManager {
             throw DataManagerError.podcastIDNotFound
         }
 
-        if podcasts![podcastIndex].episodes == nil {
-            podcasts![podcastIndex].episodes = [Episode]()
+        if podcasts![podcastIndex].episodios == nil {
+            podcasts![podcastIndex].episodios = [Episodio]()
         }
-        podcasts![podcastIndex].episodes!.append(contentsOf: episodes)
+        podcasts![podcastIndex].episodios!.append(contentsOf: episodes)
 
         for episode in episodes {
             try storage?.insert(episode: episode)
@@ -114,13 +114,13 @@ class DataManager {
         return "https:" + url[range]
     }
 
-    func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episode]?, FeedHelperError?) -> Void) {
+    func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episodio]?, FeedHelperError?) -> Void) {
         guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
             return
         }
 
         // 1. First tries to get the episodes from memory.
-        if let episodes = podcast.episodes, episodes.count > 0 {
+        if let episodes = podcast.episodios, episodes.count > 0 {
             print("IN-MEMORY FETCH: podcast \(podcastID)")
             completionHandler(episodes, nil)
             return
@@ -161,7 +161,7 @@ class DataManager {
                             return completionHandler(nil, FeedHelperError.emptyFeed)
                         }
 
-                        var episodes = [Episode]()
+                        var episodes = [Episodio]()
 
                         for item in items {
                             episodes.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: podcastID))
@@ -187,9 +187,9 @@ class DataManager {
         }
     }
 
-    func updateLocalFilePath(forEpisode episode: Episode, with filePath: String) throws {
+    func updateLocalFilePath(forEpisode episode: Episodio, with filePath: String) throws {
         // Update it on the in-memory array.
-        try updateInMemoryEpisodeLocalFilePath(podcastID: episode.podcastID, episodeID: episode.id, filePath: filePath)
+        try updateInMemoryEpisodeLocalFilePath(podcastID: episode.idPodcast, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
         storage!.updateLocalFilePath(forEpisode: episode.id, with: filePath)
     }
@@ -201,13 +201,13 @@ class DataManager {
         guard let podcastIndex = podcasts?.firstIndex(where: { $0.id == podcastID }) else {
             throw DataManagerError.podcastIDNotFound
         }
-        guard podcasts![podcastIndex].episodes != nil else {
+        guard podcasts![podcastIndex].episodios != nil else {
             throw DataManagerError.episodeArrayIsUninitialized
         }
-        guard let episodeIndex = podcasts![podcastIndex].episodes!.firstIndex(where: { $0.id == episodeID }) else {
+        guard let episodeIndex = podcasts![podcastIndex].episodios!.firstIndex(where: { $0.id == episodeID }) else {
             throw DataManagerError.episodeIDNotFound
         }
-        podcasts![podcastIndex].episodes![episodeIndex].localFilePath = filePath
+        podcasts![podcastIndex].episodios![episodeIndex].caminhoLocal = filePath
     }
     
     func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
@@ -327,13 +327,13 @@ class DataManager {
                     }
 
                     var podcast = Podcast(id: feedDetails.podcastId)
-                    podcast.title = feed.title ?? "Sem Título"
-                    podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
-                    podcast.feedURL = feedDetails.feedUrl
-                    podcast.artworkURL = feed.image?.link ?? ""
+                    podcast.titulo = feed.title ?? "Sem Título"
+                    podcast.autor = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
+                    podcast.urlFeed = feedDetails.feedUrl
+                    podcast.urlCapa = feed.image?.link ?? ""
 
                     for item in items {
-                        podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
+                        podcast.episodios!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
                     }
 
                     completionHandler(podcast, nil)

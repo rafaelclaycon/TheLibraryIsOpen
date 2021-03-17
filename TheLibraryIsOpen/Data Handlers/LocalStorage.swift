@@ -11,7 +11,7 @@ import SQLite
 class LocalStorage {
     private var db: Connection
     private var podcasts = Table("podcasts")
-    private var episodes = Table("episodes")
+    private var episodios = Table("episodios")
 
     // MARK: - Init
 
@@ -31,37 +31,37 @@ class LocalStorage {
 
     private func createPodcasts() throws {
         let id = Expression<Int64>("id")
-        let title = Expression<String>("title")
-        let author = Expression<String>("author")
-        let feedURL = Expression<String>("feedURL")
-        let artworkURL = Expression<String>("artworkURL")
+        let titulo = Expression<String>("titulo")
+        let autor = Expression<String>("autor")
+        let urlFeed = Expression<String>("urlFeed")
+        let urlCapa = Expression<String>("urlCapa")
 
         try db.run(podcasts.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
-            t.column(title)
-            t.column(author)
-            t.column(feedURL)
-            t.column(artworkURL)
+            t.column(titulo)
+            t.column(autor)
+            t.column(urlFeed)
+            t.column(urlCapa)
         })
     }
 
     private func createEpisodes() throws {
         let id = Expression<String>("id")
-        let podcast_id = Expression<Int64>("podcastID")
-        let title = Expression<String>("title")
-        let pub_date = Expression<Date?>("pubDate")
-        let duration = Expression<Double>("duration")
-        let remote_url = Expression<String>("remoteURL")
-        let local_file_path = Expression<String?>("localFilePath")
+        let id_podcast = Expression<Int64>("idPodcast")
+        let titulo = Expression<String>("titulo")
+        let data_publicacao = Expression<Date?>("dataPublicacao")
+        let duracao = Expression<Double>("duracao")
+        let url_remoto = Expression<String>("urlRemoto")
+        let caminho_local = Expression<String?>("caminhoLocal")
 
-        try db.run(episodes.create(ifNotExists: true) { t in
+        try db.run(episodios.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
-            t.column(podcast_id)
-            t.column(title)
-            t.column(pub_date)
-            t.column(duration)
-            t.column(remote_url)
-            t.column(local_file_path)
+            t.column(id_podcast)
+            t.column(titulo)
+            t.column(data_publicacao)
+            t.column(duracao)
+            t.column(url_remoto)
+            t.column(caminho_local)
         })
     }
 
@@ -92,19 +92,19 @@ class LocalStorage {
     // MARK: - Episode
 
     func getEpisodeCount() throws -> Int {
-        try db.scalar(episodes.count)
+        try db.scalar(episodios.count)
     }
 
-    func insert(episode: Episode) throws {
-        let insert = try episodes.insert(episode)
+    func insert(episode: Episodio) throws {
+        let insert = try episodios.insert(episode)
         try db.run(insert)
     }
 
-    func getAllEpisodes(forID podcastID: Int) throws -> [Episode] {
-        var queriedEpisodes = [Episode]()
+    func getAllEpisodes(forID idPodcast: Int) throws -> [Episodio] {
+        var queriedEpisodes = [Episodio]()
 
-        let podcast_id = Expression<Int>("podcastID")
-        let query = episodes.filter(podcast_id == podcastID)
+        let id_podcast = Expression<Int>("idPodcast")
+        let query = episodios.filter(id_podcast == idPodcast)
 
         for episode in try db.prepare(query) {
             queriedEpisodes.append(try episode.decode())
@@ -113,21 +113,21 @@ class LocalStorage {
     }
 
     func deleteAllEpisodes() throws {
-        try db.run(episodes.delete())
+        try db.run(episodios.delete())
     }
 
-    func updateLocalFilePath(forEpisode episodeID: String, with filePath: String) {
+    func updateLocalFilePath(forEpisode idEpisodio: String, with caminho: String) {
         let id = Expression<String>("id")
-        let episode = episodes.filter(id == episodeID)
-        let localFilePath = Expression<String?>("localFilePath")
+        let episodio = episodios.filter(id == idEpisodio)
+        let caminho_local = Expression<String?>("caminhoLocal")
         do {
-            if try db.run(episode.update(localFilePath <- filePath)) > 0 {
-                print("Episode \(episodeID) updated with file path: \(filePath)")
+            if try db.run(episodio.update(caminho_local <- caminho)) > 0 {
+                print("Episódio \(idEpisodio) atualizado com o caminho: \(caminho)")
             } else {
-                print("Episode \(episodeID) not found")
+                print("Episódio \(idEpisodio) não encontrado.")
             }
         } catch {
-            print("update failed: \(error)")
+            print("falha ao tentar atualizar: \(error)")
         }
     }
 }

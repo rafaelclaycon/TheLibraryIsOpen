@@ -33,10 +33,10 @@ class InstrucoesBViewModel: ObservableObject {
                     fatalError()
                 }
                 
-                strongSelf.titulo = podcast.title
-                strongSelf.primeiroEp = podcast.episodes![0].title
-                strongSelf.ultimoEp = podcast.episodes![podcast.episodes!.count - 1].title
-                strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodes!)
+                strongSelf.titulo = podcast.titulo
+                strongSelf.primeiroEp = podcast.episodios![0].titulo
+                strongSelf.ultimoEp = podcast.episodios![podcast.episodios!.count - 1].titulo
+                strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodios!)
             }
         } catch {
             processando = false

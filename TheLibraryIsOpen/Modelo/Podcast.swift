@@ -9,27 +9,27 @@ import Foundation
 
 struct Podcast: Hashable, Codable, Identifiable {
     var id: Int
-    var title: String
-    var author: String
-    var episodes: [Episode]?
-    var feedURL: String
-    var artworkURL: String
+    var titulo: String
+    var autor: String
+    var episodios: [Episodio]?
+    var urlFeed: String
+    var urlCapa: String
     
-    init(id: Int, title: String, author: String, episodes: [Episode]?, feedURL: String, artworkURL: String) {
+    init(id: Int, titulo: String, autor: String, episodios: [Episodio]?, urlFeed: String, urlCapa: String) {
         self.id = id
-        self.title = title
-        self.author = author
-        self.episodes = episodes
-        self.feedURL = feedURL
-        self.artworkURL = artworkURL
+        self.titulo = titulo
+        self.autor = autor
+        self.episodios = episodios
+        self.urlFeed = urlFeed
+        self.urlCapa = urlCapa
     }
     
     init(id: Int) {
         self.id = id
-        title = ""
-        author = ""
-        episodes = [Episode]()
-        feedURL = ""
-        artworkURL = ""
+        titulo = ""
+        autor = ""
+        episodios = [Episodio]()
+        urlFeed = ""
+        urlCapa = ""
     }
 }
