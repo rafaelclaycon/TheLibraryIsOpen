@@ -37,8 +37,8 @@ class FeedHelper {
         }
 
         let destination: DownloadRequest.Destination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("Podcasts/\(podcastID)/\(url.lastPathComponent)")
+            let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            let fileURL = cachesURL.appendingPathComponent("Podcasts/\(podcastID)/\(url.lastPathComponent)")
 
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }

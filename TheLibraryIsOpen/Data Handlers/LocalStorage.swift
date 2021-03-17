@@ -17,7 +17,7 @@ class LocalStorage {
 
     init() {
         let path = NSSearchPathForDirectoriesInDomains(
-            .documentDirectory, .userDomainMask, true
+            .cachesDirectory, .userDomainMask, true
         ).first!
 
         do {

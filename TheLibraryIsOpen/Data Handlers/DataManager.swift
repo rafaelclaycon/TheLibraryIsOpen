@@ -212,8 +212,8 @@ class DataManager {
     
     func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
         let destination: DownloadRequest.Destination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("Podcasts/\(podcastID)/ConsultaiTunes.json")
+            let tempURL = FileManager.default.temporaryDirectory
+            let fileURL = tempURL.appendingPathComponent("ConsultaiTunes_\(podcastID).json")
 
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
