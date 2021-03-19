@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 class InstrucoesBViewModel: ObservableObject {
     @Published var entrada = ""
@@ -23,9 +24,6 @@ class InstrucoesBViewModel: ObservableObject {
                 guard let strongSelf = self else {
                     return
                 }
-                
-                strongSelf.processando = false
-                
                 guard error == nil else {
                     fatalError(error!.localizedDescription)
                 }
@@ -33,10 +31,30 @@ class InstrucoesBViewModel: ObservableObject {
                     fatalError()
                 }
                 
+                let primeiroEp = podcast.episodios![0]
+                let ultimoEp = podcast.episodios![podcast.episodios!.count - 1]
+                
                 strongSelf.titulo = podcast.titulo
-                strongSelf.primeiroEp = podcast.episodios![0].titulo
-                strongSelf.ultimoEp = podcast.episodios![podcast.episodios!.count - 1].titulo
+                strongSelf.primeiroEp = primeiroEp.titulo
+                //print("Ep no topo da lista: \(primeiroEp.urlRemoto)")
+                strongSelf.ultimoEp = ultimoEp.titulo
+                //print("Último ep da lista: \(ultimoEp.urlRemoto)")
                 strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodios!)
+                
+                //let episodios = podcast.episodios!
+                
+                /*var tamanho = 0
+                for episodio in episodios {
+                    tamanho += episodio.tamanho
+                }
+                
+                print("TAMANHO TOTAL: \(tamanho) bytes")*/
+                
+                strongSelf.processando = false
+                
+                /*dataManager.baixarEpisodios(arrayEpisodios: episodios, idPodcast: podcast.id) { _ in
+                    strongSelf.processando = false
+                }*/
             }
         } catch {
             processando = false

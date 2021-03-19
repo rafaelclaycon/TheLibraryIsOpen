@@ -24,7 +24,7 @@ class FeedHelper {
     }
 
     static func getEpisodeFrom(rssFeedItem item: RSSFeedItem, podcastID: Int) -> Episodio {
-        let episode = Episodio(id: item.guid?.value ?? UUID().uuidString, idPodcast: podcastID, titulo: item.title ?? "UNTITLED EPISODE", dataPublicacao: item.pubDate, duracao: item.iTunes?.iTunesDuration ?? 0, urlRemoto: item.enclosure?.attributes?.url ?? "")
+        let episode = Episodio(id: item.guid?.value ?? UUID().uuidString, idPodcast: podcastID, titulo: item.title ?? "UNTITLED EPISODE", dataPublicacao: item.pubDate, duracao: item.iTunes?.iTunesDuration ?? 0, urlRemoto: item.enclosure?.attributes?.url ?? "", tamanho: Int(item.enclosure?.attributes?.length ?? 0))
         return episode
     }
 

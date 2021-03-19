@@ -15,8 +15,9 @@ struct Episodio: Hashable, Codable, Identifiable {
     var duracao: Double
     var urlRemoto: String
     var caminhoLocal: String?
+    var tamanho: Int
     
-    init(id: String, idPodcast: Int, titulo: String, dataPublicacao: Date?, duracao: Double, urlRemoto: String) {
+    init(id: String, idPodcast: Int, titulo: String, dataPublicacao: Date?, duracao: Double, urlRemoto: String, tamanho: Int) {
         self.id = id
         self.idPodcast = idPodcast
         self.titulo = titulo
@@ -24,6 +25,7 @@ struct Episodio: Hashable, Codable, Identifiable {
         self.duracao = duracao
         self.urlRemoto = urlRemoto
         self.caminhoLocal = nil
+        self.tamanho = tamanho
     }
     
     init(id: String, titulo: String, dataPublicacao: Date) {
@@ -34,5 +36,17 @@ struct Episodio: Hashable, Codable, Identifiable {
         duracao = 0
         urlRemoto = ""
         caminhoLocal = nil
+        tamanho = 0
+    }
+    
+    init(urlRemoto: String) {
+        id = "0"
+        idPodcast = 0
+        titulo = ""
+        dataPublicacao = Date()
+        duracao = 0
+        self.urlRemoto = urlRemoto
+        caminhoLocal = nil
+        tamanho = 0
     }
 }

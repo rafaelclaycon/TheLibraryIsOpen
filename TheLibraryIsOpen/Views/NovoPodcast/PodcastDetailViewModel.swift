@@ -38,7 +38,7 @@ class PodcastDetailViewModel: ObservableObject {
     }
     
     func downloadAll() {
-        do {
+        /*do {
             try dataManager.downloadAllEpisodes(from: 916378162)
         } catch DataManagerError.podcastIDNotFound {
             displayPodcastIDNotFoundAlert()
@@ -46,7 +46,7 @@ class PodcastDetailViewModel: ObservableObject {
             displayPodcastHadNoEpisodesAlert()
         } catch {
             fatalError(error.localizedDescription)
-        }
+        }*/
     }
     
     // MARK: - Error messages

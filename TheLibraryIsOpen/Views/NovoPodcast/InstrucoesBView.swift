@@ -52,9 +52,12 @@ struct InstrucoesBView: View {
                     
                     VStack() {
                         Text(viewModel.titulo)
+                            .bold()
+                            .padding(.bottom, 5)
                         Text(viewModel.primeiroEp)
                         Text(viewModel.ultimoEp)
                         Text(viewModel.qtd)
+                            .padding(.top, 5)
                     }
                     .padding()
                     

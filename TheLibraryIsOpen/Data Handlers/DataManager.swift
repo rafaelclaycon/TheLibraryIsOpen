@@ -63,25 +63,6 @@ class DataManager {
             }
         }
     }
-    
-    private func download(episode: Episodio) {
-        if episode.caminhoLocal == nil {
-            fetchRemoteFile(episode)
-        }
-    }
-    
-    func downloadAllEpisodes(from podcastID: Int) throws {
-        guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
-            throw DataManagerError.podcastIDNotFound
-        }
-        guard podcast.episodios != nil else {
-            throw DataManagerError.podcastHasNoEpisodes
-        }
-        
-        podcast.episodios!.forEach({ episode in
-            download(episode: episode)
-        })
-    }
 
     func addEpisodes(_ episodes: [Episodio], podcastID: Int) throws {
         guard podcasts != nil else {
@@ -344,6 +325,38 @@ class DataManager {
                     fatalError("None")
                 }
             }
+        }
+    }
+    
+    func baixarEpisodios(arrayEpisodios: [Episodio], idPodcast: Int, completionHandler: @escaping (Bool) -> Void) {
+        var array = arrayEpisodios
+        if let episodio = array.popLast() {
+            guard !episodio.urlRemoto.isEmpty else {
+                fatalError("URL vazio.")
+            }
+            guard let url = URL(string: episodio.urlRemoto) else {
+                fatalError("Não foi possível gerar URL a partir da string.")
+            }
+            
+            let destino: DownloadRequest.Destination = { _, _ in
+                let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                let fileURL = cachesURL.appendingPathComponent("Podcasts/\(idPodcast)/\(url.lastPathComponent)")
+
+                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+            }
+            
+            AF.download(episodio.urlRemoto, to: destino).response { response in
+                /*guard response.error == nil else {
+                    return completionHandler(nil, .downloadError)
+                }
+                guard let filePath = response.fileURL?.path else {
+                    return completionHandler(nil, .failedToProvideLocalFileURL)
+                }*/
+                
+                self.baixarEpisodios(arrayEpisodios: array, idPodcast: idPodcast, completionHandler: completionHandler)
+            }
+        } else {
+            completionHandler(true)
         }
     }
 }

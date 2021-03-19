@@ -53,6 +53,7 @@ class LocalStorage {
         let duracao = Expression<Double>("duracao")
         let url_remoto = Expression<String>("urlRemoto")
         let caminho_local = Expression<String?>("caminhoLocal")
+        let tamanho = Expression<Int64>("tamanho")
 
         try db.run(episodios.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
@@ -62,6 +63,7 @@ class LocalStorage {
             t.column(duracao)
             t.column(url_remoto)
             t.column(caminho_local)
+            t.column(tamanho)
         })
     }
 
