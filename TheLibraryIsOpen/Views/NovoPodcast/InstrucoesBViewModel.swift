@@ -15,6 +15,8 @@ class InstrucoesBViewModel: ObservableObject {
     @Published var primeiroEp = ""
     @Published var ultimoEp = ""
     @Published var qtd = ""
+    @Published var podcastDetailViewModel = PodcastDetailViewModel(podcast: Podcast(id: 0))
+    @Published var isMostrandoPodcastDetailView = false
     
     func processar() {
         processando = true
@@ -31,15 +33,19 @@ class InstrucoesBViewModel: ObservableObject {
                     fatalError()
                 }
                 
-                let primeiroEp = podcast.episodios![0]
-                let ultimoEp = podcast.episodios![podcast.episodios!.count - 1]
+                strongSelf.podcastDetailViewModel = PodcastDetailViewModel(podcast: podcast)
+                strongSelf.processando = false
+                strongSelf.isMostrandoPodcastDetailView = true
                 
-                strongSelf.titulo = podcast.titulo
-                strongSelf.primeiroEp = primeiroEp.titulo
+                //let primeiroEp = podcast.episodios![0]
+                //let ultimoEp = podcast.episodios![podcast.episodios!.count - 1]
+                
+                //strongSelf.titulo = podcast.titulo
+                //strongSelf.primeiroEp = primeiroEp.titulo
                 //print("Ep no topo da lista: \(primeiroEp.urlRemoto)")
-                strongSelf.ultimoEp = ultimoEp.titulo
+                //strongSelf.ultimoEp = ultimoEp.titulo
                 //print("Último ep da lista: \(ultimoEp.urlRemoto)")
-                strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodios!)
+                //strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodios!)
                 
                 //let episodios = podcast.episodios!
                 
@@ -50,7 +56,7 @@ class InstrucoesBViewModel: ObservableObject {
                 
                 print("TAMANHO TOTAL: \(tamanho) bytes")*/
                 
-                strongSelf.processando = false
+                //strongSelf.processando = false
                 
                 /*dataManager.baixarEpisodios(arrayEpisodios: episodios, idPodcast: podcast.id) { _ in
                     strongSelf.processando = false

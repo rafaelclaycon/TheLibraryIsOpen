@@ -1,13 +1,7 @@
-//
-//  Utils.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 10/03/21.
-//
-
 import Foundation
 
 class Utils {
+    
     static func getSubtituloPodcast(episodes: [Episodio]) -> String {
         let firstEpisodePubYear = episodes[episodes.count - 1].dataPublicacao!.get(.year)
         let lastEpisodePubYear = episodes[0].dataPublicacao!.get(.year)
@@ -28,4 +22,5 @@ class Utils {
         
         return "\(episodes.count) \(episodiosText) · \(yearText)"
     }
+
 }

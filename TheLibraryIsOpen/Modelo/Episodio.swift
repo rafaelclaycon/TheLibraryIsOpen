@@ -1,13 +1,7 @@
-//
-//  Episode.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import Foundation
 
 struct Episodio: Hashable, Codable, Identifiable {
+
     var id: String
     var idPodcast: Int
     var titulo: String
@@ -49,4 +43,15 @@ struct Episodio: Hashable, Codable, Identifiable {
         caminhoLocal = nil
         tamanho = 0
     }
+    
+    init(tamanho: Int) {
+        self.init(id: UUID().uuidString,
+                  idPodcast: 0,
+                  titulo: "",
+                  dataPublicacao: nil,
+                  duracao: 0,
+                  urlRemoto: "",
+                  tamanho: tamanho)
+    }
+
 }

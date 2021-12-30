@@ -90,7 +90,7 @@ struct PodcastDetail: View {
             Button(action: {
                 viewModel.downloadAll()
             }) {
-                Text("Baixar 0 episódios (0 GB)")
+                Text(viewModel.downloadAllButtonTitle)
                     .bold()
             }
             .padding(.vertical, 15)
@@ -103,10 +103,10 @@ struct PodcastDetail: View {
             }
             .padding(.vertical, 5)
             
-            Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 25)
+//            Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
+//                .font(.subheadline)
+//                .multilineTextAlignment(.center)
+//                .padding(.horizontal, 25)
         }
     }
 }

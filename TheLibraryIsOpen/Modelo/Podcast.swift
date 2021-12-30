@@ -1,13 +1,7 @@
-//
-//  Podcast.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import Foundation
 
 struct Podcast: Hashable, Codable, Identifiable {
+
     var id: Int
     var titulo: String
     var autor: String
@@ -32,4 +26,16 @@ struct Podcast: Hashable, Codable, Identifiable {
         urlFeed = ""
         urlCapa = ""
     }
+    
+    func getTamanhoEpisodios() -> String {
+        guard let episodios = episodios, episodios.count > 0 else {
+            return ""
+        }
+        var tamanho = 0
+        for episodio in episodios {
+            tamanho += episodio.tamanho
+        }
+        return ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)
+    }
+
 }

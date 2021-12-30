@@ -38,6 +38,8 @@ struct InstrucoesBView: View {
                     HStack {
                         Spacer()
                         
+                        NavigationLink(destination: PodcastDetail(viewModel: viewModel.podcastDetailViewModel), isActive: $viewModel.isMostrandoPodcastDetailView) { EmptyView() }
+                        
                         Button(action: {
                             viewModel.processar()
                         }) {

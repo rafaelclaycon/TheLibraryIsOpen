@@ -13,28 +13,34 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var details: String
     @Published var artworkURL: String
     @Published var displayEpisodeList: Bool = false
+    
     @Published var episodes = [Episodio]()
+    
+    @Published var downloadAllButtonTitle = ""
+    
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
 
     init(podcast: Podcast) {
         title = podcast.titulo
-        details = "\(podcast.episodios?.count ?? 0) episódios · "
+        details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
         artworkURL = podcast.urlCapa
-        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
-            guard error == nil else {
-                fatalError(error.debugDescription)
-            }
-            guard let episodes = episodes else {
-                return print("Episodes is empty.")
-            }
-            self.episodes = episodes
-
-            DispatchQueue.main.async {
-                self.displayEpisodeList = episodes.count > 0
-            }
-        }
+        episodes = podcast.episodios!
+        downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios (\(podcast.getTamanhoEpisodios()))"
+//        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
+//            guard error == nil else {
+//                fatalError(error.debugDescription)
+//            }
+//            guard let episodes = episodes else {
+//                return print("Episodes is empty.")
+//            }
+//            self.episodes = episodes
+//
+//            DispatchQueue.main.async {
+//                self.displayEpisodeList = episodes.count > 0
+//            }
+//        }
     }
     
     func downloadAll() {
