@@ -27,6 +27,9 @@ class PodcastDetailViewModel: ObservableObject {
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
         artworkURL = podcast.urlCapa
         episodes = podcast.episodios!
+        
+        displayEpisodeList = podcast.episodios?.count ?? 0 > 0
+        
         downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios (\(podcast.getTamanhoEpisodios()))"
 //        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
 //            guard error == nil else {
