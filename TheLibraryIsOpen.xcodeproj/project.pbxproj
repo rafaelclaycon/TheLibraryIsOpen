@@ -26,6 +26,7 @@
 		D9A5A962277E2C3200AA1FCC /* PodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5A961277E2C3200AA1FCC /* PodcastTests.swift */; };
 		D9A5A964277E53CB00AA1FCC /* EpisodeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5A963277E53CB00AA1FCC /* EpisodeGroupView.swift */; };
 		D9A5A966277E54A900AA1FCC /* EpisodeGroupViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5A965277E54A900AA1FCC /* EpisodeGroupViewViewModel.swift */; };
+		D9A5A968277E65AE00AA1FCC /* EpisodeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5A967277E65AE00AA1FCC /* EpisodeGroup.swift */; };
 		D9A6DF8B25F914AB00EE9D80 /* FeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */; };
 		D9D2D53925FBB8CC0099AE42 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */; };
 		D9D2D53F25FBE3CA0099AE42 /* InstrucoesBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* InstrucoesBView.swift */; };
@@ -74,6 +75,7 @@
 		D9A5A961277E2C3200AA1FCC /* PodcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastTests.swift; sourceTree = "<group>"; };
 		D9A5A963277E53CB00AA1FCC /* EpisodeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeGroupView.swift; sourceTree = "<group>"; };
 		D9A5A965277E54A900AA1FCC /* EpisodeGroupViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeGroupViewViewModel.swift; sourceTree = "<group>"; };
+		D9A5A967277E65AE00AA1FCC /* EpisodeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeGroup.swift; sourceTree = "<group>"; };
 		D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetail.swift; sourceTree = "<group>"; };
 		D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		D9D2D53E25FBE3CA0099AE42 /* InstrucoesBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrucoesBView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				D9D3DBBB256E8F930035560E /* Podcast.swift */,
 				D9D3DBC3256E92B40035560E /* Episodio.swift */,
 				D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */,
+				D9A5A967277E65AE00AA1FCC /* EpisodeGroup.swift */,
 			);
 			path = Modelo;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				D9D3DB81256E7BC00035560E /* InstrucoesAView.swift in Sources */,
 				D9D2D54325FBE42F0099AE42 /* InstrucoesBViewModel.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastDetailViewModel.swift in Sources */,
+				D9A5A968277E65AE00AA1FCC /* EpisodeGroup.swift in Sources */,
 				D94A05FA2572CB4E0065AE2C /* TheLibraryIsOpenService.swift in Sources */,
 				D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */,
 				D9D2D53F25FBE3CA0099AE42 /* InstrucoesBView.swift in Sources */,

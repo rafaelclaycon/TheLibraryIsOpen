@@ -22,5 +22,9 @@ class Utils {
         
         return "\(episodes.count) \(episodiosText) · \(yearText)"
     }
+    
+//    static func getEpisodesGroupedByYear(from episodes: [Episodio]) -> [Int: [Episodio]] {
+//
+//    }
 
 }

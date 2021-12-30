@@ -9,8 +9,14 @@ import KingfisherSwiftUI
 import SwiftUI
 
 struct PodcastDetail: View {
+
     @ObservedObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
 
     var body: some View {
         VStack {
@@ -53,7 +59,7 @@ struct PodcastDetail: View {
             .padding(.horizontal, 15)
             
             Picker(selection: $indicePagina, label: Text("Info")) {
-                Text("Lista").tag(0)
+                Text("Por episódio").tag(0)
                 Text("Por ano").tag(1)
             }
             .disabled(viewModel.displayEpisodeList == false)
@@ -73,12 +79,12 @@ struct PodcastDetail: View {
                                     .padding(.vertical, 5)
                             }
                         }
-                    }//.padding(.top, 25)
+                    }
                 } else if indicePagina == 1 {
                     ScrollView {
-                        LazyVStack {
-                            ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode))
+                        LazyVGrid(columns: columns) {
+                            ForEach(viewModel.groups, id: \.id) { group in
+                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(year: group.title, episodeCount: group.value))
                                     .padding(.vertical, 5)
                             }
                         }
