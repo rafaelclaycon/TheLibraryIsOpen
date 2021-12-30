@@ -1,14 +1,8 @@
-//
-//  EpisodeRowViewModel.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 30/11/20.
-//
-
 import Combine
 import Foundation
 
 class EpisodeRowViewModel: ObservableObject {
+
     var podcastID: Int
     var episodeID: String
 
@@ -26,4 +20,5 @@ class EpisodeRowViewModel: ObservableObject {
         duration = episode.duracao.toDisplayString()
         isAvailableOffline = episode.caminhoLocal != nil
     }
+
 }

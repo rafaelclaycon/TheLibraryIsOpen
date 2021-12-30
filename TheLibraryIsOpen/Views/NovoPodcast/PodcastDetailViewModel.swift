@@ -1,14 +1,9 @@
-//
-//  PodcastDetailViewModel.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import Combine
 import Foundation
 
 class PodcastDetailViewModel: ObservableObject {
+
+    @Published var displayPodcastArtwork: Bool = false
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
@@ -23,14 +18,17 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var displayAlert: Bool = false
 
     init(podcast: Podcast) {
+        displayPodcastArtwork = false
+        artworkURL = podcast.urlCapa
+        displayPodcastArtwork = true
+        
         title = podcast.titulo
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
-        artworkURL = podcast.urlCapa
         episodes = podcast.episodios!
         
         displayEpisodeList = podcast.episodios?.count ?? 0 > 0
         
-        downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios (\(podcast.getTamanhoEpisodios()))"
+        downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios\(podcast.getTamanhoEpisodios())"
 //        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
 //            guard error == nil else {
 //                fatalError(error.debugDescription)
@@ -71,4 +69,5 @@ class PodcastDetailViewModel: ObservableObject {
         alertMessage = "Não foram encontrados episódios para esse podcast."
         displayAlert = true
     }
+
 }

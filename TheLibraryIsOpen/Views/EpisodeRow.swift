@@ -1,10 +1,3 @@
-//
-//  EpisodeRow.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import SwiftUI
 
 struct EpisodeRow: View {

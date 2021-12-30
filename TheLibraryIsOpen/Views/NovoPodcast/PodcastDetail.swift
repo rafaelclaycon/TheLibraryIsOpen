@@ -56,6 +56,7 @@ struct PodcastDetail: View {
                 Text("Lista").tag(0)
                 Text("Por ano").tag(1)
             }
+            .disabled(viewModel.displayEpisodeList == false)
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 25)
             .padding(.vertical, 15)
@@ -64,14 +65,25 @@ struct PodcastDetail: View {
 
             // List
             if viewModel.displayEpisodeList {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.episodes, id: \.id) { episode in
-                            EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode))
-                                .padding(.vertical, 5)
+                if indicePagina == 0 {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.episodes, id: \.id) { episode in
+                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode))
+                                    .padding(.vertical, 5)
+                            }
+                        }
+                    }//.padding(.top, 25)
+                } else if indicePagina == 1 {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.episodes, id: \.id) { episode in
+                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode))
+                                    .padding(.vertical, 5)
+                            }
                         }
                     }
-                }.padding(.top, 25)
+                }
             } else {
                 VStack(alignment: .center) {
                     Spacer()

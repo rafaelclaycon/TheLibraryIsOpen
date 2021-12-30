@@ -35,7 +35,10 @@ struct Podcast: Hashable, Codable, Identifiable {
         for episodio in episodios {
             tamanho += episodio.tamanho
         }
-        return ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)
+        guard tamanho > 0 else {
+            return ""
+        }
+        return " (\(ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)))" 
     }
 
 }
