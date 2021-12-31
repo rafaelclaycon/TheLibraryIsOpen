@@ -1,10 +1,3 @@
-//
-//  PodcastDetail.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import KingfisherSwiftUI
 import SwiftUI
 
@@ -82,7 +75,7 @@ struct PodcastDetail: View {
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
-                        LazyVGrid(columns: columns) {
+                        LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.groups, id: \.id) { group in
                                 EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(year: group.title, episodeCount: group.value))
                                     .padding(.vertical, 5)
@@ -127,10 +120,13 @@ struct PodcastDetail: View {
                 .padding(.horizontal, 25)*/
         }
     }
+
 }
 
 struct PodcastDetail_Previews: PreviewProvider {
+
     static var previews: some View {
         PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: nil, urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")))
     }
+
 }

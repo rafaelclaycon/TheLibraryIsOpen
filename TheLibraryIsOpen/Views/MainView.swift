@@ -1,13 +1,7 @@
-//
-//  MainView.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 27/11/20.
-//
-
 import SwiftUI
 
 struct MainView: View {
+
     @ObservedObject var viewModel = MainViewViewModel()
     
     var body: some View {
@@ -47,10 +41,13 @@ struct MainView: View {
             InstrucoesAView(viewModel: InstrucoesAViewModel(), estaSendoExibido: $viewModel.exibindoSheetNovoPodcast)
         }
     }
+
 }
 
 struct MainView_Previews: PreviewProvider {
+
     static var previews: some View {
         MainView()
     }
+
 }

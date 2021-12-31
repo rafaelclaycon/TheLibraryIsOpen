@@ -1,13 +1,7 @@
-//
-//  DateTime+Extensions.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 28/11/20.
-//
-
 import Foundation
 
 extension Date {
+
     func asDMYString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -25,9 +19,11 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> String {
         return String(calendar.component(component, from: self))
     }
+
 }
 
 extension Double {
+
     func toDisplayString() -> String {
         let totalSeconds = Int(self)
         let hours = totalSeconds / 3600
@@ -54,4 +50,5 @@ extension Double {
             }
         }
     }
+
 }

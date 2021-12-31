@@ -1,13 +1,7 @@
-//
-//  StringProtocol.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 07/03/21.
-//
-
 import Foundation
 
 extension StringProtocol {
+
     func index<S: StringProtocol>(of string: S, options: String.CompareOptions = []) -> Index? {
         range(of: string, options: options)?.lowerBound
     }
@@ -29,9 +23,11 @@ extension StringProtocol {
         }
         return result
     }
+
 }
 
 extension String {
+
     subscript (index: Int) -> Character {
         let charIndex = self.index(self.startIndex, offsetBy: index)
         return self[charIndex]

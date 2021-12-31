@@ -1,14 +1,8 @@
-//
-//  DataManager.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 28/11/20.
-//
-
 import Foundation
 import Alamofire
 
 class DataManager {
+
     typealias PodcastFetchMethod = () -> [Podcast]
 
     private var storage: LocalStorage?
@@ -359,9 +353,11 @@ class DataManager {
             completionHandler(true)
         }
     }
+
 }
 
 enum DataManagerError: Error {
+
     case podcastIDNotFound
     case episodeIDNotFound
     case podcastArrayIsUninitialized
@@ -382,4 +378,5 @@ enum DataManagerError: Error {
     case naoFoiPossivelInterpretarResultadoiTunes
     case urlNaoEHTTP
     case resultadoiTunesInesperado
+
 }

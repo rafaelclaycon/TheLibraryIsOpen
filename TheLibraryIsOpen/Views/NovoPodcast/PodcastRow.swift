@@ -1,14 +1,8 @@
-//
-//  PodcastRow.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import KingfisherSwiftUI
 import SwiftUI
 
 struct PodcastRow: View {
+
     var podcast: Podcast
 
     var body: some View {
@@ -51,9 +45,11 @@ struct PodcastRow: View {
             Spacer()
         }
     }
+
 }
 
 struct PodcastRow_Previews: PreviewProvider {
+
     static var previews: some View {
         Group {
             PodcastRow(podcast: Podcast(id: 1, titulo: "Praia dos Ossos", autor: "Rádio Novelo", episodios: nil, urlFeed: "", urlCapa: ""))
@@ -61,4 +57,5 @@ struct PodcastRow_Previews: PreviewProvider {
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }
+
 }

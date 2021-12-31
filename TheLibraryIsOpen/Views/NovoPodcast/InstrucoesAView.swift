@@ -1,13 +1,7 @@
-//
-//  ContentView.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import SwiftUI
 
 struct InstrucoesAView: View {
+
     @ObservedObject var viewModel = InstrucoesAViewModel()
     @Binding var estaSendoExibido: Bool
     @State private var action: Int? = 0
@@ -75,10 +69,13 @@ struct InstrucoesAView: View {
             )
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
         InstrucoesAView(estaSendoExibido: .constant(true))
     }
+
 }

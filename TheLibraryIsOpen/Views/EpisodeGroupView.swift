@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct EpisodeGroupView: View {
-    
+
     @ObservedObject var viewModel: EpisodeGroupViewViewModel
     
     private let deactivatedColor: Color = .gray

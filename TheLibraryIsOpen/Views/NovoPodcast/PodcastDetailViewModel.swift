@@ -27,11 +27,8 @@ class PodcastDetailViewModel: ObservableObject {
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
         episodes = podcast.episodios!
         
-        if groups.count == 0 {
-            groups.append(EpisodeGroup(id: "1", title: "2014", value: "18 episódios"))
-            groups.append(EpisodeGroup(id: "2", title: "2015", value: "52 episódios"))
-            groups.append(EpisodeGroup(id: "3", title: "2016", value: "52 episódios"))
-            groups.append(EpisodeGroup(id: "4", title: "2017", value: "50 episódios"))
+        if (podcast.episodios?.count ?? 0) > 0 {
+            groups = Utils.getEpisodesGroupedByYear(from: podcast.episodios!)
         }
         
         displayEpisodeList = podcast.episodios?.count ?? 0 > 0

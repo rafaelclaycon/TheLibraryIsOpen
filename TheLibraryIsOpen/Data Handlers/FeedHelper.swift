@@ -1,15 +1,9 @@
-//
-//  FeedParser.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import Alamofire
 import FeedKit
 import Foundation
 
 class FeedHelper {
+
     static func fetchPodcast(feedURL: String, completionHandler: @escaping (Result<Feed, ParserError>?, FeedHelperError?) -> Void) {
         guard !feedURL.isEmpty else {
             return completionHandler(nil, .emptyURL)
@@ -63,9 +57,11 @@ class FeedHelper {
             completionHandler(filePath, nil)
         }
     }
+
 }
 
 enum FeedHelperError: Error {
+
     case emptyURL
     case parsingError
     case notAnRSSFeed
@@ -74,4 +70,5 @@ enum FeedHelperError: Error {
     case invalidStreamURL
     case downloadError
     case failedToProvideLocalFileURL
+
 }

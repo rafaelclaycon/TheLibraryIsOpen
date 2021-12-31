@@ -1,10 +1,3 @@
-//
-//  TheLibraryIsOpenApp.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 25/11/20.
-//
-
 import SwiftUI
 
 let isRunningUnitTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
@@ -13,15 +6,18 @@ let dataManager = DataManager(storage: isRunningUnitTests ? nil : LocalStorage()
 
 @main
 struct TheLibraryIsOpenApp: App {
+
     var body: some Scene {
         WindowGroup {
             MainView()
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
+
 }
 
 extension UIApplication {
+
     func addTapGestureRecognizer() {
         guard let window = windows.first else { return }
         let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
@@ -30,10 +26,13 @@ extension UIApplication {
         tapGesture.delegate = self
         window.addGestureRecognizer(tapGesture)
     }
+
 }
 
 extension UIApplication: UIGestureRecognizerDelegate {
+
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true // set to `false` if you don't want to detect tap during other gestures
     }
+
 }

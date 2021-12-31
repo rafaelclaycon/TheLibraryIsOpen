@@ -1,14 +1,8 @@
-//
-//  InstrucoesLinkViewModel.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 12/03/21.
-//
-
 import Combine
 import Foundation
 
 class InstrucoesBViewModel: ObservableObject {
+
     @Published var entrada = ""
     @Published var processando = false
     @Published var titulo = ""
@@ -67,4 +61,5 @@ class InstrucoesBViewModel: ObservableObject {
             // TODO
         }
     }
+
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EpisodeRow: View {
+
     @ObservedObject var viewModel: EpisodeRowViewModel
 
     var body: some View {
@@ -25,9 +26,11 @@ struct EpisodeRow: View {
             Spacer()
         }
     }
+
 }
 
 struct EpisodeRow_Previews: PreviewProvider {
+
     static var previews: some View {
         Group {
             EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episodio(id: "1", idPodcast: 123, titulo: "Flat-Side Promoter", dataPublicacao: Date(), duracao: 300, urlRemoto: "", tamanho: 0)))
@@ -35,4 +38,5 @@ struct EpisodeRow_Previews: PreviewProvider {
         }
         .previewLayout(.fixed(width: 350, height: 70))
     }
+
 }

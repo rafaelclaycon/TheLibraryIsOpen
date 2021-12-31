@@ -1,14 +1,8 @@
-//
-//  TheLibraryIsOpenService.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 28/11/20.
-//
-
 import Foundation
 
 // Essa é a "API mock" do app.
 class TheLibraryIsOpenService {
+
     static func getPodcasts() -> [Podcast] {
         load("podcasts.json")
     }
@@ -34,4 +28,5 @@ class TheLibraryIsOpenService {
             fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
         }
     }
+
 }

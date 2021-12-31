@@ -1,13 +1,7 @@
-//
-//  InstrucoesLinkView.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 12/03/21.
-//
-
 import SwiftUI
 
 struct InstrucoesBView: View {
+
     @ObservedObject var viewModel = InstrucoesBViewModel()
     @Binding var estaSendoExibido: Bool
     
@@ -73,10 +67,13 @@ struct InstrucoesBView: View {
             }
         }
     }
+
 }
 
 struct InstrucoesLinkView_Previews: PreviewProvider {
+
     static var previews: some View {
         InstrucoesBView(estaSendoExibido: .constant(true))
     }
+
 }

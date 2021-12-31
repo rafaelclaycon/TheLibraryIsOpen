@@ -1,14 +1,8 @@
-//
-//  LocalStorage.swift
-//  TheLibraryIsOpen
-//
-//  Created by Rafael Schmitt on 28/11/20.
-//
-
 import Foundation
 import SQLite
 
 class LocalStorage {
+
     private var db: Connection
     private var podcasts = Table("podcasts")
     private var episodios = Table("episodios")
@@ -132,4 +126,5 @@ class LocalStorage {
             print("falha ao tentar atualizar: \(error)")
         }
     }
+
 }
