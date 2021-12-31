@@ -4,24 +4,36 @@ struct EpisodeGroupView: View {
 
     @ObservedObject var viewModel: EpisodeGroupViewViewModel
     
-    private let deactivatedColor: Color = .gray
-    private let activeColor: Color = .black
     private let circleSize: CGFloat = 32.0
-
+    
+    // Unselected
+    private let unselectedFillColor: Color = .white
+    private let unselectedForegroundColor: Color = .gray
+    
+    // Selected
+    private let selectedFillColor: Color = .pink
+    private let selectedForegroundColor: Color = .white
+    
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .stroke(viewModel.isSelected ? activeColor : deactivatedColor, lineWidth: viewModel.isSelected ? 1.0 : 0.5)
-                .frame(width: 160, height: 100)
+            if viewModel.isSelected {
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .fill(viewModel.isSelected ? selectedFillColor : unselectedFillColor)
+                    .frame(width: 160, height: 100)
+            } else {
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .stroke(unselectedForegroundColor, lineWidth: 0.5)
+                    .frame(width: 160, height: 100)
+            }
             
             VStack(alignment: .leading) {
                 Text(viewModel.title)
-                    .foregroundColor(viewModel.isSelected ? activeColor : deactivatedColor)
+                    .foregroundColor(viewModel.isSelected ? selectedForegroundColor : unselectedForegroundColor)
                     .font(.title)
                     .bold()
                 
                 Text(viewModel.subtitle)
-                    .foregroundColor(viewModel.isSelected ? activeColor : deactivatedColor)
+                    .foregroundColor(viewModel.isSelected ? selectedForegroundColor : unselectedForegroundColor)
                     .font(.footnote)
             }
             .padding(.trailing, 60)
@@ -29,20 +41,20 @@ struct EpisodeGroupView: View {
             
             if viewModel.isSelected {
                 Circle()
-                    .fill(Color.pink)
+                    .fill(selectedForegroundColor)
                     .frame(width: circleSize, height: circleSize)
                     .padding(.top, 50)
                     .padding(.leading, 110)
                 
                 Image(systemName: "checkmark")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(selectedFillColor)
                     .font(.title3.bold())
                     .frame(width: circleSize, height: circleSize)
                     .padding(.top, 50)
                     .padding(.leading, 110)
             } else {
                 Circle()
-                    .stroke(deactivatedColor, lineWidth: 0.5)
+                    .stroke(unselectedForegroundColor, lineWidth: 0.5)
                     .frame(width: circleSize, height: circleSize)
                     .padding(.top, 50)
                     .padding(.leading, 110)
