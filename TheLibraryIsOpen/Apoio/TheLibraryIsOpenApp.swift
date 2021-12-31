@@ -10,7 +10,7 @@ struct TheLibraryIsOpenApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+                //.onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
 

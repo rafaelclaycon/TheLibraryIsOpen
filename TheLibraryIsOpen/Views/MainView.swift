@@ -39,6 +39,7 @@ struct MainView: View {
         }
         .sheet(isPresented: $viewModel.exibindoSheetNovoPodcast) {
             InstrucoesAView(viewModel: InstrucoesAViewModel(), estaSendoExibido: $viewModel.exibindoSheetNovoPodcast)
+                .interactiveDismissDisabled(true)
         }
     }
 

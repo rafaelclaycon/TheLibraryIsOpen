@@ -48,6 +48,9 @@ struct EpisodeGroupView: View {
                     .padding(.leading, 110)
             }
         }
+        .onTapGesture {
+            viewModel.isSelected.toggle()
+        }
     }
 
 }
