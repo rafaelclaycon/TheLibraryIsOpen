@@ -18,8 +18,8 @@ Arquive os episódios do seu podcast favorito com este app para iOS.
 
 ## Requisitos
 
-- iOS 14.2+
-- Xcode 12.2+
+- iOS 15.0+
+- Xcode 13+
 
 ## Como rodar
 
