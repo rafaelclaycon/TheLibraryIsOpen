@@ -119,6 +119,7 @@ struct PodcastDetail: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)*/
         }
+        .navigationBarTitle("", displayMode: .inline)
     }
 
 }
