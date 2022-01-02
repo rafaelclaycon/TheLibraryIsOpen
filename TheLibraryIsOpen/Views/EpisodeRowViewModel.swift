@@ -17,7 +17,7 @@ class EpisodeRowViewModel: ObservableObject {
 
         title = episode.titulo
         pubDate = episode.dataPublicacao?.asFullString().uppercased() ?? "-"
-        duration = episode.duracao.toDisplayString()
+        duration = episode.duracao.toDisplayString() + " - 15,2 MB"
         isAvailableOffline = episode.caminhoLocal != nil
     }
 

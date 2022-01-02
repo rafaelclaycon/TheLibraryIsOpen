@@ -49,7 +49,8 @@ struct PodcastDetail: View {
                 }
                 .padding(.leading, 15)
             }
-            .padding(.horizontal, 15)
+            .padding(.top, 5)
+            .padding(.horizontal, 12)
             
             Picker(selection: $indicePagina, label: Text("Info")) {
                 Text("Por episódio").tag(0)
