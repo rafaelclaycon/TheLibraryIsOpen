@@ -38,7 +38,7 @@ struct Podcast: Hashable, Codable, Identifiable {
         guard tamanho > 0 else {
             return ""
         }
-        return " (\(ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)))" 
+        return " (\(ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)))"
     }
 
 }

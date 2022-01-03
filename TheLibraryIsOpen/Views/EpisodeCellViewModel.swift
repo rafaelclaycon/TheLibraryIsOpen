@@ -7,8 +7,7 @@ class EpisodeCellViewModel: ObservableObject {
     var episodeID: String
 
     @Published var title: String
-    @Published var pubDate: String
-    @Published var duration: String
+    @Published var subtitle: String
     @Published var isSelected: Bool = false
 
     init(episode: Episodio, selected: Bool = false) {
@@ -16,8 +15,7 @@ class EpisodeCellViewModel: ObservableObject {
         episodeID = episode.id
 
         title = episode.titulo
-        pubDate = episode.dataPublicacao?.asFullString().uppercased() ?? "-"
-        duration = episode.duracao.toDisplayString() + " - 15,2 MB"
+        subtitle = (episode.dataPublicacao?.asShortString() ?? "")  + " - " + episode.duracao.toDisplayString() + " - " + episode.tamanho.toFormattedFileSize()
         isSelected = selected
     }
 

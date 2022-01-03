@@ -12,6 +12,10 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var episodes = [Episodio]()
     @Published var groups = [EpisodeGroup]()
     
+    @Published var areAllSelectEpisodeList: Bool = true
+    @Published var areAllSelectEpisodeGroupList: Bool = false
+    @Published var selectAllButtonTitle: String = "Deselecionar Todos"
+    
     @Published var downloadAllButtonTitle = ""
     
     @Published var alertTitle: String = ""
@@ -47,6 +51,20 @@ class PodcastDetailViewModel: ObservableObject {
 //                self.displayEpisodeList = episodes.count > 0
 //            }
 //        }
+    }
+    
+    func selectAll() {
+//        for episode in episodes {
+//            episode.selectedForDownload = true
+//        }
+        
+        print(episodes[0].titulo)
+        episodes[0].selectedForDownload = true
+    }
+    
+    func unselectAll() {
+        print(episodes[0].titulo)
+        episodes[0].selectedForDownload = false
     }
     
     func downloadAll() {

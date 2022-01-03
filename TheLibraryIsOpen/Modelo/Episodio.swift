@@ -10,6 +10,7 @@ struct Episodio: Hashable, Codable, Identifiable {
     var urlRemoto: String
     var caminhoLocal: String?
     var tamanho: Int
+    var selectedForDownload: Bool
     
     init(id: String, idPodcast: Int, titulo: String, dataPublicacao: Date?, duracao: Double, urlRemoto: String, tamanho: Int) {
         self.id = id
@@ -20,6 +21,7 @@ struct Episodio: Hashable, Codable, Identifiable {
         self.urlRemoto = urlRemoto
         self.caminhoLocal = nil
         self.tamanho = tamanho
+        self.selectedForDownload = false
     }
     
     init(id: String, titulo: String, dataPublicacao: Date) {
@@ -31,6 +33,7 @@ struct Episodio: Hashable, Codable, Identifiable {
         urlRemoto = ""
         caminhoLocal = nil
         tamanho = 0
+        selectedForDownload = false
     }
     
     init(urlRemoto: String) {
@@ -42,6 +45,7 @@ struct Episodio: Hashable, Codable, Identifiable {
         self.urlRemoto = urlRemoto
         caminhoLocal = nil
         tamanho = 0
+        selectedForDownload = false
     }
     
     init(tamanho: Int) {

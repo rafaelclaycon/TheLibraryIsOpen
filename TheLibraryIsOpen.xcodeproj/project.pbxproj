@@ -15,6 +15,7 @@
 		D92A44BE256EF7F900731EEF /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44BD256EF7F900731EEF /* EpisodeCell.swift */; };
 		D92A44C3256F0B6B00731EEF /* PodcastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44C2256F0B6B00731EEF /* PodcastDetailViewModel.swift */; };
 		D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940AD0027831E3000DF7549 /* RoundCheckbox.swift */; };
+		D940AD0427833FC700DF7549 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940AD0327833FC700DF7549 /* Int+Extensions.swift */; };
 		D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05EC257286C60065AE2C /* DateTime+Extensions.swift */; };
 		D94A05F2257296E70065AE2C /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D94A05F1257296E70065AE2C /* SQLite */; };
 		D94A05F62572B8020065AE2C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05F52572B8020065AE2C /* LocalStorage.swift */; };
@@ -68,6 +69,7 @@
 		D92A44BD256EF7F900731EEF /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		D92A44C2256F0B6B00731EEF /* PodcastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewModel.swift; sourceTree = "<group>"; };
 		D940AD0027831E3000DF7549 /* RoundCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckbox.swift; sourceTree = "<group>"; };
+		D940AD0327833FC700DF7549 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		D94A05EC257286C60065AE2C /* DateTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTime+Extensions.swift"; sourceTree = "<group>"; };
 		D94A05F52572B8020065AE2C /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		D94A05F92572CB4E0065AE2C /* TheLibraryIsOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenService.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				D94A05EC257286C60065AE2C /* DateTime+Extensions.swift */,
 				D911847D2573F48D008DB977 /* UIApplication+Extensions.swift */,
 				D91AC97925F56D450086396D /* String+RangeAccess.swift */,
+				D940AD0327833FC700DF7549 /* Int+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastDetailViewModel.swift in Sources */,
 				D9A5A968277E65AE00AA1FCC /* EpisodeGroup.swift in Sources */,
+				D940AD0427833FC700DF7549 /* Int+Extensions.swift in Sources */,
 				D94A05FA2572CB4E0065AE2C /* TheLibraryIsOpenService.swift in Sources */,
 				D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */,
 				D9D2D53F25FBE3CA0099AE42 /* InstrucoesBView.swift in Sources */,

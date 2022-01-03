@@ -6,6 +6,9 @@ struct PodcastDetail: View {
     @ObservedObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
     
+    private let selectAllText = "Selecionar Todos"
+    private let unselectAllText = "Deselecionar Todos"
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -59,7 +62,20 @@ struct PodcastDetail: View {
             .disabled(viewModel.displayEpisodeList == false)
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 25)
-            .padding(.vertical, 15)
+            .padding(.top, 7)
+            
+            Button(action: {
+                viewModel.areAllSelectEpisodeList.toggle()
+                
+                if viewModel.areAllSelectEpisodeList {
+                    viewModel.unselectAll()
+                } else {
+                    viewModel.selectAll()
+                }
+            }) {
+                Text(viewModel.areAllSelectEpisodeList ? unselectAllText : selectAllText)
+            }
+            .padding(.vertical, 10)
             
             Divider()
 
@@ -69,7 +85,7 @@ struct PodcastDetail: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeCell(viewModel: EpisodeCellViewModel(episode: episode))
+                                EpisodeCell(viewModel: EpisodeCellViewModel(episode: episode, selected: episode.selectedForDownload))
                                     .padding(.vertical, 5)
                             }
                         }
