@@ -135,6 +135,15 @@
 			path = "Data Handlers";
 			sourceTree = "<group>";
 		};
+		D940AD0227832AD400DF7549 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */,
+				D940AD0027831E3000DF7549 /* RoundCheckbox.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		D94A05EB2572866B0065AE2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,8 +243,7 @@
 				D9F3A585257573C00082E4A3 /* EpisodeCellViewModel.swift */,
 				D9A5A963277E53CB00AA1FCC /* EpisodeGroupView.swift */,
 				D9A5A965277E54A900AA1FCC /* EpisodeGroupViewViewModel.swift */,
-				D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */,
-				D940AD0027831E3000DF7549 /* RoundCheckbox.swift */,
+				D940AD0227832AD400DF7549 /* Shared */,
 			);
 			path = Views;
 			sourceTree = "<group>";

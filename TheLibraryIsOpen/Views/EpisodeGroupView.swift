@@ -4,8 +4,6 @@ struct EpisodeGroupView: View {
 
     @ObservedObject var viewModel: EpisodeGroupViewViewModel
     
-    private let circleSize: CGFloat = 32.0
-    
     // Unselected
     private let unselectedFillColor: Color = .white
     private let unselectedForegroundColor: Color = .gray
@@ -39,26 +37,9 @@ struct EpisodeGroupView: View {
             .padding(.trailing, 60)
             .padding(.bottom, 35)
             
-            if viewModel.isSelected {
-                Circle()
-                    .fill(selectedForegroundColor)
-                    .frame(width: circleSize, height: circleSize)
-                    .padding(.top, 50)
-                    .padding(.leading, 110)
-                
-                Image(systemName: "checkmark")
-                    .foregroundColor(selectedFillColor)
-                    .font(.title3.bold())
-                    .frame(width: circleSize, height: circleSize)
-                    .padding(.top, 50)
-                    .padding(.leading, 110)
-            } else {
-                Circle()
-                    .stroke(unselectedForegroundColor, lineWidth: 0.5)
-                    .frame(width: circleSize, height: circleSize)
-                    .padding(.top, 50)
-                    .padding(.leading, 110)
-            }
+            RoundCheckbox(selected: $viewModel.isSelected, showAsHollowButton: true)
+                .padding(.top, 50)
+                .padding(.leading, 110)
         }
         .onTapGesture {
             viewModel.isSelected.toggle()
