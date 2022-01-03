@@ -11,7 +11,7 @@ struct EpisodeCell: View {
             
             VStack(alignment: .leading, spacing: 7) {
                 Text(viewModel.title)
-                    .lineLimit(1)
+                    .lineLimit(2)
 
                 Text(viewModel.subtitle)
                     .foregroundColor(.gray)
@@ -22,7 +22,6 @@ struct EpisodeCell: View {
 
             Spacer()
         }
-        .padding(.vertical, 10)
         .onTapGesture {
             viewModel.isSelected.toggle()
         }

@@ -305,7 +305,7 @@ class DataManager {
                     podcast.titulo = feed.title ?? "Sem Título"
                     podcast.autor = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
                     podcast.urlFeed = feedDetails.feedUrl
-                    podcast.urlCapa = feed.image?.link ?? ""
+                    podcast.urlCapa = feed.image?.url ?? ""
 
                     for item in items {
                         podcast.episodios!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))

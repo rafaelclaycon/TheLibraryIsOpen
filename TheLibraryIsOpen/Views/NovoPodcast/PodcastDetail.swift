@@ -6,6 +6,8 @@ struct PodcastDetail: View {
     @ObservedObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
     
+    private let artworkSize: CGFloat = 64.0
+    
     private let selectAllText = "Selecionar Todos"
     private let unselectAllText = "Deselecionar Todos"
     
@@ -16,7 +18,10 @@ struct PodcastDetail: View {
 
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: 15) {
+//                AsyncImage(url: URL(string: "https://soundcloud.com/ummilkshakechamadowanda"))
+//                    .frame(width: 55, height: 55)
+                
                 KFImage(URL(string: viewModel.artworkURL))
                     .onSuccess { r in
                         print("success: \(r)")
@@ -39,9 +44,9 @@ struct PodcastDetail: View {
                         }
                     }
                     .resizable()
-                    .frame(width: 55, height: 55)
+                    .frame(width: artworkSize, height: artworkSize)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(viewModel.title)
                         .font(.title3)
                         .bold()
@@ -50,10 +55,10 @@ struct PodcastDetail: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 2)
                 }
-                .padding(.leading, 15)
             }
             .padding(.top, 5)
-            .padding(.horizontal, 12)
+            .padding(.leading, 5)
+            .padding(.trailing, 15)
             
             Picker(selection: $indicePagina, label: Text("Info")) {
                 Text("Por episódio").tag(0)
@@ -144,7 +149,7 @@ struct PodcastDetail: View {
 struct PodcastDetail_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: nil, urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")))
+        PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episodio(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")))
     }
 
 }
