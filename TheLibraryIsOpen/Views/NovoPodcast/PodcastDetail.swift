@@ -18,10 +18,7 @@ struct PodcastDetail: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 15) {
-//                AsyncImage(url: URL(string: "https://soundcloud.com/ummilkshakechamadowanda"))
-//                    .frame(width: 55, height: 55)
-                
+            HStack(spacing: 15) {                
                 KFImage(URL(string: viewModel.artworkURL))
                     .onSuccess { r in
                         print("success: \(r)")
@@ -135,6 +132,7 @@ struct PodcastDetail: View {
                 Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
             .padding(.vertical, 5)
+            .disabled(viewModel.isAnyEpisodeSelected == false)
             
             /*Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
                 .font(.subheadline)

@@ -17,7 +17,13 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var selectAllButtonTitle: String = "Deselecionar Todos"
     
     @Published var downloadAllButtonTitle = ""
+    var isAnyEpisodeSelected: Bool {
+        get {
+            return episodes.contains { $0.selectedForDownload == true }
+        }
+    }
     
+    // Alerts
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
