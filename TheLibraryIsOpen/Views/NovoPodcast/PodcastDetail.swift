@@ -73,9 +73,9 @@ struct PodcastDetail: View {
                 viewModel.areAllSelectEpisodeList.toggle()
                 
                 if viewModel.areAllSelectEpisodeList {
-                    viewModel.unselectAll()
+                    viewModel.applyToAllEpisodes(select: true)
                 } else {
-                    viewModel.selectAll()
+                    viewModel.applyToAllEpisodes(select: false)
                 }
             }) {
                 Text(viewModel.areAllSelectEpisodeList ? unselectAllText : selectAllText)

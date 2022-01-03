@@ -31,6 +31,8 @@ class PodcastDetailViewModel: ObservableObject {
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
         episodes = podcast.episodios!
         
+        applyToAllEpisodes(select: true)
+        
         if (podcast.episodios?.count ?? 0) > 0 {
             groups = Utils.getEpisodesGroupedByYear(from: podcast.episodios!)
         }
@@ -53,18 +55,13 @@ class PodcastDetailViewModel: ObservableObject {
 //        }
     }
     
-    func selectAll() {
-//        for episode in episodes {
-//            episode.selectedForDownload = true
-//        }
-        
-        print(episodes[0].titulo)
-        episodes[0].selectedForDownload = true
-    }
-    
-    func unselectAll() {
-        print(episodes[0].titulo)
-        episodes[0].selectedForDownload = false
+    func applyToAllEpisodes(select: Bool) {
+        if episodes.count > 0 {
+            for i in 0...(episodes.count - 1) {
+                episodes[i].selectedForDownload = select
+            }
+        }
+        areAllSelectEpisodeList = select
     }
     
     func downloadAll() {
