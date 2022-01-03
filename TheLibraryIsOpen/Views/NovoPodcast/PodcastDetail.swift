@@ -69,7 +69,7 @@ struct PodcastDetail: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode))
+                                EpisodeCell(viewModel: EpisodeCellViewModel(episode: episode))
                                     .padding(.vertical, 5)
                             }
                         }
