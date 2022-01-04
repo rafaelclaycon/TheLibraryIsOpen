@@ -5,6 +5,7 @@ struct PodcastDetail: View {
 
     @ObservedObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
+    @Binding var estaSendoExibido: Bool
     
     private let artworkSize: CGFloat = 64.0
     
@@ -140,6 +141,13 @@ struct PodcastDetail: View {
                 .padding(.horizontal, 25)*/
         }
         .navigationBarTitle("", displayMode: .inline)
+        .navigationBarItems(trailing:
+            Button(action: {
+                self.estaSendoExibido = false
+            }) {
+                Text("Cancelar")
+            }
+        )
     }
 
 }
@@ -147,7 +155,7 @@ struct PodcastDetail: View {
 struct PodcastDetail_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episodio(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")))
+        PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episodio(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true))
     }
 
 }
