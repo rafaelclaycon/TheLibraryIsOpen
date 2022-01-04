@@ -10,11 +10,17 @@ Arquive os episódios do seu podcast favorito com este app para iOS.
 
 ## Funcionalidades
 
+### Objetivos principais
+
 - [x] Obter URL do feed de um podcast a partir do link do Apple Podcasts
 - [x] Obter lista de episódios
 - [x] Baixar episódios
 - [ ] Armazenar episódios baixados em um arquivo .zip (em breve)
 - [ ] Upar o arquivo para um serviço de armazenamento na nuvem (em breve)
+
+### Backlog
+
+Acompanhe o backlog do projeto no Trello: https://trello.com/b/RvZ82ZLx
 
 ## Requisitos
 
