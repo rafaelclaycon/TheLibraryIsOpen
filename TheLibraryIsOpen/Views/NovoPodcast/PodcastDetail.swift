@@ -3,14 +3,17 @@ import SwiftUI
 
 struct PodcastDetail: View {
 
-    @ObservedObject var viewModel: PodcastDetailViewModel
+    @StateObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
     
     private let artworkSize: CGFloat = 64.0
     
-    private let selectAllText = "Selecionar Todos"
-    private let unselectAllText = "Deselecionar Todos"
+    private let selectAllText = "Selecionar todos"
+    private let unselectAllText = "Deselecionar todos"
+    
+    private let recentsFirstText = "Recentes primeiro"
+    private let oldestFirstText = "Antigos primeiro"
     
     let columns = [
         GridItem(.flexible()),
@@ -67,16 +70,36 @@ struct PodcastDetail: View {
             .padding(.horizontal, 25)
             .padding(.top, 7)
             
-            Button(action: {
-                viewModel.areAllSelectEpisodeList.toggle()
-                
-                if viewModel.areAllSelectEpisodeList {
-                    viewModel.applyToAllEpisodes(select: true)
-                } else {
-                    viewModel.applyToAllEpisodes(select: false)
+            HStack(spacing: 20) {
+                Button(action: {
+                    viewModel.areAllSelectEpisodeList.toggle()
+                    
+                    if viewModel.areAllSelectEpisodeList {
+                        viewModel.applyToAllEpisodes(select: true)
+                    } else {
+                        viewModel.applyToAllEpisodes(select: false)
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.areAllSelectEpisodeList ? "circle.dotted" : "checkmark.circle")
+                        Text(viewModel.areAllSelectEpisodeList ? unselectAllText : selectAllText)
+                    }
                 }
-            }) {
-                Text(viewModel.areAllSelectEpisodeList ? unselectAllText : selectAllText)
+                
+                Button(action: {
+                    viewModel.recentsFirst.toggle()
+                    
+                    if viewModel.areAllSelectEpisodeList {
+                        viewModel.applyToAllEpisodes(select: true)
+                    } else {
+                        viewModel.applyToAllEpisodes(select: false)
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
+                        Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+                    }
+                }
             }
             .padding(.vertical, 10)
             
@@ -134,6 +157,13 @@ struct PodcastDetail: View {
             }
             .padding(.vertical, 5)
             .disabled(viewModel.isAnyEpisodeSelected == false)
+            
+            Button(action: {
+                //viewModel.downloadAll()
+            }) {
+                Text("Apenas adicionar podcast ao arquivo")
+            }
+            .padding(.vertical, 10)
             
             /*Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
                 .font(.subheadline)

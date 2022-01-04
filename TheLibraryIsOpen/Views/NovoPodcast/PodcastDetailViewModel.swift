@@ -3,7 +3,6 @@ import Foundation
 
 class PodcastDetailViewModel: ObservableObject {
 
-    @Published var displayPodcastArtwork: Bool = false
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
@@ -15,6 +14,8 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var areAllSelectEpisodeList: Bool = true
     @Published var areAllSelectEpisodeGroupList: Bool = false
     @Published var selectAllButtonTitle: String = "Deselecionar Todos"
+    
+    @Published var recentsFirst: Bool = true
     
     @Published var downloadAllButtonTitle = ""
     var isAnyEpisodeSelected: Bool {
@@ -29,9 +30,7 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var displayAlert: Bool = false
 
     init(podcast: Podcast) {
-        displayPodcastArtwork = false
         artworkURL = podcast.urlCapa
-        displayPodcastArtwork = true
         
         title = podcast.titulo
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
