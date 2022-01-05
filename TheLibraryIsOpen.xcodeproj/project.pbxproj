@@ -157,7 +157,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D94AEC6425719285001DEB9B /* NovoPodcast */ = {
+		D94AEC6425719285001DEB9B /* AddPodcast */ = {
 			isa = PBXGroup;
 			children = (
 				D9D3DB80256E7BC00035560E /* InstrucoesAView.swift */,
@@ -169,7 +169,7 @@
 				D9D3DBD9256E9C0D0035560E /* PodcastCell.swift */,
 				D91AC97225F51CCE0086396D /* ProcessandoView.swift */,
 			);
-			path = NovoPodcast;
+			path = AddPodcast;
 			sourceTree = "<group>";
 		};
 		D9D3DB72256E7BC00035560E = {
@@ -241,7 +241,7 @@
 			children = (
 				D94AEC472570BEE9001DEB9B /* MainView.swift */,
 				D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */,
-				D94AEC6425719285001DEB9B /* NovoPodcast */,
+				D94AEC6425719285001DEB9B /* AddPodcast */,
 				D92A44BD256EF7F900731EEF /* EpisodeCell.swift */,
 				D9F3A585257573C00082E4A3 /* EpisodeCellViewModel.swift */,
 				D9A5A963277E53CB00AA1FCC /* EpisodeGroupView.swift */,

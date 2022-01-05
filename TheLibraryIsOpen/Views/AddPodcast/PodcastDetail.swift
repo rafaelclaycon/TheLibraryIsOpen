@@ -159,7 +159,7 @@ struct PodcastDetail: View {
             .disabled(viewModel.isAnyEpisodeSelected == false)
             
             Button(action: {
-                //viewModel.downloadAll()
+                // viewModel.
             }) {
                 Text("Apenas adicionar podcast ao arquivo")
             }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MainView: View {
 
-    @ObservedObject var viewModel = MainViewViewModel()
+    @StateObject var viewModel = MainViewViewModel()
     
     var body: some View {
         let navBarItemSize: CGFloat = 36

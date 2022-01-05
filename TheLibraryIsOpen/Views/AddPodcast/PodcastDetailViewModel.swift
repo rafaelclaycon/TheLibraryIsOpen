@@ -24,12 +24,16 @@ class PodcastDetailViewModel: ObservableObject {
         }
     }
     
+    var podcast: Podcast
+    
     // Alerts
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
 
     init(podcast: Podcast) {
+        self.podcast = podcast
+        
         artworkURL = podcast.urlCapa
         
         title = podcast.titulo
