@@ -142,7 +142,7 @@ struct PodcastDetail: View {
                 .padding(.bottom, 5)
             
             Button(action: {
-                viewModel.downloadAll()
+                viewModel.downloadButtonTapped()
             }) {
                 Text(viewModel.downloadAllButtonTitle)
                     .bold()
@@ -158,12 +158,12 @@ struct PodcastDetail: View {
             .padding(.vertical, 5)
             .disabled(viewModel.isAnyEpisodeSelected == false)
             
-            Button(action: {
+            /*Button(action: {
                 // viewModel.
             }) {
                 Text("Apenas adicionar podcast ao arquivo")
             }
-            .padding(.vertical, 10)
+            .padding(.vertical, 10)*/
             
             /*Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
                 .font(.subheadline)

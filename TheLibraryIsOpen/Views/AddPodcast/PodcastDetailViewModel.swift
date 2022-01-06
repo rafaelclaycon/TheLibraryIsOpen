@@ -20,7 +20,8 @@ class PodcastDetailViewModel: ObservableObject {
     @Published var downloadAllButtonTitle = ""
     var isAnyEpisodeSelected: Bool {
         get {
-            return episodes.contains { $0.selectedForDownload == true }
+            // return episodes.contains { $0.selectedForDownload == true }
+            return true
         }
     }
     
@@ -73,16 +74,18 @@ class PodcastDetailViewModel: ObservableObject {
         areAllSelectEpisodeList = select
     }
     
-    func downloadAll() {
-        /*do {
-            try dataManager.downloadAllEpisodes(from: 916378162)
+    func downloadButtonTapped() {
+        //LocalStorage.
+        
+        do {
+            //try dataManager. // downloadAllEpisodes(from: 916378162)
         } catch DataManagerError.podcastIDNotFound {
             displayPodcastIDNotFoundAlert()
         } catch DataManagerError.podcastHasNoEpisodes {
             displayPodcastHadNoEpisodesAlert()
         } catch {
             fatalError(error.localizedDescription)
-        }*/
+        }
     }
     
     // MARK: - Error messages
