@@ -16,22 +16,22 @@ class DataManager {
 
         storage = injectedStorage
 
-        do {
-            if try storage?.getPodcastCount() == 0 {
-                let podcasts = fetchMethod()
-                for podcast in podcasts {
-                    do {
-                        try storage?.insert(podcast: podcast)
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                }
-            }
-
-            podcasts = try storage?.getAllPodcasts()
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+//        do {
+//            if try storage?.getPodcastCount() == 0 {
+//                let podcasts = fetchMethod()
+//                for podcast in podcasts {
+//                    do {
+//                        try storage?.insert(podcast: podcast)
+//                    } catch {
+//                        fatalError(error.localizedDescription)
+//                    }
+//                }
+//            }
+//
+//            podcasts = try storage?.getAllPodcasts()
+//        } catch {
+//            fatalError(error.localizedDescription)
+//        }
     }
 
     private func fetchRemoteFile(_ episode: Episodio) {
@@ -55,6 +55,22 @@ class DataManager {
             } catch {
                 fatalError(error.localizedDescription)
             }
+        }
+    }
+    
+    func cleanUpDatabase() {
+        do {
+            try storage?.deleteAllEpisodes()
+            try storage?.deleteAllPodcasts()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func persist(podcast: Podcast, withEpisodes episodes: [Episodio]) throws {
+        try storage?.insert(podcast: podcast)
+        try episodes.forEach {
+            try storage?.insert(episode: $0)
         }
     }
 

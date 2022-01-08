@@ -1,7 +1,7 @@
 import SwiftUI
 import KingfisherSwiftUI
 
-struct PodcastCell: View {
+struct PodcastRow: View {
 
     var podcast: Podcast
 
@@ -52,8 +52,8 @@ struct PodcastCell_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            PodcastCell(podcast: Podcast(id: 1, titulo: "Praia dos Ossos", autor: "Rádio Novelo", episodios: nil, urlFeed: "", urlCapa: ""))
-            PodcastCell(podcast: Podcast(id: 2, titulo: "Accidental Tech Podcast", autor: "Marco Arment, Casey Liss, John Siracusa", episodios: nil, urlFeed: "", urlCapa: ""))
+            PodcastRow(podcast: Podcast(id: 1, titulo: "Praia dos Ossos", autor: "Rádio Novelo", episodios: nil, urlFeed: "", urlCapa: ""))
+            PodcastRow(podcast: Podcast(id: 2, titulo: "Accidental Tech Podcast", autor: "Marco Arment, Casey Liss, John Siracusa", episodios: nil, urlFeed: "", urlCapa: ""))
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }

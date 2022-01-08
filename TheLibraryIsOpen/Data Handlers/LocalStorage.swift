@@ -15,7 +15,7 @@ class LocalStorage {
         ).first!
 
         do {
-            db = try Connection("\(path)/db.sqlite3")
+            db = try Connection("\(path)/tlio_db.sqlite3")
             try createPodcasts()
             try createEpisodes()
         } catch {

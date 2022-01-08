@@ -50,55 +50,66 @@ class PodcastDetailViewModel: ObservableObject {
         displayEpisodeList = podcast.episodios?.count ?? 0 > 0
         
         downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios\(podcast.getTamanhoEpisodios())"
-//        dataManager.getEpisodes(forPodcastID: podcast.id, feedURL: podcast.urlFeed) { episodes, error in
-//            guard error == nil else {
-//                fatalError(error.debugDescription)
-//            }
-//            guard let episodes = episodes else {
-//                return print("Episodes is empty.")
-//            }
-//            self.episodes = episodes
-//
-//            DispatchQueue.main.async {
-//                self.displayEpisodeList = episodes.count > 0
-//            }
-//        }
     }
     
     func applyToAllEpisodes(select: Bool) {
         if episodes.count > 0 {
             for i in 0...(episodes.count - 1) {
-                episodes[i].selectedForDownload = select
+                //episodes[i].selectedForDownload = select
             }
         }
         areAllSelectEpisodeList = select
     }
     
-    func downloadButtonTapped() {
-        //LocalStorage.
+    func download(episodeIDs: Set<String>) -> Bool {
+        let episodesToDownload = episodes.filter {
+            episodeIDs.contains($0.id)
+        }
+        
+        guard episodesToDownload.count > 0 else {
+            showNoEpisodesSelectedAlert()
+            return false
+        }
+        
+        podcast.episodios = nil
         
         do {
-            //try dataManager. // downloadAllEpisodes(from: 916378162)
-        } catch DataManagerError.podcastIDNotFound {
-            displayPodcastIDNotFoundAlert()
-        } catch DataManagerError.podcastHasNoEpisodes {
-            displayPodcastHadNoEpisodesAlert()
+            try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
         } catch {
-            fatalError(error.localizedDescription)
+            showLocalStorageError(error.localizedDescription)
         }
+        
+        return true
     }
     
     // MARK: - Error messages
 
-    private func displayPodcastIDNotFoundAlert() {
+    private func showPodcastIDNotFoundAlert() {
         alertTitle = "Um Podcast Com Esse ID Não Foi Encontrado"
         alertMessage = "The Library is Open não encontrou um podcast com o ID especificado."
         displayAlert = true
     }
 
-    private func displayPodcastHadNoEpisodesAlert() {
+    private func showPodcastHadNoEpisodesAlert() {
         alertTitle = "Podcast Sem Episódios"
         alertMessage = "Não foram encontrados episódios para esse podcast."
+        displayAlert = true
+    }
+    
+    private func showNoEpisodesSelectedAlert() {
+        alertTitle = "Nenhum Episódio Selecionado"
+        alertMessage = "Selecione um ou mais episódios do podcast para baixar."
+        displayAlert = true
+    }
+    
+    private func showLocalStorageError(_ errorBody: String) {
+        alertTitle = "Erro do LocalStorage"
+        alertMessage = errorBody
+        displayAlert = true
+    }
+    
+    private func showGenericError(_ errorText: String) {
+        alertTitle = errorText
         displayAlert = true
     }
 

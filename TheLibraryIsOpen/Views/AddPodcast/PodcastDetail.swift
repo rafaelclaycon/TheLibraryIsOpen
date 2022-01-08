@@ -6,16 +6,15 @@ struct PodcastDetail: View {
     @StateObject var viewModel: PodcastDetailViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
+    @State var selectionKeeper = Set<String>()
     
+    // Private properties
     private let artworkSize: CGFloat = 64.0
-    
     private let selectAllText = "Selecionar todos"
     private let unselectAllText = "Deselecionar todos"
-    
     private let recentsFirstText = "Recentes primeiro"
     private let oldestFirstText = "Antigos primeiro"
-    
-    let columns = [
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
@@ -111,7 +110,7 @@ struct PodcastDetail: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeCell(viewModel: EpisodeCellViewModel(episode: episode, selected: episode.selectedForDownload))
+                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode), selectedItems: $selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
@@ -142,7 +141,9 @@ struct PodcastDetail: View {
                 .padding(.bottom, 5)
             
             Button(action: {
-                viewModel.downloadButtonTapped()
+                if viewModel.download(episodeIDs: selectionKeeper) {
+                    estaSendoExibido = false
+                }
             }) {
                 Text(viewModel.downloadAllButtonTitle)
                     .bold()
