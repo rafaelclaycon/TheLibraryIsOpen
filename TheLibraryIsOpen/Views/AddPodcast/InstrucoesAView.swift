@@ -13,13 +13,13 @@ struct InstrucoesAView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Picker(selection: $indicePagina, label: Text("Info")) {
-                        Text("Apple Podcasts").tag(0)
-                        Text("Pocket Casts").tag(1)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 25)
-                    .padding(.top, 7)
+//                    Picker(selection: $indicePagina, label: Text("Info")) {
+//                        Text("Apple Podcasts").tag(0)
+//                        Text("Pocket Casts").tag(1)
+//                    }
+//                    .pickerStyle(SegmentedPickerStyle())
+//                    .padding(.horizontal, 25)
+//                    .padding(.top, 7)
                     
                     if indicePagina == 0 {
                         HStack {
