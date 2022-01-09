@@ -7,7 +7,7 @@ struct PodcastRow: View {
 
     var body: some View {
         HStack {
-            KFImage(URL(string: podcast.urlCapa))
+            KFImage(URL(string: podcast.artworkUrl))
                 .onSuccess { r in
                     print("success: \(r)")
                 }
@@ -31,12 +31,12 @@ struct PodcastRow: View {
                 .frame(width: 70, height: 70)
 
             VStack(alignment: .leading) {
-                Text(podcast.titulo)
+                Text(podcast.title)
                     .font(.body)
                     .bold()
                     .padding(.leading, 15)
                     .padding(.bottom, 2)
-                Text(podcast.autor)
+                Text(podcast.author)
                     .padding(.leading, 15)
                     .foregroundColor(.gray)
                     .font(.footnote)

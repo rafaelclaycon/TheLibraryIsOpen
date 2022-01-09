@@ -14,7 +14,7 @@ struct ProcessingView: View {
                 .cornerRadius(25)
             
             Text(message)
-                .offset(x: 0, y: 30)
+                .offset(x: 0, y: 33)
         }
     }
 
@@ -24,7 +24,7 @@ struct ProcessandoView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) {
-            ProcessingView(message: .constant("Processing link...")).preferredColorScheme($0)
+            ProcessingView(message: .constant("Inspecting link...")).preferredColorScheme($0)
         }
         .previewLayout(.fixed(width: 375, height: 400))
     }

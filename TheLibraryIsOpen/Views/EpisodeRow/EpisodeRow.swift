@@ -44,7 +44,7 @@ struct EpisodeRow: View {
 //
 //    static var previews: some View {
 //        Group {
-//            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episode(id: "1", idPodcast: 123, titulo: "Flat-Side Promoter", dataPublicacao: Date(), duracao: 300, urlRemoto: "", tamanho: 0)), isSelected: .constant(false))
+//            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episode(id: "1", idPodcast: 123, titulo: "Flat-Side Promoter", pubDate: Date(), duracao: 300, remoteUrl: "", tamanho: 0)), isSelected: .constant(false))
 //            EpisodeRow(viewModel: EpisodeRowViewModel(episode: Episode(id: "2", idPodcast: 456, titulo: "With Four Hands Tied Behind Its Back", dataPublicacao: Date(), duracao: 3600, urlRemoto: "", tamanho: 13080400), selected: true), isSelected: .constant(true))
 //        }
 //        .previewLayout(.fixed(width: 350, height: 100))

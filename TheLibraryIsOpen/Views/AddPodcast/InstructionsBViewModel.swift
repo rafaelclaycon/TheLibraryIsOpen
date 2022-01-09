@@ -14,7 +14,7 @@ class InstructionsBViewModel: ObservableObject {
     @Published var isMostrandoPodcastDetailView = false
     
     func processar() {
-        processingViewMessage = "Processing link..."
+        processingViewMessage = "Inspecting link..."
         processando = true
         
         do {
@@ -38,9 +38,9 @@ class InstructionsBViewModel: ObservableObject {
                 
                 //strongSelf.titulo = podcast.titulo
                 //strongSelf.primeiroEp = primeiroEp.titulo
-                //print("Ep no topo da lista: \(primeiroEp.urlRemoto)")
+                //print("Ep no topo da lista: \(primeiroEp.remoteUrl)")
                 //strongSelf.ultimoEp = ultimoEp.titulo
-                //print("Último ep da lista: \(ultimoEp.urlRemoto)")
+                //print("Último ep da lista: \(ultimoEp.remoteUrl)")
                 //strongSelf.qtd = Utils.getSubtituloPodcast(episodes: podcast.episodios!)
                 
                 //let episodios = podcast.episodios!

@@ -15,27 +15,10 @@ class DataManager {
         }
 
         storage = injectedStorage
-
-//        do {
-//            if try storage?.getPodcastCount() == 0 {
-//                let podcasts = fetchMethod()
-//                for podcast in podcasts {
-//                    do {
-//                        try storage?.insert(podcast: podcast)
-//                    } catch {
-//                        fatalError(error.localizedDescription)
-//                    }
-//                }
-//            }
-//
-//            podcasts = try storage?.getAllPodcasts()
-//        } catch {
-//            fatalError(error.localizedDescription)
-//        }
     }
 
     private func fetchRemoteFile(_ episode: Episode) {
-        FeedHelper.fetchEpisodeFile(streamURL: episode.urlRemoto, podcastID: episode.idPodcast, episodeID: episode.id) { [weak self] filePath, error in
+        FeedHelper.fetchEpisodeFile(streamURL: episode.remoteUrl, podcastID: episode.podcastId, episodeID: episode.id) { [weak self] filePath, error in
             guard let strongSelf = self else {
                 return
             }
@@ -83,15 +66,9 @@ class DataManager {
         }
         for i in 0...(obtainedPodcasts.count - 1) {
             if let episodes = try storage?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
-                obtainedPodcasts[i].episodios = episodes
-                //obtainedPodcasts[i].episodios?.append(contentsOf: episodes)
+                obtainedPodcasts[i].episodes = episodes
             }
         }
-//        try obtainedPodcasts.forEach { podcast in
-//            if let episodes = try storage?.getAllEpisodes(forID: podcast.id) {
-//                podcast.episodios?.append(contentsOf: episodes)
-//            }
-//        }
         return obtainedPodcasts
     }
 
@@ -103,10 +80,10 @@ class DataManager {
             throw DataManagerError.podcastIDNotFound
         }
 
-        if podcasts![podcastIndex].episodios == nil {
-            podcasts![podcastIndex].episodios = [Episode]()
+        if podcasts![podcastIndex].episodes == nil {
+            podcasts![podcastIndex].episodes = [Episode]()
         }
-        podcasts![podcastIndex].episodios!.append(contentsOf: episodes)
+        podcasts![podcastIndex].episodes!.append(contentsOf: episodes)
 
         for episode in episodes {
             try storage?.insert(episode: episode)
@@ -132,7 +109,7 @@ class DataManager {
         }
 
         // 1. First tries to get the episodes from memory.
-        if let episodes = podcast.episodios, episodes.count > 0 {
+        if let episodes = podcast.episodes, episodes.count > 0 {
             print("IN-MEMORY FETCH: podcast \(podcastID)")
             completionHandler(episodes, nil)
             return
@@ -201,7 +178,7 @@ class DataManager {
 
     func updateLocalFilePath(forEpisode episode: Episode, with filePath: String) throws {
         // Update it on the in-memory array.
-        try updateInMemoryEpisodeLocalFilePath(podcastID: episode.idPodcast, episodeID: episode.id, filePath: filePath)
+        try updateInMemoryEpisodeLocalFilePath(podcastID: episode.podcastId, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
         storage!.updateLocalFilePath(forEpisode: episode.id, with: filePath)
     }
@@ -213,13 +190,13 @@ class DataManager {
         guard let podcastIndex = podcasts?.firstIndex(where: { $0.id == podcastID }) else {
             throw DataManagerError.podcastIDNotFound
         }
-        guard podcasts![podcastIndex].episodios != nil else {
+        guard podcasts![podcastIndex].episodes != nil else {
             throw DataManagerError.episodeArrayIsUninitialized
         }
-        guard let episodeIndex = podcasts![podcastIndex].episodios!.firstIndex(where: { $0.id == episodeID }) else {
+        guard let episodeIndex = podcasts![podcastIndex].episodes!.firstIndex(where: { $0.id == episodeID }) else {
             throw DataManagerError.episodeIDNotFound
         }
-        podcasts![podcastIndex].episodios![episodeIndex].caminhoLocal = filePath
+        podcasts![podcastIndex].episodes![episodeIndex].localFilepath = filePath
     }
     
     func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
@@ -339,13 +316,13 @@ class DataManager {
                     }
 
                     var podcast = Podcast(id: feedDetails.podcastId)
-                    podcast.titulo = feed.title ?? "Sem Título"
-                    podcast.autor = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
-                    podcast.urlFeed = feedDetails.feedUrl
-                    podcast.urlCapa = feed.image?.url ?? ""
+                    podcast.title = feed.title ?? "Sem Título"
+                    podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
+                    podcast.feedUrl = feedDetails.feedUrl
+                    podcast.artworkUrl = feed.image?.url ?? ""
 
                     for item in items {
-                        podcast.episodios!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
+                        podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
                     }
 
                     completionHandler(podcast, nil)
@@ -362,10 +339,10 @@ class DataManager {
     func baixarEpisodios(arrayEpisodios: [Episode], idPodcast: Int, completionHandler: @escaping (Bool) -> Void) {
         var array = arrayEpisodios
         if let episodio = array.popLast() {
-            guard !episodio.urlRemoto.isEmpty else {
+            guard !episodio.remoteUrl.isEmpty else {
                 fatalError("URL vazio.")
             }
-            guard let url = URL(string: episodio.urlRemoto) else {
+            guard let url = URL(string: episodio.remoteUrl) else {
                 fatalError("Não foi possível gerar URL a partir da string.")
             }
             
@@ -376,7 +353,7 @@ class DataManager {
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             
-            AF.download(episodio.urlRemoto, to: destino).response { response in
+            AF.download(episodio.remoteUrl, to: destino).response { response in
                 /*guard response.error == nil else {
                     return completionHandler(nil, .downloadError)
                 }

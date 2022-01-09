@@ -35,19 +35,19 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     init(podcast: Podcast) {
         self.podcast = podcast
         
-        artworkURL = podcast.urlCapa
+        artworkURL = podcast.artworkUrl
         
-        title = podcast.titulo
-        details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
-        episodes = podcast.episodios!
+        title = podcast.title
+        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
+        episodes = podcast.episodes!
         
         applyToAllEpisodes(select: true)
         
-        if (podcast.episodios?.count ?? 0) > 0 {
-            groups = Utils.getEpisodesGroupedByYear(from: podcast.episodios!)
+        if (podcast.episodes?.count ?? 0) > 0 {
+            groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
         }
         
-        displayEpisodeList = podcast.episodios?.count ?? 0 > 0
+        displayEpisodeList = podcast.episodes?.count ?? 0 > 0
     }
     
     func applyToAllEpisodes(select: Bool) {
@@ -69,7 +69,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             return false
         }
         
-        podcast.episodios = nil
+        podcast.episodes = nil
         
         do {
             try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)

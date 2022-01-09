@@ -11,11 +11,11 @@ class EpisodeRowViewModel: ObservableObject {
     //@Published var isSelected: Bool = false
 
     init(episode: Episode, selected: Bool = false) {
-        podcastID = episode.idPodcast
+        podcastID = episode.podcastId
         episodeID = episode.id
 
-        title = episode.titulo
-        subtitle = (episode.dataPublicacao?.asShortString() ?? "")  + " - " + episode.duracao.toDisplayString() + " - " + episode.tamanho.toFormattedFileSize()
+        title = episode.title
+        subtitle = (episode.pubDate?.asShortString() ?? "")  + " - " + episode.duration.toDisplayString() + " - " + episode.filesize.toFormattedFileSize()
         //isSelected = selected
     }
 

@@ -3,8 +3,8 @@ import Foundation
 class Utils {
 
     static func getSubtituloPodcast(episodes: [Episode]) -> String {
-        let firstEpisodePubYear = episodes[episodes.count - 1].dataPublicacao!.get(.year)
-        let lastEpisodePubYear = episodes[0].dataPublicacao!.get(.year)
+        let firstEpisodePubYear = episodes[episodes.count - 1].pubDate!.get(.year)
+        let lastEpisodePubYear = episodes[0].pubDate!.get(.year)
         
         var yearText = ""
         if firstEpisodePubYear == lastEpisodePubYear {
@@ -25,7 +25,7 @@ class Utils {
     
     static func getEpisodesGroupedByYear(from episodes: [Episode]) -> [EpisodeGroup] {
         var groups = [EpisodeGroup]()
-        let dic = Dictionary(grouping: episodes, by: { $0.dataPublicacao!.get(.year) })
+        let dic = Dictionary(grouping: episodes, by: { $0.pubDate!.get(.year) })
         for group in dic {
             groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episodes", episodes: group.value))
         }
@@ -39,7 +39,7 @@ class Utils {
         }
         var size = 0
         for episode in episodes {
-            size += episode.tamanho
+            size += episode.filesize
         }
         guard size > 0 else {
             return ""
