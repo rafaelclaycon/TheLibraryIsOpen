@@ -7,17 +7,14 @@ struct ArchivedPodcastDetail: View {
     @State var showingExportOptions: Bool = false
     
     // List status keepers
-    //@State var selectionKeeper = Set<String>()
     @State var downloadingKeeper = Set<String>()
     @State var downloadedKeeper = Set<String>()
     @State var downloadErrorKeeper = Set<String>()
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
-    private let selectAllText = "Selecionar todos"
-    private let unselectAllText = "Deselecionar todos"
-    private let recentsFirstText = "Recentes primeiro"
-    private let oldestFirstText = "Antigos primeiro"
+    private let recentsFirstText = "Most recent first"
+    private let oldestFirstText = "Oldest first"
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -33,16 +30,19 @@ struct ArchivedPodcastDetail: View {
             HStack(spacing: 20) {
                 Button(action: {
                     viewModel.recentsFirst.toggle()
-                    
-                    if viewModel.areAllSelectEpisodeList {
-                        viewModel.applyToAllEpisodes(select: true)
-                    } else {
-                        viewModel.applyToAllEpisodes(select: false)
-                    }
                 }) {
                     HStack {
                         Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
                         Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+                    }
+                }
+                
+                Button(action: {
+                    viewModel.recentsFirst.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                        Text("Reload list")
                     }
                 }
             }

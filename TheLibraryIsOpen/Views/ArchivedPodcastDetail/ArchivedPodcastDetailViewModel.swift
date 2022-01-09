@@ -41,43 +41,31 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes!
         
-        applyToAllEpisodes(select: true)
-        
         if (podcast.episodes?.count ?? 0) > 0 {
             groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
         }
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
+        
+        let episodesToDownload = episodes.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
+        }
+        if episodesToDownload.count > 0 {
+            download(episodes: episodesToDownload)
+        }
     }
     
-    func applyToAllEpisodes(select: Bool) {
-        if episodes.count > 0 {
-            for i in 0...(episodes.count - 1) {
-                //episodes[i].selectedForDownload = select
+    func download(episodes: [Episode]) {
+        dataManager.baixarEpisodios(arrayEpisodios: episodes, idPodcast: podcast.id) { [weak self] success in
+            if success {
+                for i in 0...(episodes.count - 1) {
+                    self?.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
+                }
+                self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
+            } else {
+                self?.showAlert(withTitle: "Episode Download Unsuccessful", message: ":(")
             }
         }
-        areAllSelectEpisodeList = select
-    }
-    
-    func download(episodeIDs: Set<String>) -> Bool {
-        let episodesToDownload = episodes.filter {
-            episodeIDs.contains($0.id)
-        }
-        
-        guard episodesToDownload.count > 0 else {
-            showNoEpisodesSelectedAlert()
-            return false
-        }
-        
-        podcast.episodes = nil
-        
-        do {
-            try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
-        } catch {
-            showLocalStorageError(error.localizedDescription)
-        }
-        
-        return true
     }
     
     // MARK: - Error messages
@@ -106,8 +94,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         displayAlert = true
     }
     
-    private func showGenericError(_ errorText: String) {
-        alertTitle = errorText
+    private func showAlert(withTitle alertTitle: String, message alertMessage: String) {
+        self.alertTitle = alertTitle
+        self.alertMessage = alertMessage
         displayAlert = true
     }
     
