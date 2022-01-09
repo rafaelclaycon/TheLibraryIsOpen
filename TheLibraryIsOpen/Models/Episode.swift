@@ -10,8 +10,16 @@ struct Episode: Hashable, Codable, Identifiable {
     var remoteUrl: String
     var localFilepath: String?
     var filesize: Int
+    var offlineStatus: Int
     
-    init(id: String, podcastId: Int, title: String, pubDate: Date?, duration: Double, remoteUrl: String, filesize: Int) {
+    init(id: String = UUID().uuidString,
+         podcastId: Int = 0,
+         title: String = "",
+         pubDate: Date? = Date(),
+         duration: Double = 0,
+         remoteUrl: String = "",
+         filesize: Int = 0,
+         offlineStatus: EpisodeOfflineStatus = .downloadNotStarted) {
         self.id = id
         self.podcastId = podcastId
         self.title = title
@@ -20,38 +28,13 @@ struct Episode: Hashable, Codable, Identifiable {
         self.remoteUrl = remoteUrl
         self.localFilepath = nil
         self.filesize = filesize
+        self.offlineStatus = offlineStatus.rawValue
     }
+
+}
+
+enum EpisodeOfflineStatus: Int, Codable {
     
-    init(id: String, title: String, pubDate: Date) {
-        self.id = id
-        podcastId = 0
-        self.title = title
-        self.pubDate = pubDate
-        duration = 0
-        remoteUrl = ""
-        localFilepath = nil
-        filesize = 0
-    }
-    
-    init(remoteUrl: String) {
-        id = "0"
-        podcastId = 0
-        title = ""
-        pubDate = Date()
-        duration = 0
-        self.remoteUrl = remoteUrl
-        localFilepath = nil
-        filesize = 0
-    }
-    
-    init(filesize: Int) {
-        self.init(id: UUID().uuidString,
-                  podcastId: 0,
-                  title: "",
-                  pubDate: nil,
-                  duration: 0,
-                  remoteUrl: "",
-                  filesize: filesize)
-    }
+    case downloadNotStarted = 0, downloading = 1, availableOffline = 2, downloadError = 3
 
 }

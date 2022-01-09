@@ -72,6 +72,12 @@
             ReferencedContainer = "container:TheLibraryIsOpen.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-CLEAN_DATABASE_UPON_LAUNCH"
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

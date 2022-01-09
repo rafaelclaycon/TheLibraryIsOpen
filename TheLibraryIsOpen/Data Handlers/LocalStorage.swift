@@ -48,6 +48,7 @@ class LocalStorage {
         let remote_url = Expression<String>("remoteUrl")
         let local_filepath = Expression<String?>("localFilepath")
         let filesize = Expression<Int64>("filesize")
+        let offline_status = Expression<Int>("offlineStatus")
 
         try db.run(episodes.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
@@ -58,6 +59,7 @@ class LocalStorage {
             t.column(remote_url)
             t.column(local_filepath)
             t.column(filesize)
+            t.column(offline_status)
         })
     }
 
@@ -96,11 +98,11 @@ class LocalStorage {
         try db.run(insert)
     }
 
-    func getAllEpisodes(forID idPodcast: Int) throws -> [Episode] {
+    func getAllEpisodes(forID podcastId: Int) throws -> [Episode] {
         var queriedEpisodes = [Episode]()
 
-        let id_podcast = Expression<Int>("podcastId")
-        let query = episodes.filter(id_podcast == idPodcast)
+        let podcast_id = Expression<Int>("podcastId")
+        let query = episodes.filter(podcast_id == podcastId)
 
         for episode in try db.prepare(query) {
             queriedEpisodes.append(try episode.decode())

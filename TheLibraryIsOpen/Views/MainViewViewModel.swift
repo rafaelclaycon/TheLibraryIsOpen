@@ -13,6 +13,7 @@ class MainViewViewModel: ObservableObject {
     init(podcasts: [Podcast] = [Podcast]()) {
         self.podcasts = podcasts
         displayPodcastList = self.podcasts.count > 0
+        updateList()
     }
 
     func updateList() {
