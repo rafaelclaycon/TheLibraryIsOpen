@@ -93,13 +93,13 @@ class PodcastPreviewViewModel: ObservableObject {
             selectedIDs.contains($0.id)
         }
         if selectedEpisodes.count == 0 {
-            downloadAllButtonTitle = "Baixar 0 episódios"
+            downloadAllButtonTitle = "Download 0 episodes"
             isAnyEpisodeSelected = false
         } else if selectedEpisodes.count == 1 {
-            downloadAllButtonTitle = "Baixar 1 episódio\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = "Download 1 episode\(Utils().getSize(ofEpisodes: selectedEpisodes))"
             isAnyEpisodeSelected = true
         } else {
-            downloadAllButtonTitle = "Baixar \(selectedEpisodes.count) episódios\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = "Download \(selectedEpisodes.count) episodes\(Utils().getSize(ofEpisodes: selectedEpisodes))"
             isAnyEpisodeSelected = true
         }
     }
@@ -128,25 +128,25 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Error message methods
 
     private func showPodcastIDNotFoundAlert() {
-        alertTitle = "Um Podcast Com Esse ID Não Foi Encontrado"
-        alertMessage = "The Library is Open não encontrou um podcast com o ID especificado."
+        alertTitle = "No Podcast Matching This ID Was Found"
+        alertMessage = "Please try a different ID."
         displayAlert = true
     }
 
     private func showPodcastHadNoEpisodesAlert() {
-        alertTitle = "Podcast Sem Episódios"
-        alertMessage = "Não foram encontrados episódios para esse podcast."
+        alertTitle = "This Podcast Has No Episodes"
+        alertMessage = "No episodes were found for this podcast."
         displayAlert = true
     }
     
     private func showNoEpisodesSelectedAlert() {
-        alertTitle = "Nenhum Episódio Selecionado"
-        alertMessage = "Selecione um ou mais episódios do podcast para baixar."
+        alertTitle = "No Episode Selected"
+        alertMessage = "Select at least one episode to download."
         displayAlert = true
     }
     
     private func showLocalStorageError(_ errorBody: String) {
-        alertTitle = "Erro do LocalStorage"
+        alertTitle = "LocalStorage error"
         alertMessage = errorBody
         displayAlert = true
     }

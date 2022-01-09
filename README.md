@@ -6,9 +6,9 @@ This is meant as a celebration of how open podcasts (used to) be.
 
 Download your favorites before the big bad takes them (I'm talking about at you, Spotify).
 
-![A GIF showing the app in action.](TheLibraryIsOpen/Recursos/flow-principal.gif)
+![A GIF showing the app in action.](TheLibraryIsOpen/Recursos/main-flow.gif)
 
-![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Recursos/prototipo.png)
+![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Recursos/prototype.png)
 
 ## Features
 

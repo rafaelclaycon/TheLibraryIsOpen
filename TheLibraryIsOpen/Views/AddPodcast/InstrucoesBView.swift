@@ -21,7 +21,7 @@ struct InstrucoesBView: View {
                     }
                     .padding(.vertical, 30)
                     
-                    Text("6. Cole o link do podcast aqui:")
+                    Text("6. Paste the podcast link here:")
                         .padding(.horizontal, 25)
                         .padding(.bottom, 15)
                     
@@ -37,7 +37,7 @@ struct InstrucoesBView: View {
                         Button(action: {
                             viewModel.processar()
                         }) {
-                            Text("Analisar Link")
+                            Text("Inspect Link")
                                 .bold()
                         }
                         .buttonStyle(PillButtonStyle())
@@ -65,12 +65,12 @@ struct InstrucoesBView: View {
                 ProcessandoView()
             }
         }
-        .navigationBarTitle(Text("Obter Episódios"))
+        .navigationBarTitle(Text("Get Episodes"))
         .navigationBarItems(trailing:
             Button(action: {
                 self.estaSendoExibido = false
             }) {
-                Text("Cancelar")
+                Text("Cancel")
             }
         )
     }

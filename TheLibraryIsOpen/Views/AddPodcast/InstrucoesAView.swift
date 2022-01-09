@@ -34,19 +34,19 @@ struct InstrucoesAView: View {
                         .padding(.vertical, 15)
                         
                         VStack(alignment: .leading) {
-                            Text("1. Abra o app Podcasts")
+                            Text("1. Open the Podcasts app")
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("2. Navegue até o podcast que deseja arquivar")
+                            Text("2. Find the podcast you want to archive")
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("3. Toque no botão ...")
+                            Text("3. Tap the ... button on the top left of the show page")
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("4. Toque na opção Copiar Link")
+                            Text("4. Tap Copy Link")
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("5. Volte para cá e toque em Avançar.")
+                            Text("5. Come back here and tap Next.")
                                 .padding(.bottom, bottomPadding)
                         }
                         .padding(.horizontal, 30)
@@ -64,7 +64,7 @@ struct InstrucoesAView: View {
                         .padding(.vertical, 15)
                         
                         VStack(alignment: .leading) {
-                            Text("1. Abra o app Pocket Casts")
+                            Text("1. Open the Pocket Casts app")
                                 .padding(.bottom, bottomPadding)
                             
                             Text("2. Navegue até o podcast que deseja arquivar")
@@ -86,7 +86,7 @@ struct InstrucoesAView: View {
                         Spacer()
                         
                         NavigationLink(destination: InstrucoesBView(estaSendoExibido: $estaSendoExibido), tag: 1, selection: $action, label: {
-                            Text("Avançar")
+                            Text("Next")
                                 .bold()
                                 .foregroundColor(.white)
                                 .padding(.vertical, 14)
@@ -101,12 +101,12 @@ struct InstrucoesAView: View {
                     
                     Spacer()
                 }
-                .navigationBarTitle(Text("Obter Link"))
+                .navigationBarTitle(Text("Get Link"))
                 .navigationBarItems(leading:
                     Button(action: {
                         self.estaSendoExibido = false
                     }) {
-                        Text("Cancelar")
+                        Text("Cancel")
                     }
                 )
             }

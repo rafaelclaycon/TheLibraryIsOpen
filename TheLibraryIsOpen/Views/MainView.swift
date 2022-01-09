@@ -21,19 +21,19 @@ struct MainView: View {
                         .resizable()
                         .frame(width: 350, height: 200)
                     
-                    Text("Nenhum Podcast Arquivado")
+                    Text("No Archived Podcasts")
                         .font(.title2)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     
-                    Text("Para arquivar um novo podcast, toque no + no canto superior direito.")
+                    Text("To archive a new podcast, tap the + button at the top of the screen.")
                         .font(.body)
                         .padding(.horizontal, 40)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
                 }
             }
-            .navigationBarTitle(Text("Arquivo"))
+            .navigationBarTitle(Text("Archive"))
             .navigationBarItems(trailing:
                 HStack(spacing: 30) {
 //                    Button(action: {

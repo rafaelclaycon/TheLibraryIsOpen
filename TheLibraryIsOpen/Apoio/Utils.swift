@@ -15,9 +15,9 @@ class Utils {
         
         var episodiosText = ""
         if episodes.count == 1 {
-            episodiosText = "episódio"
+            episodiosText = "episode"
         } else {
-            episodiosText = "episódios"
+            episodiosText = "episodes"
         }
         
         return "\(episodes.count) \(episodiosText) · \(yearText)"
@@ -27,7 +27,7 @@ class Utils {
         var groups = [EpisodeGroup]()
         let dic = Dictionary(grouping: episodes, by: { $0.dataPublicacao!.get(.year) })
         for group in dic {
-            groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episódios", episodes: group.value))
+            groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episodes", episodes: group.value))
         }
         groups.sort(by: { $0.title < $1.title })
         return groups
