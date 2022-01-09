@@ -1,6 +1,6 @@
 import Foundation
 
-struct Episodio: Hashable, Codable, Identifiable {
+struct Episode: Hashable, Codable, Identifiable {
 
     var id: String
     var idPodcast: Int

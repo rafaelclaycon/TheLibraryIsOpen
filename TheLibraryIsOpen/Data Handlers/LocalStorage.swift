@@ -91,13 +91,13 @@ class LocalStorage {
         try db.scalar(episodios.count)
     }
 
-    func insert(episode: Episodio) throws {
+    func insert(episode: Episode) throws {
         let insert = try episodios.insert(episode)
         try db.run(insert)
     }
 
-    func getAllEpisodes(forID idPodcast: Int) throws -> [Episodio] {
-        var queriedEpisodes = [Episodio]()
+    func getAllEpisodes(forID idPodcast: Int) throws -> [Episode] {
+        var queriedEpisodes = [Episode]()
 
         let id_podcast = Expression<Int>("idPodcast")
         let query = episodios.filter(id_podcast == idPodcast)

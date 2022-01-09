@@ -34,7 +34,7 @@ class DataManager {
 //        }
     }
 
-    private func fetchRemoteFile(_ episode: Episodio) {
+    private func fetchRemoteFile(_ episode: Episode) {
         FeedHelper.fetchEpisodeFile(streamURL: episode.urlRemoto, podcastID: episode.idPodcast, episodeID: episode.id) { [weak self] filePath, error in
             guard let strongSelf = self else {
                 return
@@ -67,7 +67,7 @@ class DataManager {
         }
     }
     
-    func persist(podcast: Podcast, withEpisodes episodes: [Episodio]) throws {
+    func persist(podcast: Podcast, withEpisodes episodes: [Episode]) throws {
         try storage?.insert(podcast: podcast)
         try episodes.forEach {
             try storage?.insert(episode: $0)
@@ -95,7 +95,7 @@ class DataManager {
         return obtainedPodcasts
     }
 
-    func addEpisodes(_ episodes: [Episodio], podcastID: Int) throws {
+    func addEpisodes(_ episodes: [Episode], podcastID: Int) throws {
         guard podcasts != nil else {
             throw DataManagerError.podcastArrayIsUninitialized
         }
@@ -104,7 +104,7 @@ class DataManager {
         }
 
         if podcasts![podcastIndex].episodios == nil {
-            podcasts![podcastIndex].episodios = [Episodio]()
+            podcasts![podcastIndex].episodios = [Episode]()
         }
         podcasts![podcastIndex].episodios!.append(contentsOf: episodes)
 
@@ -126,7 +126,7 @@ class DataManager {
         return "https:" + url[range]
     }
 
-    func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episodio]?, FeedHelperError?) -> Void) {
+    func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episode]?, FeedHelperError?) -> Void) {
         guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
             return
         }
@@ -173,7 +173,7 @@ class DataManager {
                             return completionHandler(nil, FeedHelperError.emptyFeed)
                         }
 
-                        var episodes = [Episodio]()
+                        var episodes = [Episode]()
 
                         for item in items {
                             episodes.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: podcastID))
@@ -199,7 +199,7 @@ class DataManager {
         }
     }
 
-    func updateLocalFilePath(forEpisode episode: Episodio, with filePath: String) throws {
+    func updateLocalFilePath(forEpisode episode: Episode, with filePath: String) throws {
         // Update it on the in-memory array.
         try updateInMemoryEpisodeLocalFilePath(podcastID: episode.idPodcast, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
@@ -359,7 +359,7 @@ class DataManager {
         }
     }
     
-    func baixarEpisodios(arrayEpisodios: [Episodio], idPodcast: Int, completionHandler: @escaping (Bool) -> Void) {
+    func baixarEpisodios(arrayEpisodios: [Episode], idPodcast: Int, completionHandler: @escaping (Bool) -> Void) {
         var array = arrayEpisodios
         if let episodio = array.popLast() {
             guard !episodio.urlRemoto.isEmpty else {

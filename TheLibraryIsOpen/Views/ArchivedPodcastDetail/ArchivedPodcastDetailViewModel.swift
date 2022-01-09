@@ -8,7 +8,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var artworkURL: String
     @Published var displayEpisodeList: Bool = false
     
-    @Published var episodes = [Episodio]()
+    @Published var episodes = [Episode]()
     @Published var groups = [EpisodeGroup]()
     
     @Published var areAllSelectEpisodeList: Bool = true

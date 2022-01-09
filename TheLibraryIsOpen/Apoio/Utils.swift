@@ -2,7 +2,7 @@ import Foundation
 
 class Utils {
 
-    static func getSubtituloPodcast(episodes: [Episodio]) -> String {
+    static func getSubtituloPodcast(episodes: [Episode]) -> String {
         let firstEpisodePubYear = episodes[episodes.count - 1].dataPublicacao!.get(.year)
         let lastEpisodePubYear = episodes[0].dataPublicacao!.get(.year)
         
@@ -23,7 +23,7 @@ class Utils {
         return "\(episodes.count) \(episodiosText) · \(yearText)"
     }
     
-    static func getEpisodesGroupedByYear(from episodes: [Episodio]) -> [EpisodeGroup] {
+    static func getEpisodesGroupedByYear(from episodes: [Episode]) -> [EpisodeGroup] {
         var groups = [EpisodeGroup]()
         let dic = Dictionary(grouping: episodes, by: { $0.dataPublicacao!.get(.year) })
         for group in dic {
@@ -33,7 +33,7 @@ class Utils {
         return groups
     }
     
-    func getSize(ofEpisodes episodes: [Episodio]) -> String {
+    static func getSize(ofEpisodes episodes: [Episode]) -> String {
         guard episodes.count > 0 else {
             return ""
         }

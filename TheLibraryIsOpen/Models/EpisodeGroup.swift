@@ -6,17 +6,17 @@ struct EpisodeGroup: Identifiable {
     var title: String
     var value: String
     var isSelected: Bool
-    var episodes: [Episodio]
+    var episodes: [Episode]
     
     init(title: String, value: String) {
         id = UUID().uuidString
         self.title = title
         self.value = value
         isSelected = false
-        episodes = [Episodio]()
+        episodes = [Episode]()
     }
     
-    init(title: String, value: String, episodes: [Episodio]) {
+    init(title: String, value: String, episodes: [Episode]) {
         id = UUID().uuidString
         self.title = title
         self.value = value

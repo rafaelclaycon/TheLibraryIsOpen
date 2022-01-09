@@ -11,7 +11,7 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var displayEpisodeList: Bool = false
     
     // MARK: - Episode list variables
-    @Published var episodes = [Episodio]()
+    @Published var episodes = [Episode]()
     @Published var selectionKeeper = Set<String>()
     @Published var allEpisodesSelected: Bool = true
     @Published var recentsFirst: Bool = true
@@ -96,10 +96,10 @@ class PodcastPreviewViewModel: ObservableObject {
             downloadAllButtonTitle = "Download 0 episodes"
             isAnyEpisodeSelected = false
         } else if selectedEpisodes.count == 1 {
-            downloadAllButtonTitle = "Download 1 episode\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = "Download 1 episode\(Utils.getSize(ofEpisodes: selectedEpisodes))"
             isAnyEpisodeSelected = true
         } else {
-            downloadAllButtonTitle = "Download \(selectedEpisodes.count) episodes\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = "Download \(selectedEpisodes.count) episodes\(Utils.getSize(ofEpisodes: selectedEpisodes))"
             isAnyEpisodeSelected = true
         }
     }
