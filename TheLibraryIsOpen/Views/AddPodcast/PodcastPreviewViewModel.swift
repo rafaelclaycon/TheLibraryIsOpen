@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-class PodcastDetailViewModel: ObservableObject {
+class PodcastPreviewViewModel: ObservableObject {
 
     @Published var title: String
     @Published var details: String

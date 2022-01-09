@@ -9,7 +9,7 @@ class InstrucoesBViewModel: ObservableObject {
     @Published var primeiroEp = ""
     @Published var ultimoEp = ""
     @Published var qtd = ""
-    @Published var podcastDetailViewModel = PodcastDetailViewModel(podcast: Podcast(id: 0))
+    @Published var podcastDetailViewModel = PodcastPreviewViewModel(podcast: Podcast(id: 0))
     @Published var isMostrandoPodcastDetailView = false
     
     func processar() {
@@ -27,7 +27,7 @@ class InstrucoesBViewModel: ObservableObject {
                     fatalError()
                 }
                 
-                strongSelf.podcastDetailViewModel = PodcastDetailViewModel(podcast: podcast)
+                strongSelf.podcastDetailViewModel = PodcastPreviewViewModel(podcast: podcast)
                 strongSelf.processando = false
                 strongSelf.isMostrandoPodcastDetailView = true
                 

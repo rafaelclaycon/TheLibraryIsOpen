@@ -3,6 +3,7 @@ import SwiftUI
 struct MainView: View {
 
     @StateObject var viewModel = MainViewViewModel()
+    @State var exibindoSheetNovoPodcast = false
     
     var body: some View {
         let navBarItemSize: CGFloat = 36
@@ -10,11 +11,11 @@ struct MainView: View {
         NavigationView {
             VStack {
                 if viewModel.displayPodcastList {
-    //                List(viewModel.podcasts) { podcast in
-    //                    NavigationLink(destination: PodcastDetail(viewModel: PodcastDetailViewModel(podcast: podcast))) {
-    //                        PodcastRow(podcast: podcast)
-    //                    }
-    //                }
+                    List(viewModel.podcasts) { podcast in
+                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast))) {
+                            PodcastRow(podcast: podcast)
+                        }
+                    }
                 } else {
                     Image("PodcastsEmptyState")
                         .resizable()
@@ -34,18 +35,36 @@ struct MainView: View {
             }
             .navigationBarTitle(Text("Arquivo"))
             .navigationBarItems(trailing:
-                Button(action: {
-                    viewModel.exibindoSheetNovoPodcast = true
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-                        .frame(width: 32, height: 32, alignment: .center)
+                HStack(spacing: 30) {
+//                    Button(action: {
+//                        viewModel.updateList()
+//                    }) {
+//                        Image(systemName: "arrow.triangle.2.circlepath")
+//                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+//                            .frame(width: 30, height: 25, alignment: .center)
+//                            .foregroundColor(Color.primary)
+//                    }
+//                    .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
+                
+                    Button(action: {
+                        exibindoSheetNovoPodcast = true
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                            .frame(width: 32, height: 32, alignment: .center)
+                    }
+                    .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
                 }
-                .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
+                .padding(.trailing, 10)
             )
-            .sheet(isPresented: $viewModel.exibindoSheetNovoPodcast) {
-                InstrucoesAView(viewModel: InstrucoesAViewModel(), estaSendoExibido: $viewModel.exibindoSheetNovoPodcast)
+            .sheet(isPresented: $exibindoSheetNovoPodcast) {
+                InstrucoesAView(viewModel: InstrucoesAViewModel(), estaSendoExibido: $exibindoSheetNovoPodcast)
                     .interactiveDismissDisabled(true)
+            }
+            .onChange(of: exibindoSheetNovoPodcast) {
+                if $0 == false {
+                    viewModel.updateList()
+                }
             }
         }
     }
@@ -55,7 +74,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
 
     static var previews: some View {
-        MainView()
+        MainView(viewModel: MainViewViewModel(podcasts: [Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "Papel Pop", episodios: nil, urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]), exibindoSheetNovoPodcast: false)
     }
 
 }

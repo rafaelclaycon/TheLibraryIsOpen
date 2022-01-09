@@ -1,9 +1,9 @@
 import KingfisherSwiftUI
 import SwiftUI
 
-struct PodcastDetail: View {
+struct PodcastPreview: View {
 
-    @StateObject var viewModel: PodcastDetailViewModel
+    @StateObject var viewModel: PodcastPreviewViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
     @State var selectionKeeper = Set<String>()
@@ -183,10 +183,10 @@ struct PodcastDetail: View {
 
 }
 
-struct PodcastDetail_Previews: PreviewProvider {
+struct PodcastPreview_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastDetail(viewModel: PodcastDetailViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episodio(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true))
+        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episodio(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true))
     }
 
 }

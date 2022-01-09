@@ -73,6 +73,27 @@ class DataManager {
             try storage?.insert(episode: $0)
         }
     }
+    
+    func getPodcasts() throws -> [Podcast]? {
+        guard var obtainedPodcasts = try storage?.getAllPodcasts() else {
+            throw DataManagerError.noPodcasts
+        }
+        guard obtainedPodcasts.count > 0 else {
+            return nil
+        }
+        for i in 0...(obtainedPodcasts.count - 1) {
+            if let episodes = try storage?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
+                obtainedPodcasts[i].episodios = episodes
+                //obtainedPodcasts[i].episodios?.append(contentsOf: episodes)
+            }
+        }
+//        try obtainedPodcasts.forEach { podcast in
+//            if let episodes = try storage?.getAllEpisodes(forID: podcast.id) {
+//                podcast.episodios?.append(contentsOf: episodes)
+//            }
+//        }
+        return obtainedPodcasts
+    }
 
     func addEpisodes(_ episodes: [Episodio], podcastID: Int) throws {
         guard podcasts != nil else {
@@ -394,5 +415,6 @@ enum DataManagerError: Error {
     case naoFoiPossivelInterpretarResultadoiTunes
     case urlNaoEHTTP
     case resultadoiTunesInesperado
+    case noPodcasts
 
 }
