@@ -58,7 +58,7 @@ struct MainView: View {
                 .padding(.trailing, 10)
             )
             .sheet(isPresented: $exibindoSheetNovoPodcast) {
-                InstrucoesAView(viewModel: InstrucoesAViewModel(), estaSendoExibido: $exibindoSheetNovoPodcast)
+                InstructionsAView(isShowingModal: $exibindoSheetNovoPodcast)
                     .interactiveDismissDisabled(true)
             }
             .onChange(of: exibindoSheetNovoPodcast) {

@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct InstrucoesBView: View {
+struct InstructionsBView: View {
 
-    @StateObject var viewModel = InstrucoesBViewModel()
+    @StateObject var viewModel = InstructionsBViewModel()
     @Binding var estaSendoExibido: Bool
     
     var body: some View {
@@ -62,7 +62,7 @@ struct InstrucoesBView: View {
             }
             
             if viewModel.processando {
-                ProcessandoView()
+                ProcessingView(message: $viewModel.processingViewMessage)
             }
         }
         .navigationBarTitle(Text("Get Episodes"))
@@ -80,7 +80,7 @@ struct InstrucoesBView: View {
 struct InstrucoesLinkView_Previews: PreviewProvider {
 
     static var previews: some View {
-        InstrucoesBView(estaSendoExibido: .constant(true))
+        InstructionsBView(estaSendoExibido: .constant(true))
     }
 
 }

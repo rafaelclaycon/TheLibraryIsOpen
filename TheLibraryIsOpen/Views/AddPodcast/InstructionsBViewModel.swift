@@ -1,10 +1,11 @@
 import Combine
 import Foundation
 
-class InstrucoesBViewModel: ObservableObject {
+class InstructionsBViewModel: ObservableObject {
 
     @Published var entrada = ""
     @Published var processando = false
+    @Published var processingViewMessage = ""
     @Published var titulo = ""
     @Published var primeiroEp = ""
     @Published var ultimoEp = ""
@@ -13,6 +14,7 @@ class InstrucoesBViewModel: ObservableObject {
     @Published var isMostrandoPodcastDetailView = false
     
     func processar() {
+        processingViewMessage = "Processing link..."
         processando = true
         
         do {

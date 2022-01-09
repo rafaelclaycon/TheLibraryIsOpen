@@ -1,9 +1,8 @@
 import SwiftUI
 
-struct InstrucoesAView: View {
+struct InstructionsAView: View {
 
-    @StateObject var viewModel = InstrucoesAViewModel()
-    @Binding var estaSendoExibido: Bool
+    @Binding var isShowingModal: Bool
     @State private var action: Int? = 0
     @State private var indicePagina = 0
     
@@ -85,7 +84,7 @@ struct InstrucoesAView: View {
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: InstrucoesBView(estaSendoExibido: $estaSendoExibido), tag: 1, selection: $action, label: {
+                        NavigationLink(destination: InstructionsBView(estaSendoExibido: $isShowingModal), tag: 1, selection: $action, label: {
                             Text("Next")
                                 .bold()
                                 .foregroundColor(.white)
@@ -104,7 +103,7 @@ struct InstrucoesAView: View {
                 .navigationBarTitle(Text("Get Link"))
                 .navigationBarItems(leading:
                     Button(action: {
-                        self.estaSendoExibido = false
+                        self.isShowingModal = false
                     }) {
                         Text("Cancel")
                     }
@@ -120,7 +119,7 @@ struct ContentView_Previews: PreviewProvider {
     // iPod touch (7th generation)
     static var previews: some View {
         ForEach(["iPhone 12"], id: \.self) { deviceName in
-            InstrucoesAView(estaSendoExibido: .constant(true))
+            InstructionsAView(isShowingModal: .constant(true))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
     }
