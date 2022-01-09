@@ -1,40 +1,42 @@
 # The Library Is Open! 💃🏼
 
-![RuPaul Charles dizendo: Because reading is what? Fundamental! - Porque ler é o quê? Fundamental!](TheLibraryIsOpen/Recursos/reading-is-fundamental.gif)
+![A GIF of RuPaul Charles saying: Because reading is what? Fundamental!](TheLibraryIsOpen/Recursos/reading-is-fundamental.gif)
 
-Arquive os episódios do seu podcast favorito com este app para iOS.
+This is meant as a celebration of how open podcasts (used to) be.
 
-![GIF mostrando o app sendo usado para inserir o link do Apple Podcasts.](TheLibraryIsOpen/Recursos/flow-principal.gif)
+Download your favorites before the big bad takes them (I'm talking about at you, Spotify).
 
-![Protótipo: 5 telas dispostas horizontalmente apresentando o fluxo principal do app, indo desde a tela vazia sem podcasts até a tela com as informação de um podcast inserido pelo usuário.](TheLibraryIsOpen/Recursos/prototipo.png)
+![A GIF showing the app in action.](TheLibraryIsOpen/Recursos/flow-principal.gif)
 
-## Funcionalidades
+![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Recursos/prototipo.png)
 
-### Objetivos principais
+## Features
 
-- [x] Obter URL do feed de um podcast a partir do link do Apple Podcasts
-- [x] Obter lista de episódios
-- [x] Baixar episódios
-- [ ] Armazenar episódios baixados em um arquivo .zip (em breve)
-- [ ] Upar o arquivo para um serviço de armazenamento na nuvem (em breve)
+### Main features (MVP)
+
+- [x] Get podcast feed URL from an Apple Podcasts link
+- [x] Get episode list
+- [ ] Download episodes
+- [ ] Store downloaded episodes in a ZIP file
+- [ ] Upload the file do iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
 
 ### Backlog
 
-Acompanhe o backlog do projeto no Trello: https://trello.com/b/RvZ82ZLx
+Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
 
-## Requisitos
+## Prerequisites
 
 - iOS 15.0+
 - Xcode 13+
 
-## Como rodar
+## How to run
 
-1. Clone o repositório e abra TheLibraryIsOpen.xcodeproj com o Xcode.
-1. Aguarde o download das dependências pelo Xcode.
-1. ⌘ + B para buildar. ⌘ + R para rodar no simulador.
+1. Clone the repo and open TheLibraryIsOpen.xcodeproj on Xcode.
+1. Wait for Xcode to download all dependencies (Swift packages).
+1. Use ⌘ + B to build and ⌘ + R to run the app on the Simulator.
 
-## Sobre esse repo
+## About this repo
 
 Rafael Claycon Schmitt – [@mitt_rafael](https://twitter.com/mitt_rafael) – rafael.claycon@gmail.com
 
-Distribuído sob a licença MIT. Veja ``LICENSE`` para mais informações.
+Distributed under the MIT license. See ``LICENSE`` for more information.
