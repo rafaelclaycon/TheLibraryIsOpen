@@ -3,7 +3,7 @@ import SwiftUI
 struct InstructionsAView: View {
 
     @Binding var isShowingModal: Bool
-    @Binding var podcastToAutoOpenAfterAdd: Int
+    @Binding var podcastToAutoOpenAfterAdd: Int?
     @State private var action: Int? = 0
     @State private var indicePagina = 0
     

@@ -4,7 +4,7 @@ struct InstructionsBView: View {
 
     @StateObject var viewModel = InstructionsBViewModel()
     @Binding var estaSendoExibido: Bool
-    @Binding var podcastToAutoOpenAfterAdd: Int
+    @Binding var podcastToAutoOpenAfterAdd: Int?
     
     var body: some View {
         ZStack {

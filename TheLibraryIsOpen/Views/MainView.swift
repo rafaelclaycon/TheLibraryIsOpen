@@ -4,8 +4,7 @@ struct MainView: View {
 
     @StateObject var viewModel = MainViewViewModel()
     @State var showingNewPodcastSheet = false
-    @State var podcastToAutoOpenAfterAdd: Int = 0
-    @State private var action: Int? = 0
+    @State var podcastToAutoOpenAfterAdd: Int? = 0
     
     var body: some View {
         let navBarItemSize: CGFloat = 36
@@ -14,7 +13,7 @@ struct MainView: View {
             VStack {
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
-                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $action, label: {
+                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $podcastToAutoOpenAfterAdd, label: {
                             PodcastRow(podcast: podcast)
                         })
                     }
@@ -66,11 +65,6 @@ struct MainView: View {
             .onChange(of: showingNewPodcastSheet) {
                 if $0 == false {
                     viewModel.updateList()
-                    
-                    if podcastToAutoOpenAfterAdd > 0 {
-                        print("HERMIONE - PodcastId: \(podcastToAutoOpenAfterAdd)")
-                        action = podcastToAutoOpenAfterAdd
-                    }
                 }
             }
         }

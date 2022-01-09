@@ -6,7 +6,7 @@ struct PodcastPreview: View {
     @StateObject var viewModel: PodcastPreviewViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
-    @Binding var podcastToAutoOpenAfterAdd: Int
+    @Binding var podcastToAutoOpenAfterAdd: Int?
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
