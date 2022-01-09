@@ -3,19 +3,20 @@ import Combine
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
 
+    var podcast: Podcast
+    
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
     @Published var displayEpisodeList: Bool = false
-    
     @Published var episodes = [Episode]()
-    @Published var groups = [EpisodeGroup]()
-    
     @Published var areAllSelectEpisodeList: Bool = true
-    @Published var areAllSelectEpisodeGroupList: Bool = false
-    @Published var selectAllButtonTitle: String = "Deselecionar Todos"
-    
     @Published var recentsFirst: Bool = true
+    
+    // List status keepers
+    @Published var downloadingKeeper = Set<String>()
+    @Published var downloadedKeeper = Set<String>()
+    @Published var downloadErrorKeeper = Set<String>()
     
     @Published var downloadAllButtonTitle = ""
     var isAnyEpisodeSelected: Bool {
@@ -24,8 +25,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             return true
         }
     }
-    
-    var podcast: Podcast
     
     // Alerts
     @Published var alertTitle: String = ""
@@ -41,10 +40,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes!
         
-        if (podcast.episodes?.count ?? 0) > 0 {
-            groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
-        }
-        
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         
         let episodesToDownload = episodes.filter {
@@ -57,12 +52,21 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     
     func download(episodes: [Episode]) {
         dataManager.baixarEpisodios(arrayEpisodios: episodes, idPodcast: podcast.id) { [weak self] success in
+            guard let strongSelf = self else {
+                return
+            }
+            
             if success {
                 for i in 0...(episodes.count - 1) {
-                    self?.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
+                    strongSelf.downloadedKeeper.insert(strongSelf.episodes[i].id)
+                    strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
                 }
                 self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
             } else {
+                for i in 0...(episodes.count - 1) {
+                    strongSelf.downloadErrorKeeper.insert(strongSelf.episodes[i].id)
+                    strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.downloadError.rawValue
+                }
                 self?.showAlert(withTitle: "Episode Download Unsuccessful", message: ":(")
             }
         }

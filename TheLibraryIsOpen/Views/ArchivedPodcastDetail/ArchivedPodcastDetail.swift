@@ -6,11 +6,6 @@ struct ArchivedPodcastDetail: View {
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
     
-    // List status keepers
-    @State var downloadingKeeper = Set<String>()
-    @State var downloadedKeeper = Set<String>()
-    @State var downloadErrorKeeper = Set<String>()
-    
     // Private properties
     private let artworkSize: CGFloat = 64.0
     private let recentsFirstText = "Most recent first"
@@ -56,9 +51,9 @@ struct ArchivedPodcastDetail: View {
                     LazyVStack {
                         ForEach(viewModel.episodes, id: \.id) { episode in
                             ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode),
-                                               downloadingItems: $downloadingKeeper,
-                                               downloadedItems: $downloadedKeeper,
-                                               downloadErrorItems: $downloadErrorKeeper,
+                                               downloadingItems: $viewModel.downloadingKeeper,
+                                               downloadedItems: $viewModel.downloadedKeeper,
+                                               downloadErrorItems: $viewModel.downloadErrorKeeper,
                                                circleSize: 30.0)
                                 .padding(.vertical, 5)
                         }
