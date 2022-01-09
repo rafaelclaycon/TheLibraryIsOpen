@@ -74,7 +74,13 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
 
     static var previews: some View {
-        MainView(viewModel: MainViewViewModel(podcasts: [Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "Papel Pop", episodios: nil, urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]), exibindoSheetNovoPodcast: false)
+        MainView(viewModel: MainViewViewModel(podcasts: [Podcast(id: 1,
+                                                                 title: "Um Milkshake Chamado Wanda",
+                                                                 author: "Papel Pop",
+                                                                 episodes: nil,
+                                                                 feedUrl: "",
+                                                                 artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]),
+                 exibindoSheetNovoPodcast: false)
     }
 
 }

@@ -52,8 +52,8 @@ struct PodcastCell_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            PodcastRow(podcast: Podcast(id: 1, titulo: "Praia dos Ossos", autor: "Rádio Novelo", episodios: nil, urlFeed: "", urlCapa: ""))
-            PodcastRow(podcast: Podcast(id: 2, titulo: "Accidental Tech Podcast", autor: "Marco Arment, Casey Liss, John Siracusa", episodios: nil, urlFeed: "", urlCapa: ""))
+            PodcastRow(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: "", artworkUrl: ""))
+            PodcastRow(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: "", artworkUrl: ""))
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }

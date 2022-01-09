@@ -261,12 +261,12 @@
 		D9D3DBD8256E9BB40035560E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D936C3F2278A33230073B806 /* ArchivedPodcastDetail */,
 				D94AEC472570BEE9001DEB9B /* MainView.swift */,
 				D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */,
 				D94AEC6425719285001DEB9B /* AddPodcast */,
 				D936C3F0278A24730073B806 /* EpisodeRow */,
 				D936C3F1278A247F0073B806 /* EpisodeGroupView */,
+				D936C3F2278A33230073B806 /* ArchivedPodcastDetail */,
 				D940AD0227832AD400DF7549 /* Shared */,
 			);
 			path = Views;

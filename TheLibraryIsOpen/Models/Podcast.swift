@@ -9,13 +9,13 @@ struct Podcast: Hashable, Codable, Identifiable {
     var feedUrl: String
     var artworkUrl: String
     
-    init(id: Int, titulo: String, autor: String, episodios: [Episode]?, urlFeed: String, urlCapa: String) {
+    init(id: Int, title: String, author: String, episodes: [Episode]?, feedUrl: String, artworkUrl: String) {
         self.id = id
-        self.title = titulo
-        self.author = autor
-        self.episodes = episodios
-        self.feedUrl = urlFeed
-        self.artworkUrl = urlCapa
+        self.title = title
+        self.author = author
+        self.episodes = episodes
+        self.feedUrl = feedUrl
+        self.artworkUrl = artworkUrl
     }
     
     init(id: Int) {

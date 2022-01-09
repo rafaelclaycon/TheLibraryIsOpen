@@ -92,7 +92,19 @@ struct ArchivedPodcastDetail: View {
 struct ArchivedPodcastDetail_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, titulo: "Um Milkshake Chamado Wanda", autor: "PAPELPOP", episodios: [Episode(id: UUID().uuidString, idPodcast: 1, titulo: "Teste", dataPublicacao: Date(), duracao: 2.0, urlRemoto: "", tamanho: 13000)], urlFeed: "", urlCapa: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true))
+        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1,
+                                                                           title: "Um Milkshake Chamado Wanda",
+                                                                           author: "PAPELPOP",
+                                                                           episodes: [Episode(id: UUID().uuidString,
+                                                                                              podcastId: 1,
+                                                                                              title: "Teste",
+                                                                                              pubDate: Date(),
+                                                                                              duration: 2.0,
+                                                                                              remoteUrl: "",
+                                                                                              filesize: 13000)],
+                                                                           feedUrl: "",
+                                                                           artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")),
+                       estaSendoExibido: .constant(true))
     }
 
 }
