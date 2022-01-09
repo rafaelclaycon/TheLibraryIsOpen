@@ -174,6 +174,7 @@
 				D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */,
 				D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */,
 				D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */,
+				D997FC76278B903800F027CB /* DownloadStatusFileSymbols */,
 			);
 			path = ArchivedPodcastDetail;
 			sourceTree = "<group>";
@@ -184,9 +185,6 @@
 				D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */,
 				D940AD0027831E3000DF7549 /* RoundCheckbox.swift */,
 				D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */,
-				D9E56BEC278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift */,
-				D9E56BEE278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift */,
-				D9E56BF0278B64A400AA0DD9 /* FileWaitingForDownloadSymbol.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -213,6 +211,16 @@
 				D91AC97225F51CCE0086396D /* ProcessingView.swift */,
 			);
 			path = AddPodcast;
+			sourceTree = "<group>";
+		};
+		D997FC76278B903800F027CB /* DownloadStatusFileSymbols */ = {
+			isa = PBXGroup;
+			children = (
+				D9E56BEC278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift */,
+				D9E56BEE278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift */,
+				D9E56BF0278B64A400AA0DD9 /* FileWaitingForDownloadSymbol.swift */,
+			);
+			path = DownloadStatusFileSymbols;
 			sourceTree = "<group>";
 		};
 		D9D3DB72256E7BC00035560E = {

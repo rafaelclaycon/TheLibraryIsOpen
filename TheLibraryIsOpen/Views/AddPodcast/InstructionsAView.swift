@@ -3,6 +3,7 @@ import SwiftUI
 struct InstructionsAView: View {
 
     @Binding var isShowingModal: Bool
+    @Binding var podcastToAutoOpenAfterAdd: Int
     @State private var action: Int? = 0
     @State private var indicePagina = 0
     
@@ -84,7 +85,7 @@ struct InstructionsAView: View {
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: InstructionsBView(estaSendoExibido: $isShowingModal), tag: 1, selection: $action, label: {
+                        NavigationLink(destination: InstructionsBView(estaSendoExibido: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: 1, selection: $action, label: {
                             Text("Next")
                                 .bold()
                                 .foregroundColor(.white)
@@ -119,7 +120,7 @@ struct ContentView_Previews: PreviewProvider {
     // iPod touch (7th generation)
     static var previews: some View {
         ForEach(["iPhone 12"], id: \.self) { deviceName in
-            InstructionsAView(isShowingModal: .constant(true))
+            InstructionsAView(isShowingModal: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
     }

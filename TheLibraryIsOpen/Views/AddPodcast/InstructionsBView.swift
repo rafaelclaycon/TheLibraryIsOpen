@@ -4,6 +4,7 @@ struct InstructionsBView: View {
 
     @StateObject var viewModel = InstructionsBViewModel()
     @Binding var estaSendoExibido: Bool
+    @Binding var podcastToAutoOpenAfterAdd: Int
     
     var body: some View {
         ZStack {
@@ -25,14 +26,14 @@ struct InstructionsBView: View {
                         .padding(.horizontal, 25)
                         .padding(.bottom, 15)
                     
-                    TextField("https://...", text: $viewModel.entrada)
+                    TextField("https://podcasts.apple.com...", text: $viewModel.entrada)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 25)
                     
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido), isActive: $viewModel.isMostrandoPodcastDetailView) { EmptyView() }
+                        NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isMostrandoPodcastDetailView) { EmptyView() }
                         
                         Button(action: {
                             viewModel.processar()
@@ -80,7 +81,7 @@ struct InstructionsBView: View {
 struct InstrucoesLinkView_Previews: PreviewProvider {
 
     static var previews: some View {
-        InstructionsBView(estaSendoExibido: .constant(true))
+        InstructionsBView(estaSendoExibido: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }

@@ -75,7 +75,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-CLEAN_DATABASE_UPON_LAUNCH"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

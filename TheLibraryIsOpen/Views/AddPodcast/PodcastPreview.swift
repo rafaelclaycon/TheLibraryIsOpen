@@ -6,6 +6,7 @@ struct PodcastPreview: View {
     @StateObject var viewModel: PodcastPreviewViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
+    @Binding var podcastToAutoOpenAfterAdd: Int
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -132,6 +133,7 @@ struct PodcastPreview: View {
             
             Button(action: {
                 if viewModel.download(episodeIDs: viewModel.selectionKeeper) {
+                    podcastToAutoOpenAfterAdd = viewModel.podcast.id
                     estaSendoExibido = false
                 }
             }) {
@@ -176,7 +178,7 @@ struct PodcastPreview: View {
 struct PodcastPreview_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, title: "Um Milkshake Chamado Wanda", author: "PAPELPOP", episodes: [Episode(id: UUID().uuidString, podcastId: 1, title: "Teste", pubDate: Date(), duration: 2.0, remoteUrl: "", filesize: 13000)], feedUrl: "", artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true))
+        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, title: "Um Milkshake Chamado Wanda", author: "PAPELPOP", episodes: [Episode(id: UUID().uuidString, podcastId: 1, title: "Teste", pubDate: Date(), duration: 2.0, remoteUrl: "", filesize: 13000)], feedUrl: "", artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), estaSendoExibido: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }

@@ -3,7 +3,9 @@ import SwiftUI
 struct MainView: View {
 
     @StateObject var viewModel = MainViewViewModel()
-    @State var exibindoSheetNovoPodcast = false
+    @State var showingNewPodcastSheet = false
+    @State var podcastToAutoOpenAfterAdd: Int = 0
+    @State private var action: Int? = 0
     
     var body: some View {
         let navBarItemSize: CGFloat = 36
@@ -12,9 +14,9 @@ struct MainView: View {
             VStack {
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
-                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast))) {
+                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $action, label: {
                             PodcastRow(podcast: podcast)
-                        }
+                        })
                     }
                 } else {
                     Image("PodcastsEmptyState")
@@ -47,7 +49,7 @@ struct MainView: View {
 //                    .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
                 
                     Button(action: {
-                        exibindoSheetNovoPodcast = true
+                        showingNewPodcastSheet = true
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
@@ -57,13 +59,18 @@ struct MainView: View {
                 }
                 .padding(.trailing, 10)
             )
-            .sheet(isPresented: $exibindoSheetNovoPodcast) {
-                InstructionsAView(isShowingModal: $exibindoSheetNovoPodcast)
+            .sheet(isPresented: $showingNewPodcastSheet) {
+                InstructionsAView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     .interactiveDismissDisabled(true)
             }
-            .onChange(of: exibindoSheetNovoPodcast) {
+            .onChange(of: showingNewPodcastSheet) {
                 if $0 == false {
                     viewModel.updateList()
+                    
+                    if podcastToAutoOpenAfterAdd > 0 {
+                        print("HERMIONE - PodcastId: \(podcastToAutoOpenAfterAdd)")
+                        action = podcastToAutoOpenAfterAdd
+                    }
                 }
             }
         }
@@ -80,7 +87,7 @@ struct MainView_Previews: PreviewProvider {
                                                                  episodes: nil,
                                                                  feedUrl: "",
                                                                  artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]),
-                 exibindoSheetNovoPodcast: false)
+                 showingNewPodcastSheet: false)
     }
 
 }
