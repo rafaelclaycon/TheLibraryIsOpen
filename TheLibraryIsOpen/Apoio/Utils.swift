@@ -32,5 +32,19 @@ class Utils {
         groups.sort(by: { $0.title < $1.title })
         return groups
     }
+    
+    func getSize(ofEpisodes episodes: [Episodio]) -> String {
+        guard episodes.count > 0 else {
+            return ""
+        }
+        var size = 0
+        for episode in episodes {
+            size += episode.tamanho
+        }
+        guard size > 0 else {
+            return ""
+        }
+        return " (\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)))"
+    }
 
 }

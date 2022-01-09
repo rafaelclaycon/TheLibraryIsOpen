@@ -2,36 +2,34 @@ import Combine
 import Foundation
 
 class PodcastPreviewViewModel: ObservableObject {
+    
+    var podcast: Podcast
 
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
     @Published var displayEpisodeList: Bool = false
     
+    // MARK: - Episode list variables
     @Published var episodes = [Episodio]()
-    @Published var groups = [EpisodeGroup]()
-    
-    @Published var areAllSelectEpisodeList: Bool = true
-    @Published var areAllSelectEpisodeGroupList: Bool = false
-    @Published var selectAllButtonTitle: String = "Deselecionar Todos"
-    
+    @Published var selectionKeeper = Set<String>()
+    @Published var allEpisodesSelected: Bool = true
     @Published var recentsFirst: Bool = true
     
+    // MARK: - Year group list variables
+    @Published var groups = [EpisodeGroup]()
+    @Published var allGroupsSelected: Bool = false
+    
+    // MARK: - Download button variables
     @Published var downloadAllButtonTitle = ""
-    var isAnyEpisodeSelected: Bool {
-        get {
-            // return episodes.contains { $0.selectedForDownload == true }
-            return true
-        }
-    }
+    @Published var isAnyEpisodeSelected: Bool = false
     
-    var podcast: Podcast
-    
-    // Alerts
+    // MARK: - Alert variables
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
 
+    // MARK: - Initialization
     init(podcast: Podcast) {
         self.podcast = podcast
         
@@ -41,24 +39,69 @@ class PodcastPreviewViewModel: ObservableObject {
         details = podcast.episodios?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodios!) : ""
         episodes = podcast.episodios!
         
-        applyToAllEpisodes(select: true)
+        selectAllEpisodes()
+        updateDownloadButton(selectedIDs: Array(selectionKeeper))
         
         if (podcast.episodios?.count ?? 0) > 0 {
             groups = Utils.getEpisodesGroupedByYear(from: podcast.episodios!)
         }
         
         displayEpisodeList = podcast.episodios?.count ?? 0 > 0
-        
-        downloadAllButtonTitle = "Baixar \(podcast.episodios?.count ?? 0) episódios\(podcast.getTamanhoEpisodios())"
     }
     
-    func applyToAllEpisodes(select: Bool) {
-        if episodes.count > 0 {
-            for i in 0...(episodes.count - 1) {
-                //episodes[i].selectedForDownload = select
-            }
+    // MARK: - Select all methods
+    func toggleSelectAll() {
+        if allEpisodesSelected {
+            unselectAllEpisodes()
+        } else {
+            selectAllEpisodes()
         }
-        areAllSelectEpisodeList = select
+    }
+    
+    func selectAllEpisodes() {
+        selectionKeeper = Set(episodes.map{ $0.id })
+        allEpisodesSelected = true
+    }
+    
+    func unselectAllEpisodes() {
+        selectionKeeper = Set()
+        allEpisodesSelected = false
+    }
+    
+    // MARK: - Sort episode list methods
+    func toggleSortList() {
+        if recentsFirst {
+            sortEpisodesByPubDateAscending()
+        } else {
+            sortEpisodesByPubDateDescending()
+        }
+    }
+    
+    func sortEpisodesByPubDateAscending() {
+        episodes.sort { $0.dataPublicacao! < $1.dataPublicacao! }
+        recentsFirst = false
+    }
+    
+    func sortEpisodesByPubDateDescending() {
+        episodes.sort { $0.dataPublicacao! > $1.dataPublicacao! }
+        recentsFirst = true
+    }
+    
+    // MARK: - Download button methods
+    func updateDownloadButton(selectedIDs: [String]) {
+        let selectedEpisodes = episodes.filter {
+            selectedIDs.contains($0.id)
+        }
+        if selectedEpisodes.count == 0 {
+            downloadAllButtonTitle = "Baixar 0 episódios"
+            isAnyEpisodeSelected = false
+        } else if selectedEpisodes.count == 1 {
+            downloadAllButtonTitle = "Baixar 1 episódio\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            isAnyEpisodeSelected = true
+        } else {
+            downloadAllButtonTitle = "Baixar \(selectedEpisodes.count) episódios\(Utils().getSize(ofEpisodes: selectedEpisodes))"
+            isAnyEpisodeSelected = true
+        }
     }
     
     func download(episodeIDs: Set<String>) -> Bool {
@@ -82,7 +125,7 @@ class PodcastPreviewViewModel: ObservableObject {
         return true
     }
     
-    // MARK: - Error messages
+    // MARK: - Error message methods
 
     private func showPodcastIDNotFoundAlert() {
         alertTitle = "Um Podcast Com Esse ID Não Foi Encontrado"

@@ -6,7 +6,6 @@ struct PodcastPreview: View {
     @StateObject var viewModel: PodcastPreviewViewModel
     @State private var indicePagina = 0
     @Binding var estaSendoExibido: Bool
-    @State var selectionKeeper = Set<String>()
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -71,28 +70,16 @@ struct PodcastPreview: View {
             
             HStack(spacing: 20) {
                 Button(action: {
-                    viewModel.areAllSelectEpisodeList.toggle()
-                    
-                    if viewModel.areAllSelectEpisodeList {
-                        viewModel.applyToAllEpisodes(select: true)
-                    } else {
-                        viewModel.applyToAllEpisodes(select: false)
-                    }
+                    viewModel.toggleSelectAll()
                 }) {
                     HStack {
-                        Image(systemName: viewModel.areAllSelectEpisodeList ? "circle.dotted" : "checkmark.circle")
-                        Text(viewModel.areAllSelectEpisodeList ? unselectAllText : selectAllText)
+                        Image(systemName: viewModel.allEpisodesSelected ? "circle.dotted" : "checkmark.circle")
+                        Text(viewModel.allEpisodesSelected ? unselectAllText : selectAllText)
                     }
                 }
                 
                 Button(action: {
                     viewModel.recentsFirst.toggle()
-                    
-                    if viewModel.areAllSelectEpisodeList {
-                        viewModel.applyToAllEpisodes(select: true)
-                    } else {
-                        viewModel.applyToAllEpisodes(select: false)
-                    }
                 }) {
                     HStack {
                         Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
@@ -110,10 +97,13 @@ struct PodcastPreview: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode), selectedItems: $selectionKeeper)
+                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode), selectedItems: $viewModel.selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
+                    }
+                    .onChange(of: viewModel.selectionKeeper) { value in
+                        viewModel.updateDownloadButton(selectedIDs: Array(viewModel.selectionKeeper))
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
@@ -141,7 +131,7 @@ struct PodcastPreview: View {
                 .padding(.bottom, 5)
             
             Button(action: {
-                if viewModel.download(episodeIDs: selectionKeeper) {
+                if viewModel.download(episodeIDs: viewModel.selectionKeeper) {
                     estaSendoExibido = false
                 }
             }) {

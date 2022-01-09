@@ -26,19 +26,5 @@ struct Podcast: Hashable, Codable, Identifiable {
         urlFeed = ""
         urlCapa = ""
     }
-    
-    func getTamanhoEpisodios() -> String {
-        guard let episodios = episodios, episodios.count > 0 else {
-            return ""
-        }
-        var tamanho = 0
-        for episodio in episodios {
-            tamanho += episodio.tamanho
-        }
-        guard tamanho > 0 else {
-            return ""
-        }
-        return " (\(ByteCountFormatter.string(fromByteCount: Int64(tamanho), countStyle: .file)))"
-    }
 
 }
