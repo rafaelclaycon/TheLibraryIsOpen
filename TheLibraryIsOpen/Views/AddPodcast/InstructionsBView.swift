@@ -16,7 +16,6 @@ struct InstructionsBView: View {
                         Image("paste")
                             .resizable()
                             .frame(width: 350, height: 197)
-                            .border(Color.gray, width: 1)
                         
                         Spacer()
                     }

@@ -40,7 +40,7 @@ struct InstructionsAView: View {
                             Text("2. Find the podcast you want to archive")
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("3. Tap the ... button on the top left of the show page")
+                            Text("3. Tap the ... button on the top right of the show page")
                                 .padding(.bottom, bottomPadding)
                             
                             Text("4. Tap Copy Link")
