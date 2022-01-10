@@ -28,3 +28,13 @@
 "instructions_b_view_step6" = "6. Paste the podcast link here:";
 "instructions_b_view_process_link_button_label" = "Process Link";
 "instructions_b_view_loader_label" = "Processing link...";
+
+// PodcastPreview
+
+"podcast_preview_episode_list" = "Episode list";
+"podcast_preview_grouped_by_year" = "Grouped by year";
+"podcast_preview_select_all" = "Select all";
+"podcast_preview_unselect_all" = "Unselect all";
+"podcast_preview_most_recent_first" = "Most recent first";
+"podcast_preview_oldest_first" = "Oldest first";
+"podcast_preview_download_episodes_button_title" = "Download";

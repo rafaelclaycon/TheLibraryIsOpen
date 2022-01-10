@@ -10,10 +10,10 @@ struct PodcastPreview: View {
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
-    private let selectAllText = "Select all"
-    private let unselectAllText = "Unselect all"
-    private let recentsFirstText = "Most recent first"
-    private let oldestFirstText = "Oldest first"
+    private let selectAllText = LocalizableStrings.PodcastPreview.selectAll
+    private let unselectAllText = LocalizableStrings.PodcastPreview.unselectAll
+    private let recentsFirstText = LocalizableStrings.PodcastPreview.mostRecentFirst
+    private let oldestFirstText = LocalizableStrings.PodcastPreview.oldestFirst
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -61,8 +61,8 @@ struct PodcastPreview: View {
             .padding(.trailing, 15)
             
             Picker(selection: $indicePagina, label: Text("Grouped by")) {
-                Text("Episode list").tag(0)
-                Text("Grouped by year").tag(1)
+                Text(LocalizableStrings.PodcastPreview.episodeList).tag(0)
+                Text(LocalizableStrings.PodcastPreview.groupedByYear).tag(1)
             }
             .disabled(viewModel.displayEpisodeList == false)
             .pickerStyle(SegmentedPickerStyle())
@@ -168,7 +168,7 @@ struct PodcastPreview: View {
             Button(action: {
                 self.estaSendoExibido = false
             }) {
-                Text("Cancel")
+                Text(LocalizableStrings.cancel)
             }
         )
     }
