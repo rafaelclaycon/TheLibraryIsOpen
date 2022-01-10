@@ -4,6 +4,7 @@ class MainViewViewModel: ObservableObject {
     
     @Published var podcasts: [Podcast]
     @Published var displayPodcastList: Bool = false
+    @Published var numberOfPodcasts: String = ""
     
     // Alerts
     @Published var alertTitle: String = ""
@@ -23,6 +24,7 @@ class MainViewViewModel: ObservableObject {
             }
             if podcastsFromDB.count > 0 {
                 podcasts = podcastsFromDB
+                numberOfPodcasts = getNumberOfPodcastsText()
                 displayPodcastList = true
             } else {
                 displayPodcastList = false
@@ -30,6 +32,15 @@ class MainViewViewModel: ObservableObject {
         } catch {
             return showError(title: "Erro Ao Tentar Carregar Podcasts", message: error.localizedDescription)
         }
+    }
+    
+    private func getNumberOfPodcastsText() -> String {
+        if podcasts.count == 0 {
+            return "No podcasts"
+        } else if podcasts.count == 1 {
+            return "1 podcast"
+        }
+        return "\(podcasts.count) podcasts"
     }
     
     private func showError(title: String, message: String) {

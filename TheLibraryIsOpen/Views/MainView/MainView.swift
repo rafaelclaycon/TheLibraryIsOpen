@@ -7,8 +7,6 @@ struct MainView: View {
     @State var podcastToAutoOpenAfterAdd: Int? = 0
     
     var body: some View {
-        let navBarItemSize: CGFloat = 36
-        
         NavigationView {
             VStack {
                 if viewModel.displayPodcastList {
@@ -27,36 +25,23 @@ struct MainView: View {
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     
-                    Text("To archive a new podcast, tap the + button at the top of the screen.")
+                    Text("To archive a new podcast, tap the Add Podcast button at the top of the screen.")
                         .font(.body)
                         .padding(.horizontal, 40)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
                 }
             }
-            .navigationBarTitle(Text("Archive"))
+            .navigationBarTitle(Text("My Archive"))
             .navigationBarItems(trailing:
-                HStack(spacing: 30) {
-//                    Button(action: {
-//                        viewModel.updateList()
-//                    }) {
-//                        Image(systemName: "arrow.triangle.2.circlepath")
-//                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-//                            .frame(width: 30, height: 25, alignment: .center)
-//                            .foregroundColor(Color.primary)
-//                    }
-//                    .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
-                
-                    Button(action: {
-                        showingNewPodcastSheet = true
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-                            .frame(width: 32, height: 32, alignment: .center)
+                Button(action: {
+                    showingNewPodcastSheet = true
+                }) {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add Podcast")
                     }
-                    .frame(width: navBarItemSize, height: navBarItemSize, alignment: .center)
                 }
-                .padding(.trailing, 10)
             )
             .sheet(isPresented: $showingNewPodcastSheet) {
                 InstructionsAView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)

@@ -36,7 +36,7 @@ struct PodcastRow: View {
                     .bold()
                     .padding(.leading, 15)
                     .padding(.bottom, 2)
-                Text(podcast.author)
+                Text("\(podcast.episodes?.count ?? 0) archived episodes")
                     .padding(.leading, 15)
                     .foregroundColor(.gray)
                     .font(.footnote)

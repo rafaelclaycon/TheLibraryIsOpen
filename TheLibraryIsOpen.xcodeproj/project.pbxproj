@@ -210,7 +210,6 @@
 				D9D2D54225FBE42F0099AE42 /* InstructionsBViewModel.swift */,
 				D9D3DBE1256EA2AE0035560E /* PodcastPreview.swift */,
 				D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */,
-				D9D3DBD9256E9C0D0035560E /* PodcastRow.swift */,
 				D91AC97225F51CCE0086396D /* ProcessingView.swift */,
 			);
 			path = AddPodcast;
@@ -224,6 +223,16 @@
 				D9E56BF0278B64A400AA0DD9 /* FileWaitingForDownloadSymbol.swift */,
 			);
 			path = DownloadStatusFileSymbols;
+			sourceTree = "<group>";
+		};
+		D997FC79278BD9B100F027CB /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D94AEC472570BEE9001DEB9B /* MainView.swift */,
+				D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */,
+				D9D3DBD9256E9C0D0035560E /* PodcastRow.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		D9D3DB72256E7BC00035560E = {
@@ -293,8 +302,7 @@
 		D9D3DBD8256E9BB40035560E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D94AEC472570BEE9001DEB9B /* MainView.swift */,
-				D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */,
+				D997FC79278BD9B100F027CB /* MainView */,
 				D94AEC6425719285001DEB9B /* AddPodcast */,
 				D936C3F0278A24730073B806 /* EpisodeRow */,
 				D936C3F1278A247F0073B806 /* EpisodeGroupView */,

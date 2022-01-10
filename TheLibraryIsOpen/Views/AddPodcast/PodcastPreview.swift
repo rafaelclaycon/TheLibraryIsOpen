@@ -61,7 +61,7 @@ struct PodcastPreview: View {
             .padding(.trailing, 15)
             
             Picker(selection: $indicePagina, label: Text("Grouped by")) {
-                Text("Grouped by episode").tag(0)
+                Text("Episode list").tag(0)
                 Text("Grouped by year").tag(1)
             }
             .disabled(viewModel.displayEpisodeList == false)
