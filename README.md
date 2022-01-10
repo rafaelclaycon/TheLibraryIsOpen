@@ -24,6 +24,13 @@ Download your favorites before the big bad takes them (I'm talking about at you,
 
 Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
 
+### Supported languages
+
+- 🇺🇸 English
+- 🇧🇷 Brazilian Portuguese
+
+To change between languages, change the Simulator language in Settings or the app language under `Target > Edit Scheme... > Run > Options > App Language`.
+
 ## Prerequisites
 
 - iOS 15.0+
