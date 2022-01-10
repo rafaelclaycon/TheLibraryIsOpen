@@ -1,4 +1,5 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ArchivedPodcastDetail: View {
 
@@ -6,7 +7,7 @@ struct ArchivedPodcastDetail: View {
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
     @State var showingFileExplorer: Bool = false
-    //@State var showingFileExplorer: Bool = false
+    @State var myDocument: TextFile = TextFile(initialText: "Hello")
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -91,7 +92,7 @@ struct ArchivedPodcastDetail: View {
             Button(action: {
                 showingExportOptions = true
             }) {
-                Text("Export to...")
+                Text("Export all to...")
                     .bold()
             }
             .padding(.vertical, 15)
@@ -106,17 +107,26 @@ struct ArchivedPodcastDetail: View {
             .actionSheet(isPresented: $showingExportOptions) {
                 ActionSheet(title: Text("Please select a destination"),
                             message: nil,
-                            buttons: [.default(Text(files)) { viewModel.showExportDestinationNotSupportedYet(providerName: files) },
+                            buttons: [.default(Text(files)) {
+                                          //showingExportOptions = false
+                                          //showingFileExplorer = true
+                                          viewModel.showShareSheet()
+                                      },
                                       .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
                                       .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
                                       .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
                                       .cancel(Text("Cancel"))])
             }
+//            .fileExporter(isPresented: $showingFileExplorer, document: myDocument, contentType: .mp3, onCompletion: { result in
+//                switch result {
+//                case .success(let url):
+//                    print("Saved to \(url)")
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            })
         }
         .navigationBarTitle(viewModel.title, displayMode: .inline)
-//        .fileExporter(isPresented: $showingFileExplorer, documents: , contentType: .audio) { result in
-//
-//        }
     }
 
 }

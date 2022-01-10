@@ -1,9 +1,11 @@
 import Foundation
 import Combine
+import UIKit
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
 
     var podcast: Podcast
+    let appleURL = "https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/"
     
     @Published var title: String
     @Published var details: String
@@ -79,6 +81,14 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
     }
     
+    func showShareSheet() {
+        guard let urlShare = URL(string: appleURL) else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Error messages
 
     private func showPodcastIDNotFoundAlert() {
@@ -119,6 +129,5 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     
     func placeOrder() { }
     func adjustOrder() { }
-    func cancelOrder() { }
 
 }
