@@ -27,7 +27,8 @@ Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
 ### Supported languages
 
 - 🇺🇸 English
-- 🇧🇷 Brazilian Portuguese
+- 🇧🇷 Brazilian Portuguese (native)
+- 🇨🇦 Canadian French (not perfect, open to contributions :)
 
 To change between languages, change the Simulator language in Settings or the app language under `Target > Edit Scheme... > Run > Options > App Language`.
 
