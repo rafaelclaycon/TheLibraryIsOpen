@@ -15,9 +15,9 @@ class Utils {
         
         var episodiosText = ""
         if episodes.count == 1 {
-            episodiosText = "episode"
+            episodiosText = LocalizableStrings.episode
         } else {
-            episodiosText = "episodes"
+            episodiosText = LocalizableStrings.episodes
         }
         
         return "\(episodes.count) \(episodiosText) · \(yearText)"

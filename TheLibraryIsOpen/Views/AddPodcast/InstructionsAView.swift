@@ -86,7 +86,7 @@ struct InstructionsAView: View {
                         Spacer()
                         
                         NavigationLink(destination: InstructionsBView(estaSendoExibido: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: 1, selection: $action, label: {
-                            Text("Next")
+                            Text(LocalizableStrings.InstructionsAView.nextButtonLabel)
                                 .bold()
                                 .foregroundColor(.white)
                                 .padding(.vertical, 14)
@@ -101,12 +101,12 @@ struct InstructionsAView: View {
                     
                     Spacer()
                 }
-                .navigationBarTitle(Text("Get Link"))
+                .navigationBarTitle(Text(LocalizableStrings.InstructionsAView.title))
                 .navigationBarItems(leading:
                     Button(action: {
                         self.isShowingModal = false
                     }) {
-                        Text("Cancel")
+                        Text(LocalizableStrings.cancel)
                     }
                 )
             }

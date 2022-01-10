@@ -1,0 +1,18 @@
+
+// General
+
+"episode"= "episódio";
+"episodes"= "episódios";
+"cancel" = "Cancelar";
+
+// Main View
+
+"main_view_title" = "Meu Arquivo";
+"main_view_empty_state_title" = "Nenhum Podcast Arquivado";
+"main_view_empty_state_description" = "Para arquivar um novo podcast, toque em Adicionar no canto superior direito da tela.";
+"main_view_add_podcast_button_label" = "Adicionar";
+
+// Instructions A View
+
+"instructions_a_view_title" = "Obter Link";
+"instructions_a_view_next_button_label" = "Próximo";

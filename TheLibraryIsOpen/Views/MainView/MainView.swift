@@ -20,26 +20,26 @@ struct MainView: View {
                         .resizable()
                         .frame(width: 350, height: 200)
                     
-                    Text("No Archived Podcasts")
+                    Text(LocalizableStrings.MainView.emptyStateTitle)
                         .font(.title2)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     
-                    Text("To archive a new podcast, tap the Add Podcast button at the top of the screen.")
+                    Text(LocalizableStrings.MainView.emptyStateDescription)
                         .font(.body)
                         .padding(.horizontal, 40)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
                 }
             }
-            .navigationBarTitle(Text("My Archive"))
+            .navigationBarTitle(Text(LocalizableStrings.MainView.title))
             .navigationBarItems(trailing:
                 Button(action: {
                     showingNewPodcastSheet = true
                 }) {
                     HStack {
                         Image(systemName: "plus")
-                        Text("Add Podcast")
+                        Text(LocalizableStrings.MainView.addPodcastButtonLabel)
                     }
                 }
             )
