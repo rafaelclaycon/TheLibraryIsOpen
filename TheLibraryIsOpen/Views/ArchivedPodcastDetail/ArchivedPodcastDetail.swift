@@ -5,6 +5,8 @@ struct ArchivedPodcastDetail: View {
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
+    @State var showingFileExplorer: Bool = false
+    //@State var showingFileExplorer: Bool = false
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -32,13 +34,12 @@ struct ArchivedPodcastDetail: View {
                     }
                 }
                 
-                Button(action: {
-                    viewModel.recentsFirst.toggle()
-                }) {
-                    HStack {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                        Text("Reload list")
-                    }
+                Menu {
+                    Button("Only Downloaded", action: viewModel.placeOrder)
+                    Button("All Episodes", action: viewModel.adjustOrder)
+                } label: {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                    Text("Filter")
                 }
             }
             .padding(.vertical, 10)
@@ -74,6 +75,19 @@ struct ArchivedPodcastDetail: View {
             Divider()
                 .padding(.bottom, 5)
             
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 15) {
+                    ModernDataVisualizer(title: "Episodes", imageName: "play.circle", value: viewModel.episodeCount)
+                    Divider()
+                        .fixedSize()
+                    ModernDataVisualizer(title: "Total size", imageName: "tray.full", value: viewModel.totalFilesize)
+                    Divider()
+                        .fixedSize()
+                    ModernDataVisualizer(title: "Last checked", imageName: "calendar", value: viewModel.lastCheckDate)
+                }
+            }
+            .padding()
+            
             Button(action: {
                 showingExportOptions = true
             }) {
@@ -89,7 +103,6 @@ struct ArchivedPodcastDetail: View {
                 Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
             .padding(.vertical, 5)
-            .disabled(viewModel.isAnyEpisodeSelected == false)
             .actionSheet(isPresented: $showingExportOptions) {
                 ActionSheet(title: Text("Please select a destination"),
                             message: nil,
@@ -101,6 +114,9 @@ struct ArchivedPodcastDetail: View {
             }
         }
         .navigationBarTitle(viewModel.title, displayMode: .inline)
+//        .fileExporter(isPresented: $showingFileExplorer, documents: , contentType: .audio) { result in
+//
+//        }
     }
 
 }
@@ -113,15 +129,15 @@ struct ArchivedPodcastDetail_Previews: PreviewProvider {
                                                                                          author: "PAPELPOP",
                                                                                          episodes: [Episode(title: "#310 - Pais e mães de planta e o terror dos insetos",
                                                                                                             duration: 9120.0,
-                                                                                                            filesize: 13000,
+                                                                                                            filesize: 121700000,
                                                                                                             offlineStatus: .downloading),
                                                                                                     Episode(title: "#309 - Ser ou não ser sincerão? (feat. Lorelay",
                                                                                                             duration: 7860.0,
-                                                                                                            filesize: 13000,
+                                                                                                            filesize: 107000000,
                                                                                                             offlineStatus: .availableOffline),
                                                                                                     Episode(title: "#308 - A Nova Era do Wanda (feat. Chico Felitti",
                                                                                                             duration: 6900.0,
-                                                                                                            filesize: 13000,
+                                                                                                            filesize: 95000000,
                                                                                                             offlineStatus: .downloading)
                                                                                                    ],
                                                                                         feedUrl: "",

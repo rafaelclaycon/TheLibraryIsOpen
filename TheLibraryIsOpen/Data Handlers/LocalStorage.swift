@@ -25,17 +25,19 @@ class LocalStorage {
 
     private func createPodcasts() throws {
         let id = Expression<Int64>("id")
-        let titulo = Expression<String>("title")
-        let autor = Expression<String>("author")
-        let urlFeed = Expression<String>("feedUrl")
-        let urlCapa = Expression<String>("artworkUrl")
+        let title = Expression<String>("title")
+        let author = Expression<String>("author")
+        let feed_url = Expression<String>("feedUrl")
+        let artwork_url = Expression<String>("artworkUrl")
+        let last_check_date = Expression<Date?>("lastCheckDate")
 
         try db.run(podcasts.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
-            t.column(titulo)
-            t.column(autor)
-            t.column(urlFeed)
-            t.column(urlCapa)
+            t.column(title)
+            t.column(author)
+            t.column(feed_url)
+            t.column(artwork_url)
+            t.column(last_check_date)
         })
     }
 

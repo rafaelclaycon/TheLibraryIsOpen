@@ -320,6 +320,7 @@ class DataManager {
                     podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
                     podcast.feedUrl = feedDetails.feedUrl
                     podcast.artworkUrl = feed.image?.url ?? ""
+                    podcast.lastCheckDate = Date()
 
                     for item in items {
                         podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))

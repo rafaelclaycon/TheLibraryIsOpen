@@ -9,9 +9,9 @@ extension Date {
     }
 
     // Possibilities for dateStyle: .short, .medium, .long, .full
-    func asShortString() -> String {
+    func asShortString(customLocale: Locale = Locale(identifier: "en-US")) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "pt-BR")
+        dateFormatter.locale = customLocale
         dateFormatter.dateStyle = .short
         return dateFormatter.string(from: self)
     }

@@ -33,7 +33,7 @@ class Utils {
         return groups
     }
     
-    static func getSize(ofEpisodes episodes: [Episode]) -> String {
+    static func getSize(ofEpisodes episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
         guard episodes.count > 0 else {
             return ""
         }
@@ -44,7 +44,10 @@ class Utils {
         guard size > 0 else {
             return ""
         }
-        return " (\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)))"
+        if withSpaceAndParenteses {
+            return " (\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)))"
+        }
+        return "\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))"
     }
 
 }

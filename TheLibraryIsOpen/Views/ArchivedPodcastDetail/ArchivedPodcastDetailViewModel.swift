@@ -8,6 +8,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
+    @Published var episodeCount: String = ""
+    @Published var totalFilesize: String = ""
+    @Published var lastCheckDate: String = ""
     @Published var displayEpisodeList: Bool = false
     @Published var episodes = [Episode]()
     @Published var areAllSelectEpisodeList: Bool = true
@@ -41,6 +44,10 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         episodes = podcast.episodes!
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
+        
+        self.episodeCount = String(episodes.count)
+        self.totalFilesize = Utils.getSize(ofEpisodes: episodes, withSpaceAndParenteses: false)
+        self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? "Unknown"
         
         let episodesToDownload = episodes.filter {
             $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
@@ -109,5 +116,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         alertMessage = "Would you like to contribute? Make a pull request :)"
         displayAlert = true
     }
+    
+    func placeOrder() { }
+    func adjustOrder() { }
+    func cancelOrder() { }
 
 }
