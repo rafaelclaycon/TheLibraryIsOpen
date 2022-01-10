@@ -1,0 +1,30 @@
+
+// General
+
+"episode" = "épisode";
+"episodes" = "épisodes";
+"cancel" = "Annuler";
+
+// Main View
+
+"main_view_title" = "Mes Archives";
+"main_view_empty_state_title" = "Aucun podcast archivé";
+"main_view_empty_state_description" = "Pour archiver un nouveau podcast, appuyez sur le bouton Ajouter en haut de l'écran.";
+"main_view_add_podcast_button_label" = "Ajouter";
+
+// Instructions A View
+
+"instructions_a_view_title" = "Obtenir le Lien";
+"instructions_a_view_apple_podcasts_step1" = "1. Ouvrez l'application Podcasts";
+"instructions_a_view_apple_podcasts_step2" = "2. Trouvez le podcast que vous souhaitez archiver";
+"instructions_a_view_apple_podcasts_step3" = "3. Appuyez sur le bouton ... en haut à droite de la page du spectacle";
+"instructions_a_view_apple_podcasts_step4" = "4. Appuyez sur Copier le lien";
+"instructions_a_view_apple_podcasts_step5" = "5. Revenez ici et appuyez sur Suivant";
+"instructions_a_view_next_button_label" = "Suivant";
+
+// Instructions B View
+
+"instructions_b_view_title" = "Obtenir des Épisodes";
+"instructions_b_view_step6" = "6. Collez le lien du podcast ici:";
+"instructions_b_view_process_link_button_label" = "Traiter le Lien";
+"instructions_b_view_loader_label" = "Traitement le lien...";

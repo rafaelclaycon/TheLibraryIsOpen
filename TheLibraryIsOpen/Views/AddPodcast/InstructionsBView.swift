@@ -70,7 +70,7 @@ struct InstructionsBView: View {
             Button(action: {
                 self.estaSendoExibido = false
             }) {
-                Text("Cancel")
+                Text(LocalizableStrings.cancel)
             }
         )
     }
