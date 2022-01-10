@@ -15,4 +15,16 @@
 // Instructions A View
 
 "instructions_a_view_title" = "Get Link";
+"instructions_a_view_apple_podcasts_step1" = "1. Open the Podcasts app";
+"instructions_a_view_apple_podcasts_step2" = "2. Find the podcast you want to archive";
+"instructions_a_view_apple_podcasts_step3" = "3. Tap the ... button on the top right of the show page";
+"instructions_a_view_apple_podcasts_step4" = "4. Tap Copy Link";
+"instructions_a_view_apple_podcasts_step5" = "5. Come back here and tap Next";
 "instructions_a_view_next_button_label" = "Next";
+
+// Instructions B View
+
+"instructions_b_view_title" = "Get Episodes";
+"instructions_b_view_step6" = "6. Paste the podcast link here:";
+"instructions_b_view_process_link_button_label" = "Process Link";
+"instructions_b_view_loader_label" = "Processing link...";

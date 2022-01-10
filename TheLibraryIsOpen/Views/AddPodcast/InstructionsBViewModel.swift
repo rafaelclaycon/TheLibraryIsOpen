@@ -13,8 +13,8 @@ class InstructionsBViewModel: ObservableObject {
     @Published var podcastDetailViewModel = PodcastPreviewViewModel(podcast: Podcast(id: 0))
     @Published var isMostrandoPodcastDetailView = false
     
-    func processar() {
-        processingViewMessage = "Inspecting link..."
+    func processLink() {
+        processingViewMessage = LocalizableStrings.InstructionsBView.loaderLabel
         processando = true
         
         do {

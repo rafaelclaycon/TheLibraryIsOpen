@@ -34,19 +34,19 @@ struct InstructionsAView: View {
                         .padding(.vertical, 15)
                         
                         VStack(alignment: .leading) {
-                            Text("1. Open the Podcasts app")
+                            Text(LocalizableStrings.InstructionsAView.applePodcastsStep1)
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("2. Find the podcast you want to archive")
+                            Text(LocalizableStrings.InstructionsAView.applePodcastsStep2)
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("3. Tap the ... button on the top right of the show page")
+                            Text(LocalizableStrings.InstructionsAView.applePodcastsStep3)
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("4. Tap Copy Link")
+                            Text(LocalizableStrings.InstructionsAView.applePodcastsStep4)
                                 .padding(.bottom, bottomPadding)
                             
-                            Text("5. Come back here and tap Next.")
+                            Text(LocalizableStrings.InstructionsAView.applePodcastsStep5)
                                 .padding(.bottom, bottomPadding)
                         }
                         .padding(.horizontal, 30)

@@ -8,8 +8,6 @@ struct LocalizableStrings {
     static let episodes = NSLocalizedString("episodes", comment: "")
     static let cancel = NSLocalizedString("cancel", comment: "")
     
-    // Main View
-    
     struct MainView {
         
         static let title = NSLocalizedString("main_view_title", comment: "")
@@ -19,12 +17,24 @@ struct LocalizableStrings {
         
     }
     
-    // Instructions A View
-    
     struct InstructionsAView {
         
         static let title = NSLocalizedString("instructions_a_view_title", comment: "")
+        static let applePodcastsStep1 = NSLocalizedString("instructions_a_view_apple_podcasts_step1", comment: "")
+        static let applePodcastsStep2 = NSLocalizedString("instructions_a_view_apple_podcasts_step2", comment: "")
+        static let applePodcastsStep3 = NSLocalizedString("instructions_a_view_apple_podcasts_step3", comment: "")
+        static let applePodcastsStep4 = NSLocalizedString("instructions_a_view_apple_podcasts_step4", comment: "")
+        static let applePodcastsStep5 = NSLocalizedString("instructions_a_view_apple_podcasts_step5", comment: "")
         static let nextButtonLabel = NSLocalizedString("instructions_a_view_next_button_label", comment: "")
+        
+    }
+    
+    struct InstructionsBView {
+        
+        static let title = NSLocalizedString("instructions_b_view_title", comment: "")
+        static let step6 = NSLocalizedString("instructions_b_view_step6", comment: "")
+        static let processLinkButtonLabel = NSLocalizedString("instructions_b_view_process_link_button_label", comment: "")
+        static let loaderLabel = NSLocalizedString("instructions_b_view_loader_label", comment: "")
         
     }
 

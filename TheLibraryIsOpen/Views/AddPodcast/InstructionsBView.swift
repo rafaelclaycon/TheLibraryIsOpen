@@ -21,7 +21,7 @@ struct InstructionsBView: View {
                     }
                     .padding(.vertical, 30)
                     
-                    Text("6. Paste the podcast link here:")
+                    Text(LocalizableStrings.InstructionsBView.step6)
                         .padding(.horizontal, 25)
                         .padding(.bottom, 15)
                     
@@ -35,9 +35,9 @@ struct InstructionsBView: View {
                         NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isMostrandoPodcastDetailView) { EmptyView() }
                         
                         Button(action: {
-                            viewModel.processar()
+                            viewModel.processLink()
                         }) {
-                            Text("Inspect Link")
+                            Text(LocalizableStrings.InstructionsBView.processLinkButtonLabel)
                                 .bold()
                         }
                         .buttonStyle(PillButtonStyle())
@@ -65,7 +65,7 @@ struct InstructionsBView: View {
                 ProcessingView(message: $viewModel.processingViewMessage)
             }
         }
-        .navigationBarTitle(Text("Get Episodes"))
+        .navigationBarTitle(Text(LocalizableStrings.InstructionsBView.title))
         .navigationBarItems(trailing:
             Button(action: {
                 self.estaSendoExibido = false

@@ -15,4 +15,16 @@
 // Instructions A View
 
 "instructions_a_view_title" = "Obter Link";
+"instructions_a_view_apple_podcasts_step1" = "1. Abra o app Podcasts";
+"instructions_a_view_apple_podcasts_step2" = "2. Navegue até o podcast que você quer arquivar";
+"instructions_a_view_apple_podcasts_step3" = "3. Toque no botão ... no topo direito da página do podcast";
+"instructions_a_view_apple_podcasts_step4" = "4. Toque na opção Copiar Link";
+"instructions_a_view_apple_podcasts_step5" = "5. Volte aqui e toque em Próximo";
 "instructions_a_view_next_button_label" = "Próximo";
+
+// Instructions B View
+
+"instructions_b_view_title" = "Obter Episódios";
+"instructions_b_view_step6" = "6. Cole o link do podcast aqui:";
+"instructions_b_view_process_link_button_label" = "Processar Link";
+"instructions_b_view_loader_label" = "Processando link...";
