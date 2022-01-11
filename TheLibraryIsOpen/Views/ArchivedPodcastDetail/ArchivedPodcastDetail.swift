@@ -11,8 +11,8 @@ struct ArchivedPodcastDetail: View {
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
-    private let recentsFirstText = "Most recent first"
-    private let oldestFirstText = "Oldest first"
+    private let recentsFirstText = LocalizableStrings.mostRecentFirst
+    private let oldestFirstText = LocalizableStrings.oldestFirst
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -78,13 +78,13 @@ struct ArchivedPodcastDetail: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ModernDataVisualizer(title: "Episodes", imageName: "play.circle", value: viewModel.episodeCount)
+                    ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
                     Divider()
                         .fixedSize()
-                    ModernDataVisualizer(title: "Total size", imageName: "tray.full", value: viewModel.totalFilesize)
+                    ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.totalSize, imageName: "tray.full", value: viewModel.totalFilesize)
                     Divider()
                         .fixedSize()
-                    ModernDataVisualizer(title: "Last checked", imageName: "calendar", value: viewModel.lastCheckDate)
+                    ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.lastChecked, imageName: "calendar", value: viewModel.lastCheckDate)
                 }
             }
             .padding()
@@ -92,7 +92,7 @@ struct ArchivedPodcastDetail: View {
             Button(action: {
                 showingExportOptions = true
             }) {
-                Text("Export all to...")
+                Text(LocalizableStrings.ArchivedPodcastDetail.exportButtonLabel)
                     .bold()
             }
             .padding(.vertical, 15)
@@ -105,7 +105,7 @@ struct ArchivedPodcastDetail: View {
             }
             .padding(.vertical, 5)
             .actionSheet(isPresented: $showingExportOptions) {
-                ActionSheet(title: Text("Please select a destination"),
+                ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.exportOptionsText),
                             message: nil,
                             buttons: [.default(Text(files)) {
                                           //showingExportOptions = false
@@ -115,7 +115,7 @@ struct ArchivedPodcastDetail: View {
                                       .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
                                       .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
                                       .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
-                                      .cancel(Text("Cancel"))])
+                                      .cancel(Text(LocalizableStrings.cancel))])
             }
 //            .fileExporter(isPresented: $showingFileExplorer, document: myDocument, contentType: .mp3, onCompletion: { result in
 //                switch result {

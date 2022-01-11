@@ -49,11 +49,11 @@ struct ArchivedEpisodeRow: View {
                     .font(.footnote)
                 
                 if offlineStatus == .downloading {
-                    Text("Downloading episode...")
+                    Text(LocalizableStrings.ArchivedPodcastDetail.downloadingEpisode)
                         .foregroundColor(.gray)
                         .font(.footnote)
                 } else if offlineStatus == .availableOffline {
-                    Text("Available offline")
+                    Text(LocalizableStrings.ArchivedPodcastDetail.availableOffline)
                         .foregroundColor(.pink)
                         .font(.footnote)
                 }

@@ -123,7 +123,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     
     func showExportDestinationNotSupportedYet(providerName: String) {
         alertTitle = "\(providerName) Not Supported Yet"
-        alertMessage = "Would you like to contribute? Make a pull request :)"
+        alertMessage = "Would you like to contribute? Please consider making a pull request :)"
         displayAlert = true
     }
     

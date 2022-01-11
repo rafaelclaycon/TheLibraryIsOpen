@@ -12,8 +12,8 @@ struct PodcastPreview: View {
     private let artworkSize: CGFloat = 64.0
     private let selectAllText = LocalizableStrings.PodcastPreview.selectAll
     private let unselectAllText = LocalizableStrings.PodcastPreview.unselectAll
-    private let recentsFirstText = LocalizableStrings.PodcastPreview.mostRecentFirst
-    private let oldestFirstText = LocalizableStrings.PodcastPreview.oldestFirst
+    private let recentsFirstText = LocalizableStrings.mostRecentFirst
+    private let oldestFirstText = LocalizableStrings.oldestFirst
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

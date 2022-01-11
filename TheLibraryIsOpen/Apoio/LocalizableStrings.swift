@@ -7,6 +7,8 @@ struct LocalizableStrings {
     static let episode = NSLocalizedString("episode", comment: "")
     static let episodes = NSLocalizedString("episodes", comment: "")
     static let cancel = NSLocalizedString("cancel", comment: "")
+    static let mostRecentFirst = NSLocalizedString("most_recent_first", comment: "");
+    static let oldestFirst = NSLocalizedString("oldest_first", comment: "");
     
     struct MainView {
         
@@ -44,9 +46,18 @@ struct LocalizableStrings {
         static let groupedByYear = NSLocalizedString("podcast_preview_grouped_by_year", comment: "");
         static let selectAll = NSLocalizedString("podcast_preview_select_all", comment: "");
         static let unselectAll = NSLocalizedString("podcast_preview_unselect_all", comment: "");
-        static let mostRecentFirst = NSLocalizedString("podcast_preview_most_recent_first", comment: "");
-        static let oldestFirst = NSLocalizedString("podcast_preview_oldest_first", comment: "");
         static let downloadEpisodesButtonTitle = NSLocalizedString("podcast_preview_download_episodes_button_title", comment: "");
+        
+    }
+    
+    struct ArchivedPodcastDetail {
+        
+        static let totalSize = NSLocalizedString("archived_podcast_detail_total_size", comment: "")
+        static let lastChecked = NSLocalizedString("archived_podcast_detail_last_checked", comment: "")
+        static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
+        static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
+        static let exportButtonLabel = NSLocalizedString("archived_podcast_detail_export_button_label", comment: "")
+        static let exportOptionsText = NSLocalizedString("archived_podcast_detail_export_options_text", comment: "")
         
     }
 

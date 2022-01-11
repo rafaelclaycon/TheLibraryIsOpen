@@ -4,6 +4,8 @@
 "episode" = "episode";
 "episodes" = "episodes";
 "cancel" = "Cancel";
+"most_recent_first" = "Most recent first";
+"oldest_first" = "Oldest first";
 
 // Main View
 
@@ -35,6 +37,13 @@
 "podcast_preview_grouped_by_year" = "Grouped by year";
 "podcast_preview_select_all" = "Select all";
 "podcast_preview_unselect_all" = "Unselect all";
-"podcast_preview_most_recent_first" = "Most recent first";
-"podcast_preview_oldest_first" = "Oldest first";
 "podcast_preview_download_episodes_button_title" = "Download";
+
+// Archived Podcast Detail
+
+"archived_podcast_detail_total_size" = "Total size";
+"archived_podcast_detail_last_checked" = "Last checked";
+"archived_podcast_detail_downloading_episode" = "Downloading episode...";
+"archived_podcast_detail_available_offline" = "Available offline";
+"archived_podcast_detail_export_button_label" = "Export all to...";
+"archived_podcast_detail_export_options_text" = "Please select a destination";

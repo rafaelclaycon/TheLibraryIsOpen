@@ -96,10 +96,10 @@ class PodcastPreviewViewModel: ObservableObject {
             downloadAllButtonTitle = "Download 0 episodes"
             isAnyEpisodeSelected = false
         } else if selectedEpisodes.count == 1 {
-            downloadAllButtonTitle = "Download 1 episode\(Utils.getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " 1 " + LocalizableStrings.episode + Utils.getSize(ofEpisodes: selectedEpisodes)
             isAnyEpisodeSelected = true
         } else {
-            downloadAllButtonTitle = "Download \(selectedEpisodes.count) episodes\(Utils.getSize(ofEpisodes: selectedEpisodes))"
+            downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " \(selectedEpisodes.count) " + LocalizableStrings.episodes + Utils.getSize(ofEpisodes: selectedEpisodes)
             isAnyEpisodeSelected = true
         }
     }
