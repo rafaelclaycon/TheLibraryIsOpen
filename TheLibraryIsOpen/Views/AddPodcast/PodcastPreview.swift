@@ -80,11 +80,11 @@ struct PodcastPreview: View {
                 }
                 
                 Button(action: {
-                    viewModel.recentsFirst.toggle()
+                    viewModel.toggleEpisodeListSorting()
                 }) {
                     HStack {
-                        Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
-                        Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+                        Image(systemName: viewModel.episodeListSorting == .fromOldToNew ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
+                        Text(viewModel.episodeListSorting == .fromOldToNew ? recentsFirstText : oldestFirstText)
                     }
                 }
             }

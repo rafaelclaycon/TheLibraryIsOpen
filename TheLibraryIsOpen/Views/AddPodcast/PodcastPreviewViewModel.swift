@@ -14,7 +14,7 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var episodes = [Episode]()
     @Published var selectionKeeper = Set<String>()
     @Published var allEpisodesSelected: Bool = true
-    @Published var recentsFirst: Bool = true
+    @Published var episodeListSorting: SortOption = .fromNewToOld
     
     // MARK: - Year group list variables
     @Published var groups = [EpisodeGroup]()
@@ -69,22 +69,22 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     // MARK: - Sort episode list methods
-    func toggleSortList() {
-        if recentsFirst {
-            sortEpisodesByPubDateAscending()
-        } else {
+    func toggleEpisodeListSorting() {
+        if episodeListSorting == .fromNewToOld {
             sortEpisodesByPubDateDescending()
+        } else {
+            sortEpisodesByPubDateAscending()
         }
     }
     
     func sortEpisodesByPubDateAscending() {
         episodes.sort { $0.pubDate! < $1.pubDate! }
-        recentsFirst = false
+        episodeListSorting = .fromOldToNew
     }
     
     func sortEpisodesByPubDateDescending() {
         episodes.sort { $0.pubDate! > $1.pubDate! }
-        recentsFirst = true
+        episodeListSorting = .fromNewToOld
     }
     
     // MARK: - Download button methods

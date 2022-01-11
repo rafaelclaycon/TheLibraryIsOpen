@@ -38,3 +38,9 @@ enum EpisodeOfflineStatus: Int, Codable {
     case downloadNotStarted = 0, downloading = 1, availableOffline = 2, downloadError = 3
 
 }
+
+enum SortOption {
+    
+    case fromNewToOld, fromOldToNew
+    
+}
