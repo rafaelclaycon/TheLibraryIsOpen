@@ -47,3 +47,16 @@
 "archived_podcast_detail_available_offline" = "Disponible hors ligne";
 "archived_podcast_detail_export_button_label" = "Tout exporter vers...";
 "archived_podcast_detail_export_options_text" = "Veuillez sélectionner une destination";
+
+// Settings screen
+
+"settings_screen_title" = "Réglages";
+
+"settings_screen_add_podcast_section_header" = "Ajouter un balado";
+"settings_screen_when_adding_option_label" = "Lors de l'ajout";
+"settings_screen_when_adding_preview_first_option" = "Afficher l'aperçu";
+"settings_screen_when_adding_just_add_to_archive_option" = "Directement au archives";
+"settings_screen_when_adding_add_and_download_all_episodes_option" = "Ajouter et télécharger tous les épisodes";
+
+"settings_screen_archived_podcast_section_header" = "Archives des podcasts";
+"settings_screen_archived_podcast_display_episode_artwork_option" = "Afficher les illustrations de l'épisode";

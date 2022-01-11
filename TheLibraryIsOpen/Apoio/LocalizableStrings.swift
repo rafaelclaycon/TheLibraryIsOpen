@@ -60,5 +60,20 @@ struct LocalizableStrings {
         static let exportOptionsText = NSLocalizedString("archived_podcast_detail_export_options_text", comment: "")
         
     }
+    
+    struct Settings {
+        
+        static let title = NSLocalizedString("settings_screen_title", comment: "")
+        
+        static let addPodcastSectionHeader = NSLocalizedString("settings_screen_add_podcast_section_header", comment: "")
+        static let addPodcastWhenAddingOptionLabel = NSLocalizedString("settings_screen_when_adding_option_label", comment: "")
+        static let addPodcastWhenAddingPreviewFirstOption = NSLocalizedString("settings_screen_when_adding_preview_first_option", comment: "")
+        static let addPodcastWhenAddingJustAddToArchiveOption = NSLocalizedString("settings_screen_when_adding_just_add_to_archive_option", comment: "")
+        static let addPodcastWhenAddingAddAndDownloadAllEpisodesOption = NSLocalizedString("settings_screen_when_adding_add_and_download_all_episodes_option", comment: "")
+        
+        static let archivedPodcastSectionHeader = NSLocalizedString("settings_screen_archived_podcast_section_header", comment: "")
+        static let archivedPodcastDisplayEpisodeArtworkOption = NSLocalizedString("settings_screen_archived_podcast_display_episode_artwork_option", comment: "")
+        
+    }
 
 }

@@ -47,3 +47,16 @@
 "archived_podcast_detail_available_offline" = "Available offline";
 "archived_podcast_detail_export_button_label" = "Export all to...";
 "archived_podcast_detail_export_options_text" = "Please select a destination";
+
+// Settings screen
+
+"settings_screen_title" = "Settings";
+
+"settings_screen_add_podcast_section_header" = "Add podcast";
+"settings_screen_when_adding_option_label" = "When adding";
+"settings_screen_when_adding_preview_first_option" = "Preview first";
+"settings_screen_when_adding_just_add_to_archive_option" = "Just add to archive";
+"settings_screen_when_adding_add_and_download_all_episodes_option" = "Add and download all episodes";
+
+"settings_screen_archived_podcast_section_header" = "Archived podcast";
+"settings_screen_archived_podcast_display_episode_artwork_option" = "Display episode artwork";

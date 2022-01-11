@@ -4,11 +4,14 @@ struct MainView: View {
 
     @StateObject var viewModel = MainViewViewModel()
     @State var showingNewPodcastSheet = false
+    @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
     
     var body: some View {
         NavigationView {
             VStack {
+                NavigationLink(destination: Settings(), isActive: $showingSettingsScreen) { EmptyView() }
+                
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
                         NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $podcastToAutoOpenAfterAdd, label: {
@@ -33,6 +36,14 @@ struct MainView: View {
                 }
             }
             .navigationBarTitle(Text(LocalizableStrings.MainView.title))
+            .navigationBarItems(leading:
+                Button(action: {
+                    showingSettingsScreen = true
+                }) {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(.gray)
+                }
+            )
             .navigationBarItems(trailing:
                 Button(action: {
                     showingNewPodcastSheet = true
