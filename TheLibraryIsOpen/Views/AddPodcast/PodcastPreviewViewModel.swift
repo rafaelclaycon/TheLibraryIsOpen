@@ -37,7 +37,7 @@ class PodcastPreviewViewModel: ObservableObject {
         
         title = podcast.title
         details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
-        episodes = podcast.episodes!
+        episodes = podcast.episodes ?? [Episode]()
         
         selectAllEpisodes()
         updateDownloadButton(selectedIDs: Array(selectionKeeper))
@@ -118,6 +118,8 @@ class PodcastPreviewViewModel: ObservableObject {
         
         do {
             try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
+        } catch DataManagerError.podcastAlreadyExists {
+            showPodcastAlreadyExistsAlert(podcastName: podcast.title)
         } catch {
             showLocalStorageError(error.localizedDescription)
         }
@@ -126,6 +128,12 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     // MARK: - Error message methods
+    
+    private func showPodcastAlreadyExistsAlert(podcastName: String) {
+        alertTitle = "This Podcast was Already Archived"
+        alertMessage = "It's not possible to add '\(podcastName)' because it already exists in the archive. If you would like to add more episodes, please go to the podcast's archive page."
+        displayAlert = true
+    }
 
     private func showPodcastIDNotFoundAlert() {
         alertTitle = "No Podcast Matching This ID Was Found"

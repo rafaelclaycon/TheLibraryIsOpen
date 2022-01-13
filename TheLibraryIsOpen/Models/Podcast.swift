@@ -10,7 +10,13 @@ struct Podcast: Hashable, Codable, Identifiable {
     var artworkUrl: String
     var lastCheckDate: Date?
     
-    init(id: Int, title: String, author: String, episodes: [Episode]?, feedUrl: String, artworkUrl: String, lastCheckDate: Date? = nil) {
+    init(id: Int,
+         title: String = "",
+         author: String = "",
+         episodes: [Episode]? = nil,
+         feedUrl: String = "",
+         artworkUrl: String = "",
+         lastCheckDate: Date? = nil) {
         self.id = id
         self.title = title
         self.author = author
@@ -18,15 +24,6 @@ struct Podcast: Hashable, Codable, Identifiable {
         self.feedUrl = feedUrl
         self.artworkUrl = artworkUrl
         self.lastCheckDate = lastCheckDate
-    }
-    
-    init(id: Int) {
-        self.id = id
-        title = ""
-        author = ""
-        episodes = [Episode]()
-        feedUrl = ""
-        artworkUrl = ""
     }
 
 }

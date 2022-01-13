@@ -88,6 +88,18 @@ class LocalStorage {
     func deleteAllPodcasts() throws {
         try db.run(podcasts.delete())
     }
+    
+    func exists(podcastId: Int) throws -> Bool {
+        var queriedPodcasts = [Podcast]()
+
+        let id = Expression<Int>("id")
+        let query = podcasts.filter(id == podcastId)
+
+        for podcast in try db.prepare(query) {
+            queriedPodcasts.append(try podcast.decode())
+        }
+        return queriedPodcasts.count > 0
+    }
 
     // MARK: - Episode
 

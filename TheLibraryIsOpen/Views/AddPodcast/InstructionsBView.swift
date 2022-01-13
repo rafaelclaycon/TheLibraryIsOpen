@@ -45,17 +45,9 @@ struct InstructionsBView: View {
                         Spacer()
                     }
                     .padding(.top, 10)
-                    
-                    VStack() {
-                        Text(viewModel.titulo)
-                            .bold()
-                            .padding(.bottom, 5)
-                        Text(viewModel.primeiroEp)
-                        Text(viewModel.ultimoEp)
-                        Text(viewModel.qtd)
-                            .padding(.top, 5)
+                    .alert(isPresented: $viewModel.displayAlert) {
+                        Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
                     }
-                    .padding()
                     
                     Spacer()
                 }

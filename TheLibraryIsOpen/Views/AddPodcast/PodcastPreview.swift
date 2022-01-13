@@ -71,20 +71,20 @@ struct PodcastPreview: View {
             
             HStack(spacing: 20) {
                 Button(action: {
-                    viewModel.toggleSelectAll()
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.allEpisodesSelected ? "circle.dotted" : "checkmark.circle")
-                        Text(viewModel.allEpisodesSelected ? unselectAllText : selectAllText)
-                    }
-                }
-                
-                Button(action: {
                     viewModel.toggleEpisodeListSorting()
                 }) {
                     HStack {
                         Image(systemName: viewModel.episodeListSorting == .fromOldToNew ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
                         Text(viewModel.episodeListSorting == .fromOldToNew ? recentsFirstText : oldestFirstText)
+                    }
+                }
+                
+                Button(action: {
+                    viewModel.toggleSelectAll()
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.allEpisodesSelected ? "circle.dotted" : "checkmark.circle")
+                        Text(viewModel.allEpisodesSelected ? unselectAllText : selectAllText)
                     }
                 }
             }

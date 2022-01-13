@@ -43,6 +43,15 @@ To use a different language, change the simulator language in Settings or in Xco
 1. Wait for Xcode to download all dependencies (Swift packages).
 1. Use ⌘ + B to build and ⌘ + R to run the app on the Simulator.
 
+### Unit tests
+
+1. Use any simulator.
+1. Set its language to English and its Region to United States in the Settings.
+1. Delete the app from the sim to delete any data from a previous run.
+1. In Xcode, ⌘ + U to run the tests.
+
+Note: `testGetEpisodesWithoutCache` and `testGetEpisodesWithCache` are known broken tests.
+
 ## About this repo
 
 Rafael Claycon Schmitt – [@mitt_rafael](https://twitter.com/mitt_rafael) – rafael.claycon@gmail.com

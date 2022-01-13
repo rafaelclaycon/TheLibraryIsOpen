@@ -6,12 +6,13 @@ class InstructionsBViewModel: ObservableObject {
     @Published var entrada = ""
     @Published var processando = false
     @Published var processingViewMessage = ""
-    @Published var titulo = ""
-    @Published var primeiroEp = ""
-    @Published var ultimoEp = ""
-    @Published var qtd = ""
     @Published var podcastDetailViewModel = PodcastPreviewViewModel(podcast: Podcast(id: 0))
     @Published var isMostrandoPodcastDetailView = false
+    
+    // MARK: - Alert variables
+    @Published var alertTitle: String = ""
+    @Published var alertMessage: String = ""
+    @Published var displayAlert: Bool = false
     
     func processLink() {
         processingViewMessage = LocalizableStrings.InstructionsBView.loaderLabel
@@ -27,6 +28,21 @@ class InstructionsBViewModel: ObservableObject {
                 }
                 guard let podcast = podcast else {
                     fatalError()
+                }
+                
+                do {
+                    guard try dataManager.exists(podcastId: podcast.id) == false else {
+                        DispatchQueue.main.async {
+                            strongSelf.processando = false
+                            strongSelf.showPodcastAlreadyExistsAlert(podcastName: podcast.title)
+                        }
+                        return
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        strongSelf.processando = false
+                        strongSelf.showOtherError(errorTitle: "Local Database Error", errorBody: "An error occured while trying to check if the podcast already exists in the local database. Please report this to the developer.")
+                    }
                 }
                 
                 strongSelf.podcastDetailViewModel = PodcastPreviewViewModel(podcast: podcast)
@@ -62,6 +78,20 @@ class InstructionsBViewModel: ObservableObject {
             processando = false
             // TODO
         }
+    }
+    
+    // MARK: - Error message methods
+    
+    private func showPodcastAlreadyExistsAlert(podcastName: String) {
+        alertTitle = "This Podcast Is Already Archived"
+        alertMessage = "'\(podcastName)' already exists in the archive. If you would like to download more episodes, please go to the podcast's archive page and do it there."
+        displayAlert = true
+    }
+    
+    private func showOtherError(errorTitle: String, errorBody: String) {
+        alertTitle = errorTitle
+        alertMessage = errorBody
+        displayAlert = true
     }
 
 }

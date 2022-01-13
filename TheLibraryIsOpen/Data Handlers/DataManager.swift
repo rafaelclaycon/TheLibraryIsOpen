@@ -51,10 +51,20 @@ class DataManager {
     }
     
     func persist(podcast: Podcast, withEpisodes episodes: [Episode]) throws {
+        guard try storage?.exists(podcastId: podcast.id) == false else {
+            throw DataManagerError.podcastAlreadyExists
+        }
         try storage?.insert(podcast: podcast)
         try episodes.forEach {
             try storage?.insert(episode: $0)
         }
+    }
+    
+    func exists(podcastId: Int) throws -> Bool {
+        guard let storage = storage else {
+            throw DataManagerError.localStorageNotInstanced
+        }
+        return try storage.exists(podcastId: podcastId)
     }
     
     func getPodcasts() throws -> [Podcast]? {
@@ -321,6 +331,7 @@ class DataManager {
                     podcast.feedUrl = feedDetails.feedUrl
                     podcast.artworkUrl = feed.image?.url ?? ""
                     podcast.lastCheckDate = Date()
+                    podcast.episodes = [Episode]()
 
                     for item in items {
                         podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
@@ -373,6 +384,8 @@ class DataManager {
 
 enum DataManagerError: Error {
 
+    case podcastAlreadyExists
+    case localStorageNotInstanced
     case podcastIDNotFound
     case episodeIDNotFound
     case podcastArrayIsUninitialized
