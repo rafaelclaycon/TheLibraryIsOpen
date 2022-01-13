@@ -35,7 +35,11 @@ struct Episode: Hashable, Codable, Identifiable {
 
 enum EpisodeOfflineStatus: Int, Codable {
     
-    case downloadNotStarted = 0, downloading = 1, availableOffline = 2, downloadError = 3
+    // Episode is shown on the archive page just for context
+    case notMarkedForDownload
+    
+    // Episode was marked for download
+    case downloadNotStarted, downloading, availableOffline, downloadError, missingLocalFile
 
 }
 

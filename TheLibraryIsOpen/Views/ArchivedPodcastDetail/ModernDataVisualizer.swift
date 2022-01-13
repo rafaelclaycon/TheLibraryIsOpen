@@ -11,11 +11,13 @@ struct ModernDataVisualizer: View {
             Text(title.uppercased())
                 .font(.caption)
                 .foregroundColor(.gray)
+                .bold()
+            
             HStack {
                 Image(systemName: imageName)
                     .foregroundColor(.gray)
                 Text(value)
-                    .font(.title3)
+                    .font(.headline)
             }
         }
     }
@@ -25,8 +27,14 @@ struct ModernDataVisualizer: View {
 struct ModernDataVisualizer_Previews: PreviewProvider {
 
     static var previews: some View {
-        ModernDataVisualizer(title: "Episodes", imageName: "play.circle", value: "8")
-            .previewLayout(.fixed(width: 200, height: 100))
+        Group {
+            ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: "8")
+                .previewLayout(.fixed(width: 200, height: 100))
+            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.totalSize, imageName: "tray.full", value: "768,6 MB")
+                .previewLayout(.fixed(width: 200, height: 100))
+            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.lastChecked, imageName: "calendar", value: "22/01/2022")
+                .previewLayout(.fixed(width: 200, height: 100))
+        }
     }
 
 }
