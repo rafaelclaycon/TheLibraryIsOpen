@@ -282,7 +282,7 @@
 				D9D3DBD8256E9BB40035560E /* Views */,
 				D911847A2573EEFA008DB977 /* Data Handlers */,
 				D94A05EB2572866B0065AE2C /* Extensions */,
-				D9D3DBC8256E96FD0035560E /* Recursos */,
+				D9D3DBC8256E96FD0035560E /* Resources */,
 				D9D3DBE6256EBAA40035560E /* Apoio */,
 				D975B29F278C6F6B00BEBB6B /* Localizable.strings */,
 			);
@@ -315,13 +315,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D9D3DBC8256E96FD0035560E /* Recursos */ = {
+		D9D3DBC8256E96FD0035560E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				D9D3DB82256E7BC30035560E /* Assets.xcassets */,
 				D9D3DBD3256E9B540035560E /* podcasts.json */,
 			);
-			path = Recursos;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D9D3DBD8256E9BB40035560E /* Views */ = {
