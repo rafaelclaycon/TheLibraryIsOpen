@@ -231,27 +231,8 @@ class DataManager {
         }
     }
     
-    func getIDFromURL(_ url: String) throws -> Int {
-        guard !url.isEmpty else {
-            throw DataManagerError.urlVazia
-        }
-        guard url.contains("https://podcasts.apple.com") else {
-            throw DataManagerError.naoLinkApplePodcasts
-        }
-        guard let index = url.index(of: "/id") else {
-            throw DataManagerError.idNaoEncontrado
-        }
-        let start = url.index(index, offsetBy: 3) // Offset by 3 para pular p "/id"
-        let end = url.index(url.endIndex, offsetBy: 0)
-        let range = start..<end
-        guard let id = Int(url[range]) else {
-            throw DataManagerError.erroObtendoIdAPartirDaURL
-        }
-        return id
-    }
-    
     func getFeedDetails(applePodcastsURL: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
-        let podcastId = try getIDFromURL(applePodcastsURL)
+        let podcastId = try LinkAssistant.getIdFrom(url: applePodcastsURL)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         

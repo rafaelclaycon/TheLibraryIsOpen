@@ -28,6 +28,8 @@
 		D959E2F4278B3EC800D48EB1 /* ArchivedEpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */; };
 		D959E2F6278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */; };
 		D959E2F8278B434200D48EB1 /* GrowingArcIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */; };
+		D95E798C2790D7B200115606 /* LinkAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E798B2790D7B200115606 /* LinkAssistant.swift */; };
+		D95E798E2790DE0C00115606 /* LinkAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E798D2790DE0C00115606 /* LinkAssistantTests.swift */; };
 		D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D95EF9E425705F0F00D03D4F /* KingfisherSwiftUI */; };
 		D975B29D278C6F6B00BEBB6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D975B29F278C6F6B00BEBB6B /* Localizable.strings */; };
 		D975B2A4278C793D00BEBB6B /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D975B2A3278C793D00BEBB6B /* LocalizableStrings.swift */; };
@@ -93,6 +95,8 @@
 		D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeRow.swift; sourceTree = "<group>"; };
 		D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeRowViewModel.swift; sourceTree = "<group>"; };
 		D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingArcIndicatorView.swift; sourceTree = "<group>"; };
+		D95E798B2790D7B200115606 /* LinkAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAssistant.swift; sourceTree = "<group>"; };
+		D95E798D2790DE0C00115606 /* LinkAssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAssistantTests.swift; sourceTree = "<group>"; };
 		D975B29E278C6F6B00BEBB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D975B2A0278C6F9B00BEBB6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D975B2A3278C793D00BEBB6B /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				D9D3DBE7256EBB510035560E /* FeedHelper.swift */,
 				D94A05F52572B8020065AE2C /* LocalStorage.swift */,
 				D94A05FD2572CDD70065AE2C /* DataManager.swift */,
+				D95E798B2790D7B200115606 /* LinkAssistant.swift */,
 			);
 			path = "Data Handlers";
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				D911845F2573612B008DB977 /* FeedHelperTests.swift */,
 				D911845B25736024008DB977 /* LocalStorageTests.swift */,
 				D99323412576931E00DB9A72 /* DataManagerTests.swift */,
+				D95E798D2790DE0C00115606 /* LinkAssistantTests.swift */,
 				D9F17F7825F99E5D00CF2530 /* UtilsTests.swift */,
 				D9D3DB92256E7BC30035560E /* Info.plist */,
 			);
@@ -484,6 +490,7 @@
 				D9D2D53F25FBE3CA0099AE42 /* InstructionsBView.swift in Sources */,
 				D9D3DBE8256EBB510035560E /* FeedHelper.swift in Sources */,
 				D975B2AB278DD29900BEBB6B /* Settings.swift in Sources */,
+				D95E798C2790D7B200115606 /* LinkAssistant.swift in Sources */,
 				D94A05FE2572CDD70065AE2C /* DataManager.swift in Sources */,
 				D936C3F6278A33C20073B806 /* ArchivedPodcastDetailViewModel.swift in Sources */,
 				D9BBFFA4278BE884003EC67D /* AudioFile.swift in Sources */,
@@ -515,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */,
+				D95E798E2790DE0C00115606 /* LinkAssistantTests.swift in Sources */,
 				D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */,
 				D911845C25736024008DB977 /* LocalStorageTests.swift in Sources */,
 				D9F17F7925F99E5D00CF2530 /* UtilsTests.swift in Sources */,

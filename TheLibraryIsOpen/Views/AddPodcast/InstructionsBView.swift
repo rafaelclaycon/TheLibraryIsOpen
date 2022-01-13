@@ -25,14 +25,14 @@ struct InstructionsBView: View {
                         .padding(.horizontal, 25)
                         .padding(.bottom, 15)
                     
-                    TextField("https://podcasts.apple.com...", text: $viewModel.entrada)
+                    TextField("https://...", text: $viewModel.linkInput)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 25)
                     
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isMostrandoPodcastDetailView) { EmptyView() }
+                        NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isShowingPodcastPreview) { EmptyView() }
                         
                         Button(action: {
                             viewModel.processLink()
@@ -53,7 +53,7 @@ struct InstructionsBView: View {
                 }
             }
             
-            if viewModel.processando {
+            if viewModel.isShowingProcessingView {
                 ProcessingView(message: $viewModel.processingViewMessage)
             }
         }
