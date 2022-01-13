@@ -283,7 +283,7 @@
 				D911847A2573EEFA008DB977 /* Data Handlers */,
 				D94A05EB2572866B0065AE2C /* Extensions */,
 				D9D3DBC8256E96FD0035560E /* Resources */,
-				D9D3DBE6256EBAA40035560E /* Apoio */,
+				D9D3DBE6256EBAA40035560E /* Supporting Files */,
 				D975B29F278C6F6B00BEBB6B /* Localizable.strings */,
 			);
 			path = TheLibraryIsOpen;
@@ -338,7 +338,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D9D3DBE6256EBAA40035560E /* Apoio */ = {
+		D9D3DBE6256EBAA40035560E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */,
@@ -346,7 +346,7 @@
 				D9F17F6A25F999BD00CF2530 /* Utils.swift */,
 				D9D3DB87256E7BC30035560E /* Info.plist */,
 			);
-			path = Apoio;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,7 +672,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L8X3H5XA82;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TheLibraryIsOpen/Apoio/Info.plist;
+				INFOPLIST_FILE = "TheLibraryIsOpen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +694,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L8X3H5XA82;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TheLibraryIsOpen/Apoio/Info.plist;
+				INFOPLIST_FILE = "TheLibraryIsOpen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
