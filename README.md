@@ -1,14 +1,14 @@
 # The Library Is Open! 💃🏼
 
-![A GIF of RuPaul Charles saying: Because reading is what? Fundamental!](TheLibraryIsOpen/Recursos/reading-is-fundamental.gif)
+![A GIF of RuPaul Charles saying: Because reading is what? Fundamental!](TheLibraryIsOpen/Resources/reading-is-fundamental.gif)
 
 This is meant as a celebration of how open podcasts (used to) be.
 
 Download your favorites before the big bad takes them (I'm talking about at you, Spotify).
 
-![A GIF showing the app in action.](TheLibraryIsOpen/Recursos/main-flow.gif)
+![A GIF showing the app in action.](TheLibraryIsOpen/Resources/main-flow.gif)
 
-![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Recursos/prototype.png)
+![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Resources/prototype.png)
 
 ## Features
 
