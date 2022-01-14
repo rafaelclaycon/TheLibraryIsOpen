@@ -4,6 +4,12 @@ import Foundation
 class PodcastPreviewViewModel: ObservableObject {
     
     var podcast: Podcast
+    
+    enum AlertType {
+        
+        case singleOption, twoOptions
+        
+    }
 
     @Published var title: String
     @Published var details: String
@@ -28,6 +34,7 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
+    @Published var alertType: AlertType = .singleOption
 
     // MARK: - Initialization
     init(podcast: Podcast) {
@@ -129,38 +136,58 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Error message methods
     
+    func showPodcastAddingConfirmation(numberOfEpisodes: Int, podcastName: String, remainingFreeSpace: String) {
+        alertTitle = "Ready To Download \(numberOfEpisodes) Episodes of '\(podcastName)'?"
+        alertMessage = "You'll still have \(remainingFreeSpace) of storage available after this download. You can cancel the download at any time."
+        alertType = .twoOptions
+        displayAlert = true
+    }
+    
+    func showLowStorageWarning() {
+        alertTitle = "Unable To Continue"
+        alertMessage = "You would have less than 2 GB remaining on your iPhone after downloading this podcast. Please delete some old apps and data and try again."
+        alertType = .singleOption
+        displayAlert = true
+    }
+    
     private func showPodcastAlreadyExistsAlert(podcastName: String) {
         alertTitle = "This Podcast was Already Archived"
         alertMessage = "It's not possible to add '\(podcastName)' because it already exists in the archive. If you would like to add more episodes, please go to the podcast's archive page."
+        alertType = .singleOption
         displayAlert = true
     }
 
     private func showPodcastIDNotFoundAlert() {
         alertTitle = "No Podcast Matching This ID Was Found"
         alertMessage = "Please try a different ID."
+        alertType = .singleOption
         displayAlert = true
     }
 
     private func showPodcastHadNoEpisodesAlert() {
         alertTitle = "This Podcast Has No Episodes"
         alertMessage = "No episodes were found for this podcast."
+        alertType = .singleOption
         displayAlert = true
     }
     
     private func showNoEpisodesSelectedAlert() {
         alertTitle = "No Episode Selected"
         alertMessage = "Select at least one episode to download."
+        alertType = .singleOption
         displayAlert = true
     }
     
     private func showLocalStorageError(_ errorBody: String) {
         alertTitle = "LocalStorage error"
         alertMessage = errorBody
+        alertType = .singleOption
         displayAlert = true
     }
     
     private func showGenericError(_ errorText: String) {
         alertTitle = errorText
+        alertType = .singleOption
         displayAlert = true
     }
 

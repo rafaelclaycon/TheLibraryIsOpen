@@ -33,6 +33,17 @@ class Utils {
         return groups
     }
     
+    static func getSizeInBytesOf(_ episodes: [Episode]) -> Int64 {
+        guard episodes.count > 0 else {
+            return 0
+        }
+        var totalSize = 0
+        for episode in episodes {
+            totalSize += episode.filesize
+        }
+        return Int64(totalSize)
+    }
+    
     static func getSizeOf(episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
         guard episodes.count > 0 else {
             return ""
@@ -49,6 +60,21 @@ class Utils {
             return " (\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file)))"
         }
         return "\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))"
+    }
+    
+    static func getFormattedFileSize(of number: Int64) -> String {
+        return "\(ByteCountFormatter.string(fromByteCount: number, countStyle: .file))"
+    }
+    
+    static func getDeviceFreeStorage() -> Int64 {
+        if let simulatedFreeSpace = ProcessInfo.processInfo.environment["SimulatedFreeDiskSpaceInBytes"] {
+            return Int64(simulatedFreeSpace) ?? 0
+        }
+        
+        guard let freeSpace = try? URL(fileURLWithPath: NSHomeDirectory() as String).resourceValues(forKeys: [URLResourceKey.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage else {
+            return 0
+        }
+        return freeSpace
     }
 
 }
