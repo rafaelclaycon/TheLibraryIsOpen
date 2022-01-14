@@ -6,6 +6,8 @@ struct InstructionsBView: View {
     @Binding var estaSendoExibido: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
+    @FocusState private var focusedField: Int?
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -16,6 +18,9 @@ struct InstructionsBView: View {
                         Image("paste")
                             .resizable()
                             .frame(width: 350, height: 197)
+                            .onTapGesture {
+                                focusedField = nil
+                            }
                         
                         Spacer()
                     }
@@ -24,8 +29,12 @@ struct InstructionsBView: View {
                     Text(LocalizableStrings.InstructionsBView.step6)
                         .padding(.horizontal, 25)
                         .padding(.bottom, 15)
+                        .onTapGesture {
+                            focusedField = nil
+                        }
                     
                     TextField("https://...", text: $viewModel.linkInput)
+                        .focused($focusedField, equals: 1)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 25)
                     
@@ -35,6 +44,7 @@ struct InstructionsBView: View {
                         NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, estaSendoExibido: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isShowingPodcastPreview) { EmptyView() }
                         
                         Button(action: {
+                            focusedField = nil
                             viewModel.processLink()
                         }) {
                             Text(LocalizableStrings.InstructionsBView.processLinkButtonLabel)
@@ -56,6 +66,7 @@ struct InstructionsBView: View {
             
             if viewModel.isShowingProcessingView {
                 ProcessingView(message: $viewModel.processingViewMessage)
+                    .padding(.bottom)
             }
         }
         .navigationBarTitle(Text(LocalizableStrings.InstructionsBView.title))
