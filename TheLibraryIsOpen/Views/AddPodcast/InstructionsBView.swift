@@ -41,6 +41,7 @@ struct InstructionsBView: View {
                                 .bold()
                         }
                         .buttonStyle(PillButtonStyle())
+                        .disabled(viewModel.linkInput.isEmpty)
                         
                         Spacer()
                     }

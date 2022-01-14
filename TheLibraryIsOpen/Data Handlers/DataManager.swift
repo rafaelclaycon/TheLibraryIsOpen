@@ -100,7 +100,7 @@ class DataManager {
         }
     }
     
-    func ajustar_URL_HTTP_Para_HTTPS(_ url: String) throws -> String {
+    func fixURLfromHTTPToHTTPS(_ url: String) throws -> String {
         guard !url.isEmpty else {
             throw DataManagerError.urlVazia
         }
@@ -272,7 +272,7 @@ class DataManager {
                     if feedUrl.contains("https:") {
                         feedUrlAjustado = feedUrl
                     } else {
-                        feedUrlAjustado = try strongSelf.ajustar_URL_HTTP_Para_HTTPS(feedUrl)
+                        feedUrlAjustado = try strongSelf.fixURLfromHTTPToHTTPS(feedUrl)
                     }
                     
                     completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
@@ -284,7 +284,7 @@ class DataManager {
         }
     }
     
-    func obterPodcast(applePodcastsURL: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
+    func getPodcast(from applePodcastsURL: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
         try getFeedDetails(applePodcastsURL: applePodcastsURL) { feedDetails, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
@@ -329,8 +329,8 @@ class DataManager {
         }
     }
     
-    func baixarEpisodios(arrayEpisodios: [Episode], idPodcast: Int, completionHandler: @escaping (Bool) -> Void) {
-        var array = arrayEpisodios
+    func download(episodeArray: [Episode], podcastId: Int, completionHandler: @escaping (Bool) -> Void) {
+        var array = episodeArray
         if let episodio = array.popLast() {
             guard !episodio.remoteUrl.isEmpty else {
                 fatalError("URL vazio.")
@@ -340,8 +340,8 @@ class DataManager {
             }
             
             let destino: DownloadRequest.Destination = { _, _ in
-                let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-                let fileURL = cachesURL.appendingPathComponent("Podcasts/\(idPodcast)/\(url.lastPathComponent)")
+                let cachesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let fileURL = cachesURL.appendingPathComponent("Podcasts/\(podcastId)/\(url.lastPathComponent)")
 
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
@@ -354,7 +354,7 @@ class DataManager {
                     return completionHandler(nil, .failedToProvideLocalFileURL)
                 }*/
                 
-                self.baixarEpisodios(arrayEpisodios: array, idPodcast: idPodcast, completionHandler: completionHandler)
+                self.download(episodeArray: array, podcastId: podcastId, completionHandler: completionHandler)
             }
         } else {
             completionHandler(true)

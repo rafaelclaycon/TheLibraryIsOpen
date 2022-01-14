@@ -31,6 +31,9 @@
 "instructions_b_view_process_link_button_label" = "Traiter le Lien";
 "instructions_b_view_loader_label" = "Traitement le lien...";
 
+"instructions_b_view_spotify_links_not_supported_warning_title" = "Les Liens Spotify Ne Sont Pas Pris en Charge";
+"instructions_b_view_spotify_links_not_supported_warning_message" = "Veuillez essayer d'obtenir un lien de l'un des services pris en charge.";
+
 // PodcastPreview
 
 "podcast_preview_episode_list" = "Liste des épisodes";

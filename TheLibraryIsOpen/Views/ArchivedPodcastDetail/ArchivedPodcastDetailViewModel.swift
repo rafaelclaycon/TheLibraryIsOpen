@@ -60,7 +60,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     }
     
     func download(episodes: [Episode]) {
-        dataManager.baixarEpisodios(arrayEpisodios: episodes, idPodcast: podcast.id) { [weak self] success in
+        dataManager.download(episodeArray: episodes, podcastId: podcast.id) { [weak self] success in
             guard let strongSelf = self else {
                 return
             }

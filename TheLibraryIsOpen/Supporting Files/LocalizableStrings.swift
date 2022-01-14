@@ -38,6 +38,9 @@ struct LocalizableStrings {
         static let processLinkButtonLabel = NSLocalizedString("instructions_b_view_process_link_button_label", comment: "")
         static let loaderLabel = NSLocalizedString("instructions_b_view_loader_label", comment: "")
         
+        static let spotifyLinksNotSupportedWarningTitle = NSLocalizedString("instructions_b_view_spotify_links_not_supported_warning_title", comment: "")
+        static let spotifyLinksNotSupportedWarningMessage = NSLocalizedString("instructions_b_view_spotify_links_not_supported_warning_message", comment: "")
+        
     }
     
     struct PodcastPreview {

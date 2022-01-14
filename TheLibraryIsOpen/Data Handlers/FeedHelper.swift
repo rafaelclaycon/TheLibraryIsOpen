@@ -1,6 +1,6 @@
-import Alamofire
-import FeedKit
 import Foundation
+import FeedKit
+import Alamofire
 
 class FeedHelper {
 
@@ -37,7 +37,7 @@ class FeedHelper {
         }
 
         let destination: DownloadRequest.Destination = { _, _ in
-            let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            let cachesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileURL = cachesURL.appendingPathComponent("Podcasts/\(podcastID)/\(url.lastPathComponent)")
 
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])

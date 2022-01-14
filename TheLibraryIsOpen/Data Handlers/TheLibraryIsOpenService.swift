@@ -1,6 +1,6 @@
 import Foundation
 
-// Essa é a "API mock" do app.
+// This is the app's mock API.
 class TheLibraryIsOpenService {
 
     static func getPodcasts() -> [Podcast] {

@@ -19,7 +19,7 @@ class InstructionsBViewModel: ObservableObject {
         isShowingProcessingView = true
         
         do {
-            try dataManager.obterPodcast(applePodcastsURL: linkInput) { [weak self] podcast, error in
+            try dataManager.getPodcast(from: linkInput) { [weak self] podcast, error in
                 guard let strongSelf = self else {
                     return
                 }
@@ -74,8 +74,8 @@ class InstructionsBViewModel: ObservableObject {
     }
     
     private func showSpotifyLinksNotSupportedAlert() {
-        alertTitle = "Spotify Links Are Not Supported"
-        alertMessage = "Please try obtaining a link from one of the supported services."
+        alertTitle = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningTitle
+        alertMessage = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningMessage
         displayAlert = true
     }
     
