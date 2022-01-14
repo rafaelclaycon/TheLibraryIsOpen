@@ -9,6 +9,7 @@ struct LocalizableStrings {
     static let cancel = NSLocalizedString("cancel", comment: "")
     static let mostRecentFirst = NSLocalizedString("most_recent_first", comment: "");
     static let oldestFirst = NSLocalizedString("oldest_first", comment: "");
+    static let sizeNotReportedByAuthor = NSLocalizedString("size_not_reported_by_author", comment: "")
     
     struct MainView {
         
@@ -50,6 +51,7 @@ struct LocalizableStrings {
         static let selectAll = NSLocalizedString("podcast_preview_select_all", comment: "");
         static let unselectAll = NSLocalizedString("podcast_preview_unselect_all", comment: "");
         static let downloadEpisodesButtonTitle = NSLocalizedString("podcast_preview_download_episodes_button_title", comment: "");
+        static let downloadButtonJustAddTitle = NSLocalizedString("podcast_preview_download_button_just_add_title", comment: "");
         
     }
     

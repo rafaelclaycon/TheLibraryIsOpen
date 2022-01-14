@@ -33,21 +33,22 @@ class Utils {
         return groups
     }
     
-    static func getSize(ofEpisodes episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
+    static func getSizeOf(episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
         guard episodes.count > 0 else {
             return ""
         }
-        var size = 0
+        var totalSize = 0
         for episode in episodes {
-            size += episode.filesize
+            totalSize += episode.filesize
         }
-        guard size > 0 else {
+        // Only episodes with the wrong reported size will have less than a MB.
+        guard (totalSize / episodes.count) > 999999 else {
             return ""
         }
         if withSpaceAndParenteses {
-            return " (\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)))"
+            return " (\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file)))"
         }
-        return "\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))"
+        return "\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))"
     }
 
 }

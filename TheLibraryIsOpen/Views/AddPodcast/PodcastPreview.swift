@@ -149,7 +149,6 @@ struct PodcastPreview: View {
                 Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
             .padding(.vertical, 5)
-            .disabled(viewModel.isAnyEpisodeSelected == false)
             
             /*Button(action: {
                 // viewModel.

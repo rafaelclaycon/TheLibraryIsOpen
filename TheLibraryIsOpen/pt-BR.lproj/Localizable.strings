@@ -6,6 +6,7 @@
 "cancel" = "Cancelar";
 "most_recent_first" = "Recentes primeiro";
 "oldest_first" = "Antigos primeiro";
+"size_not_reported_by_author" = "Tamanho não informado pelo autor";
 
 // Main View
 
@@ -41,6 +42,7 @@
 "podcast_preview_select_all" = "Selecionar todos";
 "podcast_preview_unselect_all" = "Deselecionar todos";
 "podcast_preview_download_episodes_button_title" = "Baixar";
+"podcast_preview_download_button_just_add_title" = "Apenas adicionar ao arquivo";
 
 // Archived Podcast Detail
 

@@ -3,8 +3,9 @@ import Foundation
 extension Int {
 
     func toFormattedFileSize() -> String {
-        guard self > 0 else {
-            return "Tamanho não informado pelo autor"
+        // Only episodes with the wrong reported size will have less than a MB.
+        guard self > 999999 else {
+            return LocalizableStrings.sizeNotReportedByAuthor
         }
         return "\(ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .file))"
     }

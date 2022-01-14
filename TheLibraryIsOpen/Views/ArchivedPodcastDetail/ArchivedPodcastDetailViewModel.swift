@@ -48,7 +48,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         
         self.episodeCount = String(episodes.count)
-        self.totalFilesize = Utils.getSize(ofEpisodes: episodes, withSpaceAndParenteses: false)
+        self.totalFilesize = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
         self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? "Unknown"
         
         let episodesToDownload = episodes.filter {
