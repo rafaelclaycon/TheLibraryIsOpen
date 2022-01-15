@@ -65,3 +65,11 @@
 
 "settings_screen_archived_podcast_section_header" = "Archives des podcasts";
 "settings_screen_archived_podcast_display_episode_artwork_option" = "Afficher les illustrations de l'épisode";
+"settings_screen_archived_podcast_section_footer" = "L'illustration de l'épisode sera affichée lorsqu'elle sera disponible.";
+
+"settings_screen_tip_jar_section_header" = "Pot à pourboire";
+
+"settings_screen_feedback_section_header" = "Avis";
+"settings_screen_feedback_section_report_a_bug_button_label" = "Signaler un bug";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "Signaler une erreur de traduction";
+"settings_screen_feedback_section_footer" = "Le support est très limité car je suis une personne seule travaillant sur cette application :)";

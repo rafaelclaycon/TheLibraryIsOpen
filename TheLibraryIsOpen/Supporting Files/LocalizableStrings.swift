@@ -70,14 +70,38 @@ struct LocalizableStrings {
         
         static let title = NSLocalizedString("settings_screen_title", comment: "")
         
-        static let addPodcastSectionHeader = NSLocalizedString("settings_screen_add_podcast_section_header", comment: "")
-        static let addPodcastWhenAddingOptionLabel = NSLocalizedString("settings_screen_when_adding_option_label", comment: "")
-        static let addPodcastWhenAddingPreviewFirstOption = NSLocalizedString("settings_screen_when_adding_preview_first_option", comment: "")
-        static let addPodcastWhenAddingJustAddToArchiveOption = NSLocalizedString("settings_screen_when_adding_just_add_to_archive_option", comment: "")
-        static let addPodcastWhenAddingAddAndDownloadAllEpisodesOption = NSLocalizedString("settings_screen_when_adding_add_and_download_all_episodes_option", comment: "")
+        struct AddPodcast {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_add_podcast_section_header", comment: "")
+            static let whenAddingOptionLabel = NSLocalizedString("settings_screen_when_adding_option_label", comment: "")
+            static let whenAddingPreviewFirstOption = NSLocalizedString("settings_screen_when_adding_preview_first_option", comment: "")
+            static let whenAddingJustAddToArchiveOption = NSLocalizedString("settings_screen_when_adding_just_add_to_archive_option", comment: "")
+            static let whenAddingAddAndDownloadAllEpisodesOption = NSLocalizedString("settings_screen_when_adding_add_and_download_all_episodes_option", comment: "")
+            
+        }
         
-        static let archivedPodcastSectionHeader = NSLocalizedString("settings_screen_archived_podcast_section_header", comment: "")
-        static let archivedPodcastDisplayEpisodeArtworkOption = NSLocalizedString("settings_screen_archived_podcast_display_episode_artwork_option", comment: "")
+        struct ArchivedPodcast {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_archived_podcast_section_header", comment: "")
+            static let displayEpisodeArtworkOption = NSLocalizedString("settings_screen_archived_podcast_display_episode_artwork_option", comment: "")
+            static let sectionFooter = NSLocalizedString("settings_screen_archived_podcast_section_footer", comment: "")
+            
+        }
+        
+        struct TipJar {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_tip_jar_section_header", comment: "")
+            
+        }
+        
+        struct Feedback {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_feedback_section_header", comment: "")
+            static let reportABugButtonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_bug_button_label", comment: "")
+            static let reportATranslationErrorButtonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_translation_error_button_label", comment: "")
+            static let sectionFooter = NSLocalizedString("settings_screen_feedback_section_footer", comment: "")
+            
+        }
         
     }
 

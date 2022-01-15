@@ -58,10 +58,18 @@
 "settings_screen_title" = "Configurações";
 
 "settings_screen_add_podcast_section_header" = "Adicionar podcast";
-"settings_screen_when_adding_option_label" = "Quando adicionar";
-"settings_screen_when_adding_preview_first_option" = "Mostrar prévia";
-"settings_screen_when_adding_just_add_to_archive_option" = "Apenas arquivar imediatamente";
+"settings_screen_when_adding_option_label" = "Ao adicionar";
+"settings_screen_when_adding_preview_first_option" = "Permitir-me escolher quais episódios baixar";
+"settings_screen_when_adding_just_add_to_archive_option" = "Arquivar imediatamente";
 "settings_screen_when_adding_add_and_download_all_episodes_option" = "Arquivar e baixar todos os episódios";
 
 "settings_screen_archived_podcast_section_header" = "Podcast arquivado";
 "settings_screen_archived_podcast_display_episode_artwork_option" = "Mostrar capas dos episódios";
+"settings_screen_archived_podcast_section_footer" = "As capas de episódios serão exibidas quando disponíveis.";
+
+"settings_screen_tip_jar_section_header" = "Gorjetas";
+
+"settings_screen_feedback_section_header" = "Contato";
+"settings_screen_feedback_section_report_a_bug_button_label" = "Reportar um erro";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "Reportar um erro de tradução";
+"settings_screen_feedback_section_footer" = "O suporte ao app é bastante limitado pois sou uma única pessoa cuidando de tudo :)";

@@ -3,15 +3,15 @@ import SwiftUI
 struct Settings: View {
     
     @State var displayArtworkInArchive: Bool = true
-    @State private var addingBehaviorSelectedOption = LocalizableStrings.Settings.addPodcastWhenAddingPreviewFirstOption
-    let addingBehaviors = [LocalizableStrings.Settings.addPodcastWhenAddingPreviewFirstOption,
-                           LocalizableStrings.Settings.addPodcastWhenAddingJustAddToArchiveOption,
-                           LocalizableStrings.Settings.addPodcastWhenAddingAddAndDownloadAllEpisodesOption]
+    @State private var addingBehaviorSelectedOption = LocalizableStrings.Settings.AddPodcast.whenAddingPreviewFirstOption
+    let addingBehaviors = [LocalizableStrings.Settings.AddPodcast.whenAddingPreviewFirstOption,
+                           LocalizableStrings.Settings.AddPodcast.whenAddingJustAddToArchiveOption,
+                           LocalizableStrings.Settings.AddPodcast.whenAddingAddAndDownloadAllEpisodesOption]
 
     var body: some View {
         Form {
-            Section(LocalizableStrings.Settings.addPodcastSectionHeader) {
-                Picker(LocalizableStrings.Settings.addPodcastWhenAddingOptionLabel, selection: $addingBehaviorSelectedOption) {
+            Section(LocalizableStrings.Settings.AddPodcast.sectionHeader) {
+                Picker(LocalizableStrings.Settings.AddPodcast.whenAddingOptionLabel, selection: $addingBehaviorSelectedOption) {
                     ForEach(addingBehaviors, id: \.self) {
                         Text($0)
                     }
@@ -19,20 +19,33 @@ struct Settings: View {
             }
             
             Section {
-                Toggle(LocalizableStrings.Settings.archivedPodcastDisplayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
+                Toggle(LocalizableStrings.Settings.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
             } header: {
-                Text(LocalizableStrings.Settings.archivedPodcastSectionHeader)
+                Text(LocalizableStrings.Settings.ArchivedPodcast.sectionHeader)
             } footer: {
-                Text("As capas de episódios serão exibidas quando disponíveis.")
+                Text(LocalizableStrings.Settings.ArchivedPodcast.sectionFooter)
             }
             
             Section {
                 Text("And she is the moment")
             } header: {
-                Text("Tip jar")
+                Text(LocalizableStrings.Settings.TipJar.sectionHeader)
             } footer: {
                 //Text("As capas de episódios serão exibidas quando disponíveis.")
                 EmptyView()
+            }
+            
+            Section {
+                Button(LocalizableStrings.Settings.Feedback.reportABugButtonLabel) {
+                    print("Bug report")
+                }
+                Button(LocalizableStrings.Settings.Feedback.reportATranslationErrorButtonLabel) {
+                    print("Translation error")
+                }
+            } header: {
+                Text(LocalizableStrings.Settings.Feedback.sectionHeader)
+            } footer: {
+                Text(LocalizableStrings.Settings.Feedback.sectionFooter)
             }
         }
         .navigationTitle(LocalizableStrings.Settings.title)

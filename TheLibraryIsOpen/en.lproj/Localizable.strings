@@ -65,3 +65,11 @@
 
 "settings_screen_archived_podcast_section_header" = "Archived podcast";
 "settings_screen_archived_podcast_display_episode_artwork_option" = "Display episode artwork";
+"settings_screen_archived_podcast_section_footer" = "Episode artwork will be displayed when available.";
+
+"settings_screen_tip_jar_section_header" = "Tip jar";
+
+"settings_screen_feedback_section_header" = "Feedback";
+"settings_screen_feedback_section_report_a_bug_button_label" = "Report a bug";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "Report a translation error";
+"settings_screen_feedback_section_footer" = "Support is very limited because I'm a single person running this app :)";
