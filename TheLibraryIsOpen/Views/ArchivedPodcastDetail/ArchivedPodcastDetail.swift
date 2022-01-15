@@ -108,7 +108,7 @@ struct ArchivedPodcastDetail: View {
                 ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.exportOptionsText),
                             message: nil,
                             buttons: [.default(Text(files)) {
-                                          viewModel.zip()
+                                          viewModel.zipAll()
                                       },
                                       .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
                                       .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
@@ -125,6 +125,13 @@ struct ArchivedPodcastDetail: View {
 //            })
         }
         .navigationBarTitle(viewModel.title, displayMode: .inline)
+        .navigationBarItems(trailing:
+            Menu {
+                Button("View History", action: viewModel.placeOrder)
+            } label: {
+                Image(systemName: "ellipsis.circle")
+            }
+        )
     }
 
 }

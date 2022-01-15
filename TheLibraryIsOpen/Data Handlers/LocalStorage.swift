@@ -148,18 +148,26 @@ class LocalStorage {
         try db.run(episode.delete())
     }
 
-    func updateLocalFilePath(forEpisode idEpisodio: String, with caminho: String) {
+    func updateLocalFilepath(forEpisode episodeId: String, with newFilepath: String, and newOfflineStatus: Int) {
         let id = Expression<String>("id")
-        let episodio = episode.filter(id == idEpisodio)
-        let caminho_local = Expression<String?>("localFilepath")
+        let episode = episode.filter(id == episodeId)
+        let local_filepath = Expression<String?>("localFilepath")
+        let offline_status = Expression<Int>("offlineStatus")
+        
         do {
-            if try db.run(episodio.update(caminho_local <- caminho)) > 0 {
-                print("Episódio \(idEpisodio) atualizado com o caminho: \(caminho)")
+            if try db.run(episode.update(local_filepath <- newFilepath)) > 0 {
+                print("Episode \(episodeId) updated with path: \(newFilepath)")
             } else {
-                print("Episódio \(idEpisodio) não encontrado.")
+                print("Episode \(episodeId) not found.")
+            }
+            
+            if try db.run(episode.update(offline_status <- newOfflineStatus)) > 0 {
+                print("Episode \(episodeId) updated with status: \(newOfflineStatus)")
+            } else {
+                print("Episode \(episodeId) not found.")
             }
         } catch {
-            print("falha ao tentar atualizar: \(error)")
+            print("Error while trying to update episode \(episodeId): \(error)")
         }
     }
     

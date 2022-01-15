@@ -64,6 +64,12 @@ class DataManager {
                                                          description: "\(episodes.count) episodes added."))
     }
     
+    func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
+        episodes.forEach {
+            storage?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? "", and: $0.offlineStatus)
+        }
+    }
+    
     func exists(podcastId: Int) throws -> Bool {
         guard let storage = storage else {
             throw DataManagerError.localStorageNotInstanced
@@ -194,7 +200,7 @@ class DataManager {
         // Update it on the in-memory array.
         try updateInMemoryEpisodeLocalFilePath(podcastID: episode.podcastId, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
-        storage!.updateLocalFilePath(forEpisode: episode.id, with: filePath)
+        storage!.updateLocalFilepath(forEpisode: episode.id, with: filePath, and: EpisodeOfflineStatus.availableOffline.rawValue)
     }
 
     private func updateInMemoryEpisodeLocalFilePath(podcastID: Int, episodeID: String, filePath: String) throws {

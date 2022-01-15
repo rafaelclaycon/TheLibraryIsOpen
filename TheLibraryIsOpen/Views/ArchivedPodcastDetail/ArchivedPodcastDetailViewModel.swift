@@ -49,7 +49,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         
         self.episodeCount = String(episodes.count)
-        self.totalFilesize = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
+        let spaceDescription = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
+        self.totalFilesize = spaceDescription.isEmpty == false ? spaceDescription : "Unknown"
         self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? "Unknown"
         
         if CommandLine.arguments.contains("-DO_NOT_DOWNLOAD_EPISODES_UPON_OPENING_ARCHIVED_PODCAST") == false {
@@ -80,7 +81,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 }
                 
                 // Persist
-                //dataManager.per
+                dataManager.updateEpisodesLocalFilepathAndOfflineStatus(strongSelf.episodes)
                 
                 self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
             } else {
@@ -101,23 +102,20 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
     
-    func zip() {
-        for episode in episodes {
-            print(episode.localFilepath)
-        }
+    func zipAll() {
+        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let sourceURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcast.id)")
         
-        let fileManager = FileManager()
-        let currentWorkingPath = fileManager.currentDirectoryPath
-        var sourceURL = URL(fileURLWithPath: currentWorkingPath)
-        sourceURL.appendPathComponent("file.txt")
-        
-        var destinationURL = URL(fileURLWithPath: currentWorkingPath)
-        destinationURL.appendPathComponent("archive.zip")
+        var destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        destinationURL.appendPathComponent("ExportedArchives/Archive_\(podcast.id).zip")
         
         do {
+            let fileManager = FileManager()
             try fileManager.zipItem(at: sourceURL, to: destinationURL)
+            
+            showAlert(withTitle: "Episode Export Successful", message: destinationURL.lastPathComponent)
         } catch {
-            print("Creation of ZIP archive failed with error:\(error)")
+            showAlert(withTitle: "Creation of ZIP archive failed with error", message: error.localizedDescription)
         }
     }
     
