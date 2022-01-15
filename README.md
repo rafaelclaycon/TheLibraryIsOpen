@@ -17,7 +17,7 @@ Download your favorites before the big bad takes them (I'm talking about at you,
 - [x] Get podcast feed URL from an Apple Podcasts link
 - [x] Get episode list
 - [x] Download episodes
-- [ ] Store downloaded episodes in a ZIP file
+- [x] Store downloaded episodes in a ZIP file
 - [ ] Upload the file do iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
 
 ### Backlog
