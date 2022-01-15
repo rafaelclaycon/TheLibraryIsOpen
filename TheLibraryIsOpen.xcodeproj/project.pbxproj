@@ -13,10 +13,12 @@
 		D91AC97A25F56D450086396D /* String+RangeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AC97925F56D450086396D /* String+RangeAccess.swift */; };
 		D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44BD256EF7F900731EEF /* EpisodeRow.swift */; };
 		D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */; };
+		D931D3FF27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */; };
 		D936C3F4278A33430073B806 /* ArchivedPodcastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */; };
 		D936C3F6278A33C20073B806 /* ArchivedPodcastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */; };
 		D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940AD0027831E3000DF7549 /* RoundCheckbox.swift */; };
 		D940AD0427833FC700DF7549 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940AD0327833FC700DF7549 /* Int+Extensions.swift */; };
+		D943BDBC279273BA0023A66D /* PodcastHistoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943BDBB279273BA0023A66D /* PodcastHistoryRecord.swift */; };
 		D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05EC257286C60065AE2C /* DateTime+Extensions.swift */; };
 		D94A05F2257296E70065AE2C /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D94A05F1257296E70065AE2C /* SQLite */; };
 		D94A05F62572B8020065AE2C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05F52572B8020065AE2C /* LocalStorage.swift */; };
@@ -82,10 +84,12 @@
 		D91AC97925F56D450086396D /* String+RangeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RangeAccess.swift"; sourceTree = "<group>"; };
 		D92A44BD256EF7F900731EEF /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewViewModel.swift; sourceTree = "<group>"; };
+		D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryRecordRow.swift; sourceTree = "<group>"; };
 		D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetail.swift; sourceTree = "<group>"; };
 		D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetailViewModel.swift; sourceTree = "<group>"; };
 		D940AD0027831E3000DF7549 /* RoundCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckbox.swift; sourceTree = "<group>"; };
 		D940AD0327833FC700DF7549 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		D943BDBB279273BA0023A66D /* PodcastHistoryRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryRecord.swift; sourceTree = "<group>"; };
 		D94A05EC257286C60065AE2C /* DateTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTime+Extensions.swift"; sourceTree = "<group>"; };
 		D94A05F52572B8020065AE2C /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		D94A05F92572CB4E0065AE2C /* TheLibraryIsOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenService.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */,
 				D997FC76278B903800F027CB /* DownloadStatusFileSymbols */,
 				D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */,
+				D943BDBD27927B630023A66D /* History */,
 			);
 			path = ArchivedPodcastDetail;
 			sourceTree = "<group>";
@@ -209,6 +214,14 @@
 				D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		D943BDBD27927B630023A66D /* History */ = {
+			isa = PBXGroup;
+			children = (
+				D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		D94A05EB2572866B0065AE2C /* Extensions */ = {
@@ -312,6 +325,7 @@
 			children = (
 				D9D3DBBB256E8F930035560E /* Podcast.swift */,
 				D9D3DBC3256E92B40035560E /* Episode.swift */,
+				D943BDBB279273BA0023A66D /* PodcastHistoryRecord.swift */,
 				D9A6DF8A25F914AB00EE9D80 /* FeedDetail.swift */,
 				D9A5A967277E65AE00AA1FCC /* EpisodeGroup.swift */,
 				D959E2EE278B354600D48EB1 /* Download.swift */,
@@ -505,8 +519,10 @@
 				D936C3F4278A33430073B806 /* ArchivedPodcastDetail.swift in Sources */,
 				D959E2F6278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift in Sources */,
 				D9D3DBBC256E8F930035560E /* Podcast.swift in Sources */,
+				D931D3FF27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift in Sources */,
 				D9D3DBC4256E92B40035560E /* Episode.swift in Sources */,
 				D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */,
+				D943BDBC279273BA0023A66D /* PodcastHistoryRecord.swift in Sources */,
 				D9D2D55725FC4D8E0099AE42 /* PillButtonStyle.swift in Sources */,
 				D959E2F4278B3EC800D48EB1 /* ArchivedEpisodeRow.swift in Sources */,
 				D9D3DBDA256E9C0D0035560E /* PodcastRow.swift in Sources */,

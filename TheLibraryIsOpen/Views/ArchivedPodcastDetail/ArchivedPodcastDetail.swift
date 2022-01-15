@@ -108,9 +108,7 @@ struct ArchivedPodcastDetail: View {
                 ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.exportOptionsText),
                             message: nil,
                             buttons: [.default(Text(files)) {
-                                          //showingExportOptions = false
-                                          //showingFileExplorer = true
-                                          viewModel.showShareSheet()
+                                          viewModel.zip()
                                       },
                                       .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
                                       .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },

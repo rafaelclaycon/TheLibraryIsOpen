@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import UIKit
+import ZIPFoundation
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
 
@@ -51,11 +52,13 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         self.totalFilesize = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
         self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? "Unknown"
         
-        let episodesToDownload = episodes.filter {
-            $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
-        }
-        if episodesToDownload.count > 0 {
-            download(episodes: episodesToDownload)
+        if CommandLine.arguments.contains("-DO_NOT_DOWNLOAD_EPISODES_UPON_OPENING_ARCHIVED_PODCAST") == false {
+            let episodesToDownload = episodes.filter {
+                $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
+            }
+            if episodesToDownload.count > 0 {
+                download(episodes: episodesToDownload)
+            }
         }
     }
     
@@ -68,8 +71,17 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             if success {
                 for i in 0...(episodes.count - 1) {
                     strongSelf.downloadedKeeper.insert(strongSelf.episodes[i].id)
+                    
+                    if let url = URL(string: strongSelf.episodes[i].remoteUrl) {
+                        strongSelf.episodes[i].localFilepath = "Podcasts/\(strongSelf.podcast.id)/\(url.lastPathComponent)"
+                    }
+                    
                     strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
                 }
+                
+                // Persist
+                //dataManager.per
+                
                 self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
             } else {
                 for i in 0...(episodes.count - 1) {
@@ -87,6 +99,26 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
         let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func zip() {
+        for episode in episodes {
+            print(episode.localFilepath)
+        }
+        
+        let fileManager = FileManager()
+        let currentWorkingPath = fileManager.currentDirectoryPath
+        var sourceURL = URL(fileURLWithPath: currentWorkingPath)
+        sourceURL.appendPathComponent("file.txt")
+        
+        var destinationURL = URL(fileURLWithPath: currentWorkingPath)
+        destinationURL.appendPathComponent("archive.zip")
+        
+        do {
+            try fileManager.zipItem(at: sourceURL, to: destinationURL)
+        } catch {
+            print("Creation of ZIP archive failed with error:\(error)")
+        }
     }
     
     // MARK: - Error messages

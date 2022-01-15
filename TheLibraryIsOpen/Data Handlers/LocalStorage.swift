@@ -4,8 +4,9 @@ import SQLite
 class LocalStorage {
 
     private var db: Connection
-    private var podcasts = Table("podcasts")
-    private var episodes = Table("episodes")
+    private var podcast = Table("podcast")
+    private var episode = Table("episode")
+    private var podcastHistoryRecord = Table("podcasthistoryrecord")
 
     // MARK: - Init
 
@@ -16,14 +17,15 @@ class LocalStorage {
 
         do {
             db = try Connection("\(path)/tlio_db.sqlite3")
-            try createPodcasts()
-            try createEpisodes()
+            try createPodcastTable()
+            try createEpisodeTable()
+            try createPodcastHistoryRecordTable()
         } catch {
             fatalError(error.localizedDescription)
         }
     }
 
-    private func createPodcasts() throws {
+    private func createPodcastTable() throws {
         let id = Expression<Int64>("id")
         let title = Expression<String>("title")
         let author = Expression<String>("author")
@@ -31,7 +33,7 @@ class LocalStorage {
         let artwork_url = Expression<String>("artworkUrl")
         let last_check_date = Expression<Date?>("lastCheckDate")
 
-        try db.run(podcasts.create(ifNotExists: true) { t in
+        try db.run(podcast.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
             t.column(title)
             t.column(author)
@@ -41,7 +43,7 @@ class LocalStorage {
         })
     }
 
-    private func createEpisodes() throws {
+    private func createEpisodeTable() throws {
         let id = Expression<String>("id")
         let podcast_id = Expression<Int64>("podcastId")
         let title = Expression<String>("title")
@@ -52,7 +54,7 @@ class LocalStorage {
         let filesize = Expression<Int64>("filesize")
         let offline_status = Expression<Int>("offlineStatus")
 
-        try db.run(episodes.create(ifNotExists: true) { t in
+        try db.run(episode.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
             t.column(podcast_id)
             t.column(title)
@@ -64,39 +66,57 @@ class LocalStorage {
             t.column(offline_status)
         })
     }
+    
+    private func createPodcastHistoryRecordTable() throws {
+        let id = Expression<String>("id")
+        let podcast_id = Expression<Int>("podcastId")
+        let symbol = Expression<String?>("symbol")
+        let title = Expression<String>("title")
+        let description = Expression<String?>("description")
+        let date_time = Expression<Date>("dateTime")
+
+        try db.run(podcastHistoryRecord.create(ifNotExists: true) { t in
+            t.column(id, primaryKey: true)
+            t.column(podcast_id)
+            t.column(symbol)
+            t.column(title)
+            t.column(description)
+            t.column(date_time)
+        })
+    }
 
     // MARK: - Podcast
 
     func getPodcastCount() throws -> Int {
-        try db.scalar(podcasts.count)
+        try db.scalar(podcast.count)
     }
 
-    func insert(podcast: Podcast) throws {
-        let insert = try podcasts.insert(podcast)
+    func insert(podcast newPodcast: Podcast) throws {
+        let insert = try podcast.insert(newPodcast)
         try db.run(insert)
     }
 
     func getAllPodcasts() throws -> [Podcast] {
         var queriedPodcasts = [Podcast]()
 
-        for podcast in try db.prepare(podcasts) {
-            queriedPodcasts.append(try podcast.decode())
+        for queriedPodcast in try db.prepare(podcast) {
+            queriedPodcasts.append(try queriedPodcast.decode())
         }
         return queriedPodcasts
     }
 
     func deleteAllPodcasts() throws {
-        try db.run(podcasts.delete())
+        try db.run(podcast.delete())
     }
     
     func exists(podcastId: Int) throws -> Bool {
         var queriedPodcasts = [Podcast]()
 
         let id = Expression<Int>("id")
-        let query = podcasts.filter(id == podcastId)
+        let query = podcast.filter(id == podcastId)
 
-        for podcast in try db.prepare(query) {
-            queriedPodcasts.append(try podcast.decode())
+        for queriedPodcast in try db.prepare(query) {
+            queriedPodcasts.append(try queriedPodcast.decode())
         }
         return queriedPodcasts.count > 0
     }
@@ -104,11 +124,11 @@ class LocalStorage {
     // MARK: - Episode
 
     func getEpisodeCount() throws -> Int {
-        try db.scalar(episodes.count)
+        try db.scalar(episode.count)
     }
 
-    func insert(episode: Episode) throws {
-        let insert = try episodes.insert(episode)
+    func insert(episode newEpisode: Episode) throws {
+        let insert = try episode.insert(newEpisode)
         try db.run(insert)
     }
 
@@ -116,21 +136,21 @@ class LocalStorage {
         var queriedEpisodes = [Episode]()
 
         let podcast_id = Expression<Int>("podcastId")
-        let query = episodes.filter(podcast_id == podcastId)
+        let query = episode.filter(podcast_id == podcastId)
 
-        for episode in try db.prepare(query) {
-            queriedEpisodes.append(try episode.decode())
+        for queriedEpisode in try db.prepare(query) {
+            queriedEpisodes.append(try queriedEpisode.decode())
         }
         return queriedEpisodes
     }
 
     func deleteAllEpisodes() throws {
-        try db.run(episodes.delete())
+        try db.run(episode.delete())
     }
 
     func updateLocalFilePath(forEpisode idEpisodio: String, with caminho: String) {
         let id = Expression<String>("id")
-        let episodio = episodes.filter(id == idEpisodio)
+        let episodio = episode.filter(id == idEpisodio)
         let caminho_local = Expression<String?>("localFilepath")
         do {
             if try db.run(episodio.update(caminho_local <- caminho)) > 0 {
@@ -141,6 +161,33 @@ class LocalStorage {
         } catch {
             print("falha ao tentar atualizar: \(error)")
         }
+    }
+    
+    // MARK: - Podcast History Record
+
+    func getHistoryRecordCount() throws -> Int {
+        try db.scalar(podcastHistoryRecord.count)
+    }
+
+    func insert(record newRecord: PodcastHistoryRecord) throws {
+        let insert = try podcastHistoryRecord.insert(newRecord)
+        try db.run(insert)
+    }
+
+    func getAllHistoryRecords(forID podcastId: Int) throws -> [PodcastHistoryRecord] {
+        var queriedRecords = [PodcastHistoryRecord]()
+
+        let podcast_id = Expression<Int>("podcastId")
+        let query = podcastHistoryRecord.filter(podcast_id == podcastId)
+
+        for queriedRecord in try db.prepare(query) {
+            queriedRecords.append(try queriedRecord.decode())
+        }
+        return queriedRecords
+    }
+
+    func deleteAllHistoryRecords() throws {
+        try db.run(podcastHistoryRecord.delete())
     }
 
 }

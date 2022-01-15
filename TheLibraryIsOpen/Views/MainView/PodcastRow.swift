@@ -30,16 +30,21 @@ struct PodcastRow: View {
                 .resizable()
                 .frame(width: 70, height: 70)
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(podcast.title)
                     .font(.body)
                     .bold()
                     .padding(.leading, 15)
-                    .padding(.bottom, 2)
+                
                 Text("\(podcast.episodes?.count ?? 0) archived episodes")
-                    .padding(.leading, 15)
-                    .foregroundColor(.gray)
                     .font(.footnote)
+                    .foregroundColor(.gray)
+                    .padding(.leading, 15)
+                    
+                Text("Not exported yet")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .padding(.leading, 15)
             }
 
             Spacer()

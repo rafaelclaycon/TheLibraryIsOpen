@@ -58,6 +58,10 @@ class DataManager {
         try episodes.forEach {
             try storage?.insert(episode: $0)
         }
+        try storage?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
+                                                         symbol: HistoryRecordSymbol.podcastArchived.rawValue,
+                                                         title: "Podcast archived!",
+                                                         description: "\(episodes.count) episodes added."))
     }
     
     func exists(podcastId: Int) throws -> Bool {
@@ -331,6 +335,7 @@ class DataManager {
     
     func download(episodeArray: [Episode], podcastId: Int, completionHandler: @escaping (Bool) -> Void) {
         var array = episodeArray
+        
         if let episodio = array.popLast() {
             guard !episodio.remoteUrl.isEmpty else {
                 fatalError("URL vazio.")
