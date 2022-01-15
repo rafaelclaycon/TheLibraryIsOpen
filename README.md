@@ -18,7 +18,7 @@ Download your favorites before the big bad takes them (I'm talking about at you,
 - [x] Get episode list
 - [x] Download episodes
 - [x] Store downloaded episodes in a ZIP file
-- [x] Upload the file do iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
+- [x] Upload the zipped file to iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
 
 ### Backlog
 
