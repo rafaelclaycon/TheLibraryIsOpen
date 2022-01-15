@@ -7,7 +7,7 @@ struct ModernDataVisualizer: View {
     let value: String
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(title.uppercased())
                 .font(.caption)
                 .foregroundColor(.gray)

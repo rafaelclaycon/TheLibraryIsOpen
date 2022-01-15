@@ -50,8 +50,11 @@
 "archived_podcast_detail_last_checked" = "Last checked";
 "archived_podcast_detail_downloading_episode" = "Downloading episode...";
 "archived_podcast_detail_available_offline" = "Available offline";
-"archived_podcast_detail_export_button_label" = "Export all to...";
+"archived_podcast_detail_filter" = "Filter";
+
+"archived_podcast_detail_export_all_button_label" = "Export all to...";
 "archived_podcast_detail_export_options_text" = "Please select a destination";
+"archived_podcast_detail_export_options_files_option_name" = "Files & iCloud Drive";
 
 // Settings screen
 
@@ -70,6 +73,6 @@
 "settings_screen_tip_jar_section_header" = "Tip jar";
 
 "settings_screen_feedback_section_header" = "Feedback";
-"settings_screen_feedback_section_report_a_bug_button_label" = "Report a bug";
-"settings_screen_feedback_section_report_a_translation_error_button_label" = "Report a translation error";
+"settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Report a bug";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "🇺🇸  Report a translation error";
 "settings_screen_feedback_section_footer" = "Support is very limited because I'm a single person running this app :)";

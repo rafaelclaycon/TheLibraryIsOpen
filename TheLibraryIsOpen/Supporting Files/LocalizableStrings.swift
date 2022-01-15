@@ -61,8 +61,20 @@ struct LocalizableStrings {
         static let lastChecked = NSLocalizedString("archived_podcast_detail_last_checked", comment: "")
         static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
         static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
-        static let exportButtonLabel = NSLocalizedString("archived_podcast_detail_export_button_label", comment: "")
-        static let exportOptionsText = NSLocalizedString("archived_podcast_detail_export_options_text", comment: "")
+        static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
+        
+        struct Export {
+            
+            static let exportAllButtonLabel = NSLocalizedString("archived_podcast_detail_export_all_button_label", comment: "")
+            static let exportOptionsText = NSLocalizedString("archived_podcast_detail_export_options_text", comment: "")
+            
+            struct Options {
+                
+                static let filesApp = NSLocalizedString("archived_podcast_detail_export_options_files_option_name", comment: "")
+                
+            }
+            
+        }
         
     }
     

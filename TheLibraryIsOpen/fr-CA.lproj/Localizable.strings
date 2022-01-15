@@ -50,8 +50,11 @@
 "archived_podcast_detail_last_checked" = "Dernière vérification";
 "archived_podcast_detail_downloading_episode" = "Téléchargement de l'épisode...";
 "archived_podcast_detail_available_offline" = "Disponible hors ligne";
-"archived_podcast_detail_export_button_label" = "Tout exporter vers...";
+"archived_podcast_detail_filter" = "Filtrer";
+
+"archived_podcast_detail_export_all_button_label" = "Tout exporter vers...";
 "archived_podcast_detail_export_options_text" = "Veuillez sélectionner une destination";
+"archived_podcast_detail_export_options_files_option_name" = "Fichiers & iCloud Drive";
 
 // Settings screen
 
@@ -70,6 +73,6 @@
 "settings_screen_tip_jar_section_header" = "Pot à pourboire";
 
 "settings_screen_feedback_section_header" = "Avis";
-"settings_screen_feedback_section_report_a_bug_button_label" = "Signaler un bug";
-"settings_screen_feedback_section_report_a_translation_error_button_label" = "Signaler une erreur de traduction";
+"settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Signaler un bug";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "🇨🇦  Signaler une erreur de traduction";
 "settings_screen_feedback_section_footer" = "Le support est très limité car je suis une personne seule travaillant sur cette application :)";

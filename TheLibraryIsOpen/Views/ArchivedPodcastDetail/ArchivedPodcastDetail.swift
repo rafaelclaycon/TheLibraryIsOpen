@@ -6,8 +6,6 @@ struct ArchivedPodcastDetail: View {
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
-    @State var showingFileExplorer: Bool = false
-    @State var myDocument: TextFile = TextFile(initialText: "Hello")
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -18,7 +16,7 @@ struct ArchivedPodcastDetail: View {
         GridItem(.flexible())
     ]
     
-    private let files = "Files"
+    private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
     private let googleDrive = "Google Drive"
     private let dropbox = "Dropbox"
     private let oneDrive = "OneDrive"
@@ -40,7 +38,7 @@ struct ArchivedPodcastDetail: View {
                     Button("All Episodes", action: viewModel.adjustOrder)
                 } label: {
                     Image(systemName: "line.3.horizontal.decrease.circle")
-                    Text("Filter")
+                    Text(LocalizableStrings.ArchivedPodcastDetail.filter)
                 }
             }
             .padding(.vertical, 10)
@@ -92,7 +90,7 @@ struct ArchivedPodcastDetail: View {
             Button(action: {
                 showingExportOptions = true
             }) {
-                Text(LocalizableStrings.ArchivedPodcastDetail.exportButtonLabel)
+                Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportAllButtonLabel)
                     .bold()
             }
             .padding(.vertical, 15)
@@ -105,7 +103,7 @@ struct ArchivedPodcastDetail: View {
             }
             .padding(.vertical, 5)
             .actionSheet(isPresented: $showingExportOptions) {
-                ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.exportOptionsText),
+                ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                             message: nil,
                             buttons: [.default(Text(files)) {
                                           viewModel.zipAll()
@@ -115,14 +113,14 @@ struct ArchivedPodcastDetail: View {
                                       .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
                                       .cancel(Text(LocalizableStrings.cancel))])
             }
-//            .fileExporter(isPresented: $showingFileExplorer, document: myDocument, contentType: .mp3, onCompletion: { result in
-//                switch result {
-//                case .success(let url):
-//                    print("Saved to \(url)")
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            })
+            .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
+                switch result {
+                case .success(let url):
+                    print("Saved to \(url)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
         }
         .navigationBarTitle(viewModel.title, displayMode: .inline)
         .navigationBarItems(trailing:

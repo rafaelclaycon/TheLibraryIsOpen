@@ -32,6 +32,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
     }
     
+    @Published var showingFileExplorer: Bool = false
+    @Published var zipFileURL: URL? = nil
+    
     // Alerts
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
@@ -83,7 +86,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 // Persist
                 dataManager.updateEpisodesLocalFilepathAndOfflineStatus(strongSelf.episodes)
                 
-                self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
+                //self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
             } else {
                 for i in 0...(episodes.count - 1) {
                     strongSelf.downloadErrorKeeper.insert(strongSelf.episodes[i].id)
@@ -94,12 +97,18 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
     }
     
-    func showShareSheet() {
-        guard let urlShare = URL(string: appleURL) else {
-            return
-        }
-        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+//    func showShareSheet() {
+//        guard let urlShare = URL(string: appleURL) else {
+//            return
+//        }
+//        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+//        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+//    }
+    
+    fileprivate func directoryExistsAtPath(_ path: String) -> Bool {
+        var isDirectory = ObjCBool(true)
+        let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
+        return exists && isDirectory.boolValue
     }
     
     func zipAll() {
@@ -109,11 +118,25 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         var destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         destinationURL.appendPathComponent("ExportedArchives/Archive_\(podcast.id).zip")
         
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let docURL = URL(string: documentsDirectory)!
+        let dataPath = docURL.appendingPathComponent("ExportedArchives")
+        if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
+            do {
+                try FileManager.default.createDirectory(atPath: dataPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error.localizedDescription);
+            }
+        }
+        
         do {
             let fileManager = FileManager()
             try fileManager.zipItem(at: sourceURL, to: destinationURL)
             
-            showAlert(withTitle: "Episode Export Successful", message: destinationURL.lastPathComponent)
+            self.zipFileURL = destinationURL
+            self.showingFileExplorer = true
+            //showAlert(withTitle: "Episode Export Successful", message: destinationURL.lastPathComponent)
         } catch {
             showAlert(withTitle: "Creation of ZIP archive failed with error", message: error.localizedDescription)
         }
