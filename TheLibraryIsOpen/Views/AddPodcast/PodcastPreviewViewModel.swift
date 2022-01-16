@@ -28,7 +28,6 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Download button variables
     @Published var downloadAllButtonTitle = ""
-    @Published var isAnyEpisodeSelected: Bool = false
     
     // MARK: - Alert variables
     @Published var alertTitle: String = ""
@@ -101,13 +100,10 @@ class PodcastPreviewViewModel: ObservableObject {
         }
         if selectedEpisodes.count == 0 {
             downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadButtonJustAddTitle
-            isAnyEpisodeSelected = false
         } else if selectedEpisodes.count == 1 {
             downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " 1 " + LocalizableStrings.episode + Utils.getSizeOf(episodes: selectedEpisodes)
-            isAnyEpisodeSelected = true
         } else {
             downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " \(selectedEpisodes.count) " + LocalizableStrings.episodes + Utils.getSizeOf(episodes: selectedEpisodes)
-            isAnyEpisodeSelected = true
         }
     }
     
@@ -137,8 +133,12 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Error message methods
     
     func showPodcastAddingConfirmation(numberOfEpisodes: Int, podcastName: String, remainingFreeSpace: String) {
-        alertTitle = "Ready To Download \(numberOfEpisodes) Episodes of '\(podcastName)'?"
-        alertMessage = "You'll still have \(remainingFreeSpace) of storage available after this download. You can cancel the download at any time."
+        if numberOfEpisodes == 1 {
+            alertTitle = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadSingleEpisodeConfirmationTitle, podcastName)
+        } else {
+            alertTitle = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadMultipleEpisodesConfirmationTitle, numberOfEpisodes, podcastName)
+        }
+        alertMessage = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadConfirmationMessage, remainingFreeSpace)
         alertType = .twoOptions
         displayAlert = true
     }

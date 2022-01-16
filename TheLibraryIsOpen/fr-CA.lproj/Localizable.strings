@@ -44,6 +44,10 @@
 "podcast_preview_download_episodes_button_title" = "Télécharger";
 "podcast_preview_download_button_just_add_title" = "Ajoutez simplement aux archives";
 
+"podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Pronto para Baixar Um Único Episódio de '%@'?";
+"podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Pronto para Baixar %d Episódios de '%@'?";
+"podcast_preview_messages_ready_to_download_confirmation_message" = "Você ainda terá %@ de armazenamento livre depois de baixar. Você pode cancelar o download a qualquer momento.";
+
 // Archived Podcast Detail
 
 "archived_podcast_detail_total_size" = "Taille totale";

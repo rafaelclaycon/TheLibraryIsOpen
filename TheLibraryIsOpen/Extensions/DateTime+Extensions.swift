@@ -7,6 +7,12 @@ extension Date {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: self)
     }
+    
+    func asDashSeparatedYMDString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
 
     // Possibilities for dateStyle: .short, .medium, .long, .full
     func asShortString() -> String {

@@ -44,6 +44,10 @@
 "podcast_preview_download_episodes_button_title" = "Download";
 "podcast_preview_download_button_just_add_title" = "Just add to archive";
 
+"podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Prêt à Télécharger un Seul Épisode de '%@'?";
+"podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Prêt à Télécharger %d Épisodes de '%@'?";
+"podcast_preview_messages_ready_to_download_confirmation_message" = "Vous aurez encore %@ de stockage disponible après ce téléchargement. Vous pouvez annuler le téléchargement à tout moment.";
+
 // Archived Podcast Detail
 
 "archived_podcast_detail_total_size" = "Total size";
@@ -58,6 +62,9 @@
 "archived_podcast_detail_export_options_google_drive_option_name" = "Google Drive";
 "archived_podcast_detail_export_options_dropbox_option_name" = "Dropbox";
 "archived_podcast_detail_export_options_onedrive_option_name" = "OneDrive";
+
+"archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episode) (archived in %@)";
+"archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episodes) (archived in %@)";
 
 // Settings screen
 

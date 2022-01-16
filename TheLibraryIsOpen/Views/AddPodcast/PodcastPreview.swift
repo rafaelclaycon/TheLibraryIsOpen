@@ -147,7 +147,10 @@ struct PodcastPreview: View {
                     return viewModel.showLowStorageWarning()
                 }
                 
-                viewModel.showPodcastAddingConfirmation(numberOfEpisodes: viewModel.selectionKeeper.count, podcastName: viewModel.podcast.title, remainingFreeSpace: Utils.getFormattedFileSize(of: remainingSpace))
+                viewModel.showPodcastAddingConfirmation(numberOfEpisodes: viewModel.selectionKeeper.count,
+                                                        podcastName: viewModel.podcast.title,
+                                                        remainingFreeSpace: Utils.getFormattedFileSize(of: remainingSpace))
+                
                 if viewModel.download(episodeIDs: viewModel.selectionKeeper) {
                     viewModel.alertType = .twoOptions
                     viewModel.displayAlert = true

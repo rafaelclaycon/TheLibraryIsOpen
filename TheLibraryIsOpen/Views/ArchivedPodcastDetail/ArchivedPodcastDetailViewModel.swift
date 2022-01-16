@@ -25,12 +25,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var downloadErrorKeeper = Set<String>()
     
     @Published var downloadAllButtonTitle = ""
-    var isAnyEpisodeSelected: Bool {
-        get {
-            // return episodes.contains { $0.selectedForDownload == true }
-            return true
-        }
-    }
     
     @Published var showingFileExplorer: Bool = false
     @Published var zipFileURL: URL? = nil
@@ -115,8 +109,15 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let sourceURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcast.id)")
         
+        var name = ""
+        if episodes.count == 1 {
+            name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameSingleEpisode, podcast.title, Date().asDashSeparatedYMDString())
+        } else {
+            name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameMultipleEpisodes, podcast.title, episodes.count, Date().asDashSeparatedYMDString())
+        }
+        
         var destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        destinationURL.appendPathComponent("ExportedArchives/Archive_\(podcast.id).zip")
+        destinationURL.appendPathComponent("ExportedArchives/" + name + ".zip")
         
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
