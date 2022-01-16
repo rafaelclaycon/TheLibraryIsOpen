@@ -99,10 +99,16 @@ struct LocalizableStrings {
         struct AddPodcast {
             
             static let sectionHeader = NSLocalizedString("settings_screen_add_podcast_section_header", comment: "")
-            static let whenAddingOptionLabel = NSLocalizedString("settings_screen_when_adding_option_label", comment: "")
-            static let whenAddingPreviewFirstOption = NSLocalizedString("settings_screen_when_adding_preview_first_option", comment: "")
-            static let whenAddingJustAddToArchiveOption = NSLocalizedString("settings_screen_when_adding_just_add_to_archive_option", comment: "")
-            static let whenAddingAddAndDownloadAllEpisodesOption = NSLocalizedString("settings_screen_when_adding_add_and_download_all_episodes_option", comment: "")
+            static let skipGetLinkInstructions = NSLocalizedString("settings_screen_add_podcast_skip_get_link_instructions_label", comment: "")
+            
+            struct WhenAdding {
+                
+                static let optionLabel = NSLocalizedString("settings_screen_when_adding_option_label", comment: "")
+                static let previewFirstOption = NSLocalizedString("settings_screen_when_adding_preview_first_option", comment: "")
+                static let justAddToArchiveOption = NSLocalizedString("settings_screen_when_adding_just_add_to_archive_option", comment: "")
+                static let addAndDownloadAllEpisodesOption = NSLocalizedString("settings_screen_when_adding_add_and_download_all_episodes_option", comment: "")
+                
+            }
             
         }
         

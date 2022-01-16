@@ -71,6 +71,7 @@
 "settings_screen_title" = "Settings";
 
 "settings_screen_add_podcast_section_header" = "Add podcast";
+"settings_screen_add_podcast_skip_get_link_instructions_label" = "Skip Get Link instructions";
 "settings_screen_when_adding_option_label" = "When adding";
 "settings_screen_when_adding_preview_first_option" = "Preview first";
 "settings_screen_when_adding_just_add_to_archive_option" = "Just add to archive";
