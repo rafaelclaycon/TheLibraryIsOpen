@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "dropbox_logo_2017.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

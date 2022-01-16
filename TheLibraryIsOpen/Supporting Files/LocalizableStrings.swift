@@ -71,6 +71,9 @@ struct LocalizableStrings {
             struct Options {
                 
                 static let filesApp = NSLocalizedString("archived_podcast_detail_export_options_files_option_name", comment: "")
+                static let googleDrive = NSLocalizedString("archived_podcast_detail_export_options_google_drive_option_name", comment: "")
+                static let dropbox = NSLocalizedString("archived_podcast_detail_export_options_dropbox_option_name", comment: "")
+                static let oneDrive = NSLocalizedString("archived_podcast_detail_export_options_onedrive_option_name", comment: "")
                 
             }
             

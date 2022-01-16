@@ -17,12 +17,14 @@ struct ArchivedPodcastDetail: View {
     ]
     
     private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
-    private let googleDrive = "Google Drive"
-    private let dropbox = "Dropbox"
-    private let oneDrive = "OneDrive"
+    private let googleDrive = LocalizableStrings.ArchivedPodcastDetail.Export.Options.googleDrive
+    private let dropbox = LocalizableStrings.ArchivedPodcastDetail.Export.Options.dropbox
+    private let oneDrive = LocalizableStrings.ArchivedPodcastDetail.Export.Options.oneDrive
 
     var body: some View {
         VStack {
+            //NavigationLink(destination: ExportDestinationOptions(showingExportOptions: $showingExportOptions), isActive: $showingExportOptions) { EmptyView() }
+            
             HStack(spacing: 20) {
                 Button(action: {
                     viewModel.recentsFirst.toggle()
@@ -102,6 +104,9 @@ struct ArchivedPodcastDetail: View {
                 Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
             .padding(.vertical, 5)
+//            .sheet(isPresented: $showingExportOptions) {
+//                ExportDestinationOptions(showingExportOptions: $showingExportOptions)
+//            }
             .actionSheet(isPresented: $showingExportOptions) {
                 ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                             message: nil,
