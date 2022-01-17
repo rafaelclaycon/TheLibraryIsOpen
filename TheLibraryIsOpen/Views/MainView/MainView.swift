@@ -10,12 +10,12 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: Settings(), isActive: $showingSettingsScreen) { EmptyView() }
+                NavigationLink(destination: SettingsView(), isActive: $showingSettingsScreen) { EmptyView() }
                 
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
                         NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $podcastToAutoOpenAfterAdd, label: {
-                            PodcastRow(podcast: podcast)
+                            PodcastRow(viewModel: PodcastRowViewModel(podcast: podcast))
                         })
                     }
                 } else {

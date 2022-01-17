@@ -18,6 +18,15 @@ struct LocalizableStrings {
         static let emptyStateDescription = NSLocalizedString("main_view_empty_state_description", comment: "")
         static let addPodcastButtonLabel = NSLocalizedString("main_view_add_podcast_button_label", comment: "")
         
+        struct PodcastRow {
+            
+            static let episodeCountNoEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_no_episodes", comment: "")
+            static let episodeCountSingleEpisode = NSLocalizedString("main_view_podcast_row_episode_count_single_episode", comment: "")
+            static let episodeCountMultipleEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_multiple_episodes", comment: "")
+            static let notExportedYet = NSLocalizedString("main_view_podcast_row_not_exported_yet", comment: "")
+            
+        }
+        
     }
     
     struct InstructionsAView {
@@ -70,6 +79,8 @@ struct LocalizableStrings {
         static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
         static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
         static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
+        static let unknownTotalSize = NSLocalizedString("archived_podcast_detail_unknown_total_size", comment: "")
+        static let unknownLastCheckedDate = NSLocalizedString("archived_podcast_detail_unknown_last_checked_date", comment: "")
         
         struct Export {
             

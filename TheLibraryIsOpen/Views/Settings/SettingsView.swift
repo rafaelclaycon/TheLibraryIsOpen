@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Settings: View {
+struct SettingsView: View {
     
     @State var displayHowToGetLinkInstructions: Bool = false
     
@@ -87,7 +87,7 @@ struct Settings: View {
 struct Settings_Previews: PreviewProvider {
 
     static var previews: some View {
-        Settings()
+        SettingsView()
     }
 
 }

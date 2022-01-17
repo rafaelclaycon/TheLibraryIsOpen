@@ -15,6 +15,11 @@
 "main_view_empty_state_description" = "Pour archiver un nouveau podcast, appuyez sur le bouton Ajouter en haut de l'écran.";
 "main_view_add_podcast_button_label" = "Ajouter";
 
+"main_view_podcast_row_episode_count_no_episodes" = "Aucun épisode archivé";
+"main_view_podcast_row_episode_count_single_episode" = "1 épisode archivé";
+"main_view_podcast_row_episode_count_multiple_episodes" = "%d épisodes archivés";
+"main_view_podcast_row_not_exported_yet" = "Non exporté";
+
 // Instructions A View
 
 "instructions_a_view_title" = "Obtenir le Lien";
@@ -55,6 +60,8 @@
 "archived_podcast_detail_downloading_episode" = "Téléchargement de l'épisode...";
 "archived_podcast_detail_available_offline" = "Disponible hors ligne";
 "archived_podcast_detail_filter" = "Filtrer";
+"archived_podcast_detail_unknown_total_size" = "Inconnue";
+"archived_podcast_detail_unknown_last_checked_date" = "Inconnue";
 
 "archived_podcast_detail_export_all_button_label" = "Tout exporter vers...";
 "archived_podcast_detail_export_options_text" = "Veuillez sélectionner une destination";
