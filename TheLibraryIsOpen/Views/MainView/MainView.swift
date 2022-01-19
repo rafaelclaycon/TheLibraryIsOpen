@@ -55,7 +55,9 @@ struct MainView: View {
                 }
             )
             .sheet(isPresented: $showingNewPodcastSheet) {
-                InstructionsAView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                /*InstructionsAView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                    .interactiveDismissDisabled(true)*/
+                PlayerPickerView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     .interactiveDismissDisabled(true)
             }
             .onChange(of: showingNewPodcastSheet) {
