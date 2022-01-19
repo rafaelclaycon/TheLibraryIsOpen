@@ -4,7 +4,7 @@
 
 This is meant as a celebration of how open podcasts (used to) be.
 
-Download your favorites before the big bad takes them (I'm talking about at you, Spotify).
+Download your favorites before the big bad takes them (I'm looking at you, Spotify).
 
 ![A GIF showing the app in action.](TheLibraryIsOpen/Resources/main-flow.gif)
 
