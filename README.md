@@ -8,8 +8,6 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 
 ![A GIF showing the app in action.](TheLibraryIsOpen/Resources/main-flow.gif)
 
-![Prototype: 6 screens one beside the other showing the app's main flow, from an empty screen with no podcasts to the episode list from a link informed by the user.](TheLibraryIsOpen/Resources/prototype.png)
-
 ## Features
 
 ### Main features (MVP)
@@ -19,6 +17,15 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 - [x] Download episodes
 - [x] Store downloaded episodes in a ZIP file
 - [x] Upload the zipped file to iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
+
+### The extra mile
+
+- [x] Give specific Get Link instructions based on the podcast player the archiver uses
+- [ ] Show download progress for each episode
+- [ ] Upload the zipped file to Google Drive
+- [ ] Let the user cancel the whole download with a single click
+- [ ] Persist the archive between runs nicely
+- [ ] Show user full history of exports and downloads
 
 ### Backlog
 
