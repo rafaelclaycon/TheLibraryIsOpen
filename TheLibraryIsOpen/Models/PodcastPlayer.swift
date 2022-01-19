@@ -4,14 +4,14 @@ struct PodcastPlayer: Hashable, Identifiable {
     
     var id: Int
     var name: String
-    var iconName: String
+    var iconName: String?
     var type: PodcastPlayerType
     
 }
 
 enum PodcastPlayerType {
 
-    case amazonMusic, applePodcasts, castbox, castro, deezer, googlePodcasts, orelo, overcast, pocketCasts, soundCloud, spotify, stitcher
+    case amazonMusic, applePodcasts, castbox, castro, deezer, googlePodcasts, orelo, overcast, pocketCasts, soundCloud, spotify, stitcher, other
 
 }
 
@@ -31,6 +31,7 @@ class PodcastPlayerFactory {
         players.append(PodcastPlayer(id: 9, name: "SoundCloud", iconName: "soundcloud_icon", type: .soundCloud))
         players.append(PodcastPlayer(id: 10, name: "Spotify", iconName: "spotify_icon", type: .spotify))
         players.append(PodcastPlayer(id: 11, name: "Stitcher", iconName: "stitcher_icon", type: .stitcher))
+        players.append(PodcastPlayer(id: 12, name: LocalizableStrings.PlayerPickerView.other, iconName: nil, type: .other))
         return players
     }
 

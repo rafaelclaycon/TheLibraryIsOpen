@@ -20,6 +20,10 @@
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d épisodes archivés";
 "main_view_podcast_row_not_exported_yet" = "Non exporté";
 
+// Player Picker View
+
+"player_picker_view_other" = "Autre";
+
 // Instructions A View
 
 "instructions_a_view_title" = "Obtenir le Lien";

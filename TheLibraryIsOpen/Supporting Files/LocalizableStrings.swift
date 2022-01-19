@@ -29,6 +29,12 @@ struct LocalizableStrings {
         
     }
     
+    struct PlayerPickerView {
+        
+        static let other = NSLocalizedString("player_picker_view_other", comment: "")
+        
+    }
+    
     struct InstructionsAView {
         
         static let title = NSLocalizedString("instructions_a_view_title", comment: "")

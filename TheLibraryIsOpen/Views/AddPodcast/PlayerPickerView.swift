@@ -22,12 +22,19 @@ struct PlayerPickerView: View {
                             selectedOption = option.id
                         } label: {
                             HStack(spacing: 20) {
-                                Image(option.iconName)
-                                    .resizable()
-                                    .frame(width: 32, height: 32)
-                                    .mask {
-                                        RoundedRectangle(cornerRadius: 7)
-                                    }
+                                if option.iconName != nil {
+                                    Image(option.iconName!)
+                                        .resizable()
+                                        .frame(width: 32, height: 32)
+                                        .mask {
+                                            RoundedRectangle(cornerRadius: 7)
+                                        }
+                                } else {
+                                    Image(systemName: "questionmark")
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                }
+                                
                                 Text(option.name)
                             }
                         }
