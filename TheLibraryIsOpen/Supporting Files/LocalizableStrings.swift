@@ -35,14 +35,68 @@ struct LocalizableStrings {
         
     }
     
+    struct UnfortunatelyView {
+        
+        static let title = NSLocalizedString("unfortunately_view_title", comment: "")
+        static let laypersonExplanationFirstParagraph = NSLocalizedString("unfortunately_view_layperson_explanation_1st_paragraph", comment: "")
+        static let laypersonExplanationSecondParagraph = NSLocalizedString("unfortunately_view_layperson_explanation_2nd_paragraph", comment: "")
+        static let tldrButtonTitle = NSLocalizedString("unfortunately_view_tldr_button_title", comment: "")
+        
+    }
+    
     struct InstructionsAView {
         
         static let title = NSLocalizedString("instructions_a_view_title", comment: "")
-        static let applePodcastsStep1 = NSLocalizedString("instructions_a_view_apple_podcasts_step1", comment: "")
-        static let applePodcastsStep2 = NSLocalizedString("instructions_a_view_apple_podcasts_step2", comment: "")
-        static let applePodcastsStep3 = NSLocalizedString("instructions_a_view_apple_podcasts_step3", comment: "")
-        static let applePodcastsStep4 = NSLocalizedString("instructions_a_view_apple_podcasts_step4", comment: "")
-        static let applePodcastsStep5 = NSLocalizedString("instructions_a_view_apple_podcasts_step5", comment: "")
+        static let generalExplanationText = NSLocalizedString("instructions_a_view_general_explanation_text", comment: "")
+        
+        struct ApplePodcasts {
+            
+            static let imageName = NSLocalizedString("instructions_a_view_apple_podcasts_image_name", comment: "")
+            static let step1 = NSLocalizedString("instructions_a_view_apple_podcasts_step1", comment: "")
+            static let step2 = NSLocalizedString("instructions_a_view_apple_podcasts_step2", comment: "")
+            static let step3 = NSLocalizedString("instructions_a_view_apple_podcasts_step3", comment: "")
+            static let step4 = NSLocalizedString("instructions_a_view_apple_podcasts_step4", comment: "")
+            static let step5 = NSLocalizedString("instructions_a_view_apple_podcasts_step5", comment: "")
+            static let step6 = NSLocalizedString("instructions_a_view_apple_podcasts_step6", comment: "")
+            
+        }
+        
+        struct Castro {
+            
+            static let imageName = NSLocalizedString("instructions_a_view_castro_image_name", comment: "")
+            static let step1 = NSLocalizedString("instructions_a_view_castro_step1", comment: "")
+            static let step2 = NSLocalizedString("instructions_a_view_castro_step2", comment: "")
+            static let step3 = NSLocalizedString("instructions_a_view_castro_step3", comment: "")
+            static let step4 = NSLocalizedString("instructions_a_view_castro_step4", comment: "")
+            static let step5 = NSLocalizedString("instructions_a_view_castro_step5", comment: "")
+            static let step6 = NSLocalizedString("instructions_a_view_castro_step6", comment: "")
+            
+        }
+        
+        struct Overcast {
+            
+            static let imageName = NSLocalizedString("instructions_a_view_overcast_image_name", comment: "")
+            static let step1 = NSLocalizedString("instructions_a_view_overcast_step1", comment: "")
+            static let step2 = NSLocalizedString("instructions_a_view_overcast_step2", comment: "")
+            static let step3 = NSLocalizedString("instructions_a_view_overcast_step3", comment: "")
+            static let step4 = NSLocalizedString("instructions_a_view_overcast_step4", comment: "")
+            static let step5 = NSLocalizedString("instructions_a_view_overcast_step5", comment: "")
+            static let step6 = NSLocalizedString("instructions_a_view_overcast_step6", comment: "")
+            
+        }
+        
+        struct PocketCasts {
+            
+            static let imageName = NSLocalizedString("instructions_a_view_pocket_casts_image_name", comment: "")
+            static let step1 = NSLocalizedString("instructions_a_view_pocket_casts_step1", comment: "")
+            static let step2 = NSLocalizedString("instructions_a_view_pocket_casts_step2", comment: "")
+            static let step3 = NSLocalizedString("instructions_a_view_pocket_casts_step3", comment: "")
+            static let step4 = NSLocalizedString("instructions_a_view_pocket_casts_step4", comment: "")
+            static let step5 = NSLocalizedString("instructions_a_view_pocket_casts_step5", comment: "")
+            static let step6 = NSLocalizedString("instructions_a_view_pocket_casts_step6", comment: "")
+            
+        }
+        
         static let nextButtonLabel = NSLocalizedString("instructions_a_view_next_button_label", comment: "")
         
     }

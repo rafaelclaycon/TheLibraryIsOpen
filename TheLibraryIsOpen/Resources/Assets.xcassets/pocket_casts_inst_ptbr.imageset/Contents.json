@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "pocket_casts_inst_ptbr.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

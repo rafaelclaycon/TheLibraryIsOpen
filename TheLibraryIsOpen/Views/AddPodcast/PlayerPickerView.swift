@@ -17,7 +17,10 @@ struct PlayerPickerView: View {
                     .padding(.top)
                 
                 List(options) { option in
-                    NavigationLink(destination: InstructionsAView(isShowingModal: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: option.id, selection: $selectedOption, label: {
+                    NavigationLink(destination: InstructionsAView(isShowingModal: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd, selectedOption: option),
+                                   tag: option.id,
+                                   selection: $selectedOption,
+                                   label: {
                         Button {
                             selectedOption = option.id
                         } label: {
@@ -33,12 +36,12 @@ struct PlayerPickerView: View {
                                     Image(systemName: "questionmark")
                                         .font(.body)
                                         .foregroundColor(.primary)
+                                        .padding(.horizontal, 10)
                                 }
                                 
                                 Text(option.name)
                             }
                         }
-
                     })
                 }
                 .navigationBarTitleDisplayMode(.inline)

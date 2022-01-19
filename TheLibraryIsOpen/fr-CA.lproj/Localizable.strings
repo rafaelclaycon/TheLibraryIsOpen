@@ -24,14 +24,50 @@
 
 "player_picker_view_other" = "Autre";
 
+// Unfortunately View
+
+"unfortunately_view_title" = "Malheureusement, %@ ne prend pas en charge l'écosystème de podcast ouvert";
+"unfortunately_view_layperson_explanation_1st_paragraph" = "Les podcasts ont commencé comme un référentiel ouvert de flux RSS à partager par tous, mais %@ ne donne pas cette information aux autres.";
+"unfortunately_view_layperson_explanation_2nd_paragraph" = "Afin d'obtenir tous les épisodes librement disponibles, veuillez utiliser un autre lecteur pris en charge comme Overcast, Pocket Casts, Apple Podcasts ou Castro.";
+"unfortunately_view_tldr_button_title" = "👀  TL;DR Dis-moi Juste Ce Que Je Dois Faire";
+
 // Instructions A View
 
-"instructions_a_view_title" = "Obtenir le Lien";
+"instructions_a_view_title" = "Comment Obtenir le Lien";
+"instructions_a_view_general_explanation_text" = "Pour continuer, vous devez obtenir le lien du podcast. Suivez les étapes ci-dessous.";
+
+"instructions_a_view_apple_podcasts_image_name" = "apple_podcasts_inst_en";
 "instructions_a_view_apple_podcasts_step1" = "1. Ouvrez l'application Podcasts";
-"instructions_a_view_apple_podcasts_step2" = "2. Trouvez le podcast que vous souhaitez archiver";
-"instructions_a_view_apple_podcasts_step3" = "3. Appuyez sur le bouton ... en haut à droite de la page du spectacle";
-"instructions_a_view_apple_podcasts_step4" = "4. Appuyez sur Copier le lien";
-"instructions_a_view_apple_podcasts_step5" = "5. Revenez ici et appuyez sur Suivant";
+"instructions_a_view_apple_podcasts_step2" = "2. Appuyez sur la loupe en bas (Rechercher)";
+"instructions_a_view_apple_podcasts_step3" = "3. Tapez le nom du podcast que vous souhaitez archiver dans la barre de recherche et ouvrez la page de l'émission";
+"instructions_a_view_apple_podcasts_step4" = "4. Appuyez sur le bouton ... en haut à droite de la page du spectacle";
+"instructions_a_view_apple_podcasts_step5" = "5. Appuyez sur Copier le lien";
+"instructions_a_view_apple_podcasts_step6" = "6. Revenez ici et appuyez sur Suivant";
+
+"instructions_a_view_castro_image_name" = "castro_inst_en";
+"instructions_a_view_castro_step1" = "1. Ouvrir Castro";
+"instructions_a_view_castro_step2" = "2. Appuyez sur la troisième icône dans la barre inférieure (Bibliothèque)";
+"instructions_a_view_castro_step3" = "3. Dans la bibliothèque, appuyez sur le podcast que vous souhaitez archiver";
+"instructions_a_view_castro_step4" = "4. Appuyez sur l'icône de partage en haut à droite de l'écran (une flèche pointant vers le haut)";
+"instructions_a_view_castro_step5" = "5. Dans la feuille de partage, appuyez sur Copier";
+"instructions_a_view_castro_step5" = "6. Revenez ici et appuyez sur Suivant";
+
+"instructions_a_view_overcast_image_name" = "overcast_inst_en";
+"instructions_a_view_overcast_step1" = "1. Ouvrir Overcast";
+"instructions_a_view_overcast_step2" = "2. Dans la liste des podcasts, appuyez sur une émission pour l'ouvrir";
+"instructions_a_view_overcast_step3" = "3. Appuyez sur la petite icône i à droite d'un épisode";
+"instructions_a_view_overcast_step4" = "4. Dans l'écran de détail de l'épisode, appuyez sur Partager en bas à droite (une flèche pointant vers le haut)";
+"instructions_a_view_overcast_step5" = "5. Appuyez sur Partager le lien puis sur Copier dans la feuille de partage qui suit";
+"instructions_a_view_overcast_step6" = "6. Revenez ici et appuyez sur Suivant";
+
+"instructions_a_view_pocket_casts_image_name" = "pocket_casts_inst_ptbr";
+"instructions_a_view_pocket_casts_step1" = "1. Ouvrir Pocket Casts";
+"instructions_a_view_pocket_casts_step2" = "2. Dans la barre inférieure, appuyez sur Podcasts";
+"instructions_a_view_pocket_casts_step3" = "3. Choisissez un podcast dans la liste";
+"instructions_a_view_pocket_casts_step4" = "4. Dans l'écran de détail du podcast, appuyez sur Partager en bas à droite (une flèche pointant vers le haut)";
+"instructions_a_view_pocket_casts_step5" = "5. Appuyez sur Copier dans la feuille de partage";
+"instructions_a_view_pocket_casts_step6" = "6. Revenez ici et appuyez sur Suivant";
+
 "instructions_a_view_next_button_label" = "Suivant";
 
 // Instructions B View

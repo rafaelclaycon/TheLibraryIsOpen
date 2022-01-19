@@ -24,14 +24,50 @@
 
 "player_picker_view_other" = "Other";
 
+// Unfortunately View
+
+"unfortunately_view_title" = "Unfortunately, %@ does not support the open podcast ecosystem";
+"unfortunately_view_layperson_explanation_1st_paragraph" = "Podcasts started as an open repository of RSS feeds for all to share, but %@ does not give that information to others.";
+"unfortunately_view_layperson_explanation_2nd_paragraph" = "In order to get all openly available episodes, please use another supported player like Overcast, Pocket Casts, Apple Podcasts or Castro.";
+"unfortunately_view_tldr_button_title" = "👀  TL;DR Just Tell Me What I Need To Do";
+
 // Instructions A View
 
-"instructions_a_view_title" = "Get Link";
+"instructions_a_view_title" = "How to Get the Link";
+"instructions_a_view_general_explanation_text" = "To proceed, you need to get the podcast link. Follow the steps below.";
+
+"instructions_a_view_apple_podcasts_image_name" = "apple_podcasts_inst_en";
 "instructions_a_view_apple_podcasts_step1" = "1. Open the Podcasts app";
-"instructions_a_view_apple_podcasts_step2" = "2. Find the podcast you want to archive";
-"instructions_a_view_apple_podcasts_step3" = "3. Tap the ... button on the top right of the show page";
-"instructions_a_view_apple_podcasts_step4" = "4. Tap Copy Link";
-"instructions_a_view_apple_podcasts_step5" = "5. Come back here and tap Next";
+"instructions_a_view_apple_podcasts_step2" = "2. Tap the magnifying glass at the bottom (Search)";
+"instructions_a_view_apple_podcasts_step3" = "3. Type the name of the podcast you want to archive in the search bar and open the show's page";
+"instructions_a_view_apple_podcasts_step4" = "4. Tap the ... button on the top right of the show page";
+"instructions_a_view_apple_podcasts_step5" = "5. Tap Copy Link";
+"instructions_a_view_apple_podcasts_step6" = "6. Come back here and tap Next";
+
+"instructions_a_view_castro_image_name" = "castro_inst_en";
+"instructions_a_view_castro_step1" = "1. Open Castro";
+"instructions_a_view_castro_step2" = "2. Tap the third icon in the bottom bar (Library)";
+"instructions_a_view_castro_step3" = "3. In the Library, tap the podcast you want to archive";
+"instructions_a_view_castro_step4" = "4. Tap the share icon at the top right of the screen (an arrow pointing upwards)";
+"instructions_a_view_castro_step5" = "5. In the share sheet, tap Copy";
+"instructions_a_view_castro_step5" = "6. Come back here and tap Next";
+
+"instructions_a_view_overcast_image_name" = "overcast_inst_en";
+"instructions_a_view_overcast_step1" = "1. Open Overcast";
+"instructions_a_view_overcast_step2" = "2. In the podcast list, tap a show to open it";
+"instructions_a_view_overcast_step3" = "3. Tap the little i icon at the right of an episode";
+"instructions_a_view_overcast_step4" = "4. In the episode detail screen, tap Share in the bottom right (an arrow pointing upwards)";
+"instructions_a_view_overcast_step5" = "5. Tap Share Link and then Copy in the share sheet that follows";
+"instructions_a_view_overcast_step6" = "6. Come back here and tap Next";
+
+"instructions_a_view_pocket_casts_image_name" = "pocket_casts_inst_ptbr";
+"instructions_a_view_pocket_casts_step1" = "1. Open Pocket Casts";
+"instructions_a_view_pocket_casts_step2" = "2. In the bottom bar, tap Podcasts";
+"instructions_a_view_pocket_casts_step3" = "3. Pick a podcast from the list";
+"instructions_a_view_pocket_casts_step4" = "4. In the podcast detail screen, tap Share on the bottom right (an arrow pointing upwards)";
+"instructions_a_view_pocket_casts_step5" = "5. Tap Copy in the share sheet";
+"instructions_a_view_pocket_casts_step6" = "6. Come back here and tap Next";
+
 "instructions_a_view_next_button_label" = "Next";
 
 // Instructions B View

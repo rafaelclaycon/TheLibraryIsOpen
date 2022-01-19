@@ -24,14 +24,50 @@
 
 "player_picker_view_other" = "Outro";
 
+// Unfortunately View
+
+"unfortunately_view_title" = "Infelizmente, %@ não apoia o ecossistema aberto de podcasts";
+"unfortunately_view_layperson_explanation_1st_paragraph" = "Os podcasts começaram como um repositório aberto de feeds acessível a todos, mas %@ não divulga essa informação para os outros.";
+"unfortunately_view_layperson_explanation_2nd_paragraph" = "Para obter todos os episódios disponíveis ao público, por favor, use outro tocador de podcasts como Overcast, Pocket Casts, Apple Podcasts e Castro.";
+"unfortunately_view_tldr_button_title" = "👀  TL;DR Só Me Diga o Que Fazer";
+
 // Instructions A View
 
-"instructions_a_view_title" = "Obter Link";
+"instructions_a_view_title" = "Como Obter o Link";
+"instructions_a_view_general_explanation_text" = "Para prosseguir, é necessário obter o link do podcast. Siga os passos abaixo.";
+
+"instructions_a_view_apple_podcasts_image_name" = "apple_podcasts_inst_en";
 "instructions_a_view_apple_podcasts_step1" = "1. Abra o app Podcasts";
-"instructions_a_view_apple_podcasts_step2" = "2. Navegue até o podcast que você quer arquivar";
-"instructions_a_view_apple_podcasts_step3" = "3. Toque no botão ... no topo direito da página do podcast";
-"instructions_a_view_apple_podcasts_step4" = "4. Toque na opção Copiar Link";
-"instructions_a_view_apple_podcasts_step5" = "5. Volte aqui e toque em Próximo";
+"instructions_a_view_apple_podcasts_step2" = "2. Na parte inferior, toque no ícone da lupa (Buscar)";
+"instructions_a_view_apple_podcasts_step3" = "3. Pesquisa pelo nome do podcast que deseja arquivar e abra a sua página tocando na lista abaixo";
+"instructions_a_view_apple_podcasts_step4" = "4. Toque no botão ... no topo direito";
+"instructions_a_view_apple_podcasts_step5" = "5. Toque na opção Copiar Link";
+"instructions_a_view_apple_podcasts_step6" = "6. Volte aqui e toque em Próximo";
+
+"instructions_a_view_castro_image_name" = "castro_inst_en";
+"instructions_a_view_castro_step1" = "1. Abra o Castro";
+"instructions_a_view_castro_step2" = "2. Na parte inferior, toque no terceiro ícone (Biblioteca)";
+"instructions_a_view_castro_step3" = "3. Na bilioteca, escolha o podcast que deseja arquivar";
+"instructions_a_view_castro_step4" = "4. Na parte superior da tela, toque no ícone de Compartilhar (uma seta para cima dentro de um quadrado)";
+"instructions_a_view_castro_step5" = "5. Na tela de compartilhamento, toque em Copy";
+"instructions_a_view_castro_step6" = "6. Volte aqui e toque em Próximo";
+
+"instructions_a_view_overcast_image_name" = "overcast_inst_en";
+"instructions_a_view_overcast_step1" = "1. Abra o Overcast";
+"instructions_a_view_overcast_step2" = "2. Na lista de podcasts, selecione um podcast";
+"instructions_a_view_overcast_step3" = "3. Toque no i ao lado de um episódio";
+"instructions_a_view_overcast_step4" = "4. Na tela de detalhes do episódio, toque em Compartilhar na parte superior da tela (ícone com uma seta para cima)";
+"instructions_a_view_overcast_step5" = "5. Toque em Share Link e em seguida em Copy na tela de compartilhamento";
+"instructions_a_view_overcast_step6" = "6. Volte aqui e toque em Próximo";
+
+"instructions_a_view_pocket_casts_image_name" = "pocket_casts_inst_ptbr";
+"instructions_a_view_pocket_casts_step1" = "1. Abra o Pocket Casts";
+"instructions_a_view_pocket_casts_step2" = "2. Na barra inferior, toque em Podcasts";
+"instructions_a_view_pocket_casts_step3" = "3. Selecione um podcast da lista de podcasts";
+"instructions_a_view_pocket_casts_step4" = "4. Na tela de detalhes do podcast, toque em Compartilhar no canto superior esquerdo (ícone com uma seta para cima)";
+"instructions_a_view_pocket_casts_step5" = "5. Toque em Copiar na tela de compartilhamento";
+"instructions_a_view_pocket_casts_step6" = "6. Volte aqui e toque em Próximo";
+
 "instructions_a_view_next_button_label" = "Próximo";
 
 // Instructions B View

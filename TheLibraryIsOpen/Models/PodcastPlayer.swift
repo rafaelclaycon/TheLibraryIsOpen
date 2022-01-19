@@ -34,5 +34,10 @@ class PodcastPlayerFactory {
         players.append(PodcastPlayer(id: 12, name: LocalizableStrings.PlayerPickerView.other, iconName: nil, type: .other))
         return players
     }
+    
+    static func getActualInstructions() -> Set<PodcastPlayerType> {
+        let actualInstructions: Set<PodcastPlayerType> = [.applePodcasts, .castro, .overcast, .pocketCasts, .other]
+        return actualInstructions
+    }
 
 }
