@@ -2,9 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State var displayHowToGetLinkInstructions: Bool = false
+    @StateObject var viewModel = SettingsViewViewModel()
     
-    @State private var addingBehaviorSelectedOption = LocalizableStrings.Settings.AddPodcast.WhenAdding.previewFirstOption
     let addingBehaviors = [LocalizableStrings.Settings.AddPodcast.WhenAdding.previewFirstOption,
                            LocalizableStrings.Settings.AddPodcast.WhenAdding.justAddToArchiveOption,
                            LocalizableStrings.Settings.AddPodcast.WhenAdding.addAndDownloadAllEpisodesOption]
@@ -22,12 +21,18 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section(LocalizableStrings.Settings.AddPodcast.sectionHeader) {
-                Toggle(LocalizableStrings.Settings.AddPodcast.skipGetLinkInstructions, isOn: $displayHowToGetLinkInstructions)
+                Toggle(LocalizableStrings.Settings.AddPodcast.skipGetLinkInstructions, isOn: $viewModel.displayHowToGetLinkInstructions)
+                    .onChange(of: viewModel.displayHowToGetLinkInstructions) { newValue in
+                        UserSettings.setSkipGetLinkInstructions(to: newValue)
+                    }
                 
-                Picker(LocalizableStrings.Settings.AddPodcast.WhenAdding.optionLabel, selection: $addingBehaviorSelectedOption) {
+                Picker(LocalizableStrings.Settings.AddPodcast.WhenAdding.optionLabel, selection: $viewModel.addingBehaviorSelectedOption) {
                     ForEach(addingBehaviors, id: \.self) {
                         Text($0)
                     }
+                }
+                .onChange(of: viewModel.addingBehaviorSelectedOption) { newValue in
+                    UserSettings.setAddingBehaviorSelectedOption(to: viewModel.addingBehaviorSelectedOption)
                 }
             }
             
@@ -77,6 +82,18 @@ struct SettingsView: View {
                 Text(LocalizableStrings.Settings.Feedback.sectionHeader)
             } footer: {
                 Text(LocalizableStrings.Settings.Feedback.sectionFooter)
+            }
+            
+            if viewModel.displayDeveloperOptions {
+                Section {
+                    Button("Clear UserDefaults") {
+                        UserSettings.restoreDefaults()
+                    }
+                } header: {
+                    Text("Developer options")
+                } footer: {
+                    EmptyView()
+                }
             }
         }
         .navigationTitle(LocalizableStrings.Settings.title)

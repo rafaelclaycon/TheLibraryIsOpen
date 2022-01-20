@@ -113,12 +113,12 @@
 "archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episódio) (arquivado em %@)";
 "archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episódios) (arquivado em %@)";
 
-// Settings screen
+// Settings View
 
 "settings_screen_title" = "Configurações";
 
 "settings_screen_add_podcast_section_header" = "Adicionar podcast";
-"settings_screen_add_podcast_skip_get_link_instructions_label" = "Pular instruções Obter Link";
+"settings_screen_add_podcast_skip_get_link_instructions_label" = "Pular tutorial para obter o link";
 "settings_screen_when_adding_option_label" = "Ao adicionar";
 "settings_screen_when_adding_preview_first_option" = "Permitir-me escolher quais episódios baixar";
 "settings_screen_when_adding_just_add_to_archive_option" = "Arquivar imediatamente";

@@ -55,10 +55,12 @@ struct MainView: View {
                 }
             )
             .sheet(isPresented: $showingNewPodcastSheet) {
-                /*InstructionsAView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
-                    .interactiveDismissDisabled(true)*/
-                PlayerPickerView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
-                    .interactiveDismissDisabled(true)
+                if UserSettings.getSkipGetLinkInstructions() {
+                    InstructionsBView(estaSendoExibido: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                } else {
+                    PlayerPickerView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                        .interactiveDismissDisabled(true)
+                }
             }
             .onChange(of: showingNewPodcastSheet) {
                 if $0 == false {

@@ -110,12 +110,12 @@
 "archived_podcast_detail_export_options_dropbox_option_name" = "Dropbox";
 "archived_podcast_detail_export_options_onedrive_option_name" = "OneDrive";
 
-// Settings screen
+// Settings View
 
 "settings_screen_title" = "Réglages";
 
 "settings_screen_add_podcast_section_header" = "Ajouter un balado";
-"settings_screen_add_podcast_skip_get_link_instructions_label" = "Ignorer les instructions de Obtenir le Lien";
+"settings_screen_add_podcast_skip_get_link_instructions_label" = "Ignorer le didacticiel de lien";
 "settings_screen_when_adding_option_label" = "Lors de l'ajout";
 "settings_screen_when_adding_preview_first_option" = "Afficher l'aperçu";
 "settings_screen_when_adding_just_add_to_archive_option" = "Directement au archives";
