@@ -21,7 +21,7 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 ### The extra mile
 
 - [x] Give specific Get Link instructions based on the podcast player the archiver uses
-- [ ] Show download progress for each episode
+- [x] Show download progress for each episode
 - [ ] Upload the zipped file to Google Drive
 - [ ] Let the user cancel the whole download with a single click
 - [ ] Persist the archive between runs nicely
