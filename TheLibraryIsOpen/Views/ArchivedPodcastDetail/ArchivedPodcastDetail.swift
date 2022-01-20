@@ -6,6 +6,7 @@ struct ArchivedPodcastDetail: View {
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
+    @State private var downloadAmount = 50.0
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
@@ -77,6 +78,20 @@ struct ArchivedPodcastDetail: View {
                 Divider()
                     .padding(.bottom, 5)
                 
+                HStack {
+                    ProgressView("Baixando \(viewModel.episodeCount) episódios...", value: downloadAmount, total: 100)
+                        .padding(.horizontal)
+                    
+                    Button {
+                        print("Download cancelled")
+                    } label: {
+                        Image(systemName: "stop.circle.fill")
+                            .font(.title2)
+                    }
+                    .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 10, horizontalPadding: 20))
+                    .padding(.trailing)
+                }
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
@@ -102,7 +117,7 @@ struct ArchivedPodcastDetail: View {
                 .background(Color.accentColor)
                 .cornerRadius(30)
                 .alert(isPresented: $viewModel.displayAlert) {
-                    Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                    Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
                 }
                 .padding(.vertical, 5)
                 .disabled(viewModel.downloadingKeeper.isEmpty == false)

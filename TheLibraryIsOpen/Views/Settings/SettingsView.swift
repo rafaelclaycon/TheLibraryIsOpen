@@ -63,7 +63,7 @@ struct SettingsView: View {
                     showingTipJarThankYouAlert = true
                 }
                 .alert(isPresented: $showingTipJarThankYouAlert) {
-                    Alert(title: Text("And She Is the Moment"), message: Text("Thank you so much for your support."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("And She Is the Moment"), message: Text("Thank you so much for your support."), dismissButton: .default(Text(LocalizableStrings.ok)))
                 }
             } header: {
                 Text(LocalizableStrings.Settings.TipJar.sectionHeader)

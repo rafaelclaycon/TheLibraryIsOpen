@@ -16,11 +16,15 @@ enum PodcastPlayerType {
 }
 
 class PodcastPlayerFactory {
+    
+    static func getApplePodcasts() -> PodcastPlayer {
+        return PodcastPlayer(id: 1, name: "Apple Podcasts", iconName: "apple_podcasts_icon", type: .applePodcasts)
+    }
 
     static func getPlayers() -> [PodcastPlayer] {
         var players = [PodcastPlayer]()
         players.append(PodcastPlayer(id: 0, name: "Amazon Music", iconName: "amazon_music_icon", type: .amazonMusic))
-        players.append(PodcastPlayer(id: 1, name: "Apple Podcasts", iconName: "apple_podcasts_icon", type: .applePodcasts))
+        players.append(getApplePodcasts())
         players.append(PodcastPlayer(id: 2, name: "Castbox", iconName: "castbox_icon", type: .castbox))
         players.append(PodcastPlayer(id: 3, name: "Castro", iconName: "castro_icon", type: .castro))
         players.append(PodcastPlayer(id: 4, name: "Deezer", iconName: "deezer_icon", type: .deezer))

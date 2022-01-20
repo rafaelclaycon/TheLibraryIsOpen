@@ -1,6 +1,7 @@
 
 // General
 
+"ok" = "D'accord";
 "episode" = "épisode";
 "episodes" = "épisodes";
 "cancel" = "Annuler";
@@ -27,9 +28,12 @@
 // Unfortunately View
 
 "unfortunately_view_title" = "Malheureusement, %@ ne prend pas en charge l'écosystème de podcast ouvert";
-"unfortunately_view_layperson_explanation_1st_paragraph" = "Les podcasts ont commencé comme un référentiel ouvert de flux RSS à partager par tous, mais %@ ne donne pas cette information aux autres.";
-"unfortunately_view_layperson_explanation_2nd_paragraph" = "Afin d'obtenir tous les épisodes librement disponibles, veuillez utiliser un autre lecteur pris en charge comme Overcast, Pocket Casts, Apple Podcasts ou Castro.";
-"unfortunately_view_tldr_button_title" = "👀  TL;DR Dis-moi Juste Ce Que Je Dois Faire";
+"unfortunately_view_explanation_1st_paragraph" = "Les podcasts ont commencé comme un référentiel ouvert de flux RSS à partager par tous, mais %@ ne donne pas cette information aux autres.";
+"unfortunately_view_explanation_2nd_paragraph" = "Le moyen le plus simple d'accéder à tous les épisodes accessibles au public consiste à utiliser l'application Podcasts déjà installée sur votre iPhone.";
+"unfortunately_view_explanation_3rd_paragraph" = "Ouvrez l'application et suivez les instructions de l'écran suivant pour obtenir le flux de podcast.";
+"unfortunately_view_open_apple_podcasts_button_title" = "Ouvrir Apple Podcasts";
+"unfortunately_view_could_not_open_podcasts_app_alert_title" = "Impossible D'ouvrir L'application Podcasts";
+"unfortunately_view_could_not_open_podcasts_app_alert_message" = "Veuillez rechercher l'application Podcasts sur votre appareil pour continuer.";
 
 // Instructions A View
 

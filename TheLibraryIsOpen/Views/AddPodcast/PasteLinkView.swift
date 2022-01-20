@@ -57,7 +57,7 @@ struct PasteLinkView: View {
                     }
                     .padding(.top, 10)
                     .alert(isPresented: $viewModel.displayAlert) {
-                        Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                        Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
                     }
                     
                     Spacer()

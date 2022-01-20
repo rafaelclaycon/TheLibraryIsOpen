@@ -167,7 +167,7 @@ struct PodcastPreview: View {
             .alert(isPresented: $viewModel.displayAlert) {
                 switch viewModel.alertType {
                 case .singleOption:
-                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
                 case .twoOptions:
                     return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.default(Text("Continue"), action: {
                         podcastToAutoOpenAfterAdd = viewModel.podcast.id

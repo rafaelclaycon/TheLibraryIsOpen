@@ -177,7 +177,7 @@ struct GetLinkInstructionsView: View {
                 )
             }
         } else {
-            UnfortunatelyView(selectedOption: selectedOption, isShowingModal: $isShowingModal)
+            UnfortunatelyView(selectedOption: selectedOption, isShowingModal: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
         }
     }
 

@@ -1,6 +1,7 @@
 
 // General
 
+"ok" = "OK";
 "episode" = "episode";
 "episodes" = "episodes";
 "cancel" = "Cancel";
@@ -27,9 +28,12 @@
 // Unfortunately View
 
 "unfortunately_view_title" = "Unfortunately, %@ does not support the open podcast ecosystem";
-"unfortunately_view_layperson_explanation_1st_paragraph" = "Podcasts started as an open repository of RSS feeds for all to share, but %@ does not give that information to others.";
-"unfortunately_view_layperson_explanation_2nd_paragraph" = "In order to get all openly available episodes, please use another supported player like Overcast, Pocket Casts, Apple Podcasts or Castro.";
-"unfortunately_view_tldr_button_title" = "👀  TL;DR Just Tell Me What I Need To Do";
+"unfortunately_view_explanation_1st_paragraph" = "Podcasts started as an open repository of RSS feeds for all to share, but %@ does not give that information to others.";
+"unfortunately_view_explanation_2nd_paragraph" = "The simplest way to get access to all publicly available episodes is through the Podcasts app that already came installed on your iPhone.";
+"unfortunately_view_explanation_3rd_paragraph" = "Open the app and follow the instructions in the next screen to get de podcast feed.";
+"unfortunately_view_open_apple_podcasts_button_title" = "Open Apple Podcasts";
+"unfortunately_view_could_not_open_podcasts_app_alert_title" = "Could Not Open the Podcasts App";
+"unfortunately_view_could_not_open_podcasts_app_alert_message" = "Please search for the Podcasts app on your device to continue.";
 
 // Instructions A View
 

@@ -15,7 +15,7 @@ extension Color {
     }
     
     public static var applePodcastsPurple: Color {
-        return Color(UIColor(red: 0.68, green: 0.00, blue: 1.00, alpha: 1.00))
+        return Color(UIColor(red: 0.52, green: 0.17, blue: 0.76, alpha: 1.0))
     }
     
     public static var castroGreen: Color {

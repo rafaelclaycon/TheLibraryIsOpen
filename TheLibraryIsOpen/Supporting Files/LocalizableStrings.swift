@@ -4,6 +4,7 @@ struct LocalizableStrings {
 
     // General
 
+    static let ok = NSLocalizedString("ok", comment: "")
     static let episode = NSLocalizedString("episode", comment: "")
     static let episodes = NSLocalizedString("episodes", comment: "")
     static let cancel = NSLocalizedString("cancel", comment: "")
@@ -38,9 +39,12 @@ struct LocalizableStrings {
     struct UnfortunatelyView {
         
         static let title = NSLocalizedString("unfortunately_view_title", comment: "")
-        static let laypersonExplanationFirstParagraph = NSLocalizedString("unfortunately_view_layperson_explanation_1st_paragraph", comment: "")
-        static let laypersonExplanationSecondParagraph = NSLocalizedString("unfortunately_view_layperson_explanation_2nd_paragraph", comment: "")
-        static let tldrButtonTitle = NSLocalizedString("unfortunately_view_tldr_button_title", comment: "")
+        static let explanation1stParagraph = NSLocalizedString("unfortunately_view_explanation_1st_paragraph", comment: "")
+        static let explanation2ndParagraph = NSLocalizedString("unfortunately_view_explanation_2nd_paragraph", comment: "")
+        static let explanation3rdParagraph = NSLocalizedString("unfortunately_view_explanation_3rd_paragraph", comment: "")
+        static let openApplePodcastsButtonTitle = NSLocalizedString("unfortunately_view_open_apple_podcasts_button_title", comment: "")
+        static let couldNotOpenPodcastsAppAlertTitle = NSLocalizedString("unfortunately_view_could_not_open_podcasts_app_alert_title", comment: "")
+        static let couldNotOpenPodcastsAppAlertMessage = NSLocalizedString("unfortunately_view_could_not_open_podcasts_app_alert_message", comment: "")
         
     }
     
