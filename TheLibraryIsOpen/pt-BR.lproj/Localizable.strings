@@ -97,7 +97,7 @@
 
 "archived_podcast_detail_total_size" = "Espaço ocupado";
 "archived_podcast_detail_last_checked" = "Última consulta";
-"archived_podcast_detail_downloading_episode" = "Baixando episódio...";
+"archived_podcast_detail_downloading_episode" = "Baixando episódio... %.0f%%";
 "archived_podcast_detail_available_offline" = "Baixado";
 "archived_podcast_detail_filter" = "Filtrar";
 "archived_podcast_detail_unknown_total_size" = "Desconhecido";

@@ -20,7 +20,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var recentsFirst: Bool = true
     
     // List status keepers
-    @Published var downloadingKeeper = Set<String>()
+    @Published var downloadingKeeper: [String: Double] = [:]
     @Published var downloadedKeeper = Set<String>()
     @Published var downloadErrorKeeper = Set<String>()
     
@@ -61,6 +61,14 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             download(episodes: episodesToDownload)
         }
         
+        updateKeepers()
+    }
+    
+    private func updateKeepers() {
+        downloadingKeeper.removeAll()
+        downloadedKeeper.removeAll()
+        downloadErrorKeeper.removeAll()
+        
         episodes.forEach { episode in
             switch EpisodeOfflineStatus(rawValue: episode.offlineStatus) {
             case .availableOffline:
@@ -68,13 +76,23 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             case .downloadError:
                 downloadErrorKeeper.insert(episode.id)
             default:
-                downloadingKeeper.insert(episode.id)
+                downloadingKeeper[episode.id] = 0.0
             }
         }
     }
     
     func download(episodes: [Episode]) {
-        dataManager.download(episodeArray: episodes, podcastId: podcast.id) { [weak self] success in
+        dataManager.download(episodeArray: episodes, podcastId: podcast.id, progressCallback: { [weak self] episodeId, fractionCompleted in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.downloadingKeeper[episodeId] = fractionCompleted * 100
+            
+            if fractionCompleted == 1 {
+                strongSelf.downloadingKeeper[episodeId] = nil
+                strongSelf.downloadedKeeper.insert(episodeId)
+            }
+        }, completionHandler: { [weak self] success in
             guard let strongSelf = self else {
                 return
             }
@@ -92,8 +110,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 
                 // Persist
                 dataManager.updateEpisodesLocalFilepathAndOfflineStatus(strongSelf.episodes)
-                
-                //self?.showAlert(withTitle: "Episode Download Successful", message: "Yay!")
             } else {
                 for i in 0...(episodes.count - 1) {
                     strongSelf.downloadErrorKeeper.insert(strongSelf.episodes[i].id)
@@ -101,7 +117,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 }
                 self?.showAlert(withTitle: "Episode Download Unsuccessful", message: ":(")
             }
-        }
+            
+            strongSelf.updateKeepers()
+        })
     }
     
 //    func showShareSheet() {

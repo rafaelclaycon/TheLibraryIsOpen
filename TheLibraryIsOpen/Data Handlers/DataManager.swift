@@ -339,7 +339,7 @@ class DataManager {
         }
     }
     
-    func download(episodeArray: [Episode], podcastId: Int, completionHandler: @escaping (Bool) -> Void) {
+    func download(episodeArray: [Episode], podcastId: Int, progressCallback: @escaping (String, Double) -> Void, completionHandler: @escaping (Bool) -> Void) {
         var array = episodeArray
         
         if let episodio = array.popLast() {
@@ -357,16 +357,20 @@ class DataManager {
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             
-            AF.download(episodio.remoteUrl, to: destino).response { response in
-                /*guard response.error == nil else {
-                    return completionHandler(nil, .downloadError)
-                }
-                guard let filePath = response.fileURL?.path else {
-                    return completionHandler(nil, .failedToProvideLocalFileURL)
-                }*/
+            AF.download(episodio.remoteUrl, to: destino)
+                .downloadProgress(closure: { progress in
+                    progressCallback(episodio.id, progress.fractionCompleted)
+                })
+                .response { response in
+                    /*guard response.error == nil else {
+                        return completionHandler(nil, .downloadError)
+                    }
+                    guard let filePath = response.fileURL?.path else {
+                        return completionHandler(nil, .failedToProvideLocalFileURL)
+                    }*/
                 
-                self.download(episodeArray: array, podcastId: podcastId, completionHandler: completionHandler)
-            }
+                    self.download(episodeArray: array, podcastId: podcastId, progressCallback: progressCallback, completionHandler: completionHandler)
+                }
         } else {
             completionHandler(true)
         }

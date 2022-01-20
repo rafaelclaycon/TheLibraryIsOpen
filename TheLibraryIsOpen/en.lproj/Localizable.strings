@@ -97,7 +97,7 @@
 
 "archived_podcast_detail_total_size" = "Total size";
 "archived_podcast_detail_last_checked" = "Last checked";
-"archived_podcast_detail_downloading_episode" = "Downloading episode...";
+"archived_podcast_detail_downloading_episode" = "Downloading episode... %.0f%%";
 "archived_podcast_detail_available_offline" = "Available offline";
 "archived_podcast_detail_filter" = "Filter";
 "archived_podcast_detail_unknown_total_size" = "Unknown";

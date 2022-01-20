@@ -6,11 +6,11 @@ struct ArchivedEpisodeRow: View {
     @State var showLoadingIndicator: Bool = true
     //@Binding var offlineStatus: EpisodeOfflineStatus
     
-    @Binding var downloadingItems: Set<String>
+    @Binding var downloadingItems: [String: Double]
     @Binding var downloadedItems: Set<String>
     @Binding var downloadErrorItems: Set<String>
     var offlineStatus: EpisodeOfflineStatus {
-        if downloadingItems.contains(viewModel.episodeID) {
+        if downloadingItems[viewModel.episodeID] != nil {
             return .downloading
         } else if downloadedItems.contains(viewModel.episodeID) {
             return .availableOffline
@@ -49,7 +49,7 @@ struct ArchivedEpisodeRow: View {
                     .font(.footnote)
                 
                 if offlineStatus == .downloading {
-                    Text(LocalizableStrings.ArchivedPodcastDetail.downloadingEpisode)
+                    Text(String(format: LocalizableStrings.ArchivedPodcastDetail.downloadingEpisode, downloadingItems[viewModel.episodeID] ?? 0))
                         .foregroundColor(.gray)
                         .font(.footnote)
                 } else if offlineStatus == .availableOffline {
@@ -74,7 +74,7 @@ struct ArchivedEpisodeRow_Previews: PreviewProvider {
                                                                                        pubDate: Date(),
                                                                                        duration: 4260.0,
                                                                                        filesize: 68600000)),
-                               downloadingItems: .constant(Set<String>()),
+                               downloadingItems: .constant([:]),
                                downloadedItems: .constant(Set<String>()),
                                downloadErrorItems: .constant(Set<String>()),
                                circleSize: 30.0)
@@ -82,7 +82,7 @@ struct ArchivedEpisodeRow_Previews: PreviewProvider {
                                                                                        pubDate: Date(),
                                                                                        duration: 4260.0,
                                                                                        filesize: 68600000)),
-                               downloadingItems: .constant(Set<String>()),
+                               downloadingItems: .constant([:]),
                                downloadedItems: .constant(Set<String>()),
                                downloadErrorItems: .constant(Set<String>()),
                                circleSize: 30.0)
@@ -90,7 +90,7 @@ struct ArchivedEpisodeRow_Previews: PreviewProvider {
                                                                                        pubDate: Date(),
                                                                                        duration: 4260.0,
                                                                                        filesize: 68600000)),
-                               downloadingItems: .constant(Set<String>()),
+                               downloadingItems: .constant([:]),
                                downloadedItems: .constant(Set<String>()),
                                downloadErrorItems: .constant(Set<String>()),
                                circleSize: 30.0)
@@ -98,7 +98,7 @@ struct ArchivedEpisodeRow_Previews: PreviewProvider {
                                                                                        pubDate: Date(),
                                                                                        duration: 4260.0,
                                                                                        filesize: 68600000)),
-                               downloadingItems: .constant(Set<String>()),
+                               downloadingItems: .constant([:]),
                                downloadedItems: .constant(Set<String>()),
                                downloadErrorItems: .constant(Set<String>()),
                                circleSize: 30.0)

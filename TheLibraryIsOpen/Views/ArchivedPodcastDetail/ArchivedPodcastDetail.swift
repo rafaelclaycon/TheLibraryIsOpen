@@ -105,6 +105,7 @@ struct ArchivedPodcastDetail: View {
                     Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
                 }
                 .padding(.vertical, 5)
+                .disabled(viewModel.downloadingKeeper.isEmpty == false)
     //            .sheet(isPresented: $showingExportOptions) {
     //                ExportDestinationOptions(showingExportOptions: $showingExportOptions)
     //            }
