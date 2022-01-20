@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "ID3TagEditor",
+        "repositoryURL": "https://github.com/chicio/ID3TagEditor",
+        "state": {
+          "branch": null,
+          "revision": "da1b78b1ec67ef2b75e6da8ec68b0cbcc6c4a10d",
+          "version": "4.1.3"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {

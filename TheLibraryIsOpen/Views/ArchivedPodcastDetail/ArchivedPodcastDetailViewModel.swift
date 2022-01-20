@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import UIKit
 import ZIPFoundation
+import ID3TagEditor
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
 
@@ -99,10 +100,28 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             
             if success {
                 for i in 0...(episodes.count - 1) {
-                    strongSelf.downloadedKeeper.insert(strongSelf.episodes[i].id)
-                    
                     if let url = URL(string: strongSelf.episodes[i].remoteUrl) {
                         strongSelf.episodes[i].localFilepath = "Podcasts/\(strongSelf.podcast.id)/\(url.lastPathComponent)"
+                        
+                        // TODO: Future feature - Get artwork from MP3 ID3 tag
+                        /*let id3TagEditor = ID3TagEditor()
+                        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        let sourceURL = documentsDirURL.appendingPathComponent(strongSelf.episodes[i].localFilepath!)
+                        
+                        let path = sourceURL.relativePath
+                        print(path)
+                        
+                        do {
+                            if let id3Tag = try id3TagEditor.read(from: path) {
+                                print(id3Tag)
+                                let frameName = FrameName.attachedPicture(.frontCover)
+                                if let frontCover = id3Tag.frames[frameName] {
+                                    print(frontCover)
+                                }
+                            }
+                        } catch {
+                            print(error.localizedDescription)
+                        }*/
                     }
                     
                     strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
