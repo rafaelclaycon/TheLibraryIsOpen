@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct InstructionsBView: View {
+struct PasteLinkView: View {
 
-    @StateObject var viewModel = InstructionsBViewModel()
+    @StateObject var viewModel = PasteLinkViewViewModel()
     @Binding var estaSendoExibido: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
@@ -84,7 +84,7 @@ struct InstructionsBView: View {
 struct InstrucoesLinkView_Previews: PreviewProvider {
 
     static var previews: some View {
-        InstructionsBView(estaSendoExibido: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
+        PasteLinkView(estaSendoExibido: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }

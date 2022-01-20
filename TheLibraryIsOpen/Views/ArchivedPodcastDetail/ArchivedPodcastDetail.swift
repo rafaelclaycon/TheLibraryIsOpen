@@ -22,110 +22,117 @@ struct ArchivedPodcastDetail: View {
     private let oneDrive = LocalizableStrings.ArchivedPodcastDetail.Export.Options.oneDrive
 
     var body: some View {
-        VStack {
-            //NavigationLink(destination: ExportDestinationOptions(showingExportOptions: $showingExportOptions), isActive: $showingExportOptions) { EmptyView() }
-            
-            HStack(spacing: 20) {
-                Button(action: {
-                    viewModel.recentsFirst.toggle()
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
-                        Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+        ZStack {
+            VStack {
+                //NavigationLink(destination: ExportDestinationOptions(showingExportOptions: $showingExportOptions), isActive: $showingExportOptions) { EmptyView() }
+                
+                HStack(spacing: 20) {
+                    Button(action: {
+                        viewModel.recentsFirst.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
+                            Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+                        }
+                    }
+                    
+                    Menu {
+                        Button("Only Downloaded", action: viewModel.placeOrder)
+                        Button("All Episodes", action: viewModel.adjustOrder)
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                        Text(LocalizableStrings.ArchivedPodcastDetail.filter)
+                    }
+                }
+                .padding(.vertical, 10)
+                
+                Divider()
+
+                // List
+                if viewModel.displayEpisodeList {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.episodes, id: \.id) { episode in
+                                ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode),
+                                                   downloadingItems: $viewModel.downloadingKeeper,
+                                                   downloadedItems: $viewModel.downloadedKeeper,
+                                                   downloadErrorItems: $viewModel.downloadErrorKeeper,
+                                                   circleSize: 30.0)
+                                    .padding(.vertical, 5)
+                            }
+                        }
+                    }
+                } else {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Text("Nenhum Episódio")
+                            Spacer()
+                        }
+                        Spacer()
                     }
                 }
                 
-                Menu {
-                    Button("Only Downloaded", action: viewModel.placeOrder)
-                    Button("All Episodes", action: viewModel.adjustOrder)
-                } label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                    Text(LocalizableStrings.ArchivedPodcastDetail.filter)
-                }
-            }
-            .padding(.vertical, 10)
-            
-            Divider()
-
-            // List
-            if viewModel.displayEpisodeList {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.episodes, id: \.id) { episode in
-                            ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode),
-                                               downloadingItems: $viewModel.downloadingKeeper,
-                                               downloadedItems: $viewModel.downloadedKeeper,
-                                               downloadErrorItems: $viewModel.downloadErrorKeeper,
-                                               circleSize: 30.0)
-                                .padding(.vertical, 5)
-                        }
+                Divider()
+                    .padding(.bottom, 5)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
+                        Divider()
+                            .fixedSize()
+                        ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.totalSize, imageName: "tray.full", value: viewModel.totalFilesize)
+                        Divider()
+                            .fixedSize()
+                        ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.lastChecked, imageName: "calendar", value: viewModel.lastCheckDate)
                     }
                 }
-            } else {
-                VStack(alignment: .center) {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text("Nenhum Episódio")
-                        Spacer()
+                .padding()
+                
+                Button(action: {
+                    showingExportOptions = true
+                }) {
+                    Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportAllButtonLabel)
+                        .bold()
+                }
+                .padding(.vertical, 15)
+                .padding(.horizontal, 25)
+                .foregroundColor(.white)
+                .background(Color.accentColor)
+                .cornerRadius(30)
+                .alert(isPresented: $viewModel.displayAlert) {
+                    Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                }
+                .padding(.vertical, 5)
+    //            .sheet(isPresented: $showingExportOptions) {
+    //                ExportDestinationOptions(showingExportOptions: $showingExportOptions)
+    //            }
+                .actionSheet(isPresented: $showingExportOptions) {
+                    ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
+                                message: nil,
+                                buttons: [.default(Text(files)) {
+                                              viewModel.zipAll()
+                                          },
+                                          .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
+                                          .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
+                                          .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
+                                          .cancel(Text(LocalizableStrings.cancel))])
+                }
+                .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved to \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
-                    Spacer()
-                }
+                })
             }
             
-            Divider()
-                .padding(.bottom, 5)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
-                    Divider()
-                        .fixedSize()
-                    ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.totalSize, imageName: "tray.full", value: viewModel.totalFilesize)
-                    Divider()
-                        .fixedSize()
-                    ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.lastChecked, imageName: "calendar", value: viewModel.lastCheckDate)
-                }
+            if viewModel.isShowingProcessingView {
+                ProcessingView(message: $viewModel.processingViewMessage)
+                    .padding(.bottom)
             }
-            .padding()
-            
-            Button(action: {
-                showingExportOptions = true
-            }) {
-                Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportAllButtonLabel)
-                    .bold()
-            }
-            .padding(.vertical, 15)
-            .padding(.horizontal, 25)
-            .foregroundColor(.white)
-            .background(Color.accentColor)
-            .cornerRadius(30)
-            .alert(isPresented: $viewModel.displayAlert) {
-                Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-            }
-            .padding(.vertical, 5)
-//            .sheet(isPresented: $showingExportOptions) {
-//                ExportDestinationOptions(showingExportOptions: $showingExportOptions)
-//            }
-            .actionSheet(isPresented: $showingExportOptions) {
-                ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
-                            message: nil,
-                            buttons: [.default(Text(files)) {
-                                          viewModel.zipAll()
-                                      },
-                                      .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
-                                      .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
-                                      .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
-                                      .cancel(Text(LocalizableStrings.cancel))])
-            }
-            .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
-                switch result {
-                case .success(let url):
-                    print("Saved to \(url)")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            })
         }
         .navigationBarTitle(viewModel.title, displayMode: .inline)
         .navigationBarItems(trailing:

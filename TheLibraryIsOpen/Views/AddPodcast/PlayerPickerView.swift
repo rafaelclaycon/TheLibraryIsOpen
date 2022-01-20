@@ -17,7 +17,7 @@ struct PlayerPickerView: View {
                     .padding(.top)
                 
                 List(options) { option in
-                    NavigationLink(destination: InstructionsAView(isShowingModal: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd, selectedOption: option),
+                    NavigationLink(destination: GetLinkInstructionsView(isShowingModal: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd, selectedOption: option),
                                    tag: option.id,
                                    selection: $selectedOption,
                                    label: {

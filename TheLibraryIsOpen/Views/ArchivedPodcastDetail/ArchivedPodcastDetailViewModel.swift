@@ -29,6 +29,10 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var showingFileExplorer: Bool = false
     @Published var zipFileURL: URL? = nil
     
+    // ProcessingView
+    @Published var isShowingProcessingView = false
+    @Published var processingViewMessage = ""
+    
     // Alerts
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
@@ -50,12 +54,21 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         self.totalFilesize = spaceDescription.isEmpty == false ? spaceDescription : LocalizableStrings.ArchivedPodcastDetail.unknownTotalSize
         self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? LocalizableStrings.ArchivedPodcastDetail.unknownLastCheckedDate
         
-        if CommandLine.arguments.contains("-DO_NOT_DOWNLOAD_EPISODES_UPON_OPENING_ARCHIVED_PODCAST") == false {
-            let episodesToDownload = episodes.filter {
-                $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
-            }
-            if episodesToDownload.count > 0 {
-                download(episodes: episodesToDownload)
+        let episodesToDownload = episodes.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
+        }
+        if episodesToDownload.count > 0 {
+            download(episodes: episodesToDownload)
+        }
+        
+        episodes.forEach { episode in
+            switch EpisodeOfflineStatus(rawValue: episode.offlineStatus) {
+            case .availableOffline:
+                downloadedKeeper.insert(episode.id)
+            case .downloadError:
+                downloadErrorKeeper.insert(episode.id)
+            default:
+                downloadingKeeper.insert(episode.id)
             }
         }
     }
@@ -106,6 +119,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     }
     
     func zipAll() {
+        processingViewMessage = "Criando .zip..."
+        isShowingProcessingView = true
+        
         let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let sourceURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcast.id)")
         
@@ -133,12 +149,15 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         
         do {
             let fileManager = FileManager()
+            
             try fileManager.zipItem(at: sourceURL, to: destinationURL)
+            isShowingProcessingView = false
             
             self.zipFileURL = destinationURL
             self.showingFileExplorer = true
             //showAlert(withTitle: "Episode Export Successful", message: destinationURL.lastPathComponent)
         } catch {
+            isShowingProcessingView = false
             showAlert(withTitle: "Creation of ZIP archive failed with error", message: error.localizedDescription)
         }
     }

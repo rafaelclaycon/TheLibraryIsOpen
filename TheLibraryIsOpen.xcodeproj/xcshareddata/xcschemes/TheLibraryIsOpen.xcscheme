@@ -78,10 +78,6 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-DO_NOT_DOWNLOAD_EPISODES_UPON_OPENING_ARCHIVED_PODCAST"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "-DISPLAY_DEV_OPTIONS_IN_SETTINGS"
             isEnabled = "YES">
          </CommandLineArgument>

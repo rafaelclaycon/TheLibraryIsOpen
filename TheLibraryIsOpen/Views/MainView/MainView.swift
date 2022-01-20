@@ -56,7 +56,7 @@ struct MainView: View {
             )
             .sheet(isPresented: $showingNewPodcastSheet) {
                 if UserSettings.getSkipGetLinkInstructions() {
-                    InstructionsBView(estaSendoExibido: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                    PasteLinkView(estaSendoExibido: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                 } else {
                     PlayerPickerView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                         .interactiveDismissDisabled(true)

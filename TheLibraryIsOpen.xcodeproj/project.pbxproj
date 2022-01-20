@@ -50,11 +50,11 @@
 		D9B2432D2793980E0014384E /* ExportDestinationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */; };
 		D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA094927964636001DE371 /* PlayerPickerView.swift */; };
 		D9D2D53925FBB8CC0099AE42 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */; };
-		D9D2D53F25FBE3CA0099AE42 /* InstructionsBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* InstructionsBView.swift */; };
-		D9D2D54325FBE42F0099AE42 /* InstructionsBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D54225FBE42F0099AE42 /* InstructionsBViewModel.swift */; };
+		D9D2D53F25FBE3CA0099AE42 /* PasteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */; };
+		D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */; };
 		D9D2D55725FC4D8E0099AE42 /* PillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */; };
 		D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */; };
-		D9D3DB81256E7BC00035560E /* InstructionsAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB80256E7BC00035560E /* InstructionsAView.swift */; };
+		D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB80256E7BC00035560E /* GetLinkInstructionsView.swift */; };
 		D9D3DB83256E7BC30035560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D3DB82256E7BC30035560E /* Assets.xcassets */; };
 		D9D3DBBC256E8F930035560E /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBBB256E8F930035560E /* Podcast.swift */; };
 		D9D3DBC4256E92B40035560E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBC3256E92B40035560E /* Episode.swift */; };
@@ -126,12 +126,12 @@
 		D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDestinationOptions.swift; sourceTree = "<group>"; };
 		D9CA094927964636001DE371 /* PlayerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPickerView.swift; sourceTree = "<group>"; };
 		D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
-		D9D2D53E25FBE3CA0099AE42 /* InstructionsBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsBView.swift; sourceTree = "<group>"; };
-		D9D2D54225FBE42F0099AE42 /* InstructionsBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsBViewModel.swift; sourceTree = "<group>"; };
+		D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLinkView.swift; sourceTree = "<group>"; };
+		D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLinkViewViewModel.swift; sourceTree = "<group>"; };
 		D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButtonStyle.swift; sourceTree = "<group>"; };
 		D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheLibraryIsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenApp.swift; sourceTree = "<group>"; };
-		D9D3DB80256E7BC00035560E /* InstructionsAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsAView.swift; sourceTree = "<group>"; };
+		D9D3DB80256E7BC00035560E /* GetLinkInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLinkInstructionsView.swift; sourceTree = "<group>"; };
 		D9D3DB82256E7BC30035560E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9D3DB87256E7BC30035560E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D3DB8C256E7BC30035560E /* TheLibraryIsOpenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheLibraryIsOpenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,9 +256,9 @@
 			children = (
 				D9CA094927964636001DE371 /* PlayerPickerView.swift */,
 				D91823A42798570800193ECB /* UnfortunatelyView.swift */,
-				D9D3DB80256E7BC00035560E /* InstructionsAView.swift */,
-				D9D2D53E25FBE3CA0099AE42 /* InstructionsBView.swift */,
-				D9D2D54225FBE42F0099AE42 /* InstructionsBViewModel.swift */,
+				D9D3DB80256E7BC00035560E /* GetLinkInstructionsView.swift */,
+				D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */,
+				D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */,
 				D9D3DBE1256EA2AE0035560E /* PodcastPreview.swift */,
 				D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */,
 				D91AC97225F51CCE0086396D /* ProcessingView.swift */,
@@ -514,9 +514,9 @@
 				D9E91543279885800024E45F /* Color+Extensions.swift in Sources */,
 				D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */,
 				D975B2A4278C793D00BEBB6B /* LocalizableStrings.swift in Sources */,
-				D9D3DB81256E7BC00035560E /* InstructionsAView.swift in Sources */,
+				D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */,
 				D997FC78278BB05F00F027CB /* ModernDataVisualizer.swift in Sources */,
-				D9D2D54325FBE42F0099AE42 /* InstructionsBViewModel.swift in Sources */,
+				D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */,
 				D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */,
 				D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */,
@@ -525,7 +525,7 @@
 				D98D25552798E3AA006DAC22 /* UserSettings.swift in Sources */,
 				D94A05FA2572CB4E0065AE2C /* TheLibraryIsOpenService.swift in Sources */,
 				D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */,
-				D9D2D53F25FBE3CA0099AE42 /* InstructionsBView.swift in Sources */,
+				D9D2D53F25FBE3CA0099AE42 /* PasteLinkView.swift in Sources */,
 				D9D3DBE8256EBB510035560E /* FeedHelper.swift in Sources */,
 				D975B2AB278DD29900BEBB6B /* SettingsView.swift in Sources */,
 				D95E798C2790D7B200115606 /* LinkAssistant.swift in Sources */,

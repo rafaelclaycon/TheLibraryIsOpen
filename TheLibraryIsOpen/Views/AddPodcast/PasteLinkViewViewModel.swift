@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-class InstructionsBViewModel: ObservableObject {
+class PasteLinkViewViewModel: ObservableObject {
 
     @Published var linkInput = ""
     @Published var isShowingProcessingView = false
