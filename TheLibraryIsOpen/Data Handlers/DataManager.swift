@@ -339,7 +339,10 @@ class DataManager {
         }
     }
     
-    func download(episodeArray: [Episode], podcastId: Int, progressCallback: @escaping (String, Double) -> Void, completionHandler: @escaping (Bool) -> Void) {
+    func download(episodeArray: [Episode],
+                  podcastId: Int,
+                  progressCallback: @escaping (String, Double) -> Void,
+                  completionHandler: @escaping (Bool) -> Void) {
         var array = episodeArray
         
         if let episodio = array.popLast() {

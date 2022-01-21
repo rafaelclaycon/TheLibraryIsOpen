@@ -32,6 +32,7 @@ struct LocalizableStrings {
     
     struct PlayerPickerView {
         
+        static let title = NSLocalizedString("player_picker_view_title", comment: "")
         static let other = NSLocalizedString("player_picker_view_other", comment: "")
         
     }
@@ -143,6 +144,8 @@ struct LocalizableStrings {
         static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
         static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
         static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
+        static let downloadSummaryMessageSingleEpisode = NSLocalizedString("archived_podcast_detail_download_summary_message_single_episode", comment: "")
+        static let downloadSummaryMessageMultipleEpisodes = NSLocalizedString("archived_podcast_detail_download_summary_message_multiple_episodes", comment: "")
         static let unknownTotalSize = NSLocalizedString("archived_podcast_detail_unknown_total_size", comment: "")
         static let unknownLastCheckedDate = NSLocalizedString("archived_podcast_detail_unknown_last_checked_date", comment: "")
         

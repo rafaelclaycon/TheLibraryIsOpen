@@ -8,9 +8,10 @@ struct UnfortunatelyView: View {
     @State var showAlert: Bool = false
     @State var showingGetLinkScreen: Bool = false
     
-    let iconSize: CGFloat = 70
-    let hollowIconSize: CGFloat = 26
-    let applePodcastsPlayer = PodcastPlayerFactory.getApplePodcasts()
+    private let iconSize: CGFloat = 70
+    private let hollowIconSize: CGFloat = 26
+    private let horizontalPadding: CGFloat = 25
+    private let applePodcastsPlayer = PodcastPlayerFactory.getApplePodcasts()
 
     var body: some View {
         ScrollView {
@@ -29,19 +30,19 @@ struct UnfortunatelyView: View {
                     .font(.title)
                     .bold()
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, horizontalPadding)
                 
                 Text(String(format: LocalizableStrings.UnfortunatelyView.explanation1stParagraph, selectedOption.name))
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, horizontalPadding)
                 
                 Text(LocalizableStrings.UnfortunatelyView.explanation2ndParagraph)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, horizontalPadding)
                 
                 Text(LocalizableStrings.UnfortunatelyView.explanation3rdParagraph)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, horizontalPadding)
                 
                 Button {
                     let podcastAppHook = "pcast://"

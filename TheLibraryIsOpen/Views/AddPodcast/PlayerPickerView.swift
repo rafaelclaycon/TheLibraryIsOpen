@@ -10,7 +10,7 @@ struct PlayerPickerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("What podcast player do you use?")
+                Text(LocalizableStrings.PlayerPickerView.title)
                     .font(.title)
                     .bold()
                     .multilineTextAlignment(.center)

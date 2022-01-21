@@ -6,10 +6,10 @@ struct ArchivedPodcastDetail: View {
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var indicePagina = 0
     @State var showingExportOptions: Bool = false
-    @State private var downloadAmount = 50.0
     
     // Private properties
     private let artworkSize: CGFloat = 64.0
+    private let buttonSize: CGFloat = 30
     private let recentsFirstText = LocalizableStrings.mostRecentFirst
     private let oldestFirstText = LocalizableStrings.oldestFirst
     private let columns = [
@@ -25,14 +25,13 @@ struct ArchivedPodcastDetail: View {
     var body: some View {
         ZStack {
             VStack {
-                //NavigationLink(destination: ExportDestinationOptions(showingExportOptions: $showingExportOptions), isActive: $showingExportOptions) { EmptyView() }
-                
+                // MARK: - Top toolbar
                 HStack(spacing: 20) {
                     Button(action: {
                         viewModel.recentsFirst.toggle()
                     }) {
                         HStack {
-                            Image(systemName: viewModel.recentsFirst ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
+                            Image(systemName: viewModel.recentsFirst ? "arrow.uturn.up.circle" : "arrow.uturn.down.circle")
                             Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
                         }
                     }
@@ -49,7 +48,7 @@ struct ArchivedPodcastDetail: View {
                 
                 Divider()
 
-                // List
+                // MARK: - List
                 if viewModel.displayEpisodeList {
                     ScrollView {
                         LazyVStack {
@@ -78,9 +77,17 @@ struct ArchivedPodcastDetail: View {
                 Divider()
                     .padding(.bottom, 5)
                 
-                HStack {
-                    ProgressView("Baixando \(viewModel.episodeCount) episódios...", value: downloadAmount, total: 100)
-                        .padding(.horizontal)
+                // MARK: - Downloading...
+                HStack(spacing: 20) {
+                    ProgressView(viewModel.progressViewMessage, value: viewModel.currentDownloadPercentage, total: viewModel.totalDownloadPercentage)
+                    
+                    Button {
+                        print("Download paused")
+                    } label: {
+                        Image(systemName: "pause.fill")
+                            .font(.title2)
+                    }
+                    .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 12, horizontalPadding: 18))
                     
                     Button {
                         print("Download cancelled")
@@ -88,10 +95,26 @@ struct ArchivedPodcastDetail: View {
                         Image(systemName: "stop.circle.fill")
                             .font(.title2)
                     }
-                    .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 10, horizontalPadding: 20))
-                    .padding(.trailing)
+                    .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 10, horizontalPadding: 14))
+                }
+                .padding(.horizontal)
+                
+                switch viewModel.downloadOperationStatus {
+                case .activelyDownloading:
+                    Text("ACTIVELY DOWNLOADING")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                case .paused:
+                    Text("DOWNLOAD PAUSED")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                case .stopped:
+                    Text("DOWNLOAD STOPPED")
+                        .font(.caption)
+                        .foregroundColor(.gray)
                 }
                 
+                // MARK: - Info
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
@@ -105,6 +128,7 @@ struct ArchivedPodcastDetail: View {
                 }
                 .padding()
                 
+                // MARK: - Export All button
                 Button(action: {
                     showingExportOptions = true
                 }) {
@@ -121,9 +145,6 @@ struct ArchivedPodcastDetail: View {
                 }
                 .padding(.vertical, 5)
                 .disabled(viewModel.downloadingKeeper.isEmpty == false)
-    //            .sheet(isPresented: $showingExportOptions) {
-    //                ExportDestinationOptions(showingExportOptions: $showingExportOptions)
-    //            }
                 .actionSheet(isPresented: $showingExportOptions) {
                     ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                                 message: nil,

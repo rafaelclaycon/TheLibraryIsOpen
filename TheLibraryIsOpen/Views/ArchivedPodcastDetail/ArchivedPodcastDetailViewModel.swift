@@ -20,6 +20,11 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var areAllSelectEpisodeList: Bool = true
     @Published var recentsFirst: Bool = true
     
+    @Published var progressViewMessage: String = ""
+    @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
+    @Published var currentDownloadPercentage = 0.0
+    @Published var totalDownloadPercentage = 100.0
+    
     // List status keepers
     @Published var downloadingKeeper: [String: Double] = [:]
     @Published var downloadedKeeper = Set<String>()
@@ -83,11 +88,32 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     }
     
     func download(episodes: [Episode]) {
+        guard episodes.count > 0 else {
+            return
+        }
+        
+        episodes.forEach { episode in
+            print(episode.filesize)
+        }
+        
+        totalDownloadPercentage = Double(Utils.getSizeInBytesOf(episodes))
+        print("HERMIONE: \(totalDownloadPercentage)")
+        
+        let episodeDic = Dictionary(uniqueKeysWithValues: episodes.map{ ($0.id, $0) })
+        
+        downloadOperationStatus = .activelyDownloading
+        if episodes.count == 1 {
+            progressViewMessage = LocalizableStrings.ArchivedPodcastDetail.downloadSummaryMessageSingleEpisode
+        } else {
+            progressViewMessage = String(format: LocalizableStrings.ArchivedPodcastDetail.downloadSummaryMessageMultipleEpisodes, episodes.count)
+        }
+        
         dataManager.download(episodeArray: episodes, podcastId: podcast.id, progressCallback: { [weak self] episodeId, fractionCompleted in
             guard let strongSelf = self else {
                 return
             }
             strongSelf.downloadingKeeper[episodeId] = fractionCompleted * 100
+            strongSelf.currentDownloadPercentage = (fractionCompleted * Double(episodeDic[episodeId]!.filesize)) / strongSelf.totalDownloadPercentage
             
             if fractionCompleted == 1 {
                 strongSelf.downloadingKeeper[episodeId] = nil

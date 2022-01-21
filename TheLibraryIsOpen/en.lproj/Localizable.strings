@@ -23,6 +23,7 @@
 
 // Player Picker View
 
+"player_picker_view_title" = "What podcast player do you use?";
 "player_picker_view_other" = "Other";
 
 // Unfortunately View
@@ -104,6 +105,8 @@
 "archived_podcast_detail_downloading_episode" = "Downloading episode... %.0f%%";
 "archived_podcast_detail_available_offline" = "Available offline";
 "archived_podcast_detail_filter" = "Filter";
+"archived_podcast_detail_download_summary_message_single_episode" = "Downloading 1 episode...";
+"archived_podcast_detail_download_summary_message_multiple_episodes" = "Downloading %d episodes...";
 "archived_podcast_detail_unknown_total_size" = "Unknown";
 "archived_podcast_detail_unknown_last_checked_date" = "Unknown";
 

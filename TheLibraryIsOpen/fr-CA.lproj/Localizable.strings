@@ -23,6 +23,7 @@
 
 // Player Picker View
 
+"player_picker_view_title" = "Quel lecteur de podcast utilisez-vous?";
 "player_picker_view_other" = "Autre";
 
 // Unfortunately View
@@ -104,6 +105,8 @@
 "archived_podcast_detail_downloading_episode" = "Téléchargement de l'épisode... %.0f%%";
 "archived_podcast_detail_available_offline" = "Disponible hors ligne";
 "archived_podcast_detail_filter" = "Filtrer";
+"archived_podcast_detail_download_summary_message_single_episode" = "Téléchargement de 1 épisode...";
+"archived_podcast_detail_download_summary_message_multiple_episodes" = "Téléchargement de %d épisodes...";
 "archived_podcast_detail_unknown_total_size" = "Inconnue";
 "archived_podcast_detail_unknown_last_checked_date" = "Inconnue";
 
