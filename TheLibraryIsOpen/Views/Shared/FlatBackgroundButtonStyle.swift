@@ -11,7 +11,7 @@ struct FlatBackgroundButtonStyle: ButtonStyle {
             .foregroundColor(foregroundColor)
             .padding(.vertical, verticalPadding)
             .padding(.horizontal, horizontalPadding)
-            .background(Color.lightGray)
+            .background(Color(UIColor.systemGray5))
             .cornerRadius(10)
             .opacity(configuration.isPressed ? 0.7 : 1.0)
             .scaleEffect(configuration.isPressed ? 0.97 : 1.0)

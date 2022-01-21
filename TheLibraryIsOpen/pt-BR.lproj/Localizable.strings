@@ -30,7 +30,7 @@
 "unfortunately_view_title" = "Infelizmente %@ não apoia o ecossistema aberto de podcasts";
 "unfortunately_view_explanation_1st_paragraph" = "Os podcasts começaram como um repositório aberto de feeds RSS acessível a todos, mas %@ não divulga essa informação para outros serviços.";
 "unfortunately_view_explanation_2nd_paragraph" = "A maneira mais simples de obter acesso aos episódios disponíveis ao público é através do app Podcasts já instalado no seu iPhone.";
-"unfortunately_view_explanation_3rd_paragraph" = "Acesse o app e siga os passos da próxima tela para obter o feed do podcast.";
+"unfortunately_view_explanation_3rd_paragraph" = "Acesse o app e siga os passos da próxima tela para obter o link do podcast.";
 "unfortunately_view_open_apple_podcasts_button_title" = "Abrir Apple Podcasts";
 "unfortunately_view_could_not_open_podcasts_app_alert_title" = "Não Pôde Abrir o App Podcasts";
 "unfortunately_view_could_not_open_podcasts_app_alert_message" = "Por favor, procure pelo app Podcasts no seu iPhone para continuar.";
@@ -43,7 +43,7 @@
 "instructions_a_view_apple_podcasts_image_name" = "apple_podcasts_inst_en";
 "instructions_a_view_apple_podcasts_step1" = "1. Abra o app Podcasts";
 "instructions_a_view_apple_podcasts_step2" = "2. Na parte inferior, toque no ícone da lupa (Buscar)";
-"instructions_a_view_apple_podcasts_step3" = "3. Pesquisa pelo nome do podcast que deseja arquivar e abra a sua página tocando na lista abaixo";
+"instructions_a_view_apple_podcasts_step3" = "3. Pesquise pelo nome do podcast que deseja arquivar e abra a sua página tocando na lista abaixo";
 "instructions_a_view_apple_podcasts_step4" = "4. Toque no botão ... no topo direito";
 "instructions_a_view_apple_podcasts_step5" = "5. Toque na opção Copiar Link";
 "instructions_a_view_apple_podcasts_step6" = "6. Volte aqui e toque em Próximo";
