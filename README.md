@@ -26,6 +26,7 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 - [ ] Let the user cancel the whole download with a single click
 - [ ] Persist the archive between runs nicely
 - [ ] Show user full history of exports and downloads
+- [ ] Keep a big download going in the background
 
 ### Backlog
 
