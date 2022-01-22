@@ -132,6 +132,7 @@ struct LocalizableStrings {
             static let readyToDownloadSingleEpisodeConfirmationTitle = NSLocalizedString("podcast_preview_messages_ready_to_download_single_episode_confirmation_title", comment: "")
             static let readyToDownloadMultipleEpisodesConfirmationTitle = NSLocalizedString("podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title", comment: "")
             static let readyToDownloadConfirmationMessage = NSLocalizedString("podcast_preview_messages_ready_to_download_confirmation_message", comment: "")
+            static let continueButtonLabel = NSLocalizedString("continue_button_label", comment: "")
             
         }
         
@@ -157,9 +158,7 @@ struct LocalizableStrings {
             struct Options {
                 
                 static let filesApp = NSLocalizedString("archived_podcast_detail_export_options_files_option_name", comment: "")
-                static let googleDrive = NSLocalizedString("archived_podcast_detail_export_options_google_drive_option_name", comment: "")
-                static let dropbox = NSLocalizedString("archived_podcast_detail_export_options_dropbox_option_name", comment: "")
-                static let oneDrive = NSLocalizedString("archived_podcast_detail_export_options_onedrive_option_name", comment: "")
+                static let other = NSLocalizedString("archived_podcast_detail_export_options_other_option_name", comment: "")
                 
             }
             

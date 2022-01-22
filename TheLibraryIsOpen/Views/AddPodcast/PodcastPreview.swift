@@ -74,7 +74,7 @@ struct PodcastPreview: View {
                     viewModel.toggleEpisodeListSorting()
                 }) {
                     HStack {
-                        Image(systemName: viewModel.episodeListSorting == .fromOldToNew ? "arrow.uturn.down.circle" : "arrow.uturn.up.circle")
+                        Image(systemName: viewModel.episodeListSorting == .fromOldToNew ? "arrow.uturn.up.circle" : "arrow.uturn.down.circle")
                         Text(viewModel.episodeListSorting == .fromOldToNew ? recentsFirstText : oldestFirstText)
                     }
                 }
@@ -148,8 +148,7 @@ struct PodcastPreview: View {
                 }
                 
                 viewModel.showPodcastAddingConfirmation(numberOfEpisodes: viewModel.selectionKeeper.count,
-                                                        podcastName: viewModel.podcast.title,
-                                                        remainingFreeSpace: Utils.getFormattedFileSize(of: remainingSpace))
+                                                        podcastName: viewModel.podcast.title)
                 
                 if viewModel.download(episodeIDs: viewModel.selectionKeeper) {
                     viewModel.alertType = .twoOptions
@@ -168,8 +167,8 @@ struct PodcastPreview: View {
                 switch viewModel.alertType {
                 case .singleOption:
                     return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
-                case .twoOptions:
-                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.default(Text("Continue"), action: {
+                default:
+                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.default(Text(LocalizableStrings.PodcastPreview.Messages.continueButtonLabel), action: {
                         podcastToAutoOpenAfterAdd = viewModel.podcast.id
                         isShowingAddPodcastModal = false
                     }))
@@ -177,17 +176,10 @@ struct PodcastPreview: View {
             }
             .padding(.vertical, 5)
             
-            /*Button(action: {
-                // viewModel.
-            }) {
-                Text("Apenas adicionar podcast ao arquivo")
-            }
-            .padding(.vertical, 10)*/
-            
-            /*Text("Você pode baixar todos os episódios neste dispositivo, porém restará menos de 10% do espaço livre atualmente (40,5 GB).")
+            Text("48 GB restantes no seu iPhone.")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 25)*/
+                .padding(.horizontal, 25)
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing:

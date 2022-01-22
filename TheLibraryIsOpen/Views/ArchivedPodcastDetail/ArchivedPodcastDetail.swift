@@ -18,9 +18,7 @@ struct ArchivedPodcastDetail: View {
     ]
     
     private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
-    private let googleDrive = LocalizableStrings.ArchivedPodcastDetail.Export.Options.googleDrive
-    private let dropbox = LocalizableStrings.ArchivedPodcastDetail.Export.Options.dropbox
-    private let oneDrive = LocalizableStrings.ArchivedPodcastDetail.Export.Options.oneDrive
+    private let other = LocalizableStrings.ArchivedPodcastDetail.Export.Options.other
 
     var body: some View {
         ZStack {
@@ -37,8 +35,8 @@ struct ArchivedPodcastDetail: View {
                     }
                     
                     Menu {
-                        Button("Only Downloaded", action: viewModel.placeOrder)
-                        Button("All Episodes", action: viewModel.adjustOrder)
+                        Button("Only Downloaded", action: viewModel.dummyCall)
+                        Button("All Episodes", action: viewModel.dummyCall)
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                         Text(LocalizableStrings.ArchivedPodcastDetail.filter)
@@ -141,7 +139,14 @@ struct ArchivedPodcastDetail: View {
                 .background(Color.accentColor)
                 .cornerRadius(30)
                 .alert(isPresented: $viewModel.displayAlert) {
-                    Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
+                    switch viewModel.alertType {
+                    case .singleOption:
+                        return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
+                    default:
+                        return Alert(title: Text("Other Option Relies on Installed Apps"), message: Text("To export to your prefered cloud service, please make sure its app is installed on this device before continuing."), dismissButton: Alert.Button.default(Text(LocalizableStrings.ok), action: {
+                            viewModel.showShareSheet()
+                        }))
+                    }
                 }
                 .padding(.vertical, 5)
                 .disabled(viewModel.downloadingKeeper.isEmpty == false)
@@ -152,15 +157,20 @@ struct ArchivedPodcastDetail: View {
                                               viewModel.zipAllEpisodes()
                                               viewModel.showingFileExplorer = true
                                           },
-                                          .default(Text(googleDrive)) { viewModel.showShareSheet() },
+                                          .default(Text(other)) {
+                                              viewModel.alertType = .speciallyPreparedOption
+                                              viewModel.displayAlert = true
+                                          },
                                           .cancel(Text(LocalizableStrings.cancel))])
                 }
                 .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
                     switch result {
                     case .success(let url):
                         print("Saved to \(url)")
+                        viewModel.showAlert(withTitle: "Archive Exported Successfully", message: "")
                     case .failure(let error):
                         print(error.localizedDescription)
+                        viewModel.showAlert(withTitle: "Failed to Export Archive", message: error.localizedDescription)
                     }
                 })
             }
@@ -173,7 +183,7 @@ struct ArchivedPodcastDetail: View {
         .navigationBarTitle(viewModel.title, displayMode: .inline)
         .navigationBarItems(trailing:
             Menu {
-                Button("View History", action: viewModel.placeOrder)
+                Button("View History", action: viewModel.dummyCall)
             } label: {
                 Image(systemName: "ellipsis.circle")
             }

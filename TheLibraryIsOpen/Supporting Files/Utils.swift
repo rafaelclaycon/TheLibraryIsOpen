@@ -76,5 +76,11 @@ class Utils {
         }
         return freeSpace
     }
+    
+    static func deleteDirectoryInDocumentsDirectory(withName directoryName: String) throws {
+        var exportedArchivesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        exportedArchivesURL.appendPathComponent(directoryName)
+        try FileManager.default.removeItem(at: exportedArchivesURL)
+    }
 
 }

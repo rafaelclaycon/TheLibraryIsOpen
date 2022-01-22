@@ -1,13 +1,11 @@
-import Foundation
 import Combine
 import UIKit
 import ZIPFoundation
-import ID3TagEditor
+//import ID3TagEditor
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
 
     var podcast: Podcast
-    let appleURL = "https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/"
     
     @Published var title: String
     @Published var details: String
@@ -43,6 +41,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
+    @Published var alertType: AlertType = .singleOption
 
     init(podcast: Podcast) {
         self.podcast = podcast
@@ -186,12 +185,22 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     }
     
     func zipAllEpisodes() {
+        // Display Please Wait UI
         processingViewMessage = "Criando .zip..."
         isShowingProcessingView = true
         
-        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let sourceURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcast.id)")
+        // Delete ExportedArchives to avoid naming conflicts
+        do {
+            try Utils.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives)
+        } catch {
+            print("Failed to Delete ExportedArchives Directory: \(error.localizedDescription)")
+        }
         
+        // Get all archived episodes for podcast
+        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let sourceURL = documentsDirURL.appendingPathComponent("\(InternalDirectoryNames.podcasts)/\(podcast.id)")
+        
+        // Prepare exported .zip file name
         var name = ""
         if episodes.count == 1 {
             name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameSingleEpisode, podcast.title, Date().asDashSeparatedYMDString())
@@ -199,13 +208,15 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameMultipleEpisodes, podcast.title, episodes.count, Date().asDashSeparatedYMDString())
         }
         
+        // Prepare exported .zip file path
         var destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        destinationURL.appendPathComponent("ExportedArchives/" + name + ".zip")
+        destinationURL.appendPathComponent("\(InternalDirectoryNames.exportedArchives)/" + name + ".zip")
         
+        // Creates ExportedArchives directory
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         let docURL = URL(string: documentsDirectory)!
-        let dataPath = docURL.appendingPathComponent("ExportedArchives")
+        let dataPath = docURL.appendingPathComponent(InternalDirectoryNames.exportedArchives)
         if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
             do {
                 try FileManager.default.createDirectory(atPath: dataPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
@@ -214,6 +225,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             }
         }
         
+        // Create .zip file
         do {
             let fileManager = FileManager()
             
@@ -223,8 +235,12 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             self.zipFileURL = destinationURL
         } catch {
             isShowingProcessingView = false
-            showAlert(withTitle: "Creation of ZIP archive failed with error", message: error.localizedDescription)
+            showAlert(withTitle: "Failed to Create ZIP File", message: error.localizedDescription)
         }
+    }
+    
+    func dummyCall() {
+        print("Not implemented yet.")
     }
     
     // MARK: - Error messages
@@ -253,19 +269,10 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         displayAlert = true
     }
     
-    private func showAlert(withTitle alertTitle: String, message alertMessage: String) {
+    func showAlert(withTitle alertTitle: String, message alertMessage: String, alertType: AlertType = .singleOption) {
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
         displayAlert = true
     }
-    
-    func showExportDestinationNotSupportedYet(providerName: String) {
-        alertTitle = "\(providerName) Not Supported Yet"
-        alertMessage = "Would you like to contribute? Please consider making a pull request :)"
-        displayAlert = true
-    }
-    
-    func placeOrder() { }
-    func adjustOrder() { }
 
 }

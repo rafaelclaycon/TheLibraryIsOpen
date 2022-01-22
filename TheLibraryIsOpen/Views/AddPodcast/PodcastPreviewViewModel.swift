@@ -4,12 +4,6 @@ import Foundation
 class PodcastPreviewViewModel: ObservableObject {
     
     var podcast: Podcast
-    
-    enum AlertType {
-        
-        case singleOption, twoOptions
-        
-    }
 
     @Published var title: String
     @Published var details: String
@@ -132,13 +126,13 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Error message methods
     
-    func showPodcastAddingConfirmation(numberOfEpisodes: Int, podcastName: String, remainingFreeSpace: String) {
+    func showPodcastAddingConfirmation(numberOfEpisodes: Int, podcastName: String) {
         if numberOfEpisodes == 1 {
             alertTitle = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadSingleEpisodeConfirmationTitle, podcastName)
         } else {
             alertTitle = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadMultipleEpisodesConfirmationTitle, numberOfEpisodes, podcastName)
         }
-        alertMessage = String(format: LocalizableStrings.PodcastPreview.Messages.readyToDownloadConfirmationMessage, remainingFreeSpace)
+        alertMessage = LocalizableStrings.PodcastPreview.Messages.readyToDownloadConfirmationMessage
         alertType = .twoOptions
         displayAlert = true
     }

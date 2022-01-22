@@ -85,7 +85,7 @@
 "instructions_b_view_spotify_links_not_supported_warning_title" = "Spotify Links Are Not Supported";
 "instructions_b_view_spotify_links_not_supported_warning_message" = "Please try obtaining a link from one of the supported services.";
 
-// PodcastPreview
+// Podcast Preview
 
 "podcast_preview_episode_list" = "Episode list";
 "podcast_preview_grouped_by_year" = "Grouped by year";
@@ -96,7 +96,8 @@
 
 "podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Ready To Download a Single Episode of '%@'?";
 "podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Ready To Download %d Episodes of '%@'?";
-"podcast_preview_messages_ready_to_download_confirmation_message" = "You'll still have %@ of free storage after this download. You can cancel the download at any time.";
+"podcast_preview_messages_ready_to_download_confirmation_message" = "You can cancel the download at any time.";
+"continue_button_label" = "Continue";
 
 // Archived Podcast Detail
 
@@ -112,10 +113,8 @@
 
 "archived_podcast_detail_export_all_button_label" = "Export all to...";
 "archived_podcast_detail_export_options_text" = "Please select a destination";
-"archived_podcast_detail_export_options_files_option_name" = "Files & iCloud Drive";
-"archived_podcast_detail_export_options_google_drive_option_name" = "Google Drive";
-"archived_podcast_detail_export_options_dropbox_option_name" = "Dropbox";
-"archived_podcast_detail_export_options_onedrive_option_name" = "OneDrive";
+"archived_podcast_detail_export_options_files_option_name" = "Files & iCloud Drive  🐇";
+"archived_podcast_detail_export_options_other_option_name" = "Other (Google Drive, Dropbox, OneDrive) 🐢";
 
 "archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episode) (archived in %@)";
 "archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episodes) (archived in %@)";
