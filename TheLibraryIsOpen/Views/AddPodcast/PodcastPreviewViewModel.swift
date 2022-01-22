@@ -22,6 +22,7 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Download button variables
     @Published var downloadAllButtonTitle = ""
+    @Published var remainingStorageLabel = ""
     
     // MARK: - Alert variables
     @Published var alertTitle: String = ""

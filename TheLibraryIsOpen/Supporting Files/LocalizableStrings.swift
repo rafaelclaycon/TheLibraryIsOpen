@@ -126,6 +126,8 @@ struct LocalizableStrings {
         static let unselectAll = NSLocalizedString("podcast_preview_unselect_all", comment: "");
         static let downloadEpisodesButtonTitle = NSLocalizedString("podcast_preview_download_episodes_button_title", comment: "");
         static let downloadButtonJustAddTitle = NSLocalizedString("podcast_preview_download_button_just_add_title", comment: "");
+        static let remainingStorageSingularLabel = NSLocalizedString("podcast_preview_remaining_storage_singular_label", comment: "")
+        static let remainingStoragePluralLabel = NSLocalizedString("podcast_preview_remaining_storage_plural_label", comment: "")
         
         struct Messages {
             

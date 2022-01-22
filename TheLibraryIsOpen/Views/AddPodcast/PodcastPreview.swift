@@ -105,6 +105,7 @@ struct PodcastPreview: View {
                     }
                     .onChange(of: viewModel.selectionKeeper) { value in
                         viewModel.updateDownloadButton(selectedIDs: Array(viewModel.selectionKeeper))
+                        // TODO: Update remaining storage label.
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
@@ -141,7 +142,7 @@ struct PodcastPreview: View {
                     }
                 }
                 
-                let remainingSpace = Utils.getDeviceFreeStorage() - Utils.getSizeInBytesOf(episodesToDownload)
+                let remainingSpace = InternalStorage.getDeviceFreeStorage() - Utils.getSizeInBytesOf(episodesToDownload)
                 
                 guard remainingSpace > 2000000000 else {
                     return viewModel.showLowStorageWarning()
@@ -176,7 +177,7 @@ struct PodcastPreview: View {
             }
             .padding(.vertical, 5)
             
-            Text("48 GB restantes no seu iPhone.")
+            Text("48 GB restantes no iPhone.")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)

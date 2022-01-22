@@ -8,8 +8,9 @@ let dataManager = DataManager(database: isRunningUnitTests ? nil : LocalDatabase
 struct TheLibraryIsOpenApp: App {
     
     init() {
-        if CommandLine.arguments.contains("-CLEAN_DATABASE_UPON_LAUNCH") {
+        if CommandLine.arguments.contains("-CLEAN_DATABASE_AND_STORAGE_UPON_LAUNCH") {
             dataManager.cleanUpDatabase()
+            InternalStorage.cleanUp()
         }
     }
 

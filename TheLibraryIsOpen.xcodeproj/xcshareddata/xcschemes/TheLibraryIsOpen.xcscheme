@@ -74,7 +74,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-CLEAN_DATABASE_UPON_LAUNCH"
+            argument = "-CLEAN_DATABASE_AND_STORAGE_UPON_LAUNCH"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

@@ -190,15 +190,15 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         isShowingProcessingView = true
         
         // Delete ExportedArchives to avoid naming conflicts
-        do {
-            try Utils.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives)
-        } catch {
-            print("Failed to Delete ExportedArchives Directory: \(error.localizedDescription)")
+        guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
+            DispatchQueue.main.async {
+                self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 1")
+            }
+            return
         }
         
         // Get all archived episodes for podcast
-        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let sourceURL = documentsDirURL.appendingPathComponent("\(InternalDirectoryNames.podcasts)/\(podcast.id)")
+        let sourceURL = InternalStorage.getAllArchivedEpisodesURLFor(podcastId: podcast.id)
         
         // Prepare exported .zip file name
         var name = ""
@@ -213,16 +213,11 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         destinationURL.appendPathComponent("\(InternalDirectoryNames.exportedArchives)/" + name + ".zip")
         
         // Creates ExportedArchives directory
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        let docURL = URL(string: documentsDirectory)!
-        let dataPath = docURL.appendingPathComponent(InternalDirectoryNames.exportedArchives)
-        if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
-            do {
-                try FileManager.default.createDirectory(atPath: dataPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print(error.localizedDescription);
+        guard InternalStorage.createExportedArchivesDirectory() else {
+            DispatchQueue.main.async {
+                self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 2")
             }
+            return
         }
         
         // Create .zip file

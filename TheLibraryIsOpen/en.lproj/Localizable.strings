@@ -93,6 +93,8 @@
 "podcast_preview_unselect_all" = "Unselect all";
 "podcast_preview_download_episodes_button_title" = "Download";
 "podcast_preview_download_button_just_add_title" = "Just add to archive";
+"podcast_preview_remaining_storage_singular_label" = "%@ remaining on this iPhone.";
+"podcast_preview_remaining_storage_plural_label" = "%@ remaining on this iPhone.";
 
 "podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Ready To Download a Single Episode of '%@'?";
 "podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Ready To Download %d Episodes of '%@'?";

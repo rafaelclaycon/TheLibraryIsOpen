@@ -65,22 +65,5 @@ class Utils {
     static func getFormattedFileSize(of number: Int64) -> String {
         return "\(ByteCountFormatter.string(fromByteCount: number, countStyle: .file))"
     }
-    
-    static func getDeviceFreeStorage() -> Int64 {
-        if let simulatedFreeSpace = ProcessInfo.processInfo.environment["SimulatedFreeDiskSpaceInBytes"] {
-            return Int64(simulatedFreeSpace) ?? 0
-        }
-        
-        guard let freeSpace = try? URL(fileURLWithPath: NSHomeDirectory() as String).resourceValues(forKeys: [URLResourceKey.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage else {
-            return 0
-        }
-        return freeSpace
-    }
-    
-    static func deleteDirectoryInDocumentsDirectory(withName directoryName: String) throws {
-        var exportedArchivesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        exportedArchivesURL.appendPathComponent(directoryName)
-        try FileManager.default.removeItem(at: exportedArchivesURL)
-    }
 
 }
