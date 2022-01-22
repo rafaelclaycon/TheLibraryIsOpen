@@ -49,7 +49,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         artworkURL = podcast.artworkUrl
         
         title = podcast.title
-        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
+        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes!
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
@@ -263,8 +263,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         displayAlert = true
     }
     
-    private func showLocalStorageError(_ errorBody: String) {
-        alertTitle = "Erro do LocalStorage"
+    private func showLocalDatabaseError(_ errorBody: String) {
+        alertTitle = "Erro do LocalDatabase"
         alertMessage = errorBody
         displayAlert = true
     }

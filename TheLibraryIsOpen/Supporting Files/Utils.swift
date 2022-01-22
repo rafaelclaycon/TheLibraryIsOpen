@@ -2,7 +2,7 @@ import Foundation
 
 class Utils {
 
-    static func getSubtituloPodcast(episodes: [Episode]) -> String {
+    static func getPodcastSubtitle(episodes: [Episode]) -> String {
         let firstEpisodePubYear = episodes[episodes.count - 1].pubDate!.get(.year)
         let lastEpisodePubYear = episodes[0].pubDate!.get(.year)
         

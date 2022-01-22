@@ -5,16 +5,16 @@ class DataManager {
 
     typealias PodcastFetchMethod = () -> [Podcast]
 
-    private var storage: LocalStorage?
+    private var database: LocalDatabase?
 
     var podcasts: [Podcast]?
 
-    init(storage injectedStorage: LocalStorage?, fetchMethod: PodcastFetchMethod) {
-        guard injectedStorage != nil else {
+    init(database injectedDatabase: LocalDatabase?, fetchMethod: PodcastFetchMethod) {
+        guard injectedDatabase != nil else {
             return
         }
 
-        storage = injectedStorage
+        database = injectedDatabase
     }
 
     private func fetchRemoteFile(_ episode: Episode) {
@@ -43,22 +43,22 @@ class DataManager {
     
     func cleanUpDatabase() {
         do {
-            try storage?.deleteAllEpisodes()
-            try storage?.deleteAllPodcasts()
+            try database?.deleteAllEpisodes()
+            try database?.deleteAllPodcasts()
         } catch {
             fatalError(error.localizedDescription)
         }
     }
     
     func persist(podcast: Podcast, withEpisodes episodes: [Episode]) throws {
-        guard try storage?.exists(podcastId: podcast.id) == false else {
+        guard try database?.exists(podcastId: podcast.id) == false else {
             throw DataManagerError.podcastAlreadyExists
         }
-        try storage?.insert(podcast: podcast)
+        try database?.insert(podcast: podcast)
         try episodes.forEach {
-            try storage?.insert(episode: $0)
+            try database?.insert(episode: $0)
         }
-        try storage?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
+        try database?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
                                                          symbol: HistoryRecordSymbol.podcastArchived.rawValue,
                                                          title: "Podcast archived!",
                                                          description: "\(episodes.count) episodes added."))
@@ -66,26 +66,26 @@ class DataManager {
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
         episodes.forEach {
-            storage?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? "", and: $0.offlineStatus)
+            database?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? "", and: $0.offlineStatus)
         }
     }
     
     func exists(podcastId: Int) throws -> Bool {
-        guard let storage = storage else {
-            throw DataManagerError.localStorageNotInstanced
+        guard let database = database else {
+            throw DataManagerError.localDatabaseNotInstanced
         }
-        return try storage.exists(podcastId: podcastId)
+        return try database.exists(podcastId: podcastId)
     }
     
     func getPodcasts() throws -> [Podcast]? {
-        guard var obtainedPodcasts = try storage?.getAllPodcasts() else {
+        guard var obtainedPodcasts = try database?.getAllPodcasts() else {
             throw DataManagerError.noPodcasts
         }
         guard obtainedPodcasts.count > 0 else {
             return nil
         }
         for i in 0...(obtainedPodcasts.count - 1) {
-            if let episodes = try storage?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
+            if let episodes = try database?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
                 obtainedPodcasts[i].episodes = episodes
             }
         }
@@ -106,7 +106,7 @@ class DataManager {
         podcasts![podcastIndex].episodes!.append(contentsOf: episodes)
 
         for episode in episodes {
-            try storage?.insert(episode: episode)
+            try database?.insert(episode: episode)
         }
     }
     
@@ -136,7 +136,7 @@ class DataManager {
         }
 
         do {
-            let localEpisodes = try storage!.getAllEpisodes(forID: podcastID)
+            let localEpisodes = try database!.getAllEpisodes(forID: podcastID)
 
             // 2. If there are no episodes in memory, tries the local DB.
             if localEpisodes.count > 0 {
@@ -200,7 +200,7 @@ class DataManager {
         // Update it on the in-memory array.
         try updateInMemoryEpisodeLocalFilePath(podcastID: episode.podcastId, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
-        storage!.updateLocalFilepath(forEpisode: episode.id, with: filePath, and: EpisodeOfflineStatus.availableOffline.rawValue)
+        database!.updateLocalFilepath(forEpisode: episode.id, with: filePath, and: EpisodeOfflineStatus.availableOffline.rawValue)
     }
 
     private func updateInMemoryEpisodeLocalFilePath(podcastID: Int, episodeID: String, filePath: String) throws {
@@ -384,7 +384,7 @@ class DataManager {
 enum DataManagerError: Error {
 
     case podcastAlreadyExists
-    case localStorageNotInstanced
+    case localDatabaseNotInstanced
     case podcastIDNotFound
     case episodeIDNotFound
     case podcastArrayIsUninitialized

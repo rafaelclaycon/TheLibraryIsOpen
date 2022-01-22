@@ -1,7 +1,7 @@
 import Foundation
 import SQLite
 
-class LocalStorage {
+class LocalDatabase {
 
     private var db: Connection
     private var podcast = Table("podcast")

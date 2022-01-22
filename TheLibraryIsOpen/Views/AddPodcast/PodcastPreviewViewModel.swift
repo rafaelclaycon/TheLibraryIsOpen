@@ -36,7 +36,7 @@ class PodcastPreviewViewModel: ObservableObject {
         artworkURL = podcast.artworkUrl
         
         title = podcast.title
-        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getSubtituloPodcast(episodes: podcast.episodes!) : ""
+        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes ?? [Episode]()
         
         selectAllEpisodes()
@@ -118,7 +118,7 @@ class PodcastPreviewViewModel: ObservableObject {
         } catch DataManagerError.podcastAlreadyExists {
             showPodcastAlreadyExistsAlert(podcastName: podcast.title)
         } catch {
-            showLocalStorageError(error.localizedDescription)
+            showLocalDatabaseError(error.localizedDescription)
         }
         
         return true
@@ -172,8 +172,8 @@ class PodcastPreviewViewModel: ObservableObject {
         displayAlert = true
     }
     
-    private func showLocalStorageError(_ errorBody: String) {
-        alertTitle = "LocalStorage error"
+    private func showLocalDatabaseError(_ errorBody: String) {
+        alertTitle = "LocalDatabase error"
         alertMessage = errorBody
         alertType = .singleOption
         displayAlert = true
