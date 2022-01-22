@@ -6,7 +6,7 @@ This is meant as a celebration of how open podcasts (used to) be.
 
 Download your favorites before the big bad takes them (I'm looking at you, Spotify).
 
-![A GIF showing the app in action.](TheLibraryIsOpen/Resources/main-flow.gif)
+![A GIF showing the main app flow, from the user choosing to add a new show to the podcast episodes being downloaded and exported.](TheLibraryIsOpen/Resources/main-flow.gif)
 
 ## Features
 
@@ -22,11 +22,13 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 
 - [x] Give specific Get Link instructions based on the podcast player the archiver uses
 - [x] Show download progress for each episode
-- [ ] Upload the zipped file to Google Drive
+- [x] Upload the zipped file to Google Drive
 - [ ] Let the user cancel the whole download with a single click
 - [ ] Persist the archive between runs nicely
 - [ ] Show user full history of exports and downloads
 - [ ] Keep a big download going in the background
+- [ ] Let the user check for new episodes after adding a podcast to the archive
+- [ ] Deleting podcasts from the archive
 
 ### Backlog
 
