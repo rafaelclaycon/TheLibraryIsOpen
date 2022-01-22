@@ -149,11 +149,10 @@ struct ArchivedPodcastDetail: View {
                     ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                                 message: nil,
                                 buttons: [.default(Text(files)) {
-                                              viewModel.zipAll()
+                                              viewModel.zipAllEpisodes()
+                                              viewModel.showingFileExplorer = true
                                           },
-                                          .default(Text(googleDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: googleDrive) },
-                                          .default(Text(dropbox)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
-                                          .default(Text(oneDrive)) { viewModel.showExportDestinationNotSupportedYet(providerName: dropbox) },
+                                          .default(Text(googleDrive)) { viewModel.showShareSheet() },
                                           .cancel(Text(LocalizableStrings.cancel))])
                 }
                 .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in

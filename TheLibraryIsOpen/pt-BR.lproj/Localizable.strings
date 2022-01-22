@@ -23,7 +23,7 @@
 
 // Player Picker View
 
-"player_picker_view_title" = "Qual tocador de podcast você usa?";
+"player_picker_view_title" = "Qual tocador de podcasts você usa?";
 "player_picker_view_other" = "Outro";
 
 // Unfortunately View
@@ -112,8 +112,8 @@
 
 "archived_podcast_detail_export_all_button_label" = "Exportar todos para...";
 "archived_podcast_detail_export_options_text" = "Por favor, selecione um destino";
-"archived_podcast_detail_export_options_files_option_name" = "Arquivos & iCloud Drive";
-"archived_podcast_detail_export_options_google_drive_option_name" = "Google Drive";
+"archived_podcast_detail_export_options_files_option_name" = "Arquivos & iCloud Drive  🐇";
+"archived_podcast_detail_export_options_google_drive_option_name" = "Outros (Google Drive, Dropbox, Outlook) 🐢";
 "archived_podcast_detail_export_options_dropbox_option_name" = "Dropbox";
 "archived_podcast_detail_export_options_onedrive_option_name" = "OneDrive";
 

@@ -73,6 +73,7 @@
 		D9F17F6B25F999BD00CF2530 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F17F6A25F999BD00CF2530 /* Utils.swift */; };
 		D9F17F7925F99E5D00CF2530 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F17F7825F99E5D00CF2530 /* UtilsTests.swift */; };
 		D9F3A586257573C00082E4A3 /* EpisodeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3A585257573C00082E4A3 /* EpisodeRowViewModel.swift */; };
+		D9FCA615279BBBD9003AC1F7 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCA614279BBBD9003AC1F7 /* UIApplication+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		D9F17F6A25F999BD00CF2530 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D9F17F7825F99E5D00CF2530 /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		D9F3A585257573C00082E4A3 /* EpisodeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowViewModel.swift; sourceTree = "<group>"; };
+		D9FCA614279BBBD9003AC1F7 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				D91AC97925F56D450086396D /* String+RangeAccess.swift */,
 				D940AD0327833FC700DF7549 /* Int+Extensions.swift */,
 				D9E91542279885800024E45F /* Color+Extensions.swift */,
+				D9FCA614279BBBD9003AC1F7 /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				D91823A52798570800193ECB /* UnfortunatelyView.swift in Sources */,
 				D98D25572798E56D006DAC22 /* SettingsViewViewModel.swift in Sources */,
 				D9D2D53925FBB8CC0099AE42 /* MainViewViewModel.swift in Sources */,
+				D9FCA615279BBBD9003AC1F7 /* UIApplication+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

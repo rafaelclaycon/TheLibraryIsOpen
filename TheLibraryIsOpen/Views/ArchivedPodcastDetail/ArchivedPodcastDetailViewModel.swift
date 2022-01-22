@@ -167,13 +167,17 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         })
     }
     
-//    func showShareSheet() {
-//        guard let urlShare = URL(string: appleURL) else {
-//            return
-//        }
-//        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
-//        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-//    }
+    func showShareSheet() {
+        zipAllEpisodes()
+        
+        guard let urlShare = self.zipFileURL else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        }
+    }
     
     fileprivate func directoryExistsAtPath(_ path: String) -> Bool {
         var isDirectory = ObjCBool(true)
@@ -181,7 +185,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         return exists && isDirectory.boolValue
     }
     
-    func zipAll() {
+    func zipAllEpisodes() {
         processingViewMessage = "Criando .zip..."
         isShowingProcessingView = true
         
@@ -217,8 +221,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             isShowingProcessingView = false
             
             self.zipFileURL = destinationURL
-            self.showingFileExplorer = true
-            //showAlert(withTitle: "Episode Export Successful", message: destinationURL.lastPathComponent)
         } catch {
             isShowingProcessingView = false
             showAlert(withTitle: "Creation of ZIP archive failed with error", message: error.localizedDescription)
