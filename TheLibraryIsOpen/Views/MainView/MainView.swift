@@ -6,6 +6,7 @@ struct MainView: View {
     @State var showingNewPodcastSheet = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
+    @State private var sort: Int = 0
     
     var body: some View {
         NavigationView {
@@ -14,9 +15,23 @@ struct MainView: View {
                 
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
-                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)), tag: podcast.id, selection: $podcastToAutoOpenAfterAdd, label: {
-                            PodcastRow(viewModel: PodcastRowViewModel(podcast: podcast))
-                        })
+                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)),
+                                       tag: podcast.id,
+                                       selection: $podcastToAutoOpenAfterAdd,
+                                       label: {
+                                           PodcastRow(viewModel: PodcastRowViewModel(podcast: podcast))
+                                       })
+                            .swipeActions {
+                                Button {
+                                    print("Delete pressed for '\(podcast.title)'.")
+                                } label: {
+                                    VStack {
+                                        Image(systemName: "trash")
+                                        Text(LocalizableStrings.MainView.PodcastRow.deletePodcastSwipeActionLabel)
+                                    }
+                                }
+                                .tint(.red)
+                            }
                     }
                 } else {
                     Image("PodcastsEmptyState")
@@ -37,11 +52,22 @@ struct MainView: View {
             }
             .navigationBarTitle(Text(LocalizableStrings.MainView.title))
             .navigationBarItems(leading:
-                Button(action: {
-                    showingSettingsScreen = true
-                }) {
-                    Image(systemName: "gearshape")
-                        .foregroundColor(.gray)
+                HStack {
+                    Button(action: {
+                        showingSettingsScreen = true
+                    }) {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(.primary)
+                    }
+                    Menu {
+                        Picker(selection: $sort, label: Text("Sorting options")) {
+                            Text("Sort by Title").tag(0)
+                            Text("Sort by Total Size").tag(1)
+                        }
+                    } label: {
+                        Image(systemName: "arrow.up.arrow.down")
+                            .foregroundColor(.primary)
+                    }
                 }
             )
             .navigationBarItems(trailing:

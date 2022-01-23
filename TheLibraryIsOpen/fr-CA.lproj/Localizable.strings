@@ -20,6 +20,7 @@
 "main_view_podcast_row_episode_count_single_episode" = "1 épisode archivé";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d épisodes archivés";
 "main_view_podcast_row_not_exported_yet" = "Non exporté";
+"main_view_podcast_delete_podcast_swipe_action_label" = "Supprimer";
 
 // Player Picker View
 

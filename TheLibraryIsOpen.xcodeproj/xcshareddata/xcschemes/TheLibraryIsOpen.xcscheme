@@ -75,7 +75,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-CLEAN_DATABASE_AND_STORAGE_UPON_LAUNCH"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-DISPLAY_DEV_OPTIONS_IN_SETTINGS"

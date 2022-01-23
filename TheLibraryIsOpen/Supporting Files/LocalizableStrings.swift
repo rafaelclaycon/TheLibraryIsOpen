@@ -25,6 +25,7 @@ struct LocalizableStrings {
             static let episodeCountSingleEpisode = NSLocalizedString("main_view_podcast_row_episode_count_single_episode", comment: "")
             static let episodeCountMultipleEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_multiple_episodes", comment: "")
             static let notExportedYet = NSLocalizedString("main_view_podcast_row_not_exported_yet", comment: "")
+            static let deletePodcastSwipeActionLabel = NSLocalizedString("main_view_podcast_delete_podcast_swipe_action_label", comment: "")
             
         }
         

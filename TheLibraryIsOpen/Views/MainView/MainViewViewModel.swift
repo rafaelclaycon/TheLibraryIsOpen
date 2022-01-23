@@ -24,6 +24,7 @@ class MainViewViewModel: ObservableObject {
             }
             if podcastsFromDB.count > 0 {
                 podcasts = podcastsFromDB
+                sortPodcastsByTitleAscending()
                 numberOfPodcasts = getNumberOfPodcastsText()
                 displayPodcastList = true
             } else {
@@ -47,6 +48,14 @@ class MainViewViewModel: ObservableObject {
         alertTitle = title
         alertMessage = message
         showAlert = true
+    }
+    
+    private func sortPodcastsByTitleAscending() {
+        podcasts.sort(by: { $0.title < $1.title })
+    }
+    
+    func dummyCall() {
+        print("Not implemented yet.")
     }
 
 }
