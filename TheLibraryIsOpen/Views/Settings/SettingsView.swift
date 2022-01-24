@@ -45,11 +45,11 @@ struct SettingsView: View {
             }
             
             Section {
-                Picker("Exportar diretamente para", selection: $defaultCloudProviderSelectedOption) {
-                    ForEach(defaultCloudProviderOptions, id: \.self) {
-                        Text($0)
-                    }
-                }
+//                Picker("Exportar diretamente para", selection: $defaultCloudProviderSelectedOption) {
+//                    ForEach(defaultCloudProviderOptions, id: \.self) {
+//                        Text($0)
+//                    }
+//                }
                 
                 Toggle(LocalizableStrings.Settings.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
             } header: {

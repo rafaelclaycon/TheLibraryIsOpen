@@ -62,7 +62,10 @@ To use a different language, change the simulator language in Settings or in Xco
 1. Delete the app from the sim to delete any data from a previous run.
 1. In Xcode, press `⌘ + U` to run all tests (or `^ + ⌥ + ⌘ + U` to run just the test where the text cursor is).
 
-Note: `test_getEpisodes_whenDoesNotHaveLocalCache_shouldReturnCorrectEpisodeCount` and `test_getEpisodes_whenHasLocalCache_shouldReturnCorrectEpisodeCount` are known broken tests.
+### Known issues
+
+1. The current main flow (from tapping Add Podcast to viewing the podcast episodes) has a visual bug in the Get Episodes and Podcast Preview screens. To fix it, go to Settings and turn the Skip Link Tutorial option on.
+1. Unit tests `test_getEpisodes_whenDoesNotHaveLocalCache_shouldReturnCorrectEpisodeCount` and `test_getEpisodes_whenHasLocalCache_shouldReturnCorrectEpisodeCount` are known to be broken and will be fixed in a later date.
 
 ## About this repo
 
