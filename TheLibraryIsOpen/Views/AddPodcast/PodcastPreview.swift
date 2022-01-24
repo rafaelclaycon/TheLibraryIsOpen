@@ -23,25 +23,11 @@ struct PodcastPreview: View {
         VStack {
             HStack(spacing: 15) {                
                 KFImage(URL(string: viewModel.artworkURL))
-                    .onSuccess { r in
-                        print("success: \(r)")
-                    }
-                    .onFailure { e in
-                        print("failure: \(e)")
-                    }
                     .placeholder {
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.gray)
-                                .frame(width: 70, height: 70)
-                                .opacity(0.5)
-
-                            Image(systemName: "waveform")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                                .foregroundColor(.white)
-                                .opacity(0.5)
-                        }
+                        Image(systemName: "headphones")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(.gray)
                     }
                     .resizable()
                     .frame(width: artworkSize, height: artworkSize)

@@ -96,7 +96,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
         
         totalDownloadPercentage = Double(Utils.getSizeInBytesOf(episodes))
-        print("HERMIONE: \(totalDownloadPercentage)")
+        //print("HERMIONE: \(totalDownloadPercentage)")
         
         let episodeDic = Dictionary(uniqueKeysWithValues: episodes.map{ ($0.id, $0) })
         

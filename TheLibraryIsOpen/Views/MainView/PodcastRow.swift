@@ -8,24 +8,11 @@ struct PodcastRow: View {
     var body: some View {
         HStack {
             KFImage(URL(string: viewModel.artworkUrl))
-                .onSuccess { r in
-                    print("success: \(r)")
-                }
-                .onFailure { e in
-                    print("failure: \(e)")
-                }
                 .placeholder {
-                    ZStack {
-                        Rectangle() 
-                            .fill(Color.gray)
-                            .frame(width: 70, height: 70)
-                            .opacity(0.6)
-
-                        Image(systemName: "waveform")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                            .foregroundColor(.white)
-                    }
+                    Image(systemName: "headphones")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.gray)
                 }
                 .resizable()
                 .frame(width: 70, height: 70)

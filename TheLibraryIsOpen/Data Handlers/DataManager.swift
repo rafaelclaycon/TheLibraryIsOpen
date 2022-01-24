@@ -110,19 +110,6 @@ class DataManager {
         }
     }
     
-    func fixURLfromHTTPToHTTPS(_ url: String) throws -> String {
-        guard !url.isEmpty else {
-            throw DataManagerError.urlVazia
-        }
-        guard let index = url.index(of: "http:") else {
-            throw DataManagerError.urlNaoEHTTP
-        }
-        let start = url.index(index, offsetBy: 5)
-        let end = url.index(url.endIndex, offsetBy: 0)
-        let range = start..<end
-        return "https:" + url[range]
-    }
-
     func getEpisodes(forPodcastID podcastID: Int, feedURL: String, completionHandler: @escaping ([Episode]?, FeedHelperError?) -> Void) {
         guard let podcast = podcasts?.first(where: { $0.id == podcastID }) else {
             return
@@ -282,7 +269,7 @@ class DataManager {
                     if feedUrl.contains("https:") {
                         feedUrlAjustado = feedUrl
                     } else {
-                        feedUrlAjustado = try strongSelf.fixURLfromHTTPToHTTPS(feedUrl)
+                        feedUrlAjustado = try LinkAssistant.fixURLfromHTTPToHTTPS(feedUrl)
                     }
                     
                     completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
@@ -320,7 +307,16 @@ class DataManager {
                     podcast.title = feed.title ?? "Sem Título"
                     podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
                     podcast.feedUrl = feedDetails.feedUrl
-                    podcast.artworkUrl = feed.image?.url ?? ""
+                    podcast.artworkUrl = feed.image?.url ?? feed.iTunes?.iTunesImage?.attributes?.href ?? ""
+                    
+                    if podcast.artworkUrl.isEmpty == false, podcast.artworkUrl.contains("https") == false {
+                        do {
+                            podcast.artworkUrl = try LinkAssistant.fixURLfromHTTPToHTTPS(podcast.artworkUrl)
+                        } catch {
+                            print("Failed to correct artwork link for \(podcast.title). URL: \(podcast.artworkUrl) Error: \(error.localizedDescription)")
+                        }
+                    }
+                    
                     podcast.lastCheckDate = Date()
                     podcast.episodes = [Episode]()
 

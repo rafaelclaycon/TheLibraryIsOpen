@@ -16,7 +16,7 @@ class LinkAssistant {
     
     static func getIdFrom(url: String) throws -> Int {
         guard !url.isEmpty else {
-            throw LinkAssistantError.emptyUrl
+            throw LinkAssistantError.emptyURL
         }
         guard isSpotifyLink(url) == false else {
             throw LinkAssistantError.spotifyLink
@@ -54,14 +54,28 @@ class LinkAssistant {
         return id
     }
     
+    static func fixURLfromHTTPToHTTPS(_ url: String) throws -> String {
+        guard !url.isEmpty else {
+            throw LinkAssistantError.emptyURL
+        }
+        guard let index = url.index(of: "http:") else {
+            throw LinkAssistantError.urlIsNotHttp
+        }
+        let start = url.index(index, offsetBy: 5)
+        let end = url.index(url.endIndex, offsetBy: 0)
+        let range = start..<end
+        return "https:" + url[range]
+    }
+    
 }
 
 enum LinkAssistantError: Error {
 
-    case emptyUrl
+    case emptyURL
     case spotifyLink
     case notAValidURL
     case idNotFound
     case unableToGetIdFromUrl
+    case urlIsNotHttp
 
 }
