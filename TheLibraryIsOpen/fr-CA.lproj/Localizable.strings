@@ -22,6 +22,11 @@
 "main_view_podcast_row_not_exported_yet" = "Non exporté";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Supprimer";
 
+"main_view_error_messages_error_loading_podcasts" = "Erreur Lors de la Tentative de Chargement des Podcasts";
+"main_view_error_messages_podcast_deletion_confirmation_title" = "Supprimer Ce Podcast?";
+"main_view_error_messages_podcast_deletion_confirmation_message" = "Tous les épisodes téléchargés et l'historique de vérification des flux seront perdus. Cette modification ne peut pas être annulée.";
+"main_view_error_messages_deletion_failure_title" = "Échec de la Suppression du Podcast";
+
 // Player Picker View
 
 "player_picker_view_title" = "Quel lecteur de podcast utilisez-vous?";

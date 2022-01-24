@@ -109,6 +109,14 @@ class LocalDatabase {
         try db.run(podcast.delete())
     }
     
+    func deletePodcast(withId podcastId: Int) throws {
+        let id = Expression<Int>("id")
+        let specificPodcast = podcast.filter(id == podcastId)
+        if try db.run(specificPodcast.delete()) == 0 {
+            throw LocalDatabaseError.podcastNotFound
+        }
+    }
+    
     func exists(podcastId: Int) throws -> Bool {
         var queriedPodcasts = [Podcast]()
 
@@ -146,6 +154,12 @@ class LocalDatabase {
 
     func deleteAllEpisodes() throws {
         try db.run(episode.delete())
+    }
+    
+    func deleteAllEpisodes(fromPodcast podcastId: Int) throws {
+        let podcast_id = Expression<Int?>("podcastId")
+        let episodesOfPodcast = episode.filter(podcast_id == podcastId)
+        try db.run(episodesOfPodcast.delete())
     }
 
     func updateLocalFilepath(forEpisode episodeId: String, with newFilepath: String, and newOfflineStatus: Int) {
@@ -197,5 +211,11 @@ class LocalDatabase {
     func deleteAllHistoryRecords() throws {
         try db.run(podcastHistoryRecord.delete())
     }
+
+}
+
+enum LocalDatabaseError: Error {
+
+    case podcastNotFound
 
 }

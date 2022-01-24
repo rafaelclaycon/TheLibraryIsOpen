@@ -4,12 +4,13 @@ class MainViewViewModel: ObservableObject {
     
     @Published var podcasts: [Podcast]
     @Published var displayPodcastList: Bool = false
-    @Published var numberOfPodcasts: String = ""
     
     // Alerts
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
+    @Published var alertAuxiliaryInfo: Int? = nil
     @Published var showAlert: Bool = false
+    @Published var alertType: AlertType = .singleOption
     
     init(podcasts: [Podcast] = [Podcast]()) {
         self.podcasts = podcasts
@@ -20,28 +21,19 @@ class MainViewViewModel: ObservableObject {
     func updateList() {
         do {
             guard let podcastsFromDB = try dataManager.getPodcasts() else {
+                displayPodcastList = false
                 return
             }
             if podcastsFromDB.count > 0 {
                 podcasts = podcastsFromDB
                 sortPodcastsByTitleAscending()
-                numberOfPodcasts = getNumberOfPodcastsText()
                 displayPodcastList = true
             } else {
                 displayPodcastList = false
             }
         } catch {
-            return showError(title: "Erro Ao Tentar Carregar Podcasts", message: error.localizedDescription)
+            return showError(title: LocalizableStrings.MainView.ErrorMessages.errorLoadingPodcasts, message: error.localizedDescription)
         }
-    }
-    
-    private func getNumberOfPodcastsText() -> String {
-        if podcasts.count == 0 {
-            return "No podcasts"
-        } else if podcasts.count == 1 {
-            return "1 podcast"
-        }
-        return "\(podcasts.count) podcasts"
     }
     
     private func showError(title: String, message: String) {
@@ -54,8 +46,30 @@ class MainViewViewModel: ObservableObject {
         podcasts.sort(by: { $0.title < $1.title })
     }
     
-    func dummyCall() {
-        print("Not implemented yet.")
+    func removePodcast(withId podcastId: Int) {
+        do {
+            try dataManager.deletePodcastFromArchive(withId: podcastId)
+        } catch {
+            showPodcastDeletionError(withMessage: error.localizedDescription)
+        }
+        if let indexOfPodcastToBeDeleted = podcasts.firstIndex(where: {$0.id == podcastId}) {
+            podcasts.remove(at: indexOfPodcastToBeDeleted)
+        }
+        updateList()
+    }
+    
+    func showPodcastDeletionConfirmation() {
+        alertTitle = LocalizableStrings.MainView.ErrorMessages.podcastDeletionConfirmationTitle
+        alertMessage = LocalizableStrings.MainView.ErrorMessages.podcastDeletionConfirmationMessage
+        alertType = .speciallyPreparedOption
+        showAlert = true
+    }
+    
+    func showPodcastDeletionError(withMessage message: String) {
+        alertTitle = LocalizableStrings.MainView.ErrorMessages.deletionFailureTitle
+        alertMessage = message
+        alertType = .singleOption
+        showAlert = true
     }
 
 }

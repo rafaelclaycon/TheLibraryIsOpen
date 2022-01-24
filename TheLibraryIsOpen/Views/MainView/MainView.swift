@@ -23,7 +23,8 @@ struct MainView: View {
                                        })
                             .swipeActions {
                                 Button {
-                                    print("Delete pressed for '\(podcast.title)'.")
+                                    viewModel.alertAuxiliaryInfo = podcast.id
+                                    viewModel.showPodcastDeletionConfirmation()
                                 } label: {
                                     VStack {
                                         Image(systemName: "trash")
@@ -91,6 +92,19 @@ struct MainView: View {
             .onChange(of: showingNewPodcastSheet) {
                 if $0 == false {
                     viewModel.updateList()
+                }
+            }
+            .alert(isPresented: $viewModel.showAlert) {
+                switch viewModel.alertType {
+                case .singleOption:
+                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
+                default:
+                    return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.destructive(Text(LocalizableStrings.MainView.PodcastRow.deletePodcastSwipeActionLabel), action: {
+                        guard let podcastId = viewModel.alertAuxiliaryInfo else {
+                            return
+                        }
+                        viewModel.removePodcast(withId: podcastId)
+                    }))
                 }
             }
         }

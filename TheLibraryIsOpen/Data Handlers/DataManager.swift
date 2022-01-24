@@ -234,7 +234,7 @@ class DataManager {
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
         downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
-            guard let strongSelf = self else {
+            guard self != nil else {
                 return
             }
             guard error == nil else {
@@ -373,6 +373,11 @@ class DataManager {
         } else {
             completionHandler(true)
         }
+    }
+    
+    func deletePodcastFromArchive(withId podcastId: Int) throws {
+        try database?.deleteAllEpisodes(fromPodcast: podcastId)
+        try database?.deletePodcast(withId: podcastId)
     }
 
 }

@@ -29,6 +29,15 @@ struct LocalizableStrings {
             
         }
         
+        struct ErrorMessages {
+            
+            static let errorLoadingPodcasts = NSLocalizedString("main_view_error_messages_error_loading_podcasts", comment: "")
+            static let podcastDeletionConfirmationTitle = NSLocalizedString("main_view_error_messages_podcast_deletion_confirmation_title", comment: "")
+            static let podcastDeletionConfirmationMessage = NSLocalizedString("main_view_error_messages_podcast_deletion_confirmation_message", comment: "")
+            static let deletionFailureTitle = NSLocalizedString("main_view_error_messages_deletion_failure_title", comment: "")
+            
+        }
+        
     }
     
     struct PlayerPickerView {
