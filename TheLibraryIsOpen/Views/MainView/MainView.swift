@@ -69,6 +69,7 @@ struct MainView: View {
                         Image(systemName: "arrow.up.arrow.down")
                             .foregroundColor(.primary)
                     }
+                    .disabled(viewModel.displayPodcastList == false)
                 }
             )
             .navigationBarItems(trailing:
