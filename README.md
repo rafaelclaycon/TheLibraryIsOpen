@@ -23,7 +23,7 @@ Download your favorites before the big bad takes them (I'm looking at you, Spoti
 - [x] Give specific Get Link instructions based on the podcast player the archiver uses
 - [x] Show download progress for each episode
 - [x] Upload the zipped file to Google Drive
-- [ ] Deleting podcasts from the archive
+- [x] Deleting podcasts from the archive
 - [ ] Let the user cancel the whole download with a single click
 - [ ] Persist the archive between runs nicely
 - [ ] Show user full history of exports and downloads
@@ -49,18 +49,20 @@ To use a different language, change the simulator language in Settings or in Xco
 
 ## How to run
 
+### Project
+
 1. Clone the repo and open TheLibraryIsOpen.xcodeproj on Xcode.
 1. Wait for Xcode to download all dependencies (Swift packages).
-1. Use ⌘ + B to build and ⌘ + R to run the app on the Simulator.
+1. Use `⌘ + B` to build and `⌘ + R` to run the app on the Simulator.
 
 ### Unit tests
 
 1. Use any simulator.
 1. Set its language to English and its Region to United States in the Settings.
 1. Delete the app from the sim to delete any data from a previous run.
-1. In Xcode, ⌘ + U to run the tests.
+1. In Xcode, press `⌘ + U` to run all tests (or `^ + ⌥ + ⌘ + U` to run just the test where the text cursor is).
 
-Note: `testGetEpisodesWithoutCache` and `testGetEpisodesWithCache` are known broken tests.
+Note: `test_getEpisodes_whenDoesNotHaveLocalCache_shouldReturnCorrectEpisodeCount` and `test_getEpisodes_whenHasLocalCache_shouldReturnCorrectEpisodeCount` are known broken tests.
 
 ## About this repo
 
