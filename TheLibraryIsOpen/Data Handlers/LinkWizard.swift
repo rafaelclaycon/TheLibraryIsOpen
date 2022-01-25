@@ -74,7 +74,14 @@ class LinkWizard {
             throw LinkAssistantError.applePodcastsLink_idNotFound
         }
         let start = url.index(index, offsetBy: 3) // Offset by 3 to jump to "/id"
-        let end = url.index(url.endIndex, offsetBy: 0)
+        
+        var end: String.Index
+        if let indexOfQueryParameters = url.index(of: "?") {
+            end = indexOfQueryParameters
+        } else {
+            end = url.endIndex
+        }
+        
         let range = start..<end
         guard let id = Int(url[range]) else {
             throw LinkAssistantError.applePodcasts_unableToGetIdFromUrl
@@ -90,7 +97,7 @@ class LinkWizard {
             throw LinkAssistantError.urlIsNotHttp
         }
         let start = url.index(index, offsetBy: 5)
-        let end = url.index(url.endIndex, offsetBy: 0)
+        let end = url.endIndex
         let range = start..<end
         return "https:" + url[range]
     }
