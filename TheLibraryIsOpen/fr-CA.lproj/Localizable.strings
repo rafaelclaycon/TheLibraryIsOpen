@@ -12,9 +12,11 @@
 // Main View
 
 "main_view_title" = "Mes Archives";
-"main_view_empty_state_title" = "Aucun podcast archivé";
-"main_view_empty_state_description" = "Pour archiver un nouveau podcast, appuyez sur le bouton Ajouter en haut de l'écran.";
 "main_view_add_podcast_button_label" = "Ajouter";
+
+"main_view_empty_state_view_title" = "Aucun podcast archivé";
+"main_view_empty_state_view_description" = "Pour archiver un nouveau podcast, appuyez sur le bouton Ajouter en haut de l'écran.";
+"main_view_empty_state_view_how_does_this_work_button_label" = "Comment Ça Marche?";
 
 "main_view_podcast_row_episode_count_no_episodes" = "Aucun épisode archivé";
 "main_view_podcast_row_episode_count_single_episode" = "1 épisode archivé";

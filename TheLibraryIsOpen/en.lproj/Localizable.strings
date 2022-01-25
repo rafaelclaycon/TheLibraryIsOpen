@@ -12,9 +12,11 @@
 // Main View
 
 "main_view_title" = "My Archive";
-"main_view_empty_state_title" = "No Archived Podcasts";
-"main_view_empty_state_description" = "To archive a new podcast, tap the Add Podcast button at the top of the screen.";
 "main_view_add_podcast_button_label" = "Add Podcast";
+
+"main_view_empty_state_view_title" = "No Archived Podcasts";
+"main_view_empty_state_view_description" = "To archive a new podcast, tap the Add Podcast button at the top of the screen.";
+"main_view_empty_state_view_how_does_this_work_button_label" = "How Does This Work?";
 
 "main_view_podcast_row_episode_count_no_episodes" = "No archived episodes";
 "main_view_podcast_row_episode_count_single_episode" = "1 archived episode";

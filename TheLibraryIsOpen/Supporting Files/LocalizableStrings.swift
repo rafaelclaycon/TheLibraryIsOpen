@@ -15,9 +15,15 @@ struct LocalizableStrings {
     struct MainView {
         
         static let title = NSLocalizedString("main_view_title", comment: "")
-        static let emptyStateTitle = NSLocalizedString("main_view_empty_state_title", comment: "")
-        static let emptyStateDescription = NSLocalizedString("main_view_empty_state_description", comment: "")
         static let addPodcastButtonLabel = NSLocalizedString("main_view_add_podcast_button_label", comment: "")
+        
+        struct EmptyStateView {
+            
+            static let title = NSLocalizedString("main_view_empty_state_view_title", comment: "")
+            static let description = NSLocalizedString("main_view_empty_state_view_description", comment: "")
+            static let howDoesThisWorkButtonLabel = NSLocalizedString("main_view_empty_state_view_how_does_this_work_button_label", comment: "")
+            
+        }
         
         struct PodcastRow {
             

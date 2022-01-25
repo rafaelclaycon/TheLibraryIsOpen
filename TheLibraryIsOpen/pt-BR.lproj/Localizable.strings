@@ -12,9 +12,11 @@
 // Main View
 
 "main_view_title" = "Meu Arquivo";
-"main_view_empty_state_title" = "Nenhum Podcast Arquivado";
-"main_view_empty_state_description" = "Para arquivar um novo podcast, toque em Adicionar no canto superior direito da tela.";
 "main_view_add_podcast_button_label" = "Adicionar";
+
+"main_view_empty_state_view_title" = "Nenhum Podcast Arquivado";
+"main_view_empty_state_view_description" = "Para arquivar um novo podcast, toque em Adicionar no canto superior direito da tela.";
+"main_view_empty_state_view_how_does_this_work_button_label" = "Como Funciona?";
 
 "main_view_podcast_row_episode_count_no_episodes" = "Nenhum podcast arquivado";
 "main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";

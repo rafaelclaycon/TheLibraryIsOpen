@@ -1,12 +1,17 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    enum MainViewSubviewToOpen {
+        case addPodcast, guide
+    }
 
     @StateObject var viewModel = MainViewViewModel()
-    @State var showingNewPodcastSheet = false
+    @State var showingModalView = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
     @State private var sort: Int = 0
+    @State private var subviewToOpen: MainViewSubviewToOpen = .addPodcast
     
     var body: some View {
         NavigationView {
@@ -39,16 +44,29 @@ struct MainView: View {
                         .resizable()
                         .frame(width: 350, height: 200)
                     
-                    Text(LocalizableStrings.MainView.emptyStateTitle)
+                    Text(LocalizableStrings.MainView.EmptyStateView.title)
                         .font(.title2)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     
-                    Text(LocalizableStrings.MainView.emptyStateDescription)
+                    Text(LocalizableStrings.MainView.EmptyStateView.description)
                         .font(.body)
                         .padding(.horizontal, 40)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
+                    
+                    Button {
+                        subviewToOpen = .guide
+                        showingModalView = true
+                    } label: {
+                        Text(LocalizableStrings.MainView.EmptyStateView.howDoesThisWorkButtonLabel)
+                            .bold()
+                    }
+                    .tint(.accentColor)
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                    .padding()
                 }
             }
             .navigationBarTitle(Text(LocalizableStrings.MainView.title))
@@ -74,7 +92,8 @@ struct MainView: View {
             )
             .navigationBarItems(trailing:
                 Button(action: {
-                    showingNewPodcastSheet = true
+                    subviewToOpen = .addPodcast
+                    showingModalView = true
                 }) {
                     HStack {
                         Image(systemName: "plus")
@@ -82,16 +101,20 @@ struct MainView: View {
                     }
                 }
             )
-            .sheet(isPresented: $showingNewPodcastSheet) {
-                if UserSettings.getSkipGetLinkInstructions() {
-                    PasteLinkView(estaSendoExibido: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
-                } else {
-                    PlayerPickerView(isShowingModal: $showingNewPodcastSheet, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
-                        .interactiveDismissDisabled(true)
+            .sheet(isPresented: $showingModalView) {
+                switch subviewToOpen {
+                case .addPodcast:
+                    if UserSettings.getSkipGetLinkInstructions() {
+                        PasteLinkView(estaSendoExibido: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                    } else {
+                        PlayerPickerView(isShowingModal: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                    }
+                case .guide:
+                    GuideView(isShowingModal: $showingModalView)
                 }
             }
-            .onChange(of: showingNewPodcastSheet) {
-                if $0 == false {
+            .onChange(of: showingModalView) {
+                if subviewToOpen == .addPodcast, $0 == false {
                     viewModel.updateList()
                 }
             }
@@ -122,7 +145,7 @@ struct MainView_Previews: PreviewProvider {
                                                                  episodes: nil,
                                                                  feedUrl: "",
                                                                  artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]),
-                 showingNewPodcastSheet: false)
+                 showingModalView: false)
     }
 
 }

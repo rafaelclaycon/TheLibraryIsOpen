@@ -9,7 +9,7 @@ struct UnfortunatelyView: View {
     @State var showingGetLinkScreen: Bool = false
     
     private let iconSize: CGFloat = 70
-    private let hollowIconSize: CGFloat = 26
+    private let hollowIconSize: CGFloat = 24
     private let horizontalPadding: CGFloat = 25
     private let applePodcastsPlayer = PodcastPlayerFactory.getApplePodcasts()
 
@@ -55,16 +55,18 @@ struct UnfortunatelyView: View {
                     }
                 } label: {
                     HStack(spacing: 15) {
-                        Image("apple_podcasts_hollow_icon")
-                            .resizable()
+                        LinearGradient(gradient: Gradient(colors: [.purple]), startPoint: .top, endPoint: .bottom)
+                            .mask(Image("apple_podcasts_hollow_icon")
+                            .resizable())
                             .frame(width: hollowIconSize, height: hollowIconSize)
                         
                         Text(LocalizableStrings.UnfortunatelyView.openApplePodcastsButtonTitle)
                             .bold()
                     }
                 }
-                .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .applePodcastsPurple, verticalPadding: 10, horizontalPadding: 40))
-                .foregroundColor(.applePodcastsPurple)
+                .buttonStyle(.bordered)
+                .tint(.purple)
+                .controlSize(.large)
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text(LocalizableStrings.UnfortunatelyView.couldNotOpenPodcastsAppAlertTitle), message: Text(LocalizableStrings.UnfortunatelyView.couldNotOpenPodcastsAppAlertMessage), dismissButton: .default(Text(LocalizableStrings.ok), action: {
                         showingGetLinkScreen = true

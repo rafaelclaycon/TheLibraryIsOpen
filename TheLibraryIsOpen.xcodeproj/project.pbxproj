@@ -27,6 +27,7 @@
 		D94A05FE2572CDD70065AE2C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05FD2572CDD70065AE2C /* DataManager.swift */; };
 		D94AEC482570BEE9001DEB9B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94AEC472570BEE9001DEB9B /* MainView.swift */; };
 		D94AEC5E2571358F001DEB9B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D94AEC5D2571358F001DEB9B /* Alamofire */; };
+		D94E8EEA27A083B200EA917C /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94E8EE927A083B200EA917C /* GuideView.swift */; };
 		D959E2F4278B3EC800D48EB1 /* ArchivedEpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */; };
 		D959E2F6278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */; };
 		D959E2F8278B434200D48EB1 /* GrowingArcIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */; };
@@ -108,6 +109,7 @@
 		D94A05F92572CB4E0065AE2C /* TheLibraryIsOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenService.swift; sourceTree = "<group>"; };
 		D94A05FD2572CDD70065AE2C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D94AEC472570BEE9001DEB9B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D94E8EE927A083B200EA917C /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeRow.swift; sourceTree = "<group>"; };
 		D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeRowViewModel.swift; sourceTree = "<group>"; };
 		D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingArcIndicatorView.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */,
 				D9D3DBD9256E9C0D0035560E /* PodcastRow.swift */,
 				D9AA57D72795281B0027B392 /* PodcastRowViewModel.swift */,
+				D94E8EE927A083B200EA917C /* GuideView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				D9D3DBE2256EA2AE0035560E /* PodcastPreview.swift in Sources */,
 				D94A05F62572B8020065AE2C /* LocalDatabase.swift in Sources */,
 				D91823A52798570800193ECB /* UnfortunatelyView.swift in Sources */,
+				D94E8EEA27A083B200EA917C /* GuideView.swift in Sources */,
 				D9CC03D6279C7D04009E90BC /* AlertType.swift in Sources */,
 				D98D25572798E56D006DAC22 /* SettingsViewViewModel.swift in Sources */,
 				D9CC03D8279C8500009E90BC /* InternalDirectoryNames.swift in Sources */,
