@@ -225,8 +225,8 @@ class DataManager {
         }
     }
     
-    func getFeedDetails(applePodcastsURL: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
-        let podcastId = try LinkWizard.getIdFrom(url: applePodcastsURL)
+    func getFeedDetails(fromLink podcastLink: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
+        let podcastId = try LinkWizard.getIdFrom(url: podcastLink)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
@@ -278,8 +278,8 @@ class DataManager {
         }
     }
     
-    func getPodcast(from applePodcastsURL: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
-        try getFeedDetails(applePodcastsURL: applePodcastsURL) { feedDetails, error in
+    func getPodcast(from userProvidedLink: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
+        try getFeedDetails(fromLink: userProvidedLink) { feedDetails, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }

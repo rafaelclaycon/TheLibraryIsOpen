@@ -186,12 +186,15 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     
     func zipAllEpisodes() {
         // Display Please Wait UI
-        processingViewMessage = "Criando .zip..."
-        isShowingProcessingView = true
+        DispatchQueue.main.async {
+            self.processingViewMessage = "Criando .zip..."
+            self.isShowingProcessingView = true
+        }
         
         // Delete ExportedArchives to avoid naming conflicts
         guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
             DispatchQueue.main.async {
+                self.isShowingProcessingView = false
                 self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 1")
             }
             return

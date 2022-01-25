@@ -15,8 +15,10 @@ class PasteLinkViewViewModel: ObservableObject {
     @Published var displayAlert: Bool = false
     
     func processLink() {
-        processingViewMessage = LocalizableStrings.InstructionsBView.loaderLabel
-        isShowingProcessingView = true
+        DispatchQueue.main.async {
+            self.processingViewMessage = LocalizableStrings.InstructionsBView.loaderLabel
+            self.isShowingProcessingView = true
+        }
         
         do {
             try dataManager.getPodcast(from: linkInput) { [weak self] podcast, error in
@@ -51,16 +53,21 @@ class PasteLinkViewViewModel: ObservableObject {
                     strongSelf.isShowingPodcastPreview = true
                 }
             }
-        } catch LinkAssistantError.spotifyLink {
+        } catch LinkWizardError.spotifyLink {
             DispatchQueue.main.async {
                 self.linkInput = ""
                 self.isShowingProcessingView = false
                 self.showSpotifyLinksNotSupportedAlert()
             }
+        } catch LinkWizardError.pocketCastsLink_innerApplePodcastsLinkIsInvalid {
+            DispatchQueue.main.async {
+                self.isShowingProcessingView = false
+                self.showInvalidApplePodcastsLinkAlert()
+            }
         } catch {
             DispatchQueue.main.async {
                 self.isShowingProcessingView = false
-                // TO DO
+                self.showOtherError(errorTitle: "Failed to Get Podcast", errorBody: error.localizedDescription)
             }
         }
     }
@@ -76,6 +83,12 @@ class PasteLinkViewViewModel: ObservableObject {
     private func showSpotifyLinksNotSupportedAlert() {
         alertTitle = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningTitle
         alertMessage = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningMessage
+        displayAlert = true
+    }
+    
+    private func showInvalidApplePodcastsLinkAlert() {
+        alertTitle = "Unable To Extract a Valid Apple Podcasts Link"
+        alertMessage = "Try obtaining this podcast's link directly from the Podcasts app."
         displayAlert = true
     }
     

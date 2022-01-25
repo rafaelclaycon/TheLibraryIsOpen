@@ -24,27 +24,27 @@ class LinkWizard {
     
     static func getIdFrom(url: String) throws -> Int {
         guard !url.isEmpty else {
-            throw LinkAssistantError.emptyURL
+            throw LinkWizardError.emptyURL
         }
         guard isSpotifyLink(url) == false else {
-            throw LinkAssistantError.spotifyLink
+            throw LinkWizardError.spotifyLink
         }
         guard isApplePodcastsLink(url) || isCastroLink(url) || isOvercastLink(url) || isPocketCastsLink(url) else {
-            throw LinkAssistantError.notAValidURL
+            throw LinkWizardError.notAValidURL
         }
         
         if isCastroLink(url) {
             guard let myURL = URL(string: url) else {
-                throw LinkAssistantError.notAValidURL
+                throw LinkWizardError.notAValidURL
             }
             var htmlString = ""
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.castroLink_failedToTransformWebsiteLinkToString
+                throw LinkWizardError.castroLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "Or Listen Elsewhere"), let end = htmlString.index(of: "\"><img alt=\"Listen On Apple Podcasts") else {
-                throw LinkAssistantError.castroLink_innerApplePodcastsLinkNotFound
+                throw LinkWizardError.castroLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 77)
             let range = start..<end
@@ -53,16 +53,16 @@ class LinkWizard {
         
         if isOvercastLink(url) {
             guard let myURL = URL(string: url) else {
-                throw LinkAssistantError.notAValidURL
+                throw LinkWizardError.notAValidURL
             }
             var htmlString = ""
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.overcastLink_failedToTransformWebsiteLinkToString
+                throw LinkWizardError.overcastLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "/img/badge-overcast-or-wherever.svg"), let preEnd = htmlString.index(of: "><img src=\"/img/badge-apple.svg") else {
-                throw LinkAssistantError.overcastLink_innerApplePodcastsLinkNotFound
+                throw LinkWizardError.overcastLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 83)
             let end = htmlString.index(preEnd, offsetBy: -18)
@@ -72,25 +72,29 @@ class LinkWizard {
         
         if isPocketCastsLink(url) {
             guard let myURL = URL(string: url) else {
-                throw LinkAssistantError.notAValidURL
+                throw LinkWizardError.notAValidURL
             }
             var htmlString = ""
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.pocketCastsLink_failedToTransformWebsiteLinkToString
+                throw LinkWizardError.pocketCastsLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "<div class=\"button itunes_button\"><a href=\""), let end = htmlString.index(of: "\" target=\"_blank\">Apple Podcasts</a></div>") else {
-                throw LinkAssistantError.pocketCastsLink_innerApplePodcastsLinkNotFound
+                throw LinkWizardError.pocketCastsLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 43)
             let range = start..<end
-            return try getIdFrom(url: String(htmlString[range]))
+            let extractedLink = String(htmlString[range])
+            guard isApplePodcastsLink(extractedLink) else {
+                throw LinkWizardError.pocketCastsLink_innerApplePodcastsLinkIsInvalid
+            }
+            return try getIdFrom(url: extractedLink)
         }
         
         // Apple Podcasts part
         guard let index = url.index(of: "/id") else {
-            throw LinkAssistantError.applePodcastsLink_idNotFound
+            throw LinkWizardError.applePodcastsLink_idNotFound
         }
         let start = url.index(index, offsetBy: 3) // Offset by 3 to jump the "/id"
         
@@ -103,17 +107,17 @@ class LinkWizard {
         
         let range = start..<end
         guard let id = Int(url[range]) else {
-            throw LinkAssistantError.applePodcastsLink_unableToGetIdFromUrl
+            throw LinkWizardError.applePodcastsLink_unableToGetIdFromUrl
         }
         return id
     }
     
     static func fixURLfromHTTPToHTTPS(_ url: String) throws -> String {
         guard !url.isEmpty else {
-            throw LinkAssistantError.emptyURL
+            throw LinkWizardError.emptyURL
         }
         guard let index = url.index(of: "http:") else {
-            throw LinkAssistantError.urlIsNotHttp
+            throw LinkWizardError.urlIsNotHttp
         }
         let start = url.index(index, offsetBy: 5)
         let end = url.endIndex
@@ -123,7 +127,7 @@ class LinkWizard {
     
 }
 
-enum LinkAssistantError: Error {
+enum LinkWizardError: Error {
 
     case emptyURL
     case notAValidURL
@@ -140,6 +144,7 @@ enum LinkAssistantError: Error {
     
     case pocketCastsLink_failedToTransformWebsiteLinkToString
     case pocketCastsLink_innerApplePodcastsLinkNotFound
+    case pocketCastsLink_innerApplePodcastsLinkIsInvalid
     
     case spotifyLink
 
