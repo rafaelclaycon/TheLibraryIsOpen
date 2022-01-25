@@ -178,12 +178,6 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
     }
     
-    fileprivate func directoryExistsAtPath(_ path: String) -> Bool {
-        var isDirectory = ObjCBool(true)
-        let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
-        return exists && isDirectory.boolValue
-    }
-    
     func zipAllEpisodes() {
         // Display Please Wait UI
         DispatchQueue.main.async {
@@ -192,12 +186,14 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
         
         // Delete ExportedArchives to avoid naming conflicts
-        guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
-            DispatchQueue.main.async {
-                self.isShowingProcessingView = false
-                self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 1")
+        if InternalStorage.existsInsideDocumentsDirectory(directoryName: InternalDirectoryNames.exportedArchives) {
+            guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
+                DispatchQueue.main.async {
+                    self.isShowingProcessingView = false
+                    self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 1")
+                }
+                return
             }
-            return
         }
         
         // Get all archived episodes for podcast
@@ -218,6 +214,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         // Creates ExportedArchives directory
         guard InternalStorage.createExportedArchivesDirectory() else {
             DispatchQueue.main.async {
+                self.isShowingProcessingView = false
                 self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 2")
             }
             return

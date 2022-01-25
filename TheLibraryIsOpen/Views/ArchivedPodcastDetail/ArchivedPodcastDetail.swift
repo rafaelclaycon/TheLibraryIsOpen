@@ -165,9 +165,10 @@ struct ArchivedPodcastDetail: View {
                 }
                 .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
                     switch result {
-                    case .success(let url):
-                        print("Saved to \(url)")
-                        viewModel.showAlert(withTitle: "Archive Exported Successfully", message: "")
+                    case .success:
+                        //print("Exported ZIP to \(url.path)")
+                        viewModel.isShowingProcessingView = false
+                        viewModel.showAlert(withTitle: LocalizableStrings.ArchivedPodcastDetail.Export.exportSuccessfulMessageTitle, message: LocalizableStrings.ArchivedPodcastDetail.Export.exportSuccessfulMessageBody)
                     case .failure(let error):
                         print(error.localizedDescription)
                         viewModel.showAlert(withTitle: "Failed to Export Archive", message: error.localizedDescription)

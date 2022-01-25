@@ -124,6 +124,12 @@
 "archived_podcast_detail_export_options_files_option_name" = "Fichiers & iCloud Drive";
 "archived_podcast_detail_export_options_other_option_name" = "Autre (Google Disque, Dropbox, OneDrive) 🐢";
 
+"archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 épisode) (archivé dans %@)";
+"archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d épisodes) (archivé dans %@)";
+
+"archived_podcast_detail_export_export_successful_message_title" = "Archive Exportée Avec Succès";
+"archived_podcast_detail_export_export_successful_message_body" = "Insérez une blague hilarante ici";
+
 // Settings View
 
 "settings_screen_title" = "Réglages";

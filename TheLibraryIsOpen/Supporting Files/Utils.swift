@@ -65,5 +65,11 @@ class Utils {
     static func getFormattedFileSize(of number: Int64) -> String {
         return "\(ByteCountFormatter.string(fromByteCount: number, countStyle: .file))"
     }
+    
+    static func directoryExistsAtPath(_ path: String) -> Bool {
+        var isDirectory = ObjCBool(true)
+        let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
+        return exists && isDirectory.boolValue
+    }
 
 }

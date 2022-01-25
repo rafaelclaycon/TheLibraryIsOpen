@@ -38,11 +38,17 @@ class InternalStorage {
         let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let newDirPath = documentsDirURL.appendingPathComponent(InternalDirectoryNames.exportedArchives)
         do {
-            try FileManager.default.createDirectory(atPath: newDirPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
+            try FileManager.default.createDirectory(atPath: newDirPath.path, withIntermediateDirectories: true, attributes: nil)
             return true
         } catch {
             return false
         }
+    }
+    
+    static func existsInsideDocumentsDirectory(directoryName: String) -> Bool {
+        var documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        documentsDirURL.appendPathComponent(directoryName)
+        return Utils.directoryExistsAtPath(documentsDirURL.path)
     }
 
 }

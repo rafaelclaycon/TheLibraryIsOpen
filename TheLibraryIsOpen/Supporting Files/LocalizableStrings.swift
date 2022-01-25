@@ -176,6 +176,8 @@ struct LocalizableStrings {
             
             static let exportedFileNameSingleEpisode = NSLocalizedString("archived_podcast_detail_exported_file_name_single_episode", comment: "")
             static let exportedFileNameMultipleEpisodes = NSLocalizedString("archived_podcast_detail_exported_file_name_multiple_episodes", comment: "")
+            static let exportSuccessfulMessageTitle = NSLocalizedString("archived_podcast_detail_export_export_successful_message_title", comment: "")
+            static let exportSuccessfulMessageBody = NSLocalizedString("archived_podcast_detail_export_export_successful_message_body", comment: "")
             
         }
         
