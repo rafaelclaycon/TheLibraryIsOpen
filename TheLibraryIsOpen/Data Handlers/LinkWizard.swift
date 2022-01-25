@@ -41,10 +41,10 @@ class LinkWizard {
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.failedToTransformWebsiteLinkToString
+                throw LinkAssistantError.castroLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "Or Listen Elsewhere"), let end = htmlString.index(of: "\"><img alt=\"Listen On Apple Podcasts") else {
-                throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
+                throw LinkAssistantError.castroLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 77)
             let range = start..<end
@@ -59,10 +59,10 @@ class LinkWizard {
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.failedToTransformWebsiteLinkToString
+                throw LinkAssistantError.overcastLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "/img/badge-overcast-or-wherever.svg"), let preEnd = htmlString.index(of: "><img src=\"/img/badge-apple.svg") else {
-                throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
+                throw LinkAssistantError.overcastLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 83)
             let end = htmlString.index(preEnd, offsetBy: -18)
@@ -78,10 +78,10 @@ class LinkWizard {
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
-                throw LinkAssistantError.failedToTransformWebsiteLinkToString
+                throw LinkAssistantError.pocketCastsLink_failedToTransformWebsiteLinkToString
             }
             guard let preStart = htmlString.index(of: "<div class=\"button itunes_button\"><a href=\""), let end = htmlString.index(of: "\" target=\"_blank\">Apple Podcasts</a></div>") else {
-                throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
+                throw LinkAssistantError.pocketCastsLink_innerApplePodcastsLinkNotFound
             }
             let start = htmlString.index(preStart, offsetBy: 43)
             let range = start..<end
@@ -103,7 +103,7 @@ class LinkWizard {
         
         let range = start..<end
         guard let id = Int(url[range]) else {
-            throw LinkAssistantError.applePodcasts_unableToGetIdFromUrl
+            throw LinkAssistantError.applePodcastsLink_unableToGetIdFromUrl
         }
         return id
     }
@@ -126,14 +126,21 @@ class LinkWizard {
 enum LinkAssistantError: Error {
 
     case emptyURL
-    case spotifyLink
     case notAValidURL
-    case applePodcastsLink_idNotFound
-    case applePodcasts_unableToGetIdFromUrl
-    case pocketCasts_applePodcastsLinkNotFound
-    case pocketCasts_idNotFound
-    case pocketCasts_unableToGetIdFromUrl
     case urlIsNotHttp
-    case failedToTransformWebsiteLinkToString
+    
+    case applePodcastsLink_idNotFound
+    case applePodcastsLink_unableToGetIdFromUrl
+    
+    case castroLink_failedToTransformWebsiteLinkToString
+    case castroLink_innerApplePodcastsLinkNotFound
+    
+    case overcastLink_failedToTransformWebsiteLinkToString
+    case overcastLink_innerApplePodcastsLinkNotFound
+    
+    case pocketCastsLink_failedToTransformWebsiteLinkToString
+    case pocketCastsLink_innerApplePodcastsLinkNotFound
+    
+    case spotifyLink
 
 }
