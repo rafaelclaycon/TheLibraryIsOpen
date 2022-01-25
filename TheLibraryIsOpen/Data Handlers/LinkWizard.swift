@@ -10,6 +10,10 @@ class LinkWizard {
         return link.contains("castro.fm")
     }
     
+    private static func isOvercastLink(_ link: String) -> Bool {
+        return link.contains("overcast.fm")
+    }
+    
     private static func isPocketCastsLink(_ link: String) -> Bool {
         return link.contains("pca.st")
     }
@@ -25,7 +29,7 @@ class LinkWizard {
         guard isSpotifyLink(url) == false else {
             throw LinkAssistantError.spotifyLink
         }
-        guard isApplePodcastsLink(url) || isCastroLink(url) || isPocketCastsLink(url) else {
+        guard isApplePodcastsLink(url) || isCastroLink(url) || isOvercastLink(url) || isPocketCastsLink(url) else {
             throw LinkAssistantError.notAValidURL
         }
         
@@ -33,47 +37,62 @@ class LinkWizard {
             guard let myURL = URL(string: url) else {
                 throw LinkAssistantError.notAValidURL
             }
-            var myHTMLString = ""
+            var htmlString = ""
             do {
-                myHTMLString = try String(contentsOf: myURL, encoding: .ascii)
+                htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
                 throw LinkAssistantError.failedToTransformWebsiteLinkToString
             }
-            //print(myHTMLString)
-            // Pocket Casts part
-            guard let preStart = myHTMLString.index(of: "Or Listen Elsewhere"), let end = myHTMLString.index(of: "\"><img alt=\"Listen On Apple Podcasts") else {
+            guard let preStart = htmlString.index(of: "Or Listen Elsewhere"), let end = htmlString.index(of: "\"><img alt=\"Listen On Apple Podcasts") else {
                 throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
             }
-            let start = myHTMLString.index(preStart, offsetBy: 77)
+            let start = htmlString.index(preStart, offsetBy: 77)
             let range = start..<end
-            //print(myHTMLString[range])
-            return try getIdFrom(url: String(myHTMLString[range]))
+            return try getIdFrom(url: String(htmlString[range]))
+        }
+        
+        if isOvercastLink(url) {
+            guard let myURL = URL(string: url) else {
+                throw LinkAssistantError.notAValidURL
+            }
+            var htmlString = ""
+            do {
+                htmlString = try String(contentsOf: myURL, encoding: .ascii)
+            } catch {
+                throw LinkAssistantError.failedToTransformWebsiteLinkToString
+            }
+            guard let preStart = htmlString.index(of: "/img/badge-overcast-or-wherever.svg"), let preEnd = htmlString.index(of: "><img src=\"/img/badge-apple.svg") else {
+                throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
+            }
+            let start = htmlString.index(preStart, offsetBy: 83)
+            let end = htmlString.index(preEnd, offsetBy: -18)
+            let range = start..<end
+            return try getIdFrom(url: String(htmlString[range]))
         }
         
         if isPocketCastsLink(url) {
             guard let myURL = URL(string: url) else {
                 throw LinkAssistantError.notAValidURL
             }
-            var myHTMLString = ""
+            var htmlString = ""
             do {
-                myHTMLString = try String(contentsOf: myURL, encoding: .ascii)
+                htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
                 throw LinkAssistantError.failedToTransformWebsiteLinkToString
             }
-            // Pocket Casts part
-            guard let preStart = myHTMLString.index(of: "<div class=\"button itunes_button\"><a href=\""), let end = myHTMLString.index(of: "\" target=\"_blank\">Apple Podcasts</a></div>") else {
+            guard let preStart = htmlString.index(of: "<div class=\"button itunes_button\"><a href=\""), let end = htmlString.index(of: "\" target=\"_blank\">Apple Podcasts</a></div>") else {
                 throw LinkAssistantError.pocketCasts_applePodcastsLinkNotFound
             }
-            let start = myHTMLString.index(preStart, offsetBy: 43)
+            let start = htmlString.index(preStart, offsetBy: 43)
             let range = start..<end
-            return try getIdFrom(url: String(myHTMLString[range]))
+            return try getIdFrom(url: String(htmlString[range]))
         }
         
         // Apple Podcasts part
         guard let index = url.index(of: "/id") else {
             throw LinkAssistantError.applePodcastsLink_idNotFound
         }
-        let start = url.index(index, offsetBy: 3) // Offset by 3 to jump to "/id"
+        let start = url.index(index, offsetBy: 3) // Offset by 3 to jump the "/id"
         
         var end: String.Index
         if let indexOfQueryParameters = url.index(of: "?") {
