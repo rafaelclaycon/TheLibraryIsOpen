@@ -78,10 +78,7 @@ class DataManager {
     }
     
     func getPodcasts() throws -> [Podcast]? {
-        guard var obtainedPodcasts = try database?.getAllPodcasts() else {
-            throw DataManagerError.noPodcasts
-        }
-        guard obtainedPodcasts.count > 0 else {
+        guard var obtainedPodcasts = try database?.getAllPodcasts(), obtainedPodcasts.count > 0 else {
             return nil
         }
         for i in 0...(obtainedPodcasts.count - 1) {
