@@ -229,7 +229,7 @@ class DataManager {
     }
     
     func getFeedDetails(applePodcastsURL: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
-        let podcastId = try LinkAssistant.getIdFrom(url: applePodcastsURL)
+        let podcastId = try LinkWizard.getIdFrom(url: applePodcastsURL)
         
         let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
         
@@ -269,7 +269,7 @@ class DataManager {
                     if feedUrl.contains("https:") {
                         feedUrlAjustado = feedUrl
                     } else {
-                        feedUrlAjustado = try LinkAssistant.fixURLfromHTTPToHTTPS(feedUrl)
+                        feedUrlAjustado = try LinkWizard.fixURLfromHTTPToHTTPS(feedUrl)
                     }
                     
                     completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
@@ -311,7 +311,7 @@ class DataManager {
                     
                     if podcast.artworkUrl.isEmpty == false, podcast.artworkUrl.contains("https") == false {
                         do {
-                            podcast.artworkUrl = try LinkAssistant.fixURLfromHTTPToHTTPS(podcast.artworkUrl)
+                            podcast.artworkUrl = try LinkWizard.fixURLfromHTTPToHTTPS(podcast.artworkUrl)
                         } catch {
                             print("Failed to correct artwork link for \(podcast.title). URL: \(podcast.artworkUrl) Error: \(error.localizedDescription)")
                         }
