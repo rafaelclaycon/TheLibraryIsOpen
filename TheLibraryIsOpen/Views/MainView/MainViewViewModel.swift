@@ -4,6 +4,8 @@ class MainViewViewModel: ObservableObject {
     
     @Published var podcasts: [Podcast]
     @Published var displayPodcastList: Bool = false
+    @Published var sortOption: Int
+    @Published var viewOption: Int
     
     // Alerts
     @Published var alertTitle: String = ""
@@ -14,6 +16,8 @@ class MainViewViewModel: ObservableObject {
     
     init(podcasts: [Podcast] = [Podcast]()) {
         self.podcasts = podcasts
+        sortOption = UserSettings.getArchiveSortOption()
+        viewOption = UserSettings.getArchiveRowAdditionalInfoToShowOption()
         displayPodcastList = self.podcasts.count > 0
         updateList()
     }
@@ -26,7 +30,13 @@ class MainViewViewModel: ObservableObject {
             }
             if podcastsFromDB.count > 0 {
                 podcasts = podcastsFromDB
-                sortPodcastsByTitleAscending()
+                
+                if sortOption == 0 {
+                    sortPodcastsByTitleAscending()
+                } else {
+                    sortPodcastsByTotalSizeDescending()
+                }
+                
                 displayPodcastList = true
             } else {
                 displayPodcastList = false
@@ -42,8 +52,12 @@ class MainViewViewModel: ObservableObject {
         showAlert = true
     }
     
-    private func sortPodcastsByTitleAscending() {
+    func sortPodcastsByTitleAscending() {
         podcasts.sort(by: { $0.title < $1.title })
+    }
+    
+    func sortPodcastsByTotalSizeDescending() {
+        podcasts.sort(by: { $0.totalSize ?? 0 > $1.totalSize ?? 0 })
     }
     
     func removePodcast(withId podcastId: Int) {

@@ -32,6 +32,7 @@ class LocalDatabase {
         let feed_url = Expression<String>("feedUrl")
         let artwork_url = Expression<String>("artworkUrl")
         let last_check_date = Expression<Date?>("lastCheckDate")
+        let total_size = Expression<Int?>("totalSize")
 
         try db.run(podcast.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
@@ -40,6 +41,7 @@ class LocalDatabase {
             t.column(feed_url)
             t.column(artwork_url)
             t.column(last_check_date)
+            t.column(total_size)
         })
     }
 

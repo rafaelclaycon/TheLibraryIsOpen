@@ -84,6 +84,7 @@ class DataManager {
         for i in 0...(obtainedPodcasts.count - 1) {
             if let episodes = try database?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
                 obtainedPodcasts[i].episodes = episodes
+                obtainedPodcasts[i].totalSize = Int(Utils.getSizeInBytesOf(episodes))
             }
         }
         return obtainedPodcasts
@@ -319,6 +320,10 @@ class DataManager {
 
                     for item in items {
                         podcast.episodes!.append(FeedHelper.getEpisodeFrom(rssFeedItem: item, podcastID: feedDetails.podcastId))
+                    }
+                    
+                    if podcast.episodes != nil {
+                        podcast.totalSize = Int(Utils.getSizeInBytesOf(podcast.episodes!))
                     }
 
                     completionHandler(podcast, nil)

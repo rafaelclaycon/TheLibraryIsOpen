@@ -20,6 +20,22 @@ class UserSettings {
         return String(value as! String)
     }
     
+    static func getArchiveSortOption() -> Int {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "archiveSortOption") else {
+            return 0
+        }
+        return Int(value as! Int)
+    }
+    
+    static func getArchiveRowAdditionalInfoToShowOption() -> Int {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "archiveRowAdditionalInfoToShowOption") else {
+            return 0
+        }
+        return Int(value as! Int)
+    }
+    
     // MARK: - Setters
     
     static func setSkipGetLinkInstructions(to newValue: Bool) {
@@ -30,6 +46,16 @@ class UserSettings {
     static func setAddingBehaviorSelectedOption(to newValue: String) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(newValue, forKey: "addingBehaviorSelectedOption")
+    }
+    
+    static func setArchiveSortOption(to newValue: Int) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "archiveSortOption")
+    }
+    
+    static func setArchiveRowAdditionalInfoToShowOption(to newValue: Int) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "archiveRowAdditionalInfoToShowOption")
     }
     
     // MARK: - Developer options

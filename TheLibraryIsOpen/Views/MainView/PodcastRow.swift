@@ -4,6 +4,7 @@ import KingfisherSwiftUI
 struct PodcastRow: View {
 
     @StateObject var viewModel = PodcastRowViewModel()
+    @Binding var subtitleInfoOption: Int
 
     var body: some View {
         HStack {
@@ -23,7 +24,7 @@ struct PodcastRow: View {
                     .bold()
                     .padding(.leading, 15)
                 
-                Text(viewModel.subtitleLine)
+                Text(subtitleInfoOption == 0 ? viewModel.exportStatusText : viewModel.totalSizeText)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.leading, 15)
@@ -44,8 +45,8 @@ struct PodcastCell_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: "", artworkUrl: "")))
-            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: "", artworkUrl: "")))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(0))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(1))
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }

@@ -18,10 +18,16 @@
 "main_view_empty_state_view_description" = "Para arquivar um novo podcast, toque em Adicionar no canto superior direito da tela.";
 "main_view_empty_state_view_how_does_this_work_button_label" = "Como Funciona?";
 
+"main_view_list_options_sort_by_title" = "Ordernar por Título";
+"main_view_list_options_sort_by_total_size" = "Ordenar por Espaço Ocupado";
+"main_view_list_options_show_export_status" = "Mostar Status de Exportação";
+"main_view_list_options_show_total_size" = "Mostrar Espaço Ocupado";
+
 "main_view_podcast_row_episode_count_no_episodes" = "Nenhum podcast arquivado";
 "main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d episódios arquivados";
 "main_view_podcast_row_not_exported_yet" = "Não exportado";
+"main_view_podcast_row_no_size_information" = "Tamanho não informado";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Apagar";
 
 "main_view_error_messages_error_loading_podcasts" = "Erro Ao Tentar Carregar os Podcasts";

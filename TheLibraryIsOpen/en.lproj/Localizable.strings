@@ -18,10 +18,16 @@
 "main_view_empty_state_view_description" = "To archive a new podcast, tap the Add Podcast button at the top of the screen.";
 "main_view_empty_state_view_how_does_this_work_button_label" = "How Does This Work?";
 
+"main_view_list_options_sort_by_title" = "Sort by Title";
+"main_view_list_options_sort_by_total_size" = "Sort by Total Size";
+"main_view_list_options_show_export_status" = "Show Export Status";
+"main_view_list_options_show_total_size" = "Show Total Size";
+
 "main_view_podcast_row_episode_count_no_episodes" = "No archived episodes";
 "main_view_podcast_row_episode_count_single_episode" = "1 archived episode";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d archived episodes";
 "main_view_podcast_row_not_exported_yet" = "Not exported yet";
+"main_view_podcast_row_no_size_information" = "Size info not available";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Delete";
 
 "main_view_error_messages_error_loading_podcasts" = "Error While Trying To Load Podcasts";

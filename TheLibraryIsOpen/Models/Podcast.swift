@@ -9,6 +9,7 @@ struct Podcast: Hashable, Codable, Identifiable {
     var feedUrl: String
     var artworkUrl: String
     var lastCheckDate: Date?
+    var totalSize: Int?
     
     init(id: Int,
          title: String = "",
@@ -16,7 +17,8 @@ struct Podcast: Hashable, Codable, Identifiable {
          episodes: [Episode]? = nil,
          feedUrl: String = "",
          artworkUrl: String = "",
-         lastCheckDate: Date? = nil) {
+         lastCheckDate: Date? = nil,
+         totalSize: Int? = nil) {
         self.id = id
         self.title = title
         self.author = author
@@ -24,6 +26,7 @@ struct Podcast: Hashable, Codable, Identifiable {
         self.feedUrl = feedUrl
         self.artworkUrl = artworkUrl
         self.lastCheckDate = lastCheckDate
+        self.totalSize = totalSize
     }
 
 }

@@ -10,7 +10,6 @@ struct MainView: View {
     @State var showingModalView = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
-    @State private var sort: Int = 0
     @State private var subviewToOpen: MainViewSubviewToOpen = .addPodcast
     
     var body: some View {
@@ -24,7 +23,7 @@ struct MainView: View {
                                        tag: podcast.id,
                                        selection: $podcastToAutoOpenAfterAdd,
                                        label: {
-                                           PodcastRow(viewModel: PodcastRowViewModel(podcast: podcast))
+                                           PodcastRow(viewModel: PodcastRowViewModel(podcast: podcast), subtitleInfoOption: $viewModel.viewOption)
                                        })
                             .swipeActions {
                                 Button {
@@ -79,9 +78,40 @@ struct MainView: View {
                             .foregroundColor(.primary)
                     }
                     Menu {
-                        Picker(selection: $sort, label: Text("Sorting options")) {
-                            Text("Sort by Title").tag(0)
-                            Text("Sort by Total Size").tag(1)
+                        Section {
+                            Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
+                                Button {
+                                    viewModel.sortPodcastsByTitleAscending()
+                                } label: {
+                                    Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
+                                }
+                                .tag(0)
+                                
+                                Button {
+                                    viewModel.sortPodcastsByTotalSizeDescending()
+                                } label: {
+                                    Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
+                                }
+                                .tag(1)
+                            }
+                        }
+                        
+                        Section {
+                            Picker(selection: $viewModel.viewOption, label: Text("View options")) {
+                                Button {
+                                    UserSettings.setArchiveRowAdditionalInfoToShowOption(to: 0)
+                                } label: {
+                                    Text(LocalizableStrings.MainView.ListOptions.showExportStatus)
+                                }
+                                .tag(0)
+                                
+                                Button {
+                                    UserSettings.setArchiveRowAdditionalInfoToShowOption(to: 1)
+                                } label: {
+                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
+                                }
+                                .tag(1)
+                            }
                         }
                     } label: {
                         Image(systemName: "arrow.up.arrow.down")

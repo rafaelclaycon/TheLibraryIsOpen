@@ -25,12 +25,22 @@ struct LocalizableStrings {
             
         }
         
+        struct ListOptions {
+            
+            static let sortByTitle = NSLocalizedString("main_view_list_options_sort_by_title", comment: "")
+            static let sortByTotalSize = NSLocalizedString("main_view_list_options_sort_by_total_size", comment: "")
+            static let showExportStatus = NSLocalizedString("main_view_list_options_show_export_status", comment: "")
+            static let showTotalSize = NSLocalizedString("main_view_list_options_show_total_size", comment: "")
+            
+        }
+        
         struct PodcastRow {
             
             static let episodeCountNoEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_no_episodes", comment: "")
             static let episodeCountSingleEpisode = NSLocalizedString("main_view_podcast_row_episode_count_single_episode", comment: "")
             static let episodeCountMultipleEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_multiple_episodes", comment: "")
             static let notExportedYet = NSLocalizedString("main_view_podcast_row_not_exported_yet", comment: "")
+            static let noSizeInformation = NSLocalizedString("main_view_podcast_row_no_size_information", comment: "")
             static let deletePodcastSwipeActionLabel = NSLocalizedString("main_view_podcast_delete_podcast_swipe_action_label", comment: "")
             
         }

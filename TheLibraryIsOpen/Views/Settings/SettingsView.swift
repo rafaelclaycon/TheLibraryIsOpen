@@ -36,20 +36,20 @@ struct SettingsView: View {
                 }
             }
             
-            Section("Arquivo") {
+            /*Section("Arquivo") {
                 Picker("No podcast", selection: $podcastRowBehaviorSelectedOption) {
                     ForEach(podcastRowBehaviors, id: \.self) {
                         Text($0)
                     }
                 }
-            }
+            }*/
             
             Section {
-//                Picker("Exportar diretamente para", selection: $defaultCloudProviderSelectedOption) {
-//                    ForEach(defaultCloudProviderOptions, id: \.self) {
-//                        Text($0)
-//                    }
-//                }
+                /*Picker("Exportar diretamente para", selection: $defaultCloudProviderSelectedOption) {
+                    ForEach(defaultCloudProviderOptions, id: \.self) {
+                        Text($0)
+                    }
+                }*/
                 
                 Toggle(LocalizableStrings.Settings.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
             } header: {
@@ -67,8 +67,12 @@ struct SettingsView: View {
                 }
             } header: {
                 Text(LocalizableStrings.Settings.TipJar.sectionHeader)
-            } footer: {
-                EmptyView()
+            }
+            
+            Section {
+                Text("Put my picture here")
+            } header: {
+                Text("About")
             }
             
             Section {
