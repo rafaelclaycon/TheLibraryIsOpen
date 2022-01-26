@@ -40,12 +40,12 @@ Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
 
 To use a different language, change the simulator language in Settings or in Xcode go to `TheLibraryIsOpen (target name at the top) > Edit Scheme... > Run (sidebar) > Options > App Language`.
 
-## Prerequisites
+## How to run
+
+### Prerequisites
 
 - iOS 15.0+
 - Xcode 13+
-
-## How to run
 
 ### Project
 
@@ -60,7 +60,7 @@ To use a different language, change the simulator language in Settings or in Xco
 1. Delete the app from the sim to delete any data from a previous run.
 1. In Xcode, press `⌘ + U` to run all tests (or `^ + ⌥ + ⌘ + U` to run just the test where the text cursor is).
 
-### Known issues
+## Known issues
 
 1. The current main flow (from tapping Add Podcast to viewing the podcast episodes) has a visual bug in the Get Episodes and Podcast Preview screens. To fix it, go to Settings and turn the Skip Link Tutorial option on.
 1. Unit tests `test_getEpisodes_whenDoesNotHaveLocalCache_shouldReturnCorrectEpisodeCount` and `test_getEpisodes_whenHasLocalCache_shouldReturnCorrectEpisodeCount` are known to be broken and will be fixed in a later date.
