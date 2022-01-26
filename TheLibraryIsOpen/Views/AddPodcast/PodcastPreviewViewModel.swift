@@ -72,20 +72,18 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Sort episode list methods
     func toggleEpisodeListSorting() {
         if episodeListSorting == .fromNewToOld {
-            sortEpisodesByPubDateDescending()
+            episodeListSorting = .fromOldToNew
         } else {
-            sortEpisodesByPubDateAscending()
+            episodeListSorting = .fromNewToOld
         }
     }
     
     func sortEpisodesByPubDateAscending() {
         episodes.sort { $0.pubDate! < $1.pubDate! }
-        episodeListSorting = .fromOldToNew
     }
     
     func sortEpisodesByPubDateDescending() {
         episodes.sort { $0.pubDate! > $1.pubDate! }
-        episodeListSorting = .fromNewToOld
     }
     
     // MARK: - Download button methods

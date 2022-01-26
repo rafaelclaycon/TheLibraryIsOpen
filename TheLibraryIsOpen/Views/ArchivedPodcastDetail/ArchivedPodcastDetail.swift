@@ -26,11 +26,18 @@ struct ArchivedPodcastDetail: View {
                 // MARK: - Top toolbar
                 HStack(spacing: 20) {
                     Button(action: {
-                        viewModel.recentsFirst.toggle()
+                        viewModel.toggleEpisodeListSorting()
                     }) {
                         HStack {
-                            Image(systemName: viewModel.recentsFirst ? "arrow.uturn.up.circle" : "arrow.uturn.down.circle")
-                            Text(viewModel.recentsFirst ? recentsFirstText : oldestFirstText)
+                            Image(systemName: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down.circle" : "chevron.up.circle")
+                            Text(viewModel.episodeListSorting == .fromNewToOld ? recentsFirstText : oldestFirstText)
+                        }
+                    }
+                    .onChange(of: viewModel.episodeListSorting) { newValue in
+                        if viewModel.episodeListSorting == .fromNewToOld {
+                            viewModel.sortEpisodesByPubDateDescending()
+                        } else {
+                            viewModel.sortEpisodesByPubDateAscending()
                         }
                     }
                     

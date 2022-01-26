@@ -60,8 +60,15 @@ struct PodcastPreview: View {
                     viewModel.toggleEpisodeListSorting()
                 }) {
                     HStack {
-                        Image(systemName: viewModel.episodeListSorting == .fromOldToNew ? "arrow.uturn.up.circle" : "arrow.uturn.down.circle")
-                        Text(viewModel.episodeListSorting == .fromOldToNew ? recentsFirstText : oldestFirstText)
+                        Image(systemName: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down.circle" : "chevron.up.circle")
+                        Text(viewModel.episodeListSorting == .fromNewToOld ? recentsFirstText : oldestFirstText)
+                    }
+                }
+                .onChange(of: viewModel.episodeListSorting) { newValue in
+                    if newValue == .fromNewToOld {
+                        viewModel.sortEpisodesByPubDateDescending()
+                    } else {
+                        viewModel.sortEpisodesByPubDateAscending()
                     }
                 }
                 

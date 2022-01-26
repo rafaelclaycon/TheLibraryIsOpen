@@ -16,7 +16,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var displayEpisodeList: Bool = false
     @Published var episodes = [Episode]()
     @Published var areAllSelectEpisodeList: Bool = true
-    @Published var recentsFirst: Bool = true
+    @Published var episodeListSorting: SortOption = .fromNewToOld
     
     @Published var progressViewMessage: String = ""
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
@@ -232,6 +232,23 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             isShowingProcessingView = false
             showAlert(withTitle: "Failed to Create ZIP File", message: error.localizedDescription)
         }
+    }
+    
+    // MARK: - Sort episode list methods
+    func toggleEpisodeListSorting() {
+        if episodeListSorting == .fromNewToOld {
+            episodeListSorting = .fromOldToNew
+        } else {
+            episodeListSorting = .fromNewToOld
+        }
+    }
+    
+    func sortEpisodesByPubDateAscending() {
+        episodes.sort { $0.pubDate! < $1.pubDate! }
+    }
+    
+    func sortEpisodesByPubDateDescending() {
+        episodes.sort { $0.pubDate! > $1.pubDate! }
     }
     
     func dummyCall() {
