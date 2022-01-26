@@ -2,7 +2,9 @@
 
 ![A GIF of RuPaul Charles saying: Because reading is what? Fundamental!](TheLibraryIsOpen/Resources/reading-is-fundamental.gif)
 
-Did you ever listen to a show and loved it so much that you wished you could keep it? Podcasts started as an open repository of shows and TLIO is meant as a celebration of that. Download all episodes of your favorite podcasts before their public feed is gone.
+Did you ever listen to a show and loved it so much that you wished you could keep it?
+
+Podcasts started as an [open directory of shows](https://en.wikipedia.org/wiki/History_of_podcasting#Apple_adds_podcasts_to_iTunes) and TLIO is meant as a celebration of that. Download all episodes of your favorite podcasts before their public feed is taken private or stops working.
 
 ![A GIF showing the main app flow, from the user choosing to add a new show to the podcast episodes being downloaded and exported.](TheLibraryIsOpen/Resources/main-flow.gif)
 
