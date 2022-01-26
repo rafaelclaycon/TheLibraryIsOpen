@@ -30,7 +30,7 @@ Did you ever listen to a show and loved it so much that you wished you could kee
 
 ### Backlog
 
-Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
+Here's this project's backlog: https://trello.com/b/RvZ82ZLx
 
 ### Supported languages
 
@@ -38,7 +38,9 @@ Take a look at the project's backlog on Trello: https://trello.com/b/RvZ82ZLx
 - 🇧🇷 Brazilian Portuguese (native)
 - 🇨🇦 Canadian French (not perfect, open to contributions :)
 
-To use a different language, change the simulator language in Settings or in Xcode go to `TheLibraryIsOpen (target name at the top) > Edit Scheme... > Run (sidebar) > Options > App Language`.
+To use a different language, either:
+1. Change the simulator language in Settings or;
+2. In Xcode, go to `TheLibraryIsOpen (target name at the top) > Edit Scheme... > Run (sidebar) > Options > App Language`.
 
 ## How to run
 
@@ -55,9 +57,9 @@ To use a different language, change the simulator language in Settings or in Xco
 
 ### Unit tests
 
-1. Use any simulator.
-1. Set its language to English and its Region to United States in the Settings.
-1. Delete the app from the sim to delete any data from a previous run.
+1. Use any of Xcode's iOS simulators.
+1. In Settings, go to `General > Language & Region` and set iPhone Language to `English` and Region to `United States`.
+1. Delete the app from the sim to delete any data that might have been left behind from a previous run.
 1. In Xcode, press `⌘ + U` to run all tests (or `^ + ⌥ + ⌘ + U` to run just the test where the text cursor is).
 
 ## Known issues
