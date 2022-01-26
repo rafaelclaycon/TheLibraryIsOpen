@@ -80,37 +80,21 @@ struct MainView: View {
                     Menu {
                         Section {
                             Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
-                                Button {
-                                    viewModel.sortPodcastsByTitleAscending()
-                                } label: {
-                                    Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
-                                }
-                                .tag(0)
+                                Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
+                                    .tag(0)
                                 
-                                Button {
-                                    viewModel.sortPodcastsByTotalSizeDescending()
-                                } label: {
-                                    Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
-                                }
-                                .tag(1)
+                                Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
+                                    .tag(1)
                             }
                         }
                         
                         Section {
                             Picker(selection: $viewModel.viewOption, label: Text("View options")) {
-                                Button {
-                                    UserSettings.setArchiveRowAdditionalInfoToShowOption(to: 0)
-                                } label: {
-                                    Text(LocalizableStrings.MainView.ListOptions.showExportStatus)
-                                }
-                                .tag(0)
+                                Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
+                                    .tag(0)
                                 
-                                Button {
-                                    UserSettings.setArchiveRowAdditionalInfoToShowOption(to: 1)
-                                } label: {
-                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
-                                }
-                                .tag(1)
+                                Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
+                                    .tag(1)
                             }
                         }
                     } label: {
@@ -143,11 +127,6 @@ struct MainView: View {
                     GuideView(isShowingModal: $showingModalView)
                 }
             }
-            .onChange(of: showingModalView) {
-                if subviewToOpen == .addPodcast, $0 == false {
-                    viewModel.updateList()
-                }
-            }
             .alert(isPresented: $viewModel.showAlert) {
                 switch viewModel.alertType {
                 case .singleOption:
@@ -160,6 +139,22 @@ struct MainView: View {
                         viewModel.removePodcast(withId: podcastId)
                     }))
                 }
+            }
+            .onChange(of: showingModalView) {
+                if subviewToOpen == .addPodcast, $0 == false {
+                    viewModel.updateList()
+                }
+            }
+            .onChange(of: viewModel.viewOption) { newValue in
+                if newValue == 0 {
+                    viewModel.sortPodcastsByTitleAscending()
+                } else {
+                    viewModel.sortPodcastsByTotalSizeDescending()
+                }
+                UserSettings.setArchiveSortOption(to: newValue)
+            }
+            .onChange(of: viewModel.viewOption) { newValue in
+                UserSettings.setArchiveRowAdditionalInfoToShowOption(to: newValue)
             }
         }
     }

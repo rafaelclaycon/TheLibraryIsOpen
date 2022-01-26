@@ -29,7 +29,7 @@ struct LocalizableStrings {
             
             static let sortByTitle = NSLocalizedString("main_view_list_options_sort_by_title", comment: "")
             static let sortByTotalSize = NSLocalizedString("main_view_list_options_sort_by_total_size", comment: "")
-            static let showExportStatus = NSLocalizedString("main_view_list_options_show_export_status", comment: "")
+            static let showEpisodeCount = NSLocalizedString("main_view_list_options_show_episode_count", comment: "")
             static let showTotalSize = NSLocalizedString("main_view_list_options_show_total_size", comment: "")
             
         }

@@ -5,7 +5,7 @@ class PodcastRowViewModel: ObservableObject {
     
     @Published var artworkUrl: String
     @Published var podcastTitle: String
-    @Published var exportStatusText: String
+    @Published var episodeCountText: String
     @Published var totalSizeText: String
     @Published var wasExportedLine: String
     
@@ -16,11 +16,11 @@ class PodcastRowViewModel: ObservableObject {
         let episodeCount: Int = podcast?.episodes?.count ?? 0
         
         if episodeCount == 0 {
-            exportStatusText = LocalizableStrings.MainView.PodcastRow.episodeCountNoEpisodes
+            episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountNoEpisodes
         } else if episodeCount == 1 {
-            exportStatusText = LocalizableStrings.MainView.PodcastRow.episodeCountSingleEpisode
+            episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountSingleEpisode
         } else {
-            exportStatusText = String(format: LocalizableStrings.MainView.PodcastRow.episodeCountMultipleEpisodes, episodeCount)
+            episodeCountText = String(format: LocalizableStrings.MainView.PodcastRow.episodeCountMultipleEpisodes, episodeCount)
         }
         
         if episodeCount == 0 {

@@ -24,7 +24,7 @@ struct PodcastRow: View {
                     .bold()
                     .padding(.leading, 15)
                 
-                Text(subtitleInfoOption == 0 ? viewModel.exportStatusText : viewModel.totalSizeText)
+                Text(subtitleInfoOption == 0 ? viewModel.episodeCountText : viewModel.totalSizeText)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.leading, 15)

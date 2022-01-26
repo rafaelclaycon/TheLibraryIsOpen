@@ -20,7 +20,7 @@
 
 "main_view_list_options_sort_by_title" = "Sort by Title";
 "main_view_list_options_sort_by_total_size" = "Sort by Total Size";
-"main_view_list_options_show_export_status" = "Show Export Status";
+"main_view_list_options_show_episode_count" = "Show Episode Count";
 "main_view_list_options_show_total_size" = "Show Total Size";
 
 "main_view_podcast_row_episode_count_no_episodes" = "No archived episodes";

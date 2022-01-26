@@ -20,7 +20,7 @@
 
 "main_view_list_options_sort_by_title" = "Trier par Titre";
 "main_view_list_options_sort_by_total_size" = "Trier par Taille Totale";
-"main_view_list_options_show_export_status" = "Afficher le Statut D'exportation";
+"main_view_list_options_show_episode_count" = "Afficher le Nombre D'Épisodes";
 "main_view_list_options_show_total_size" = "Afficher la Taille Totale";
 
 "main_view_podcast_row_episode_count_no_episodes" = "Aucun épisode archivé";
