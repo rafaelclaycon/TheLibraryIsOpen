@@ -5,6 +5,7 @@ struct PodcastRow: View {
 
     @StateObject var viewModel = PodcastRowViewModel()
     @Binding var subtitleInfoOption: Int
+    private let artworkSize: CGFloat = 75
 
     var body: some View {
         HStack {
@@ -16,7 +17,7 @@ struct PodcastRow: View {
                         .foregroundColor(.gray)
                 }
                 .resizable()
-                .frame(width: 70, height: 70)
+                .frame(width: artworkSize, height: artworkSize)
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(viewModel.podcastTitle)

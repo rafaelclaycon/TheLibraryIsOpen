@@ -54,8 +54,7 @@ struct ArchivedPodcastDetail: View {
                                 ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode),
                                                    downloadingItems: $viewModel.downloadingKeeper,
                                                    downloadedItems: $viewModel.downloadedKeeper,
-                                                   downloadErrorItems: $viewModel.downloadErrorKeeper,
-                                                   circleSize: 30.0)
+                                                   downloadErrorItems: $viewModel.downloadErrorKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
@@ -185,6 +184,7 @@ struct ArchivedPodcastDetail: View {
         .navigationBarItems(trailing:
             Menu {
                 Button("View History", action: viewModel.dummyCall)
+                Button("Delete Podcast", role: .destructive, action: viewModel.dummyCall)
             } label: {
                 Image(systemName: "ellipsis.circle")
             }

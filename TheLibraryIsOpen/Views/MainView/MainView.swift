@@ -77,31 +77,33 @@ struct MainView: View {
                         Image(systemName: "gearshape")
                             .foregroundColor(.primary)
                     }
-                    Menu {
-                        Section {
-                            Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
-                                Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
-                                    .tag(0)
-                                
-                                Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
-                                    .tag(1)
+                
+                    if viewModel.displayPodcastList {
+                        Menu {
+                            Section {
+                                Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
+                                    Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
+                                        .tag(0)
+                                    
+                                    Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
+                                        .tag(1)
+                                }
                             }
-                        }
-                        
-                        Section {
-                            Picker(selection: $viewModel.viewOption, label: Text("View options")) {
-                                Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
-                                    .tag(0)
-                                
-                                Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
-                                    .tag(1)
+                            
+                            Section {
+                                Picker(selection: $viewModel.viewOption, label: Text("View options")) {
+                                    Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
+                                        .tag(0)
+                                    
+                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
+                                        .tag(1)
+                                }
                             }
+                        } label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .foregroundColor(.primary)
                         }
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                            .foregroundColor(.primary)
                     }
-                    .disabled(viewModel.displayPodcastList == false)
                 }
             )
             .navigationBarItems(trailing:

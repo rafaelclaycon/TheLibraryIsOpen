@@ -305,7 +305,7 @@ class DataManager {
                     podcast.title = feed.title ?? "Sem Título"
                     podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
                     podcast.feedUrl = feedDetails.feedUrl
-                    podcast.artworkUrl = feed.image?.url ?? feed.iTunes?.iTunesImage?.attributes?.href ?? ""
+                    podcast.artworkUrl = feed.iTunes?.iTunesImage?.attributes?.href ?? feed.image?.url ?? ""
                     
                     if podcast.artworkUrl.isEmpty == false, podcast.artworkUrl.contains("https") == false {
                         do {
