@@ -11,13 +11,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.imageName
+                return LocalizableStrings.GetLinkInstructionsView.Castro.imageName
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.imageName
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.imageName
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.imageName
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.imageName
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.imageName
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.imageName
             }
         }
     }
@@ -25,13 +25,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step1
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step1
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step1
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step1
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step1
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step1
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step1
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step1
             }
         }
     }
@@ -39,13 +39,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step2
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step2
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step2
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step2
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step2
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step2
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step2
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step2
             }
         }
     }
@@ -53,13 +53,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step3
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step3
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step3
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step3
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step3
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step3
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step3
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step3
             }
         }
     }
@@ -67,13 +67,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step4
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step4
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step4
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step4
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step4
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step4
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step4
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step4
             }
         }
     }
@@ -81,13 +81,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step5
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step5
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step5
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step5
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step5
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step5
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step5
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step5
             }
         }
     }
@@ -95,13 +95,13 @@ struct GetLinkInstructionsView: View {
         get {
             switch selectedOption.type {
             case .castro:
-                return LocalizableStrings.InstructionsAView.Castro.step6
+                return LocalizableStrings.GetLinkInstructionsView.Castro.step6
             case .overcast:
-                return LocalizableStrings.InstructionsAView.Overcast.step6
+                return LocalizableStrings.GetLinkInstructionsView.Overcast.step6
             case .pocketCasts:
-                return LocalizableStrings.InstructionsAView.PocketCasts.step6
+                return LocalizableStrings.GetLinkInstructionsView.PocketCasts.step6
             default:
-                return LocalizableStrings.InstructionsAView.ApplePodcasts.step6
+                return LocalizableStrings.GetLinkInstructionsView.ApplePodcasts.step6
             }
         }
     }
@@ -112,7 +112,7 @@ struct GetLinkInstructionsView: View {
         if actualInstructions.contains(selectedOption.type) {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text(LocalizableStrings.InstructionsAView.generalExplanationText)
+                    Text(LocalizableStrings.GetLinkInstructionsView.generalExplanationText)
                         .padding(.horizontal, 30)
                         .padding(.vertical)
                     
@@ -152,7 +152,7 @@ struct GetLinkInstructionsView: View {
                         Spacer()
                         
                         NavigationLink(destination: PasteLinkView(estaSendoExibido: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: 1, selection: $action, label: {
-                            Text(LocalizableStrings.InstructionsAView.nextButtonLabel)
+                            Text(LocalizableStrings.GetLinkInstructionsView.nextButtonLabel)
                                 .bold()
                                 .foregroundColor(.white)
                                 .padding(.vertical, 14)
@@ -167,7 +167,7 @@ struct GetLinkInstructionsView: View {
                     
                     Spacer()
                 }
-                .navigationBarTitle(Text(LocalizableStrings.InstructionsAView.title))
+                .navigationBarTitle(Text(LocalizableStrings.GetLinkInstructionsView.title))
                 .navigationBarItems(trailing:
                     Button(action: {
                         self.isShowingModal = false

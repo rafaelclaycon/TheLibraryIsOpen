@@ -2,8 +2,6 @@ import Foundation
 
 struct LocalizableStrings {
 
-    // General
-
     static let ok = NSLocalizedString("ok", comment: "")
     static let episode = NSLocalizedString("episode", comment: "")
     static let episodes = NSLocalizedString("episodes", comment: "")
@@ -75,7 +73,7 @@ struct LocalizableStrings {
         
     }
     
-    struct InstructionsAView {
+    struct GetLinkInstructionsView {
         
         static let title = NSLocalizedString("instructions_a_view_title", comment: "")
         static let generalExplanationText = NSLocalizedString("instructions_a_view_general_explanation_text", comment: "")
@@ -132,7 +130,7 @@ struct LocalizableStrings {
         
     }
     
-    struct InstructionsBView {
+    struct PasteLinkView {
         
         static let title = NSLocalizedString("instructions_b_view_title", comment: "")
         static let step6 = NSLocalizedString("instructions_b_view_step6", comment: "")

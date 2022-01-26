@@ -27,7 +27,7 @@ struct PasteLinkView: View {
                         }
                         .padding(.vertical, 30)
                         
-                        Text(LocalizableStrings.InstructionsBView.step6)
+                        Text(LocalizableStrings.PasteLinkView.step6)
                             .padding(.horizontal, 25)
                             .padding(.bottom, 15)
                             .onTapGesture {
@@ -48,7 +48,7 @@ struct PasteLinkView: View {
                                 focusedField = nil
                                 viewModel.processLink()
                             }) {
-                                Text(LocalizableStrings.InstructionsBView.processLinkButtonLabel)
+                                Text(LocalizableStrings.PasteLinkView.processLinkButtonLabel)
                                     .bold()
                             }
                             .buttonStyle(PillButtonStyle())
@@ -64,7 +64,7 @@ struct PasteLinkView: View {
                         Spacer()
                     }
                 }
-                .navigationBarTitle(Text(LocalizableStrings.InstructionsBView.title))
+                .navigationBarTitle(Text(LocalizableStrings.PasteLinkView.title))
                 .navigationBarItems(trailing:
                     Button(action: {
                         self.estaSendoExibido = false

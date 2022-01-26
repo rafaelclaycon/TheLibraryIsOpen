@@ -16,7 +16,7 @@ class PasteLinkViewViewModel: ObservableObject {
     
     func processLink() {
         DispatchQueue.main.async {
-            self.processingViewMessage = LocalizableStrings.InstructionsBView.loaderLabel
+            self.processingViewMessage = LocalizableStrings.PasteLinkView.loaderLabel
             self.isShowingProcessingView = true
         }
         
@@ -81,8 +81,8 @@ class PasteLinkViewViewModel: ObservableObject {
     }
     
     private func showSpotifyLinksNotSupportedAlert() {
-        alertTitle = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningTitle
-        alertMessage = LocalizableStrings.InstructionsBView.spotifyLinksNotSupportedWarningMessage
+        alertTitle = LocalizableStrings.PasteLinkView.spotifyLinksNotSupportedWarningTitle
+        alertMessage = LocalizableStrings.PasteLinkView.spotifyLinksNotSupportedWarningMessage
         displayAlert = true
     }
     
