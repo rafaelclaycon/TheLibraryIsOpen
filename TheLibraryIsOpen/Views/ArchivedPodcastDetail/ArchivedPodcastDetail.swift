@@ -4,18 +4,8 @@ import UniformTypeIdentifiers
 struct ArchivedPodcastDetail: View {
 
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
-    @State private var indicePagina = 0
-    @State var showingExportOptions: Bool = false
-    
-    // Private properties
-    private let artworkSize: CGFloat = 64.0
-    private let buttonSize: CGFloat = 30
-    private let recentsFirstText = LocalizableStrings.mostRecentFirst
-    private let oldestFirstText = LocalizableStrings.oldestFirst
-    private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @State private var showingExportOptions: Bool = false
+    @State private var sort: Int = 0
     
     private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
     private let other = LocalizableStrings.ArchivedPodcastDetail.Export.Options.other
@@ -23,44 +13,6 @@ struct ArchivedPodcastDetail: View {
     var body: some View {
         ZStack {
             VStack {
-                // MARK: - Top toolbar
-                HStack(spacing: 20) {
-                    Button(action: {
-                        viewModel.toggleEpisodeListSorting()
-                    }) {
-                        HStack {
-                            Image(systemName: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down.circle" : "chevron.up.circle")
-                            Text(viewModel.episodeListSorting == .fromNewToOld ? recentsFirstText : oldestFirstText)
-                        }
-                    }
-                    .onChange(of: viewModel.episodeListSorting) { newValue in
-                        if viewModel.episodeListSorting == .fromNewToOld {
-                            viewModel.sortEpisodesByPubDateDescending()
-                        } else {
-                            viewModel.sortEpisodesByPubDateAscending()
-                        }
-                    }
-                    
-                    Menu {
-                        Button("Only Downloaded", action: viewModel.dummyCall)
-                        Button("All Episodes", action: viewModel.dummyCall)
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.filter)
-                    }
-                    
-                    Button {
-                        print("Look for new episodes pressed")
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                            Text("Procurar novos episódios")
-                        }
-                    }
-
-                }
-                .padding(.vertical, 10)
-                
                 Divider()
 
                 // MARK: - List
@@ -208,8 +160,54 @@ struct ArchivedPodcastDetail: View {
         .navigationBarTitle(viewModel.title, displayMode: .inline)
         .navigationBarItems(trailing:
             Menu {
-                Button("View History", action: viewModel.dummyCall)
-                Button("Delete Podcast", role: .destructive, action: viewModel.dummyCall)
+                Section {
+                    Button(action: {
+                        viewModel.toggleEpisodeListSorting()
+                    }) {
+                        Label("Data de Publicação", systemImage: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down" : "chevron.up")
+                    }
+                    .onChange(of: viewModel.episodeListSorting) { newValue in
+                        if viewModel.episodeListSorting == .fromNewToOld {
+                            viewModel.sortEpisodesByPubDateDescending()
+                        } else {
+                            viewModel.sortEpisodesByPubDateAscending()
+                        }
+                    }
+                }
+                
+                Section {
+                    Picker(selection: $sort) {
+                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showDownloadedEpisodesOnly).tag(0)
+                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showAllEpisodes).tag(1)
+                    } label: {
+                        Text("Sorting options")
+                    }
+                }
+                
+                Section {
+                    Button {
+                        print("Look for new episodes pressed")
+                    } label: {
+                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.lookForNewEpisodes, systemImage: "arrow.clockwise")
+                    }
+                    
+                    Button {
+                        viewModel.dummyCall()
+                    } label: {
+                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.viewHistory, systemImage: "clock")
+                    }
+                }
+            
+                Section {
+                    Button(role: .destructive, action: {
+                        viewModel.dummyCall()
+                    }, label: {
+                        HStack {
+                            Text(LocalizableStrings.ArchivedPodcastDetail.Options.deletePodcast)
+                            Image(systemName: "trash")
+                        }
+                    })
+                }
             } label: {
                 Image(systemName: "ellipsis.circle")
             }

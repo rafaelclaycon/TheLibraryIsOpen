@@ -169,7 +169,11 @@ struct LocalizableStrings {
         
         struct Options {
             
-            static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
+            static let showDownloadedEpisodesOnly = NSLocalizedString("archived_podcast_detail_options_show_downloaded_episodes_only", comment: "")
+            static let showAllEpisodes = NSLocalizedString("archived_podcast_detail_options_show_all_episodes", comment: "")
+            static let lookForNewEpisodes = NSLocalizedString("archived_podcast_detail_options_look_for_new_episodes", comment: "")
+            static let viewHistory = NSLocalizedString("archived_podcast_detail_options_view_history", comment: "")
+            static let deletePodcast = NSLocalizedString("archived_podcast_detail_options_delete_podcast", comment: "")
             
         }
         
