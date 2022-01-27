@@ -15,7 +15,7 @@ class UserSettings {
     static func getAddingBehaviorSelectedOption() -> String {
         let userDefaults = UserDefaults.standard
         guard let value = userDefaults.object(forKey: "addingBehaviorSelectedOption") else {
-            return LocalizableStrings.Settings.AddPodcast.WhenAdding.previewFirstOption
+            return LocalizableStrings.SettingsView.AddPodcast.WhenAdding.previewFirstOption
         }
         return String(value as! String)
     }

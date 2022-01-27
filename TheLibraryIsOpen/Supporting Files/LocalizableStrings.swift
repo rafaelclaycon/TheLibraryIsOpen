@@ -164,17 +164,37 @@ struct LocalizableStrings {
         
     }
     
+    // MARK: - ArchivedPodcastDetail
     struct ArchivedPodcastDetail {
         
-        static let totalSize = NSLocalizedString("archived_podcast_detail_total_size", comment: "")
-        static let lastChecked = NSLocalizedString("archived_podcast_detail_last_checked", comment: "")
-        static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
-        static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
-        static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
-        static let downloadSummaryMessageSingleEpisode = NSLocalizedString("archived_podcast_detail_download_summary_message_single_episode", comment: "")
-        static let downloadSummaryMessageMultipleEpisodes = NSLocalizedString("archived_podcast_detail_download_summary_message_multiple_episodes", comment: "")
-        static let unknownTotalSize = NSLocalizedString("archived_podcast_detail_unknown_total_size", comment: "")
-        static let unknownLastCheckedDate = NSLocalizedString("archived_podcast_detail_unknown_last_checked_date", comment: "")
+        struct Options {
+            
+            static let filter = NSLocalizedString("archived_podcast_detail_filter", comment: "")
+            
+        }
+        
+        struct EpisodeRow {
+            
+            static let downloadingEpisode = NSLocalizedString("archived_podcast_detail_downloading_episode", comment: "")
+            static let availableOffline = NSLocalizedString("archived_podcast_detail_available_offline", comment: "")
+            
+        }
+        
+        struct DownloadStrip {
+            
+            static let summaryMessageSingleEpisode = NSLocalizedString("archived_podcast_detail_download_summary_message_single_episode", comment: "")
+            static let summaryMessageMultipleEpisodes = NSLocalizedString("archived_podcast_detail_download_summary_message_multiple_episodes", comment: "")
+            
+        }
+        
+        struct Info {
+            
+            static let totalSize = NSLocalizedString("archived_podcast_detail_total_size", comment: "")
+            static let unknownTotalSize = NSLocalizedString("archived_podcast_detail_unknown_total_size", comment: "")
+            static let lastChecked = NSLocalizedString("archived_podcast_detail_last_checked", comment: "")
+            static let unknownLastCheckedDate = NSLocalizedString("archived_podcast_detail_unknown_last_checked_date", comment: "")
+            
+        }
         
         struct Export {
             
@@ -197,7 +217,8 @@ struct LocalizableStrings {
         
     }
     
-    struct Settings {
+    // MARK: - Settings View
+    struct SettingsView {
         
         static let title = NSLocalizedString("settings_screen_title", comment: "")
         

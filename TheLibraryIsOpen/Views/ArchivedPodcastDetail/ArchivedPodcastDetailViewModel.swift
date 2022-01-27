@@ -22,6 +22,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
     @Published var currentDownloadPercentage = 0.0
     @Published var totalDownloadPercentage = 100.0
+    @Published var showOverallDownloadProgress: Bool = true
     
     // List status keepers
     @Published var downloadingKeeper: [String: Double] = [:]
@@ -56,8 +57,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         
         self.episodeCount = String(episodes.count)
         let spaceDescription = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
-        self.totalFilesize = spaceDescription.isEmpty == false ? spaceDescription : LocalizableStrings.ArchivedPodcastDetail.unknownTotalSize
-        self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? LocalizableStrings.ArchivedPodcastDetail.unknownLastCheckedDate
+        self.totalFilesize = spaceDescription.isEmpty == false ? spaceDescription : LocalizableStrings.ArchivedPodcastDetail.Info.unknownTotalSize
+        self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? LocalizableStrings.ArchivedPodcastDetail.Info.unknownLastCheckedDate
         
         let episodesToDownload = episodes.filter {
             $0.offlineStatus == EpisodeOfflineStatus.downloadNotStarted.rawValue
@@ -95,16 +96,13 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             print(episode.filesize)
         }
         
-        totalDownloadPercentage = Double(Utils.getSizeInBytesOf(episodes))
-        //print("HERMIONE: \(totalDownloadPercentage)")
-        
-        let episodeDic = Dictionary(uniqueKeysWithValues: episodes.map{ ($0.id, $0) })
+        totalDownloadPercentage = Double(episodes.count)
         
         downloadOperationStatus = .activelyDownloading
         if episodes.count == 1 {
-            progressViewMessage = LocalizableStrings.ArchivedPodcastDetail.downloadSummaryMessageSingleEpisode
+            progressViewMessage = LocalizableStrings.ArchivedPodcastDetail.DownloadStrip.summaryMessageSingleEpisode
         } else {
-            progressViewMessage = String(format: LocalizableStrings.ArchivedPodcastDetail.downloadSummaryMessageMultipleEpisodes, episodes.count)
+            progressViewMessage = String(format: LocalizableStrings.ArchivedPodcastDetail.DownloadStrip.summaryMessageMultipleEpisodes, episodes.count)
         }
         
         dataManager.download(episodeArray: episodes, podcastId: podcast.id, progressCallback: { [weak self] episodeId, fractionCompleted in
@@ -112,9 +110,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 return
             }
             strongSelf.downloadingKeeper[episodeId] = fractionCompleted * 100
-            strongSelf.currentDownloadPercentage = (fractionCompleted * Double(episodeDic[episodeId]!.filesize)) / strongSelf.totalDownloadPercentage
             
             if fractionCompleted == 1 {
+                strongSelf.currentDownloadPercentage += 1
                 strongSelf.downloadingKeeper[episodeId] = nil
                 strongSelf.downloadedKeeper.insert(episodeId)
             }

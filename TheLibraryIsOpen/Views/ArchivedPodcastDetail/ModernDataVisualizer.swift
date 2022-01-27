@@ -30,9 +30,9 @@ struct ModernDataVisualizer_Previews: PreviewProvider {
         Group {
             ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: "8")
                 .previewLayout(.fixed(width: 200, height: 100))
-            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.totalSize, imageName: "tray.full", value: "768,6 MB")
+            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.Info.totalSize, imageName: "tray.full", value: "768,6 MB")
                 .previewLayout(.fixed(width: 200, height: 100))
-            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.lastChecked, imageName: "calendar", value: "22/01/2022")
+            ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.Info.lastChecked, imageName: "calendar", value: "22/01/2022")
                 .previewLayout(.fixed(width: 200, height: 100))
         }
     }

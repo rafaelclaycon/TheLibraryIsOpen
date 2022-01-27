@@ -4,9 +4,9 @@ struct SettingsView: View {
     
     @StateObject var viewModel = SettingsViewViewModel()
     
-    let addingBehaviors = [LocalizableStrings.Settings.AddPodcast.WhenAdding.previewFirstOption,
-                           LocalizableStrings.Settings.AddPodcast.WhenAdding.justAddToArchiveOption,
-                           LocalizableStrings.Settings.AddPodcast.WhenAdding.addAndDownloadAllEpisodesOption]
+    let addingBehaviors = [LocalizableStrings.SettingsView.AddPodcast.WhenAdding.previewFirstOption,
+                           LocalizableStrings.SettingsView.AddPodcast.WhenAdding.justAddToArchiveOption,
+                           LocalizableStrings.SettingsView.AddPodcast.WhenAdding.addAndDownloadAllEpisodesOption]
     
     @State private var podcastRowBehaviorSelectedOption = "Exibir quantidade de episódios"
     let podcastRowBehaviors = ["Exibir quantidade de episódios", "Exibir espaço ocupado"]
@@ -20,13 +20,13 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section(LocalizableStrings.Settings.AddPodcast.sectionHeader) {
-                Toggle(LocalizableStrings.Settings.AddPodcast.skipGetLinkInstructions, isOn: $viewModel.displayHowToGetLinkInstructions)
+            Section(LocalizableStrings.SettingsView.AddPodcast.sectionHeader) {
+                Toggle(LocalizableStrings.SettingsView.AddPodcast.skipGetLinkInstructions, isOn: $viewModel.displayHowToGetLinkInstructions)
                     .onChange(of: viewModel.displayHowToGetLinkInstructions) { newValue in
                         UserSettings.setSkipGetLinkInstructions(to: newValue)
                     }
                 
-                Picker(LocalizableStrings.Settings.AddPodcast.WhenAdding.optionLabel, selection: $viewModel.addingBehaviorSelectedOption) {
+                Picker(LocalizableStrings.SettingsView.AddPodcast.WhenAdding.optionLabel, selection: $viewModel.addingBehaviorSelectedOption) {
                     ForEach(addingBehaviors, id: \.self) {
                         Text($0)
                     }
@@ -51,11 +51,11 @@ struct SettingsView: View {
                     }
                 }*/
                 
-                Toggle(LocalizableStrings.Settings.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
+                Toggle(LocalizableStrings.SettingsView.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
             } header: {
-                Text(LocalizableStrings.Settings.ArchivedPodcast.sectionHeader)
+                Text(LocalizableStrings.SettingsView.ArchivedPodcast.sectionHeader)
             } footer: {
-                Text(LocalizableStrings.Settings.ArchivedPodcast.sectionFooter)
+                Text(LocalizableStrings.SettingsView.ArchivedPodcast.sectionFooter)
             }
             
             Section {
@@ -66,7 +66,7 @@ struct SettingsView: View {
                     Alert(title: Text("And She Is the Moment"), message: Text("Thank you so much for your support."), dismissButton: .default(Text(LocalizableStrings.ok)))
                 }
             } header: {
-                Text(LocalizableStrings.Settings.TipJar.sectionHeader)
+                Text(LocalizableStrings.SettingsView.TipJar.sectionHeader)
             }
             
             Section {
@@ -76,16 +76,16 @@ struct SettingsView: View {
             }
             
             Section {
-                Button(LocalizableStrings.Settings.Feedback.reportABugButtonLabel) {
+                Button(LocalizableStrings.SettingsView.Feedback.reportABugButtonLabel) {
                     print("Bug report")
                 }
-                Button(LocalizableStrings.Settings.Feedback.reportATranslationErrorButtonLabel) {
+                Button(LocalizableStrings.SettingsView.Feedback.reportATranslationErrorButtonLabel) {
                     print("Translation error")
                 }
             } header: {
-                Text(LocalizableStrings.Settings.Feedback.sectionHeader)
+                Text(LocalizableStrings.SettingsView.Feedback.sectionHeader)
             } footer: {
-                Text(LocalizableStrings.Settings.Feedback.sectionFooter)
+                Text(LocalizableStrings.SettingsView.Feedback.sectionFooter)
             }
             
             if viewModel.displayDeveloperOptions {
@@ -100,7 +100,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .navigationTitle(LocalizableStrings.Settings.title)
+        .navigationTitle(LocalizableStrings.SettingsView.title)
     }
 
 }
