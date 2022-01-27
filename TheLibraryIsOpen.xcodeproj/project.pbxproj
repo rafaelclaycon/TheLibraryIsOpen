@@ -227,22 +227,22 @@
 				D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */,
 				D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */,
 				D997FC76278B903800F027CB /* DownloadStatusFileSymbols */,
-				D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */,
 				D943BDBD27927B630023A66D /* History */,
 				D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */,
 			);
 			path = ArchivedPodcastDetail;
 			sourceTree = "<group>";
 		};
-		D940AD0227832AD400DF7549 /* Shared */ = {
+		D940AD0227832AD400DF7549 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */,
 				D940AD0027831E3000DF7549 /* RoundCheckbox.swift */,
 				D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */,
+				D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */,
 				D9E91540279884450024E45F /* FlatBackgroundButtonStyle.swift */,
 			);
-			path = Shared;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D943BDBD27927B630023A66D /* History */ = {
@@ -390,7 +390,7 @@
 				D936C3F1278A247F0073B806 /* EpisodeGroupView */,
 				D936C3F2278A33230073B806 /* ArchivedPodcastDetail */,
 				D975B2A9278DD28200BEBB6B /* Settings */,
-				D940AD0227832AD400DF7549 /* Shared */,
+				D940AD0227832AD400DF7549 /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
