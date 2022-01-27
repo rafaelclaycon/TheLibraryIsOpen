@@ -59,11 +59,10 @@ struct MainView: View {
                         showingModalView = true
                     } label: {
                         Text(LocalizableStrings.MainView.EmptyStateView.howDoesThisWorkButtonLabel)
-                            .bold()
                     }
                     .tint(.accentColor)
                     .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
                     .buttonBorderShape(.capsule)
                     .padding()
                 }
