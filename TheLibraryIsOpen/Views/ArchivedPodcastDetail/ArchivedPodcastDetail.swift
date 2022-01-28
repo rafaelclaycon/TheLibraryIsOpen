@@ -5,6 +5,7 @@ struct ArchivedPodcastDetail: View {
 
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var showingExportOptions: Bool = false
+    @State private var showingHistory: Bool = false
     @State private var sort: Int = 0
     
     private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
@@ -13,6 +14,8 @@ struct ArchivedPodcastDetail: View {
     var body: some View {
         ZStack {
             VStack {
+                NavigationLink(destination: PodcastHistoryView(viewModel: PodcastHistoryViewViewModel(podcastId: viewModel.podcast.id)), isActive: $showingHistory) { EmptyView() }
+                
                 Divider()
 
                 // MARK: - List
@@ -192,7 +195,7 @@ struct ArchivedPodcastDetail: View {
                     }
                     
                     Button {
-                        viewModel.dummyCall()
+                        showingHistory = true
                     } label: {
                         Label(LocalizableStrings.ArchivedPodcastDetail.Options.viewHistory, systemImage: "clock")
                     }

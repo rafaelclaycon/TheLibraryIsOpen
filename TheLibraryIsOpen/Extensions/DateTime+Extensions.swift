@@ -22,6 +22,14 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func asShortDateAndShortTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: self)
+    }
+    
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> String {
         return String(calendar.component(component, from: self))
     }

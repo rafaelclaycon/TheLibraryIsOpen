@@ -12,8 +12,10 @@
 		D91823A52798570800193ECB /* UnfortunatelyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91823A42798570800193ECB /* UnfortunatelyView.swift */; };
 		D91AC97325F51CCE0086396D /* ProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AC97225F51CCE0086396D /* ProcessingView.swift */; };
 		D91AC97A25F56D450086396D /* String+RangeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AC97925F56D450086396D /* String+RangeAccess.swift */; };
+		D929DB8A27A35C29000ECA9E /* PodcastHistoryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D929DB8927A35C29000ECA9E /* PodcastHistoryViewViewModel.swift */; };
 		D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44BD256EF7F900731EEF /* EpisodeRow.swift */; };
 		D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */; };
+		D92E4B8927A2ABB700B2170D /* PodcastHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */; };
 		D931D3FF27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */; };
 		D936C3F4278A33430073B806 /* ArchivedPodcastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */; };
 		D936C3F6278A33C20073B806 /* ArchivedPodcastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */; };
@@ -96,8 +98,10 @@
 		D91823A42798570800193ECB /* UnfortunatelyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfortunatelyView.swift; sourceTree = "<group>"; };
 		D91AC97225F51CCE0086396D /* ProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingView.swift; sourceTree = "<group>"; };
 		D91AC97925F56D450086396D /* String+RangeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RangeAccess.swift"; sourceTree = "<group>"; };
+		D929DB8927A35C29000ECA9E /* PodcastHistoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryViewViewModel.swift; sourceTree = "<group>"; };
 		D92A44BD256EF7F900731EEF /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewViewModel.swift; sourceTree = "<group>"; };
+		D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryView.swift; sourceTree = "<group>"; };
 		D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryRecordRow.swift; sourceTree = "<group>"; };
 		D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetail.swift; sourceTree = "<group>"; };
 		D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetailViewModel.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 		D943BDBD27927B630023A66D /* History */ = {
 			isa = PBXGroup;
 			children = (
+				D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */,
+				D929DB8927A35C29000ECA9E /* PodcastHistoryViewViewModel.swift */,
 				D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */,
 			);
 			path = History;
@@ -527,12 +533,14 @@
 			files = (
 				D9A5A966277E54A900AA1FCC /* EpisodeGroupViewViewModel.swift in Sources */,
 				D9E56BED278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift in Sources */,
+				D92E4B8927A2ABB700B2170D /* PodcastHistoryView.swift in Sources */,
 				D9E56BF1278B64A400AA0DD9 /* FileWaitingForDownloadSymbol.swift in Sources */,
 				D9B2432D2793980E0014384E /* ExportDestinationOptions.swift in Sources */,
 				D91AC97A25F56D450086396D /* String+RangeAccess.swift in Sources */,
 				D9E91543279885800024E45F /* Color+Extensions.swift in Sources */,
 				D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */,
 				D975B2A4278C793D00BEBB6B /* LocalizableStrings.swift in Sources */,
+				D929DB8A27A35C29000ECA9E /* PodcastHistoryViewViewModel.swift in Sources */,
 				D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */,
 				D997FC78278BB05F00F027CB /* ModernDataVisualizer.swift in Sources */,
 				D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */,

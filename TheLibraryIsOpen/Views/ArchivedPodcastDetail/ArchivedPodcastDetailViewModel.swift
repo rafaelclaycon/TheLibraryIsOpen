@@ -22,7 +22,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
     @Published var currentDownloadPercentage = 0.0
     @Published var totalDownloadPercentage = 100.0
-    @Published var showOverallDownloadProgress: Bool = true
+    @Published var showOverallDownloadProgress: Bool
     
     // List status keepers
     @Published var downloadingKeeper: [String: Double] = [:]
@@ -54,6 +54,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         episodes = podcast.episodes!
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
+        showOverallDownloadProgress = false
         
         self.episodeCount = String(episodes.count)
         let spaceDescription = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
@@ -65,6 +66,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         }
         if episodesToDownload.count > 0 {
             download(episodes: episodesToDownload)
+            showOverallDownloadProgress = true
         }
         
         updateKeepers()

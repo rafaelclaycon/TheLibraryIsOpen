@@ -166,3 +166,9 @@
 "settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Signaler un bug";
 "settings_screen_feedback_section_report_a_translation_error_button_label" = "🇨🇦  Signaler une erreur de traduction";
 "settings_screen_feedback_section_footer" = "Le support est très limité car je suis une personne seule travaillant sur cette application :)";
+
+// Podcast History Record
+
+"podcast_history_record_podcast_archived_title" = "Podcast archivé";
+"podcast_history_record_podcast_archived_message_single_episode" = "1 épisode ajouté.";
+"podcast_history_record_podcast_archived_message_multiple_episodes" = "%d épisodes ajoutés.";

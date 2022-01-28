@@ -266,5 +266,18 @@ struct LocalizableStrings {
         }
         
     }
+    
+    // MARK: - Podcast History Record
+    struct PodcastHistoryRecord {
+        
+        struct PodcastArchived {
+            
+            static let title = NSLocalizedString("podcast_history_record_podcast_archived_title", comment: "")
+            static let messageSingleEpisode = NSLocalizedString("podcast_history_record_podcast_archived_message_single_episode", comment: "")
+            static let messageMultipleEpisodes = NSLocalizedString("podcast_history_record_podcast_archived_message_multiple_episodes", comment: "")
+            
+        }
+        
+    }
 
 }

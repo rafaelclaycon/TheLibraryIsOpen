@@ -58,10 +58,18 @@ class DataManager {
         try episodes.forEach {
             try database?.insert(episode: $0)
         }
+        
+        var description = ""
+        if episodes.count == 1 {
+            description = LocalizableStrings.PodcastHistoryRecord.PodcastArchived.messageSingleEpisode
+        } else {
+            description = String(format: LocalizableStrings.PodcastHistoryRecord.PodcastArchived.messageMultipleEpisodes, episodes.count)
+        }
+        
         try database?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
-                                                         symbol: HistoryRecordSymbol.podcastArchived.rawValue,
-                                                         title: "Podcast archived!",
-                                                         description: "\(episodes.count) episodes added."))
+                                                          symbol: HistoryRecordSymbol.podcastArchived.rawValue,
+                                                          title: LocalizableStrings.PodcastHistoryRecord.PodcastArchived.title,
+                                                          description: description))
     }
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
@@ -380,6 +388,13 @@ class DataManager {
     func deletePodcastFromArchive(withId podcastId: Int) throws {
         try database?.deleteAllEpisodes(fromPodcast: podcastId)
         try database?.deletePodcast(withId: podcastId)
+    }
+    
+    func getPodcastHistory(from podcastId: Int) throws -> [PodcastHistoryRecord] {
+        guard let db = database else {
+            throw DataManagerError.localDatabaseNotInstanced
+        }
+        return try db.getAllHistoryRecords(forID: podcastId)
     }
 
 }
