@@ -32,10 +32,18 @@ struct GuideView: View {
                         .font(.title2)
                         .bold()
                     
+                    Text("TLIO permite baixar os seus podcasts favoritos e guardá-los para sempre em um serviço de armazenamento de arquivos de sua escolha.")
+                    
                     Text("O que TLIO não é")
                         .font(.title2)
                         .bold()
+                    
+                    Text("TLIO não é um tocador de podcasts.")
+                        .bold()
+                    
+                    Text("Para reproduzir um episódio baixado é necessário exportar o arquivo e utilizar um tocador de podcasts como Overcast ou Pocket Casts.")
                 }
+                .padding(.horizontal, 20)
                 .navigationTitle("Como Funciona?")
                 .navigationBarItems(leading:
                     Button(action: {
@@ -44,11 +52,10 @@ struct GuideView: View {
                         Image(systemName: "xmark")
                             .font(Font.body.weight(.bold))
                             .foregroundColor(.gray)
-                            .padding(.all, 1)
+                            .padding(.vertical, 3)
                     }
                     .buttonStyle(BorderedButtonStyle())
                     .buttonBorderShape(.capsule)
-                    .padding(.vertical)
                 )
             }
         }
