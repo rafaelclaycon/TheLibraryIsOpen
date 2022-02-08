@@ -3,13 +3,11 @@ import Alamofire
 
 class DataManager {
 
-    typealias PodcastFetchMethod = () -> [Podcast]
-
     private var database: LocalDatabase?
 
     var podcasts: [Podcast]?
 
-    init(database injectedDatabase: LocalDatabase?, fetchMethod: PodcastFetchMethod) {
+    init(database injectedDatabase: LocalDatabase?) {
         guard injectedDatabase != nil else {
             return
         }
