@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D900DC0D27A465C4002BED98 /* Zipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DC0C27A465C4002BED98 /* Zipper.swift */; };
 		D911845C25736024008DB977 /* LocalDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845B25736024008DB977 /* LocalDatabaseTests.swift */; };
 		D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845F2573612B008DB977 /* FeedHelperTests.swift */; };
 		D91823A52798570800193ECB /* UnfortunatelyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91823A42798570800193ECB /* UnfortunatelyView.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D900DC0C27A465C4002BED98 /* Zipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zipper.swift; sourceTree = "<group>"; };
 		D911845B25736024008DB977 /* LocalDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseTests.swift; sourceTree = "<group>"; };
 		D911845F2573612B008DB977 /* FeedHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelperTests.swift; sourceTree = "<group>"; };
 		D91823A42798570800193ECB /* UnfortunatelyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfortunatelyView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				D94A05FD2572CDD70065AE2C /* DataManager.swift */,
 				D95E798B2790D7B200115606 /* LinkWizard.swift */,
 				D9BADD09279C99DC00CF2C27 /* InternalStorage.swift */,
+				D900DC0C27A465C4002BED98 /* Zipper.swift */,
 			);
 			path = "Data Handlers";
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */,
 				D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */,
 				D9A5A968277E65AE00AA1FCC /* EpisodeGroup.swift in Sources */,
+				D900DC0D27A465C4002BED98 /* Zipper.swift in Sources */,
 				D940AD0427833FC700DF7549 /* Int+Extensions.swift in Sources */,
 				D98D25552798E3AA006DAC22 /* UserSettings.swift in Sources */,
 				D9838401279A924900E5DFAC /* DownloadOperationStatus.swift in Sources */,
