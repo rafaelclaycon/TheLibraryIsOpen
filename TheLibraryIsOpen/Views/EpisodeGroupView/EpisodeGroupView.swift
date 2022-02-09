@@ -2,21 +2,28 @@ import SwiftUI
 
 struct EpisodeGroupView: View {
 
-    @ObservedObject var viewModel: EpisodeGroupViewViewModel
+    @StateObject var viewModel: EpisodeGroupViewViewModel
+    @Binding var selectedItems: Set<String>
+    @State var isSelectedForComponent: Bool = false
+    var isSelected: Bool {
+        let newValue = selectedItems.contains(viewModel.groupID)
+        isSelectedForComponent = newValue
+        return newValue
+    }
     
     // Unselected
-    private let unselectedFillColor: Color = .white
+    private let unselectedFillColor: Color = .systemBackground
     private let unselectedForegroundColor: Color = .gray
     
     // Selected
-    private let selectedFillColor: Color = .pink
+    private let selectedFillColor: Color = .accentColor
     private let selectedForegroundColor: Color = .white
     
     var body: some View {
         ZStack {
-            if viewModel.isSelected {
+            if isSelected {
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(viewModel.isSelected ? selectedFillColor : unselectedFillColor)
+                    .fill(isSelected ? selectedFillColor : unselectedFillColor)
                     .frame(width: 160, height: 100)
             } else {
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
@@ -26,23 +33,27 @@ struct EpisodeGroupView: View {
             
             VStack(alignment: .leading) {
                 Text(viewModel.title)
-                    .foregroundColor(viewModel.isSelected ? selectedForegroundColor : unselectedForegroundColor)
+                    .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
                     .font(.title)
                     .bold()
                 
                 Text(viewModel.subtitle)
-                    .foregroundColor(viewModel.isSelected ? selectedForegroundColor : unselectedForegroundColor)
+                    .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
                     .font(.footnote)
             }
             .padding(.trailing, 60)
             .padding(.bottom, 35)
             
-            RoundCheckbox(selected: $viewModel.isSelected, showAsHollowButton: true)
+            RoundCheckbox(selected: $isSelectedForComponent, showAsHollowButton: true)
                 .padding(.top, 50)
                 .padding(.leading, 110)
         }
         .onTapGesture {
-            viewModel.isSelected.toggle()
+            if isSelected {
+                selectedItems.remove(viewModel.groupID)
+            } else {
+                selectedItems.insert(viewModel.groupID)
+            }
         }
     }
 
@@ -52,8 +63,8 @@ struct EpisodeGroupView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(year: "2014", episodeCount: "18 episódios"))
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(year: "2020", episodeCount: "52 episódios", selected: true))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(title: "2014", value: "18 episódios")), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(title: "2020", value: "52 episódios")), selectedItems: .constant(Set<String>()))
         }
         .previewLayout(.fixed(width: 250, height: 120))
     }

@@ -55,33 +55,35 @@ struct PodcastPreview: View {
             .padding(.horizontal, 25)
             .padding(.top, 7)
             
-            HStack(spacing: 20) {
-                Button(action: {
-                    viewModel.toggleEpisodeListSorting()
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down.circle" : "chevron.up.circle")
-                        Text(viewModel.episodeListSorting == .fromNewToOld ? recentsFirstText : oldestFirstText)
+            if viewModel.displayEpisodeList && (indicePagina == 0) {
+                HStack(spacing: 20) {
+                    Button(action: {
+                        viewModel.toggleEpisodeListSorting()
+                    }) {
+                        HStack {
+                            Image(systemName: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down.circle" : "chevron.up.circle")
+                            Text(viewModel.episodeListSorting == .fromNewToOld ? recentsFirstText : oldestFirstText)
+                        }
+                    }
+                    .onChange(of: viewModel.episodeListSorting) { newValue in
+                        if newValue == .fromNewToOld {
+                            viewModel.sortEpisodesByPubDateDescending()
+                        } else {
+                            viewModel.sortEpisodesByPubDateAscending()
+                        }
+                    }
+                    
+                    Button(action: {
+                        viewModel.toggleSelectAll()
+                    }) {
+                        HStack {
+                            Image(systemName: viewModel.episodeList_allEpisodesSelected ? "circle.dotted" : "checkmark.circle")
+                            Text(viewModel.episodeList_allEpisodesSelected ? unselectAllText : selectAllText)
+                        }
                     }
                 }
-                .onChange(of: viewModel.episodeListSorting) { newValue in
-                    if newValue == .fromNewToOld {
-                        viewModel.sortEpisodesByPubDateDescending()
-                    } else {
-                        viewModel.sortEpisodesByPubDateAscending()
-                    }
-                }
-                
-                Button(action: {
-                    viewModel.toggleSelectAll()
-                }) {
-                    HStack {
-                        Image(systemName: viewModel.allEpisodesSelected ? "circle.dotted" : "checkmark.circle")
-                        Text(viewModel.allEpisodesSelected ? unselectAllText : selectAllText)
-                    }
-                }
+                .padding(.vertical, 10)
             }
-            .padding(.vertical, 10)
             
             Divider()
 
@@ -91,20 +93,20 @@ struct PodcastPreview: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode), selectedItems: $viewModel.selectionKeeper)
+                                EpisodeRow(viewModel: EpisodeRowViewModel(episode: episode), selectedItems: $viewModel.episodeList_selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
                     }
-                    .onChange(of: viewModel.selectionKeeper) { value in
-                        viewModel.updateDownloadButton(selectedIDs: Array(viewModel.selectionKeeper))
+                    .onChange(of: viewModel.episodeList_selectionKeeper) { value in
+                        viewModel.updateDownloadButton(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
                         // TODO: Update remaining storage label.
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
-                            ForEach(viewModel.groups, id: \.id) { group in
-                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(year: group.title, episodeCount: group.value))
+                            ForEach(viewModel.yearGroups, id: \.id) { group in
+                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group), selectedItems: $viewModel.yearGroupList_selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
@@ -126,28 +128,7 @@ struct PodcastPreview: View {
                 .padding(.bottom, 5)
             
             Button(action: {
-                var episodesToDownload: [Episode]
-                if viewModel.selectionKeeper.isEmpty {
-                    episodesToDownload = viewModel.episodes
-                } else {
-                    episodesToDownload = viewModel.episodes.filter {
-                        viewModel.selectionKeeper.contains($0.id)
-                    }
-                }
-                
-                let remainingSpace = InternalStorage.getDeviceFreeStorage() - Utils.getSizeInBytesOf(episodesToDownload)
-                
-                guard remainingSpace > 2000000000 else {
-                    return viewModel.showLowStorageWarning()
-                }
-                
-                viewModel.showPodcastAddingConfirmation(numberOfEpisodes: viewModel.selectionKeeper.count,
-                                                        podcastName: viewModel.podcast.title)
-                
-                if viewModel.download(episodeIDs: viewModel.selectionKeeper) {
-                    viewModel.alertType = .twoOptions
-                    viewModel.displayAlert = true
-                }
+                viewModel.checkIfMeetsAllRequirementsToContinue()
             }) {
                 Text(viewModel.downloadAllButtonTitle)
                     .bold()
@@ -163,8 +144,10 @@ struct PodcastPreview: View {
                     return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
                 default:
                     return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.default(Text(LocalizableStrings.PodcastPreview.Messages.continueButtonLabel), action: {
-                        podcastToAutoOpenAfterAdd = viewModel.podcast.id
-                        isShowingAddPodcastModal = false
+                        if viewModel.persistPodcastLocally() {
+                            podcastToAutoOpenAfterAdd = viewModel.podcast.id
+                            isShowingAddPodcastModal = false
+                        }
                     }))
                 }
             }
@@ -174,6 +157,7 @@ struct PodcastPreview: View {
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)
+                .padding(.bottom)
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing:

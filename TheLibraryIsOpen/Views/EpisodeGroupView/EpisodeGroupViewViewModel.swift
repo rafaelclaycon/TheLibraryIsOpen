@@ -2,15 +2,16 @@ import Combine
 import Foundation
 
 class EpisodeGroupViewViewModel: ObservableObject {
+    
+    var groupID: String
 
     @Published var title: String
     @Published var subtitle: String
-    @Published var isSelected: Bool = false
 
-    init(year: String, episodeCount: String, selected: Bool = false) {
-        title = year
-        subtitle = episodeCount
-        isSelected = selected
+    init(group: EpisodeGroup) {
+        groupID = group.id
+        title = group.title
+        subtitle = group.value
     }
 
 }

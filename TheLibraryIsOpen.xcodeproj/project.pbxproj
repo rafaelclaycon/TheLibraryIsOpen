@@ -16,6 +16,7 @@
 		D92A44BE256EF7F900731EEF /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44BD256EF7F900731EEF /* EpisodeRow.swift */; };
 		D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */; };
 		D92E4B8927A2ABB700B2170D /* PodcastHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */; };
+		D930264627B33D7600153EBF /* PodcastPreviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D930264527B33D7600153EBF /* PodcastPreviewViewModelTests.swift */; };
 		D931D3FF27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */; };
 		D936C3F4278A33430073B806 /* ArchivedPodcastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */; };
 		D936C3F6278A33C20073B806 /* ArchivedPodcastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */; };
@@ -102,6 +103,7 @@
 		D92A44BD256EF7F900731EEF /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
 		D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewViewModel.swift; sourceTree = "<group>"; };
 		D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryView.swift; sourceTree = "<group>"; };
+		D930264527B33D7600153EBF /* PodcastPreviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewViewModelTests.swift; sourceTree = "<group>"; };
 		D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryRecordRow.swift; sourceTree = "<group>"; };
 		D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetail.swift; sourceTree = "<group>"; };
 		D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetailViewModel.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				D99323412576931E00DB9A72 /* DataManagerTests.swift */,
 				D95E798D2790DE0C00115606 /* LinkWizardTests.swift */,
 				D9F17F7825F99E5D00CF2530 /* UtilsTests.swift */,
+				D930264527B33D7600153EBF /* PodcastPreviewViewModelTests.swift */,
 				D9D3DB92256E7BC30035560E /* Info.plist */,
 			);
 			path = TheLibraryIsOpenTests;
@@ -599,6 +602,7 @@
 			files = (
 				D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */,
 				D95E798E2790DE0C00115606 /* LinkWizardTests.swift in Sources */,
+				D930264627B33D7600153EBF /* PodcastPreviewViewModelTests.swift in Sources */,
 				D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */,
 				D911845C25736024008DB977 /* LocalDatabaseTests.swift in Sources */,
 				D9F17F7925F99E5D00CF2530 /* UtilsTests.swift in Sources */,

@@ -12,13 +12,13 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Episode list variables
     @Published var episodes = [Episode]()
-    @Published var selectionKeeper = Set<String>()
-    @Published var allEpisodesSelected: Bool = true
+    @Published var episodeList_selectionKeeper = Set<String>()
+    @Published var episodeList_allEpisodesSelected: Bool = true
     @Published var episodeListSorting: SortOption = .fromNewToOld
     
     // MARK: - Year group list variables
-    @Published var groups = [EpisodeGroup]()
-    @Published var allGroupsSelected: Bool = false
+    @Published var yearGroups = [EpisodeGroup]()
+    @Published var yearGroupList_selectionKeeper = Set<String>()
     
     // MARK: - Download button variables
     @Published var downloadAllButtonTitle = ""
@@ -41,10 +41,10 @@ class PodcastPreviewViewModel: ObservableObject {
         episodes = podcast.episodes ?? [Episode]()
         
         selectAllEpisodes()
-        updateDownloadButton(selectedIDs: Array(selectionKeeper))
+        updateDownloadButton(selectedIDs: Array(episodeList_selectionKeeper))
         
         if (podcast.episodes?.count ?? 0) > 0 {
-            groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
+            yearGroups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
         }
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
@@ -52,7 +52,7 @@ class PodcastPreviewViewModel: ObservableObject {
     
     // MARK: - Select all methods
     func toggleSelectAll() {
-        if allEpisodesSelected {
+        if episodeList_allEpisodesSelected {
             unselectAllEpisodes()
         } else {
             selectAllEpisodes()
@@ -60,13 +60,15 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     func selectAllEpisodes() {
-        selectionKeeper = Set(episodes.map{ $0.id })
-        allEpisodesSelected = true
+        for episode in episodes {
+            episodeList_selectionKeeper.insert(episode.id)
+        }
+        episodeList_allEpisodesSelected = true
     }
     
     func unselectAllEpisodes() {
-        selectionKeeper = Set()
-        allEpisodesSelected = false
+        episodeList_selectionKeeper = Set()
+        episodeList_allEpisodesSelected = false
     }
     
     // MARK: - Sort episode list methods
@@ -100,14 +102,33 @@ class PodcastPreviewViewModel: ObservableObject {
         }
     }
     
-    func download(episodeIDs: Set<String>) -> Bool {
-        let episodesToDownload = episodes.filter {
-            episodeIDs.contains($0.id)
+    func checkIfMeetsAllRequirementsToContinue() {
+        guard episodeList_selectionKeeper.isEmpty == false else {
+            return showNoEpisodesSelectedAlert()
         }
         
-        guard episodesToDownload.count > 0 else {
-            showNoEpisodesSelectedAlert()
-            return false
+        let episodesToDownload: [Episode] = episodes.filter {
+            episodeList_selectionKeeper.contains($0.id)
+        }
+        
+        let remainingSpace = InternalStorage.getDeviceFreeStorage() - Utils.getSizeInBytesOf(episodesToDownload)
+        
+        guard remainingSpace > 2000000000 else {
+            return showLowStorageWarning()
+        }
+        
+        showPodcastAddingConfirmation(numberOfEpisodes: episodeList_selectionKeeper.count,
+                                      podcastName: podcast.title)
+        
+//        if viewModel.download(episodeIDs: viewModel.episodeList_selectionKeeper) {
+//            viewModel.alertType = .twoOptions
+//            viewModel.displayAlert = true
+//        }
+    }
+    
+    func persistPodcastLocally() -> Bool {
+        let episodesToDownload: [Episode] = episodes.filter {
+            episodeList_selectionKeeper.contains($0.id)
         }
         
         podcast.episodes = nil
@@ -116,8 +137,10 @@ class PodcastPreviewViewModel: ObservableObject {
             try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
         } catch DataManagerError.podcastAlreadyExists {
             showPodcastAlreadyExistsAlert(podcastName: podcast.title)
+            return false
         } catch {
             showLocalDatabaseError(error.localizedDescription)
+            return false
         }
         
         return true
