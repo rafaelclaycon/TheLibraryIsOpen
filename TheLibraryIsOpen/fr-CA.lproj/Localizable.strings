@@ -145,6 +145,13 @@
 "archived_podcast_detail_export_export_successful_message_title" = "Archive Exportée Avec Succès";
 "archived_podcast_detail_export_export_successful_message_body" = "Insérez une blague hilarante ici";
 
+// After Export Success View
+
+"after_export_success_view_export_successful_title" = "Exportation Réussie!";
+"after_export_success_view_what_now_subtitle" = "Et maintenant?";
+"after_export_success_view_explanation_text_first_paragraph" = "Maintenant que vous avez exporté vos épisodes archivés vers un service externe, vous pouvez les décompresser et les lire sur votre téléphone ou votre ordinateur.";
+"after_export_success_view_explanation_text_second_paragraph" = "Bonne écoute!";
+
 // Settings View
 
 "settings_screen_title" = "Réglages";

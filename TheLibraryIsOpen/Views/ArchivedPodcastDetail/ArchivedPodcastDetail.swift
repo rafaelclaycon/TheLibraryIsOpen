@@ -145,9 +145,8 @@ struct ArchivedPodcastDetail: View {
                 .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
                     switch result {
                     case .success:
-                        //print("Exported ZIP to \(url.path)")
                         viewModel.isShowingProcessingView = false
-                        viewModel.showAlert(withTitle: LocalizableStrings.ArchivedPodcastDetail.Export.exportSuccessfulMessageTitle, message: LocalizableStrings.ArchivedPodcastDetail.Export.exportSuccessfulMessageBody)
+                        viewModel.showingModalView = true
                     case .failure(let error):
                         print(error.localizedDescription)
                         viewModel.showAlert(withTitle: "Failed to Export Archive", message: error.localizedDescription)
@@ -215,6 +214,9 @@ struct ArchivedPodcastDetail: View {
                 Image(systemName: "ellipsis.circle")
             }
         )
+        .sheet(isPresented: $viewModel.showingModalView) {
+            AfterExportSuccessView(isShowingModal: $viewModel.showingModalView)
+        }
     }
 
 }
