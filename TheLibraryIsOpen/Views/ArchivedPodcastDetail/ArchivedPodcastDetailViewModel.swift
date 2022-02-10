@@ -43,6 +43,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var displayAlert: Bool = false
     @Published var alertType: AlertType = .singleOption
+    @Published var showingModalView = false
 
     init(podcast: Podcast) {
         self.podcast = podcast
