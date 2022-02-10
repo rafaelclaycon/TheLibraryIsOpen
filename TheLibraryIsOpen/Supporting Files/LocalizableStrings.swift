@@ -221,6 +221,16 @@ struct LocalizableStrings {
         
     }
     
+    // MARK: - After Export Success View
+    struct AfterExportSuccessView {
+        
+        static let exportSuccessfulTitle = NSLocalizedString("after_export_success_view_export_successful_title", comment: "")
+        static let whatNowSubtitle = NSLocalizedString("after_export_success_view_what_now_subtitle", comment: "")
+        static let explanationTextFirstParagraph = NSLocalizedString("after_export_success_view_explanation_text_first_paragraph", comment: "")
+        static let explanationTextSecondParagraph = NSLocalizedString("after_export_success_view_explanation_text_second_paragraph", comment: "")
+        
+    }
+    
     // MARK: - Settings View
     struct SettingsView {
         
