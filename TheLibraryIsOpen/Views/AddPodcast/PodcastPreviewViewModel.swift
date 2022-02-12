@@ -4,6 +4,7 @@ import Foundation
 class PodcastPreviewViewModel: ObservableObject {
     
     var podcast: Podcast
+    var podcastPreviewDataManager: DataManager
 
     @Published var title: String
     @Published var details: String
@@ -31,7 +32,7 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var alertType: AlertType = .singleOption
 
     // MARK: - Initialization
-    init(podcast: Podcast) {
+    init(podcast: Podcast, podcastPreviewDataManager: DataManager = dataManager) {
         self.podcast = podcast
         
         artworkURL = podcast.artworkUrl
@@ -39,6 +40,8 @@ class PodcastPreviewViewModel: ObservableObject {
         title = podcast.title
         details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes ?? [Episode]()
+        
+        self.podcastPreviewDataManager = podcastPreviewDataManager
         
         selectAllEpisodes()
         updateDownloadButton(selectedIDs: Array(episodeList_selectionKeeper))
@@ -134,7 +137,7 @@ class PodcastPreviewViewModel: ObservableObject {
         podcast.episodes = nil
         
         do {
-            try dataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
+            try podcastPreviewDataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
         } catch DataManagerError.podcastAlreadyExists {
             showPodcastAlreadyExistsAlert(podcastName: podcast.title)
             return false
