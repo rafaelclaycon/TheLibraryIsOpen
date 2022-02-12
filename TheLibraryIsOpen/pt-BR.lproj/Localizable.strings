@@ -145,12 +145,19 @@
 "archived_podcast_detail_export_export_successful_message_title" = "Arquivo Exportado Com Sucesso";
 "archived_podcast_detail_export_export_successful_message_body" = "O amor é para sempre? Não sabemos. Só sabemos que agora esses episódios estão salvos para sempre. 👰🏽‍♀️";
 
+// After Export Success View
+
+"after_export_success_view_export_successful_title" = "Exportado Com Sucesso!";
+"after_export_success_view_what_now_subtitle" = "E agora?";
+"after_export_success_view_explanation_text_first_paragraph" = "Agora que você exportou os episódios arquivados para um serviço externo, você pode descompactar e reproduzir os arquivos no seu celular ou computador.";
+"after_export_success_view_explanation_text_second_paragraph" = "Boa escuta!";
+
 // Settings View
 
 "settings_screen_title" = "Configurações";
 
 "settings_screen_add_podcast_section_header" = "Adicionar podcast";
-"settings_screen_add_podcast_skip_get_link_instructions_label" = "Pular tutorial de como obter o link";
+"settings_screen_add_podcast_skip_get_link_instructions_label" = "Pular tutorial de obtenção do link";
 "settings_screen_when_adding_option_label" = "Ao adicionar";
 "settings_screen_when_adding_preview_first_option" = "Permitir-me escolher quais episódios baixar";
 "settings_screen_when_adding_just_add_to_archive_option" = "Arquivar imediatamente";
