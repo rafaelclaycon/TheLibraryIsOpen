@@ -23,7 +23,7 @@
 "main_view_list_options_show_episode_count" = "Mostrar Quantidade de Episódios";
 "main_view_list_options_show_total_size" = "Mostrar Espaço Ocupado";
 
-"main_view_podcast_row_episode_count_no_episodes" = "Nenhum podcast arquivado";
+"main_view_podcast_row_episode_count_no_episodes" = "Nenhum episódio arquivado";
 "main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d episódios arquivados";
 "main_view_podcast_row_not_exported_yet" = "Não exportado";

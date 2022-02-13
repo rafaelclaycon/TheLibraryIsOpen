@@ -7,6 +7,9 @@ class UserSettings {
     static func getSkipGetLinkInstructions() -> Bool {
         let userDefaults = UserDefaults.standard
         guard let value = userDefaults.object(forKey: "skipGetLinkInstructions") else {
+            if CommandLine.arguments.contains("-SKIP_GET_LINK_INSTRUCTIONS_BY_DEFAULT") {
+                return true
+            }
             return false
         }
         return Bool(value as! Bool)

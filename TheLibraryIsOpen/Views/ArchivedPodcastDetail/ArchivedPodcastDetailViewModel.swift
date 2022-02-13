@@ -17,6 +17,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var episodes = [Episode]()
     @Published var areAllSelectEpisodeList: Bool = true
     @Published var episodeListSorting: SortOption = .fromNewToOld
+    @Published var viewOption: Int = 0
     
     @Published var progressViewMessage: String = ""
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
@@ -84,11 +85,23 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                 downloadedKeeper.insert(episode.id)
             case .downloadError:
                 downloadErrorKeeper.insert(episode.id)
-            default:
+            case .downloadNotStarted:
                 downloadingKeeper[episode.id] = 0.0
+            default:
+                return
             }
         }
     }
+    
+    /*func toggleEpisodesNotMakedForDownload() {
+        if viewOption == 0 {
+            episodesToShow = internalEpisodes.filter{
+                $0.offlineStatus != EpisodeOfflineStatus.notMarkedForDownload.rawValue
+            }
+        } else {
+            episodesToShow = internalEpisodes
+        }
+    }*/
     
     func download(episodes: [Episode]) {
         guard episodes.count > 0 else {

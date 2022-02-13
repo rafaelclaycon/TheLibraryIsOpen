@@ -122,22 +122,27 @@ class PodcastPreviewViewModel: ObservableObject {
         
         showPodcastAddingConfirmation(numberOfEpisodes: episodeList_selectionKeeper.count,
                                       podcastName: podcast.title)
-        
-//        if viewModel.download(episodeIDs: viewModel.episodeList_selectionKeeper) {
-//            viewModel.alertType = .twoOptions
-//            viewModel.displayAlert = true
-//        }
     }
     
     func persistPodcastLocally() -> Bool {
-        let episodesToDownload: [Episode] = episodes.filter {
-            episodeList_selectionKeeper.contains($0.id)
+        guard var episodes = podcast.episodes else {
+            return false
         }
         
+        for i in 0...(episodes.count - 1) {
+            if episodeList_selectionKeeper.contains(episodes[i].id) {
+                episodes[i].offlineStatus = EpisodeOfflineStatus.downloadNotStarted.rawValue
+            } else {
+                episodes[i].offlineStatus = EpisodeOfflineStatus.notMarkedForDownload.rawValue
+            }
+        }
+        
+        // Need to set podcast episodes to nil to avoid the db trying to put them
+        // on an "episodes" column that does not exist.
         podcast.episodes = nil
         
         do {
-            try podcastPreviewDataManager.persist(podcast: podcast, withEpisodes: episodesToDownload)
+            try podcastPreviewDataManager.persist(podcast: podcast, withEpisodes: episodes)
         } catch DataManagerError.podcastAlreadyExists {
             showPodcastAlreadyExistsAlert(podcastName: podcast.title)
             return false

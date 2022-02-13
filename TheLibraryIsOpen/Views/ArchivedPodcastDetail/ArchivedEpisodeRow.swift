@@ -4,7 +4,6 @@ struct ArchivedEpisodeRow: View {
     
     @StateObject var viewModel: ArchivedEpisodeRowViewModel
     @State var showLoadingIndicator: Bool = true
-    //@Binding var offlineStatus: EpisodeOfflineStatus
     
     @Binding var downloadingItems: [String: Double]
     @Binding var downloadedItems: Set<String>
@@ -16,13 +15,18 @@ struct ArchivedEpisodeRow: View {
             return .availableOffline
         } else if downloadErrorItems.contains(viewModel.episodeID) {
             return .downloadError
+        } else if viewModel.offlineStatus == .notMarkedForDownload {
+            return .notMarkedForDownload
         }
         return .downloadNotStarted
     }
 
     var body: some View {
         HStack {
-            if offlineStatus == .downloadNotStarted {
+            if offlineStatus == .notMarkedForDownload {
+                FileNotMarkedForDownloadSymbol()
+                    .padding(.leading, 18)
+            } else if offlineStatus == .downloadNotStarted {
                 FileWaitingForDownloadSymbol()
                     .padding(.leading, 18)
             } else if offlineStatus == .downloading {
@@ -40,12 +44,14 @@ struct ArchivedEpisodeRow: View {
             
             VStack(alignment: .leading, spacing: 7) {
                 Text(viewModel.title)
-                    .lineLimit(1)
+                    .lineLimit(2)
+                    .opacity(offlineStatus == .notMarkedForDownload ? 0.5 : 1.0)
 
                 Text(viewModel.subtitle)
                     .foregroundColor(.gray)
                     .bold()
                     .font(.footnote)
+                    .opacity(offlineStatus == .notMarkedForDownload ? 0.6 : 1.0)
                 
                 if offlineStatus == .downloading {
                     Text(String(format: LocalizableStrings.ArchivedPodcastDetail.EpisodeRow.downloadingEpisode, downloadingItems[viewModel.episodeID] ?? 0))
@@ -87,20 +93,22 @@ struct ArchivedEpisodeRow_Previews: PreviewProvider {
                                downloadingItems: .constant([:]),
                                downloadedItems: .constant(downloadedItems),
                                downloadErrorItems: .constant(Set<String>()))
-//            ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: Episode(title: "Everything Apple is Expected to Announce in 2022 ft. Mark Gurman",
-//                                                                                       pubDate: Date(),
-//                                                                                       duration: 4260.0,
-//                                                                                       filesize: 68600000)),
-//                               downloadingItems: .constant([:]),
-//                               downloadedItems: .constant(Set<String>()),
-//                               downloadErrorItems: .constant(Set<String>()))
-//            ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: Episode(title: "Everything Apple is Expected to Announce in 2022 ft. Mark Gurman",
-//                                                                                       pubDate: Date(),
-//                                                                                       duration: 4260.0,
-//                                                                                       filesize: 68600000)),
-//                               downloadingItems: .constant([:]),
-//                               downloadedItems: .constant(Set<String>()),
-//                               downloadErrorItems: .constant(Set<String>()))
+            ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: Episode(id: "789",
+                                                                                       title: "Everything Apple is Expected to Announce in 2022 ft. Mark Gurman",
+                                                                                       pubDate: Date(),
+                                                                                       duration: 4260.0,
+                                                                                       filesize: 68600000,
+                                                                                       offlineStatus: .notMarkedForDownload)),
+                               downloadingItems: .constant([:]),
+                               downloadedItems: .constant(Set<String>()),
+                               downloadErrorItems: .constant(Set<String>()))
+            ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: Episode(title: "Everything Apple is Expected to Announce in 2022 ft. Mark Gurman",
+                                                                                       pubDate: Date(),
+                                                                                       duration: 4260.0,
+                                                                                       filesize: 68600000)),
+                               downloadingItems: .constant([:]),
+                               downloadedItems: .constant(Set<String>()),
+                               downloadErrorItems: .constant(Set<String>()))
         }
         .previewLayout(.fixed(width: 375, height: 100))
     }

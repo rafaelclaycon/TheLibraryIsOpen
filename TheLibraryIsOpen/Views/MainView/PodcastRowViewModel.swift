@@ -13,7 +13,11 @@ class PodcastRowViewModel: ObservableObject {
         artworkUrl = podcast?.artworkUrl ?? ""
         podcastTitle = podcast?.title ?? ""
         
-        let episodeCount: Int = podcast?.episodes?.count ?? 0
+        let downloadedEpisodes = podcast?.episodes?.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+        }
+        
+        let episodeCount: Int = downloadedEpisodes?.count ?? 0
         
         if episodeCount == 0 {
             episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountNoEpisodes

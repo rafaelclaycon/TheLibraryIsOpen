@@ -56,8 +56,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "pt-BR"
-      region = "BR"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -81,6 +79,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-DISPLAY_DEV_OPTIONS_IN_SETTINGS"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-SKIP_GET_LINK_INSTRUCTIONS_BY_DEFAULT"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
