@@ -1,6 +1,5 @@
 import Combine
 import UIKit
-import ZIPFoundation
 //import ID3TagEditor
 
 class ArchivedPodcastDetailViewModel: ObservableObject {
@@ -199,52 +198,23 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             self.isShowingProcessingView = true
         }
         
-        // Delete ExportedArchives to avoid naming conflicts
-        if InternalStorage.existsInsideDocumentsDirectory(directoryName: InternalDirectoryNames.exportedArchives) {
-            guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
-                DispatchQueue.main.async {
-                    self.isShowingProcessingView = false
-                    self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 1")
-                }
-                return
+        var paths = [String]()
+        episodes.forEach { episode in
+            if let path = episode.localFilepath {
+                paths.append(path)
             }
         }
         
-        // Get all archived episodes for podcast
-        let sourceURL = InternalStorage.getAllArchivedEpisodesURLFor(podcastId: podcast.id)
-        
-        // Prepare exported .zip file name
-        var name = ""
-        if episodes.count == 1 {
-            name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameSingleEpisode, podcast.title, Date().asDashSeparatedYMDString())
-        } else {
-            name = String(format: LocalizableStrings.ArchivedPodcastDetail.Export.exportedFileNameMultipleEpisodes, podcast.title, episodes.count, Date().asDashSeparatedYMDString())
-        }
-        
-        // Prepare exported .zip file path
-        var destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        destinationURL.appendPathComponent("\(InternalDirectoryNames.exportedArchives)/" + name + ".zip")
-        
-        // Creates ExportedArchives directory
-        guard InternalStorage.createExportedArchivesDirectory() else {
+        do {
+            self.zipFileURL = try Zipper.zip(episodes: paths, of: podcast.id, podcast.title)
             DispatchQueue.main.async {
                 self.isShowingProcessingView = false
-                self.showAlert(withTitle: "Failed to Export Archive", message: "Please take a screenshot and contact support. Error Code: 2")
             }
-            return
-        }
-        
-        // Create .zip file
-        do {
-            let fileManager = FileManager()
-            
-            try fileManager.zipItem(at: sourceURL, to: destinationURL)
-            isShowingProcessingView = false
-            
-            self.zipFileURL = destinationURL
         } catch {
-            isShowingProcessingView = false
-            showAlert(withTitle: "Failed to Create ZIP File", message: error.localizedDescription)
+            DispatchQueue.main.async {
+                self.isShowingProcessingView = false
+            }
+            self.showAlert(withTitle: "Error", message: error.localizedDescription)
         }
     }
     

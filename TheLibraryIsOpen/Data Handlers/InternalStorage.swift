@@ -50,5 +50,20 @@ class InternalStorage {
         documentsDirURL.appendPathComponent(directoryName)
         return Utils.directoryExistsAtPath(documentsDirURL.path)
     }
+    
+    static func prepareFilesInPodcastFolderForExport(paths: [String], podcastId: Int) throws -> URL {
+        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let podcastsDirURL = documentsDirURL.appendingPathComponent("\(InternalDirectoryNames.podcasts)/\(podcastId)")
+        let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory())
+        let podcastTempDirURL = tempDirURL.appendingPathComponent("\(podcastId)/", isDirectory: true)
+        
+        for episodeLastPathComponent in paths {
+            print(podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path)
+            print(podcastTempDirURL.path)
+            try FileManager.default.moveItem(atPath: podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path, toPath: podcastTempDirURL.path)
+        }
+        
+        return tempDirURL
+    }
 
 }
