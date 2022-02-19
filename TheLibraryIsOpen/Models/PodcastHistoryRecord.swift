@@ -4,30 +4,29 @@ struct PodcastHistoryRecord: Hashable, Codable, Identifiable {
 
     var id: String
     var podcastId: Int
-    var symbol: String?
-    var title: String
-    var description: String?
+    var type: Int
+    var value1: String
+    var value2: String?
     var dateTime: Date
     
     init(id: String = UUID().uuidString,
          podcastId: Int = 0,
-         symbol: String? = nil,
-         title: String = "",
-         description: String? = nil,
+         type: Int,
+         value1: String,
+         value2: String? = nil,
          dateTime: Date = Date()) {
         self.id = id
         self.podcastId = podcastId
-        self.symbol = symbol
-        self.title = title
-        self.description = description
+        self.type = type
+        self.value1 = value1
+        self.value2 = value2
         self.dateTime = dateTime
     }
 
 }
 
-enum HistoryRecordSymbol: String {
+enum HistoryRecordType: Int, Codable {
 
-    case podcastArchived = "sparkles"
-    case exportedToFiles = "folder"
+    case podcastArchived, archiveExported, checkedForNewEpisodes, newEpisodesDownloaded
 
 }

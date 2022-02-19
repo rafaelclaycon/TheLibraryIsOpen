@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 class PodcastRowViewModel: ObservableObject {
-    
+
     @Published var artworkUrl: String
     @Published var podcastTitle: String
     @Published var episodeCountText: String
@@ -13,7 +13,11 @@ class PodcastRowViewModel: ObservableObject {
         artworkUrl = podcast?.artworkUrl ?? ""
         podcastTitle = podcast?.title ?? ""
         
-        let episodeCount: Int = podcast?.episodes?.count ?? 0
+        let downloadedEpisodes = podcast?.episodes?.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+        }
+        
+        let episodeCount: Int = downloadedEpisodes?.count ?? 0
         
         if episodeCount == 0 {
             episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountNoEpisodes
@@ -31,5 +35,5 @@ class PodcastRowViewModel: ObservableObject {
         
         wasExportedLine = LocalizableStrings.MainView.PodcastRow.notExportedYet
     }
-    
+
 }

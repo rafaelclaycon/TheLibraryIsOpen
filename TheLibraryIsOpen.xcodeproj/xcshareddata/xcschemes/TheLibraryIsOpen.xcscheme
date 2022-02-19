@@ -81,6 +81,10 @@
             argument = "-DISPLAY_DEV_OPTIONS_IN_SETTINGS"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-SKIP_GET_LINK_INSTRUCTIONS_BY_DEFAULT"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable

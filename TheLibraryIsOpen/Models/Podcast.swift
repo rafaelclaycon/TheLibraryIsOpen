@@ -10,6 +10,8 @@ struct Podcast: Hashable, Codable, Identifiable {
     var artworkUrl: String
     var lastCheckDate: Date?
     var totalSize: Int?
+    var exportedIn: Date?
+    var lastExportedEpisodeCount: Int?
     
     init(id: Int,
          title: String = "",
@@ -18,7 +20,9 @@ struct Podcast: Hashable, Codable, Identifiable {
          feedUrl: String = "",
          artworkUrl: String = "",
          lastCheckDate: Date? = nil,
-         totalSize: Int? = nil) {
+         totalSize: Int? = nil,
+         exportedIn: Date? = nil,
+         lastExportedEpisodeCount: Int? = nil) {
         self.id = id
         self.title = title
         self.author = author
@@ -27,6 +31,8 @@ struct Podcast: Hashable, Codable, Identifiable {
         self.artworkUrl = artworkUrl
         self.lastCheckDate = lastCheckDate
         self.totalSize = totalSize
+        self.exportedIn = exportedIn
+        self.lastExportedEpisodeCount = lastExportedEpisodeCount
     }
 
 }

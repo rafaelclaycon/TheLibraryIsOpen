@@ -8,12 +8,12 @@ struct RoundCheckbox: View {
     private let circleSize: CGFloat = 32.0
     
     // Unselected
-    private let unselectedFillColor: Color = .white
+    private let unselectedFillColor: Color = .systemBackground
     private let unselectedForegroundColor: Color = .gray
     
     // Selected
     private let selectedFillColor: Color = .pink
-    private let selectedForegroundColor: Color = .white
+    private let selectedForegroundColor: Color = .systemBackground
     
     var body: some View {
         ZStack {

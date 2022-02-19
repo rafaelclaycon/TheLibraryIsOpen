@@ -8,7 +8,7 @@ struct PodcastHistoryView: View {
         NavigationView {
             if viewModel.showList {
                 List(viewModel.records!) { record in
-                    PodcastHistoryRecordRow(record: record)
+                    PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: record))
                 }
             }
         }

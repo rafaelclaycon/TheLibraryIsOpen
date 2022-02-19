@@ -6,7 +6,6 @@ struct ArchivedPodcastDetail: View {
     @StateObject var viewModel: ArchivedPodcastDetailViewModel
     @State private var showingExportOptions: Bool = false
     @State private var showingHistory: Bool = false
-    @State private var sort: Int = 0
     
     private let files = LocalizableStrings.ArchivedPodcastDetail.Export.Options.filesApp
     private let other = LocalizableStrings.ArchivedPodcastDetail.Export.Options.other
@@ -178,7 +177,7 @@ struct ArchivedPodcastDetail: View {
                 }
                 
                 Section {
-                    Picker(selection: $sort) {
+                    Picker(selection: $viewModel.viewOption) {
                         Text(LocalizableStrings.ArchivedPodcastDetail.Options.showDownloadedEpisodesOnly).tag(0)
                         Text(LocalizableStrings.ArchivedPodcastDetail.Options.showAllEpisodes).tag(1)
                     } label: {
