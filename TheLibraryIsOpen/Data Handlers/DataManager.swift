@@ -56,18 +56,9 @@ class DataManager {
         try episodes.forEach {
             try database?.insert(episode: $0)
         }
-        
-        var description = ""
-        if episodes.count == 1 {
-            description = LocalizableStrings.PodcastHistoryRecord.PodcastArchived.messageSingleEpisode
-        } else {
-            description = String(format: LocalizableStrings.PodcastHistoryRecord.PodcastArchived.messageMultipleEpisodes, episodes.count)
-        }
-        
         try database?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
-                                                          symbol: HistoryRecordSymbol.podcastArchived.rawValue,
-                                                          title: LocalizableStrings.PodcastHistoryRecord.PodcastArchived.title,
-                                                          description: description))
+                                                          type: HistoryRecordType.podcastArchived.rawValue,
+                                                          value1: "\(episodes.count)"))
     }
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
@@ -93,6 +84,12 @@ class DataManager {
                 obtainedPodcasts[i].totalSize = Int(Utils.getSizeInBytesOf(episodes))
             }
         }
+//        for i in 0...(obtainedPodcasts.count - 1) {
+//            if let (Date?, Int?) = try database?.getHistoryOf(podcastId: obtainedPodcasts[i].id) {
+//                obtainedPodcasts[i].exportedIn
+//                obtainedPodcasts[i].lastExportedEpisodeCount
+//            }
+//        }
         return obtainedPodcasts
     }
 

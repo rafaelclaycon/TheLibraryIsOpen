@@ -2,34 +2,37 @@ import SwiftUI
 
 struct PodcastHistoryRecordRow: View {
     
-    var record: PodcastHistoryRecord
+    @StateObject var viewModel: PodcastHistoryRecordRowViewModel
 
     var body: some View {
         VStack {
-            HStack(spacing: 50) {
-//                Image(systemName: record.symbol == nil ? "questionmark.app.dashed" : record.symbol!)
-//                    .resizable()
-//                    .frame(width: 34, height: 40)
-//                    .foregroundColor(.yellow)
-//                    .padding()
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(record.title)
-                        .bold()
-                    
-                    if record.description != nil {
-                        Text(record.description!)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
+            HStack {
+                if viewModel.sfSymbolName.isEmpty == false {
+                    Image(systemName: viewModel.sfSymbolName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: viewModel.symbolHeight)
+                        .foregroundColor(viewModel.symbolColor)
+                        .padding(.all, 4)
                 }
                 
-                Text(record.dateTime.asShortDateAndShortTimeString())
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(viewModel.title)
+                        .bold()
+                    
+                    Text(viewModel.description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+                
+                Spacer()
+                
+                Text(viewModel.dateTime)
                     .font(.subheadline)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(.gray)
-                    //.padding()
             }
+            .padding(.all, 5)
         }
     }
 
@@ -39,10 +42,23 @@ struct PodcastHistoryRecordRow_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            PodcastHistoryRecordRow(record: PodcastHistoryRecord(symbol: HistoryRecordSymbol.podcastArchived.rawValue, title: "Podcast archived!", description: "38 episodes added."))
-            PodcastHistoryRecordRow(record: PodcastHistoryRecord(symbol: HistoryRecordSymbol.exportedToFiles.rawValue, title: "5 episodes exported", description: "Exported to Files"))
+            // None
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: 23, value1: "")))
+            
+            // Podcast Archived
+            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))
+            
+            // Archive Exported
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.archiveExported.rawValue, value1: "5", value2: "Files")))
+            
+            // Checked For New Episodes
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.checkedForNewEpisodes.rawValue, value1: "0", value2: "https://feeds.soundcloud.com/users/soundcloud:users:110149054/sounds.rss")))
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.checkedForNewEpisodes.rawValue, value1: "5")))
+            
+            // New Episodes Downloaded
+            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.newEpisodesDownloaded.rawValue, value1: "5")))
         }
-        .previewLayout(.fixed(width: 375, height: 70))
+        .previewLayout(.fixed(width: 375, height: 90))
     }
 
 }

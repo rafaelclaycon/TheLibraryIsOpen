@@ -72,17 +72,17 @@ class LocalDatabase {
     private func createPodcastHistoryRecordTable() throws {
         let id = Expression<String>("id")
         let podcast_id = Expression<Int>("podcastId")
-        let symbol = Expression<String?>("symbol")
-        let title = Expression<String>("title")
-        let description = Expression<String?>("description")
+        let type = Expression<Int>("type")
+        let value_one = Expression<String>("value1")
+        let value_two = Expression<String?>("value2")
         let date_time = Expression<Date>("dateTime")
 
         try db.run(podcastHistoryRecord.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
             t.column(podcast_id)
-            t.column(symbol)
-            t.column(title)
-            t.column(description)
+            t.column(type)
+            t.column(value_one)
+            t.column(value_two)
             t.column(date_time)
         })
     }
@@ -94,7 +94,13 @@ class LocalDatabase {
     }
 
     func insert(podcast newPodcast: Podcast) throws {
-        let insert = try podcast.insert(newPodcast)
+        var modifiableEntrant = newPodcast
+        
+        modifiableEntrant.episodes = nil
+        modifiableEntrant.exportedIn = nil
+        modifiableEntrant.lastExportedEpisodeCount = nil
+        
+        let insert = try podcast.insert(modifiableEntrant)
         try db.run(insert)
     }
 

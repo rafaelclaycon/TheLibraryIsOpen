@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 class PodcastRowViewModel: ObservableObject {
-    
+
     @Published var artworkUrl: String
     @Published var podcastTitle: String
     @Published var episodeCountText: String
@@ -35,5 +35,5 @@ class PodcastRowViewModel: ObservableObject {
         
         wasExportedLine = LocalizableStrings.MainView.PodcastRow.notExportedYet
     }
-    
+
 }

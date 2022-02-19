@@ -176,6 +176,22 @@
 
 // Podcast History Record
 
+"podcast_history_record_none_title" = "No title provided";
+"podcast_history_record_none_description" = "No description provided.";
+
 "podcast_history_record_podcast_archived_title" = "Podcast archived";
-"podcast_history_record_podcast_archived_message_single_episode" = "1 episode added.";
-"podcast_history_record_podcast_archived_message_multiple_episodes" = "%d episodes added.";
+"podcast_history_record_podcast_archived_single_episode_description" = "1 episode added.";
+"podcast_history_record_podcast_archived_multiple_episodes_description" = "%@ episodes added.";
+
+"podcast_history_record_archive_exported_title" = "Archive exported";
+"podcast_history_record_archive_exported_single_episode_description" = "1 episode exported to %@.";
+"podcast_history_record_archive_exported_multiple_episodes_description" = "%@ episodes exported to %@.";
+
+"podcast_history_record_checked_for_new_episodes_title" = "Checked for new episodes";
+"podcast_history_record_checked_for_new_episodes_no_new_episodes_description" = "No new episodes found on feed %@.";
+"podcast_history_record_checked_for_new_episodes_single_new_episode_description" = "1 new episode found.";
+"podcast_history_record_checked_for_new_episodes_multiple_new_episodes_description" = "%@ new episodes found.";
+
+"podcast_history_record_new_episodes_downloaded_title" = "New episodes downloaded";
+"podcast_history_record_new_episodes_downloaded_single_added_episode_description" = "1 episode added to the archive.";
+"podcast_history_record_new_episodes_downloaded_multiple_added_episodes_description" = "%@ new episodes added to the archive.";

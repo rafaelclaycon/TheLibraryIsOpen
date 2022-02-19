@@ -280,11 +280,43 @@ struct LocalizableStrings {
     // MARK: - Podcast History Record
     struct PodcastHistoryRecord {
         
+        struct None {
+            
+            static let title = NSLocalizedString("podcast_history_record_none_title", comment: "")
+            static let description = NSLocalizedString("podcast_history_record_none_description", comment: "")
+            
+        }
+        
         struct PodcastArchived {
             
             static let title = NSLocalizedString("podcast_history_record_podcast_archived_title", comment: "")
-            static let messageSingleEpisode = NSLocalizedString("podcast_history_record_podcast_archived_message_single_episode", comment: "")
-            static let messageMultipleEpisodes = NSLocalizedString("podcast_history_record_podcast_archived_message_multiple_episodes", comment: "")
+            static let singleEpisodeDescription = NSLocalizedString("podcast_history_record_podcast_archived_single_episode_description", comment: "")
+            static let multipleEpisodesDescription = NSLocalizedString("podcast_history_record_podcast_archived_multiple_episodes_description", comment: "")
+            
+        }
+        
+        struct PodcastExported {
+            
+            static let title = NSLocalizedString("podcast_history_record_archive_exported_title", comment: "")
+            static let singleEpisodeDescription = NSLocalizedString("podcast_history_record_archive_exported_single_episode_description", comment: "")
+            static let multipleEpisodesDescription = NSLocalizedString("podcast_history_record_archive_exported_multiple_episodes_description", comment: "")
+            
+        }
+        
+        struct CheckedForNewEpisodes {
+            
+            static let title = NSLocalizedString("podcast_history_record_checked_for_new_episodes_title", comment: "")
+            static let noNewEpisodesDescription = NSLocalizedString("podcast_history_record_checked_for_new_episodes_no_new_episodes_description", comment: "")
+            static let singleNewEpisodeDescription = NSLocalizedString("podcast_history_record_checked_for_new_episodes_single_new_episode_description", comment: "")
+            static let multipleNewEpisodesDescription = NSLocalizedString("podcast_history_record_checked_for_new_episodes_multiple_new_episodes_description", comment: "")
+            
+        }
+        
+        struct DownloadedNewEpisodes {
+            
+            static let title = NSLocalizedString("podcast_history_record_new_episodes_downloaded_title", comment: "")
+            static let singleAddedEpisodeDescription = NSLocalizedString("podcast_history_record_new_episodes_downloaded_single_added_episode_description", comment: "")
+            static let multipleAddedEpisodesDescription = NSLocalizedString("podcast_history_record_new_episodes_downloaded_multiple_added_episodes_description", comment: "")
             
         }
         

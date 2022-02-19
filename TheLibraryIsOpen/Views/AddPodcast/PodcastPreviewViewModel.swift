@@ -137,10 +137,6 @@ class PodcastPreviewViewModel: ObservableObject {
             }
         }
         
-        // Need to set podcast episodes to nil to avoid the db trying to put them
-        // on an "episodes" column that does not exist.
-        podcast.episodes = nil
-        
         do {
             try podcastPreviewDataManager.persist(podcast: podcast, withEpisodes: episodes)
         } catch DataManagerError.podcastAlreadyExists {
