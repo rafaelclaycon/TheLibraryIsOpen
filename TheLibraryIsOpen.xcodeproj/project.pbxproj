@@ -20,6 +20,7 @@
 		D92E4B8927A2ABB700B2170D /* PodcastHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */; };
 		D930264627B33D7600153EBF /* PodcastPreviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D930264527B33D7600153EBF /* PodcastPreviewViewModelTests.swift */; };
 		D931D3FF27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */; };
+		D93256BE27C2911A003DDA49 /* MP3ArtworkExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93256BD27C2911A003DDA49 /* MP3ArtworkExtractor.swift */; };
 		D936C3F4278A33430073B806 /* ArchivedPodcastDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */; };
 		D936C3F6278A33C20073B806 /* ArchivedPodcastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */; };
 		D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940AD0027831E3000DF7549 /* RoundCheckbox.swift */; };
@@ -112,6 +113,7 @@
 		D92E4B8827A2ABB700B2170D /* PodcastHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryView.swift; sourceTree = "<group>"; };
 		D930264527B33D7600153EBF /* PodcastPreviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewViewModelTests.swift; sourceTree = "<group>"; };
 		D931D3FE27927C2800DE4AD9 /* PodcastHistoryRecordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHistoryRecordRow.swift; sourceTree = "<group>"; };
+		D93256BD27C2911A003DDA49 /* MP3ArtworkExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3ArtworkExtractor.swift; sourceTree = "<group>"; };
 		D936C3F3278A33430073B806 /* ArchivedPodcastDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetail.swift; sourceTree = "<group>"; };
 		D936C3F5278A33C10073B806 /* ArchivedPodcastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedPodcastDetailViewModel.swift; sourceTree = "<group>"; };
 		D940AD0027831E3000DF7549 /* RoundCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCheckbox.swift; sourceTree = "<group>"; };
@@ -208,14 +210,22 @@
 			isa = PBXGroup;
 			children = (
 				D94A05F92572CB4E0065AE2C /* TheLibraryIsOpenService.swift */,
-				D9D3DBE7256EBB510035560E /* FeedHelper.swift */,
 				D94A05F52572B8020065AE2C /* LocalDatabase.swift */,
 				D94A05FD2572CDD70065AE2C /* DataManager.swift */,
-				D95E798B2790D7B200115606 /* LinkWizard.swift */,
 				D9BADD09279C99DC00CF2C27 /* InternalStorage.swift */,
-				D900DC0C27A465C4002BED98 /* Zipper.swift */,
 			);
 			path = "Data Handlers";
+			sourceTree = "<group>";
+		};
+		D93256BC27C2909F003DDA49 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D9D3DBE7256EBB510035560E /* FeedHelper.swift */,
+				D95E798B2790D7B200115606 /* LinkWizard.swift */,
+				D900DC0C27A465C4002BED98 /* Zipper.swift */,
+				D93256BD27C2911A003DDA49 /* MP3ArtworkExtractor.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D936C3F0278A24730073B806 /* EpisodeRow */ = {
@@ -358,6 +368,7 @@
 				D9D3DBBA256E8F890035560E /* Models */,
 				D9D3DBD8256E9BB40035560E /* Views */,
 				D911847A2573EEFA008DB977 /* Data Handlers */,
+				D93256BC27C2909F003DDA49 /* Helpers */,
 				D94A05EB2572866B0065AE2C /* Extensions */,
 				D9D3DBC8256E96FD0035560E /* Resources */,
 				D9D3DBE6256EBAA40035560E /* Supporting Files */,
@@ -587,6 +598,7 @@
 				D91AC97325F51CCE0086396D /* ProcessingView.swift in Sources */,
 				D959E2F8278B434200D48EB1 /* GrowingArcIndicatorView.swift in Sources */,
 				D9A5A964277E53CB00AA1FCC /* EpisodeGroupView.swift in Sources */,
+				D93256BE27C2911A003DDA49 /* MP3ArtworkExtractor.swift in Sources */,
 				D9E56BEF278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift in Sources */,
 				D9F17F6B25F999BD00CF2530 /* Utils.swift in Sources */,
 				D94AEC482570BEE9001DEB9B /* MainView.swift in Sources */,

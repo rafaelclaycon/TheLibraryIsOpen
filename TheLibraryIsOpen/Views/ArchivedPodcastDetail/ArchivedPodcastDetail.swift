@@ -22,7 +22,7 @@ struct ArchivedPodcastDetail: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
-                                ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode),
+                                ArchivedEpisodeRow(viewModel: ArchivedEpisodeRowViewModel(episode: episode, showEpisodeArtwork: viewModel.displayEpisodeArtwork),
                                                    downloadingItems: $viewModel.downloadingKeeper,
                                                    downloadedItems: $viewModel.downloadedKeeper,
                                                    downloadErrorItems: $viewModel.downloadErrorKeeper)
