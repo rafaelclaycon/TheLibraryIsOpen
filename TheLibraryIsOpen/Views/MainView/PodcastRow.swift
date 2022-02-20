@@ -29,11 +29,26 @@ struct PodcastRow: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.leading, 15)
-                    
-                Text(viewModel.wasExportedLine)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                
+                if viewModel.wasExported {
+                    HStack(spacing: 7) {
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .foregroundColor(.green)
+                        
+                        Text(viewModel.wasExportedLine)
+                            .font(.footnote)
+                            .foregroundColor(.green)
+                    }
                     .padding(.leading, 15)
+                } else {
+                    Text(viewModel.wasExportedLine)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding(.leading, 15)
+                }
             }
 
             Spacer()
@@ -48,6 +63,9 @@ struct PodcastCell_Previews: PreviewProvider {
         Group {
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(0))
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(1))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-1 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-4 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-30 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }

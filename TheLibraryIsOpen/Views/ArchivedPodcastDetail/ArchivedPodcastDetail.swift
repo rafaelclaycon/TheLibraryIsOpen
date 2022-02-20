@@ -132,7 +132,21 @@ struct ArchivedPodcastDetail: View {
                     ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                                 message: nil,
                                 buttons: [.default(Text(files)) {
+                                              // Zip
                                               viewModel.zipAllEpisodes()
+                        
+                                              guard viewModel.zipFileURL != nil else {
+                                                  return
+                                              }
+                                            
+                                              // Clean
+                                              do {
+                                                  try InternalStorage.flushTmpDirectory()
+                                              } catch {
+                                                  print(error.localizedDescription)
+                                              }
+                        
+                                              // Show
                                               viewModel.showingFileExplorer = true
                                           },
                                           .default(Text(other)) {
@@ -144,6 +158,13 @@ struct ArchivedPodcastDetail: View {
                 .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
                     switch result {
                     case .success:
+                        // Log
+                        do {
+                            try dataManager.addHistoryRecord(for: viewModel.podcast.id, with: HistoryRecordType.archiveExported, value1: "\(viewModel.getExportedEpisodeCount())", value2: "\(ExportedToOption.icloudFiles.rawValue)")
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                        
                         viewModel.isShowingProcessingView = false
                         viewModel.showingModalView = true
                     case .failure(let error):

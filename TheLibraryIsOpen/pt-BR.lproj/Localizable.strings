@@ -26,7 +26,8 @@
 "main_view_podcast_row_episode_count_no_episodes" = "Nenhum episódio arquivado";
 "main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d episódios arquivados";
-"main_view_podcast_row_not_exported_yet" = "Não exportado";
+"main_view_podcast_row_exported_at" = "Exportado %@";
+"main_view_podcast_row_not_exported_yet" = "Ainda não exportado";
 "main_view_podcast_row_no_size_information" = "Tamanho não informado";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Apagar";
 
@@ -179,18 +180,21 @@
 "podcast_history_record_none_title" = "Nenhum título fornecido";
 "podcast_history_record_none_description" = "Nenhuma descrição fornecida.";
 
-"podcast_history_record_podcast_archived_title" = "Podcast arquivado";
-"podcast_history_record_podcast_archived_single_episode_description" = "1 episódio adicionado.";
-"podcast_history_record_podcast_archived_multiple_episodes_description" = "%d episódios adicionados.";
+"podcast_history_record_podcast_archived_title" = "Podcast adicionado ao arquivo";
+"podcast_history_record_podcast_archived_single_episode_description" = "1 episódio registrado.";
+"podcast_history_record_podcast_archived_multiple_episodes_description" = "%@ episódios registrados.";
 
 "podcast_history_record_archive_exported_title" = "Arquivo exportado";
 "podcast_history_record_archive_exported_single_episode_description" = "1 episódio exportado para %@.";
-"podcast_history_record_archive_exported_multiple_episodes_description" = "%d episódios exportados para %@.";
+"podcast_history_record_archive_exported_multiple_episodes_description" = "%@ episódios exportados para %@.";
+"podcast_history_record_archive_exported_exported_to_unknown" = "Desconhecido";
+"podcast_history_record_archive_exported_exported_to_files" = "Arquivos";
+"podcast_history_record_archive_exported_exported_to_third_party_service" = "serviço terceiro";
 
 "podcast_history_record_checked_for_new_episodes_title" = "Procurou por novos episódios";
 "podcast_history_record_checked_for_new_episodes_no_new_episodes_description" = "Nenhum novo episódios encontrado no feed %@.";
 "podcast_history_record_checked_for_new_episodes_single_new_episode_description" = "1 novo episódio encontrado.";
-"podcast_history_record_checked_for_new_episodes_multiple_new_episodes_description" = "%d novos episódios encontrados.";
+"podcast_history_record_checked_for_new_episodes_multiple_new_episodes_description" = "%@ novos episódios encontrados.";
 
 "podcast_history_record_new_episodes_downloaded_title" = "Novos episódios baixados";
 "podcast_history_record_new_episodes_downloaded_single_added_episode_description" = "1 episódio adicionado ao arquivo.";

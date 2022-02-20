@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D900DC0D27A465C4002BED98 /* Zipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DC0C27A465C4002BED98 /* Zipper.swift */; };
+		D90AC9AC27C1E437003DCA6B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AC9AB27C1E437003DCA6B /* FileManager+Extensions.swift */; };
 		D911845C25736024008DB977 /* LocalDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845B25736024008DB977 /* LocalDatabaseTests.swift */; };
 		D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845F2573612B008DB977 /* FeedHelperTests.swift */; };
 		D91823A52798570800193ECB /* UnfortunatelyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91823A42798570800193ECB /* UnfortunatelyView.swift */; };
@@ -99,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		D900DC0C27A465C4002BED98 /* Zipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zipper.swift; sourceTree = "<group>"; };
+		D90AC9AB27C1E437003DCA6B /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		D911845B25736024008DB977 /* LocalDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseTests.swift; sourceTree = "<group>"; };
 		D911845F2573612B008DB977 /* FeedHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelperTests.swift; sourceTree = "<group>"; };
 		D91823A42798570800193ECB /* UnfortunatelyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfortunatelyView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				D940AD0327833FC700DF7549 /* Int+Extensions.swift */,
 				D9E91542279885800024E45F /* Color+Extensions.swift */,
 				D9FCA614279BBBD9003AC1F7 /* UIApplication+Extensions.swift */,
+				D90AC9AB27C1E437003DCA6B /* FileManager+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				D929DB8A27A35C29000ECA9E /* PodcastHistoryViewViewModel.swift in Sources */,
 				D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */,
 				D997FC78278BB05F00F027CB /* ModernDataVisualizer.swift in Sources */,
+				D90AC9AC27C1E437003DCA6B /* FileManager+Extensions.swift in Sources */,
 				D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */,
 				D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */,

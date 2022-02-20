@@ -33,6 +33,12 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> String {
         return String(calendar.component(component, from: self))
     }
+    
+    func asRelativeDate() -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: self, relativeTo: Date())
+    }
 
 }
 

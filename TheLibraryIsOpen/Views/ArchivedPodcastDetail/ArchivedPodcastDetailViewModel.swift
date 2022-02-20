@@ -107,9 +107,9 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
             return
         }
         
-        episodes.forEach { episode in
+        /*episodes.forEach { episode in
             print(episode.filesize)
-        }
+        }*/
         
         totalDownloadPercentage = Double(episodes.count)
         
@@ -179,15 +179,39 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         })
     }
     
+    func getExportedEpisodeCount() -> Int {
+        let exportedEpisodeCount = episodes.filter {
+            $0.localFilepath?.isEmpty == false
+        }
+        return exportedEpisodeCount.count
+    }
+    
     func showShareSheet() {
+        // Zip
         zipAllEpisodes()
         
         guard let urlShare = self.zipFileURL else {
             return
         }
+        
+        // Clean
+        do {
+            try InternalStorage.flushTmpDirectory()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        // Show
         let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
         DispatchQueue.main.async {
             UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        }
+        
+        // Log
+        do {
+            try dataManager.addHistoryRecord(for: podcast.id, with: HistoryRecordType.archiveExported, value1: "\(getExportedEpisodeCount())", value2: "\(ExportedToOption.thirdPartyService.rawValue)")
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

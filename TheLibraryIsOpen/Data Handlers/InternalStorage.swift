@@ -27,6 +27,11 @@ class InternalStorage {
     static func cleanUp() {
         let _ = deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.podcasts)
         let _ = deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives)
+        do {
+            try flushTmpDirectory()
+        } catch {
+            fatalError()
+        }
     }
     
     static func getAllArchivedEpisodesURLFor(podcastId: Int) -> URL {
@@ -57,13 +62,22 @@ class InternalStorage {
         let tempDirURL = URL(fileURLWithPath: NSTemporaryDirectory())
         let podcastTempDirURL = tempDirURL.appendingPathComponent("\(podcastId)/", isDirectory: true)
         
+        try FileManager.default.createDirectory(at: podcastTempDirURL, withIntermediateDirectories: false, attributes: nil)
+        
+        var fromPath = ""
+        var toPath = ""
+        
         for episodeLastPathComponent in paths {
-            print(podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path)
-            print(podcastTempDirURL.path)
-            try FileManager.default.moveItem(atPath: podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path, toPath: podcastTempDirURL.path)
+            fromPath = podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path
+            toPath = podcastTempDirURL.appendingPathComponent(episodeLastPathComponent).path
+            try FileManager.default.copyItem(atPath: fromPath, toPath: toPath)
         }
         
         return tempDirURL
+    }
+    
+    static func flushTmpDirectory() throws {
+        FileManager.default.clearTmpDirectory()
     }
 
 }

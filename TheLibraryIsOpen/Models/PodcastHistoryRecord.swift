@@ -30,3 +30,9 @@ enum HistoryRecordType: Int, Codable {
     case podcastArchived, archiveExported, checkedForNewEpisodes, newEpisodesDownloaded
 
 }
+
+enum ExportedToOption: Int, Codable {
+
+    case unknown, icloudFiles, thirdPartyService
+
+}

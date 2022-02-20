@@ -30,12 +30,26 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
             sfSymbolName = "folder.fill" // doc.zipper
             symbolHeight = 40
             symbolColor = .blue
-            title = LocalizableStrings.PodcastHistoryRecord.PodcastExported.title
+            title = LocalizableStrings.PodcastHistoryRecord.ArchiveExported.title
             let value1 = Int(record.value1) ?? 0
+            let value2 = Int(record.value2 ?? "0") ?? 0
+            
+            let exportedToOption = ExportedToOption(rawValue: value2)
+            var exportedToText = ""
+            
+            switch exportedToOption {
+            case .icloudFiles:
+                exportedToText = LocalizableStrings.PodcastHistoryRecord.ArchiveExported.exportedToFiles
+            case .thirdPartyService:
+                exportedToText = LocalizableStrings.PodcastHistoryRecord.ArchiveExported.exportedToThirdPartyService
+            default:
+                exportedToText = LocalizableStrings.PodcastHistoryRecord.ArchiveExported.exportedToUnknown
+            }
+            
             if value1 == 1 {
-                description = String(format: LocalizableStrings.PodcastHistoryRecord.PodcastExported.singleEpisodeDescription, record.value2 ?? "Not Available")
+                description = String(format: LocalizableStrings.PodcastHistoryRecord.ArchiveExported.singleEpisodeDescription, exportedToText)
             } else {
-                description = String(format: LocalizableStrings.PodcastHistoryRecord.PodcastExported.multipleEpisodesDescription, [record.value1, record.value2 ?? "Not Available"])
+                description = String(format: LocalizableStrings.PodcastHistoryRecord.ArchiveExported.multipleEpisodesDescription, arguments: ["\(value1)", exportedToText])
             }
             self.dateTime = record.dateTime.asShortDateAndShortTimeString()
             
@@ -58,12 +72,12 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
             sfSymbolName = "arrow.down.circle.fill"
             symbolHeight = 38
             symbolColor = .green
-            title = LocalizableStrings.PodcastHistoryRecord.DownloadedNewEpisodes.title
+            title = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.title
             let value1 = Int(record.value1) ?? 0
             if value1 == 1 {
-                description = LocalizableStrings.PodcastHistoryRecord.DownloadedNewEpisodes.singleAddedEpisodeDescription
+                description = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.singleAddedEpisodeDescription
             } else {
-                description = String(format: LocalizableStrings.PodcastHistoryRecord.DownloadedNewEpisodes.multipleAddedEpisodesDescription, record.value1)
+                description = String(format: LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.multipleAddedEpisodesDescription, record.value1)
             }
             self.dateTime = record.dateTime.asShortDateAndShortTimeString()
             

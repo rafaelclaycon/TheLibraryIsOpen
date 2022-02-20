@@ -15,34 +15,35 @@ class DataManager {
         database = injectedDatabase
     }
 
-    private func fetchRemoteFile(_ episode: Episode) {
-        FeedHelper.fetchEpisodeFile(streamURL: episode.remoteUrl, podcastID: episode.podcastId, episodeID: episode.id) { [weak self] filePath, error in
-            guard let strongSelf = self else {
-                return
-            }
-            guard error == nil else {
-                fatalError(error!.localizedDescription)
-            }
-            guard filePath != nil else {
-                fatalError()
-            }
-            guard let url = URL(string: filePath!) else {
-                fatalError()
-            }
-
-            // Seizes the opportunity to save the local file path onto the episode.
-            do {
-                try strongSelf.updateLocalFilePath(forEpisode: episode, with: url.lastPathComponent)
-            } catch {
-                fatalError(error.localizedDescription)
-            }
-        }
-    }
+//    private func fetchRemoteFile(_ episode: Episode) {
+//        FeedHelper.fetchEpisodeFile(streamURL: episode.remoteUrl, podcastID: episode.podcastId, episodeID: episode.id) { [weak self] filePath, error in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            guard error == nil else {
+//                fatalError(error!.localizedDescription)
+//            }
+//            guard filePath != nil else {
+//                fatalError()
+//            }
+//            guard let url = URL(string: filePath!) else {
+//                fatalError()
+//            }
+//
+//            // Seizes the opportunity to save the local file path onto the episode.
+//            do {
+//                try strongSelf.updateLocalFilePath(forEpisode: episode, with: url.lastPathComponent)
+//            } catch {
+//                fatalError(error.localizedDescription)
+//            }
+//        }
+//    }
     
     func cleanUpDatabase() {
         do {
             try database?.deleteAllEpisodes()
             try database?.deleteAllPodcasts()
+            try database?.deleteAllHistoryRecords()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -59,6 +60,13 @@ class DataManager {
         try database?.insert(record: PodcastHistoryRecord(podcastId: podcast.id,
                                                           type: HistoryRecordType.podcastArchived.rawValue,
                                                           value1: "\(episodes.count)"))
+    }
+    
+    func addHistoryRecord(for podcastId: Int, with recordType: HistoryRecordType, value1: String, value2: String? = nil) throws {
+        try database?.insert(record: PodcastHistoryRecord(podcastId: podcastId,
+                                                          type: recordType.rawValue,
+                                                          value1: value1,
+                                                          value2: value2))
     }
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
@@ -84,12 +92,19 @@ class DataManager {
                 obtainedPodcasts[i].totalSize = Int(Utils.getSizeInBytesOf(episodes))
             }
         }
-//        for i in 0...(obtainedPodcasts.count - 1) {
-//            if let (Date?, Int?) = try database?.getHistoryOf(podcastId: obtainedPodcasts[i].id) {
-//                obtainedPodcasts[i].exportedIn
-//                obtainedPodcasts[i].lastExportedEpisodeCount
-//            }
-//        }
+        var records: [PodcastHistoryRecord]?
+        for i in 0...(obtainedPodcasts.count - 1) {
+            records = try database?.getAllHistoryRecords(forID: obtainedPodcasts[i].id)
+            if let unwrappedRecords = records {
+                let exportedTypeRecords = unwrappedRecords.filter {
+                    $0.type == HistoryRecordType.archiveExported.rawValue
+                }
+                if exportedTypeRecords.count > 0 {
+                    obtainedPodcasts[i].exportedIn = exportedTypeRecords[0].dateTime
+                    obtainedPodcasts[i].lastExportedEpisodeCount = Int(exportedTypeRecords[0].value1)
+                }
+            }
+        }
         return obtainedPodcasts
     }
 

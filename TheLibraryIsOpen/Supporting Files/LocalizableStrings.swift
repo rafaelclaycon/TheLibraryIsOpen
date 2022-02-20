@@ -38,6 +38,7 @@ struct LocalizableStrings {
             static let episodeCountSingleEpisode = NSLocalizedString("main_view_podcast_row_episode_count_single_episode", comment: "")
             static let episodeCountMultipleEpisodes = NSLocalizedString("main_view_podcast_row_episode_count_multiple_episodes", comment: "")
             static let notExportedYet = NSLocalizedString("main_view_podcast_row_not_exported_yet", comment: "")
+            static let exportedAt = NSLocalizedString("main_view_podcast_row_exported_at", comment: "")
             static let noSizeInformation = NSLocalizedString("main_view_podcast_row_no_size_information", comment: "")
             static let deletePodcastSwipeActionLabel = NSLocalizedString("main_view_podcast_delete_podcast_swipe_action_label", comment: "")
             
@@ -295,11 +296,14 @@ struct LocalizableStrings {
             
         }
         
-        struct PodcastExported {
+        struct ArchiveExported {
             
             static let title = NSLocalizedString("podcast_history_record_archive_exported_title", comment: "")
             static let singleEpisodeDescription = NSLocalizedString("podcast_history_record_archive_exported_single_episode_description", comment: "")
             static let multipleEpisodesDescription = NSLocalizedString("podcast_history_record_archive_exported_multiple_episodes_description", comment: "")
+            static let exportedToUnknown = NSLocalizedString("podcast_history_record_archive_exported_exported_to_unknown", comment: "")
+            static let exportedToFiles = NSLocalizedString("podcast_history_record_archive_exported_exported_to_files", comment: "")
+            static let exportedToThirdPartyService = NSLocalizedString("podcast_history_record_archive_exported_exported_to_third_party_service", comment: "")
             
         }
         
@@ -312,7 +316,7 @@ struct LocalizableStrings {
             
         }
         
-        struct DownloadedNewEpisodes {
+        struct NewEpisodesDownloaded {
             
             static let title = NSLocalizedString("podcast_history_record_new_episodes_downloaded_title", comment: "")
             static let singleAddedEpisodeDescription = NSLocalizedString("podcast_history_record_new_episodes_downloaded_single_added_episode_description", comment: "")

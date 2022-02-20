@@ -46,17 +46,17 @@ struct PodcastHistoryRecordRow_Previews: PreviewProvider {
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: 23, value1: "")))
             
             // Podcast Archived
-            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))
             
             // Archive Exported
-            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.archiveExported.rawValue, value1: "5", value2: "Files")))
+            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.archiveExported.rawValue, value1: "5", value2: "Files")))
             
             // Checked For New Episodes
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.checkedForNewEpisodes.rawValue, value1: "0", value2: "https://feeds.soundcloud.com/users/soundcloud:users:110149054/sounds.rss")))
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.checkedForNewEpisodes.rawValue, value1: "5")))
             
             // New Episodes Downloaded
-            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.newEpisodesDownloaded.rawValue, value1: "5")))
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.newEpisodesDownloaded.rawValue, value1: "5")))
         }
         .previewLayout(.fixed(width: 375, height: 90))
     }

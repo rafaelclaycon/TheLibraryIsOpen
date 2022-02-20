@@ -7,6 +7,7 @@ class PodcastRowViewModel: ObservableObject {
     @Published var podcastTitle: String
     @Published var episodeCountText: String
     @Published var totalSizeText: String
+    @Published var wasExported: Bool
     @Published var wasExportedLine: String
     
     init(podcast: Podcast? = nil) {
@@ -33,7 +34,13 @@ class PodcastRowViewModel: ObservableObject {
             totalSizeText = Utils.getFormattedFileSize(of: Int64(podcast?.totalSize ?? 0))
         }
         
-        wasExportedLine = LocalizableStrings.MainView.PodcastRow.notExportedYet
+        if let exportDate = podcast?.exportedIn {
+            wasExported = true
+            wasExportedLine = String(format: LocalizableStrings.MainView.PodcastRow.exportedAt, exportDate.asRelativeDate())
+        } else {
+            wasExported = false
+            wasExportedLine = LocalizableStrings.MainView.PodcastRow.notExportedYet
+        }
     }
 
 }

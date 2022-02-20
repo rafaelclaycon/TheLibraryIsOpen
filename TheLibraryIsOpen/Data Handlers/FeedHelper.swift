@@ -28,36 +28,36 @@ class FeedHelper {
         return episode
     }
 
-    static func fetchEpisodeFile(streamURL: String, podcastID: Int, episodeID _: String, completionHandler: @escaping (String?, FeedHelperError?) -> Void) {
-        guard !streamURL.isEmpty else {
-            return completionHandler(nil, .emptyURL)
-        }
-        guard let url = URL(string: streamURL) else {
-            return completionHandler(nil, .invalidStreamURL)
-        }
-
-        let destination: DownloadRequest.Destination = { _, _ in
-            let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcastID)/\(url.lastPathComponent)")
-
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-
-        AF.download(streamURL, to: destination).response { response in
-            debugPrint(response)
-
-            guard response.error == nil else {
-                return completionHandler(nil, .downloadError)
-            }
-            guard let filePath = response.fileURL?.path else {
-                return completionHandler(nil, .failedToProvideLocalFileURL)
-            }
-            
-            print("Arquivo '\(filePath)' baixado.")
-
-            completionHandler(filePath, nil)
-        }
-    }
+//    static func fetchEpisodeFile(streamURL: String, podcastID: Int, episodeID _: String, completionHandler: @escaping (String?, FeedHelperError?) -> Void) {
+//        guard !streamURL.isEmpty else {
+//            return completionHandler(nil, .emptyURL)
+//        }
+//        guard let url = URL(string: streamURL) else {
+//            return completionHandler(nil, .invalidStreamURL)
+//        }
+//
+//        let destination: DownloadRequest.Destination = { _, _ in
+//            let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//            let fileURL = documentsDirURL.appendingPathComponent("Podcasts/\(podcastID)/" + UUID().uuidString + "_" + url.lastPathComponent)
+//
+//            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+//        }
+//
+//        AF.download(streamURL, to: destination).response { response in
+//            debugPrint(response)
+//
+//            guard response.error == nil else {
+//                return completionHandler(nil, .downloadError)
+//            }
+//            guard let filePath = response.fileURL?.path else {
+//                return completionHandler(nil, .failedToProvideLocalFileURL)
+//            }
+//
+//            print("Arquivo '\(filePath)' baixado.")
+//
+//            completionHandler(filePath, nil)
+//        }
+//    }
 
 }
 
