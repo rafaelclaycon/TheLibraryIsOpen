@@ -17,6 +17,7 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var areAllSelectEpisodeList: Bool = true
     @Published var episodeListSorting: SortOption = .fromNewToOld
     @Published var viewOption: Int = 0
+    @Published var displayEpisodeArtwork: Bool
     
     @Published var progressViewMessage: String = ""
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
@@ -53,6 +54,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         title = podcast.title
         details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
         episodes = podcast.episodes!
+        
+        displayEpisodeArtwork = UserSettings.getDisplayArtworkInArchiveOption()
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         showOverallDownloadProgress = false
@@ -141,28 +144,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
                     if let url = URL(string: strongSelf.episodes[i].remoteUrl) {
                         strongSelf.episodes[i].localFilepath = "Podcasts/\(strongSelf.podcast.id)/\(url.lastPathComponent)"
                         
-                        // TODO: Future feature - Get artwork from MP3 ID3 tag
-                        /*let id3TagEditor = ID3TagEditor()
-                        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        let sourceURL = documentsDirURL.appendingPathComponent(strongSelf.episodes[i].localFilepath!)
-                        
-                        let path = sourceURL.relativePath
-                        print(path)
-                        
-                        do {
-                            if let id3Tag = try id3TagEditor.read(from: path) {
-                                print(id3Tag)
-                                let frameName = FrameName.attachedPicture(.frontCover)
-                                if let frontCover = id3Tag.frames[frameName] {
-                                    print(frontCover)
-                                }
-                            }
-                        } catch {
-                            print(error.localizedDescription)
-                        }*/
+                        strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
                     }
-                    
-                    strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
                 }
                 
                 // Persist

@@ -18,6 +18,7 @@ struct Episode: Hashable, Codable, Identifiable {
          pubDate: Date? = Date(),
          duration: Double = 0,
          remoteUrl: String = "",
+         localFilepath: String? = nil,
          filesize: Int = 0,
          offlineStatus: EpisodeOfflineStatus = .downloadNotStarted) {
         self.id = id

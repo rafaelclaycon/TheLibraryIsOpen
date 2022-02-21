@@ -11,8 +11,6 @@ struct SettingsView: View {
     @State private var podcastRowBehaviorSelectedOption = "Exibir quantidade de episódios"
     let podcastRowBehaviors = ["Exibir quantidade de episódios", "Exibir espaço ocupado"]
     
-    @State var displayArtworkInArchive: Bool = true
-    
     @State private var defaultCloudProviderSelectedOption = "Nenhum"
     let defaultCloudProviderOptions = ["Nenhum", "Arquivo & iCloud Drive", "Google Drive", "Dropbox", "OneDrive"]
     
@@ -51,7 +49,10 @@ struct SettingsView: View {
                     }
                 }*/
                 
-                Toggle(LocalizableStrings.SettingsView.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $displayArtworkInArchive)
+                Toggle(LocalizableStrings.SettingsView.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $viewModel.displayArtworkInArchive)
+                    .onChange(of: viewModel.displayHowToGetLinkInstructions) { newValue in
+                        UserSettings.setDisplayArtworkInArchiveOption(to: newValue)
+                    }
             } header: {
                 Text(LocalizableStrings.SettingsView.ArchivedPodcast.sectionHeader)
             } footer: {

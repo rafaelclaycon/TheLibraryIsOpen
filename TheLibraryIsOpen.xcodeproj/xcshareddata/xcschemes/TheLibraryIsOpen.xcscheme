@@ -85,6 +85,10 @@
             argument = "-SKIP_GET_LINK_INSTRUCTIONS_BY_DEFAULT"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-SHOW_EPISODE_ARTWORK_BY_DEFAULT"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable

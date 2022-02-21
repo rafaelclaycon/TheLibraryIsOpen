@@ -23,6 +23,17 @@ class UserSettings {
         return String(value as! String)
     }
     
+    static func getDisplayArtworkInArchiveOption() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "displayArtworkInArchive") else {
+            if CommandLine.arguments.contains("-SHOW_EPISODE_ARTWORK_BY_DEFAULT") {
+                return true
+            }
+            return false
+        }
+        return Bool(value as! Bool)
+    }
+    
     static func getArchiveSortOption() -> Int {
         let userDefaults = UserDefaults.standard
         guard let value = userDefaults.object(forKey: "archiveSortOption") else {
@@ -49,6 +60,11 @@ class UserSettings {
     static func setAddingBehaviorSelectedOption(to newValue: String) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(newValue, forKey: "addingBehaviorSelectedOption")
+    }
+    
+    static func setDisplayArtworkInArchiveOption(to newValue: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "displayArtworkInArchive")
     }
     
     static func setArchiveSortOption(to newValue: Int) {
