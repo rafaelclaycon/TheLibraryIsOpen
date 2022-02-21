@@ -1,29 +1,27 @@
-import SwiftUI
-import ID3TagEditor
+import Foundation
+import AVFoundation
 
 class MP3ArtworkExtractor {
-    
-    // TODO: Get artwork from MP3 ID3 tag
-    static func getEpisodeArtwork(from filepath: String) -> Image? {
-//        let id3TagEditor = ID3TagEditor()
-//        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        let sourceURL = documentsDirURL.appendingPathComponent(strongSelf.episodes[i].localFilepath!)
-//
-//        let path = sourceURL.relativePath
-//        print(path)
-//
-//        do {
-//            if let id3Tag = try id3TagEditor.read(from: path) {
-//                print(id3Tag)
-//                let frameName = FrameName.attachedPicture(.frontCover)
-//                if let frontCover = id3Tag.frames[frameName] {
-//                    print(frontCover)
-//                }
-//            }
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-        return Image(systemName: "photo.artframe")
+
+    static func getEpisodeArtwork(from filepath: String) -> Data? {
+        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let sourceURL = documentsDirURL.appendingPathComponent(filepath)
+        let playerItem = AVPlayerItem(url: sourceURL)
+        let metadataList = playerItem.asset.metadata
+        
+        for item in metadataList {
+            guard let key = item.commonKey?.rawValue, let value = item.value else {
+                continue
+            }
+            switch key {
+            case "artwork" where value is Data:
+                return value as? Data
+            default:
+                continue
+            }
+        }
+        
+        return nil
     }
-    
+
 }

@@ -35,8 +35,15 @@ struct ArchivedEpisodeRow: View {
                     .padding(.leading, 20)
                     .padding(.trailing, 3)
             } else if offlineStatus == .availableOffline {
-                if viewModel.showEpisodeArtwork, let path = viewModel.episodeFilepath {
-                    MP3ArtworkExtractor.getEpisodeArtwork(from: path)
+                if viewModel.showEpisodeArtwork,
+                   let path = viewModel.episodeFilepath,
+                   let data = MP3ArtworkExtractor.getEpisodeArtwork(from: path),
+                   let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 45)
+                        .shadow(color: .gray, radius: 2, x: 0, y: 1)
                         .padding(.leading, 18)
                 } else {
                     FileAvailableOfflineSymbol()

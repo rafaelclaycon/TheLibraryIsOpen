@@ -41,7 +41,6 @@
 		D95E798C2790D7B200115606 /* LinkWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E798B2790D7B200115606 /* LinkWizard.swift */; };
 		D95E798E2790DE0C00115606 /* LinkWizardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95E798D2790DE0C00115606 /* LinkWizardTests.swift */; };
 		D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D95EF9E425705F0F00D03D4F /* KingfisherSwiftUI */; };
-		D963903B27993690000DEA19 /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D963903A27993690000DEA19 /* ID3TagEditor */; };
 		D96CDB0727B75E3B0003B595 /* FileNotMarkedForDownloadSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96CDB0627B75E3B0003B595 /* FileNotMarkedForDownloadSymbol.swift */; };
 		D975B29D278C6F6B00BEBB6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D975B29F278C6F6B00BEBB6B /* Localizable.strings */; };
 		D975B2A4278C793D00BEBB6B /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D975B2A3278C793D00BEBB6B /* LocalizableStrings.swift */; };
@@ -190,7 +189,6 @@
 				D94A05F2257296E70065AE2C /* SQLite in Frameworks */,
 				D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */,
 				D94AEC5E2571358F001DEB9B /* Alamofire in Frameworks */,
-				D963903B27993690000DEA19 /* ID3TagEditor in Frameworks */,
 				D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */,
 				D975B2A7278C8DBC00BEBB6B /* ZIPFoundation in Frameworks */,
 			);
@@ -464,7 +462,6 @@
 				D94AEC5D2571358F001DEB9B /* Alamofire */,
 				D94A05F1257296E70065AE2C /* SQLite */,
 				D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */,
-				D963903A27993690000DEA19 /* ID3TagEditor */,
 			);
 			productName = TheLibraryIsOpen;
 			productReference = D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */;
@@ -523,7 +520,6 @@
 				D94AEC5C2571358F001DEB9B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D94A05F0257296E70065AE2C /* XCRemoteSwiftPackageReference "SQLite" */,
 				D975B2A5278C8DBC00BEBB6B /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				D963903927993690000DEA19 /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
 			);
 			productRefGroup = D9D3DB7C256E7BC00035560E /* Products */;
 			projectDirPath = "";
@@ -928,14 +924,6 @@
 				minimumVersion = 5.15.7;
 			};
 		};
-		D963903927993690000DEA19 /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/chicio/ID3TagEditor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		D975B2A5278C8DBC00BEBB6B /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -969,11 +957,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D95EF9E325705F0F00D03D4F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUI;
-		};
-		D963903A27993690000DEA19 /* ID3TagEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D963903927993690000DEA19 /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
-			productName = ID3TagEditor;
 		};
 		D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
