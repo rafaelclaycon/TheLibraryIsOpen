@@ -38,5 +38,9 @@ extension String {
         let stopIndex = self.index(self.startIndex, offsetBy: range.startIndex + range.count)
         return self[startIndex..<stopIndex]
     }
+    
+    static var empty: String {
+        return ""
+    }
 
 }

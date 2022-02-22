@@ -1,9 +1,9 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct ArchivedPodcastDetail: View {
+struct ArchivedPodcastDetailView: View {
 
-    @StateObject var viewModel: ArchivedPodcastDetailViewModel
+    @StateObject var viewModel: ArchivedPodcastDetailViewViewModel
     @State private var showingExportOptions: Bool = false
     @State private var showingHistory: Bool = false
     
@@ -27,6 +27,11 @@ struct ArchivedPodcastDetail: View {
                                                    downloadedItems: $viewModel.downloadedKeeper,
                                                    downloadErrorItems: $viewModel.downloadErrorKeeper)
                                     .padding(.vertical, 5)
+                                    .onTapGesture {
+                                        viewModel.episodeDetailToShow = episode
+                                        viewModel.detailViewToShow = .episodeDetailView
+                                        viewModel.showingModalView = true
+                                    }
                             }
                         }
                     }
@@ -166,6 +171,7 @@ struct ArchivedPodcastDetail: View {
                         }
                         
                         viewModel.isShowingProcessingView = false
+                        viewModel.detailViewToShow = .exportSuccessfulView
                         viewModel.showingModalView = true
                     case .failure(let error):
                         print(error.localizedDescription)
@@ -235,7 +241,11 @@ struct ArchivedPodcastDetail: View {
             }
         )
         .sheet(isPresented: $viewModel.showingModalView) {
-            AfterExportSuccessView(isShowingModal: $viewModel.showingModalView)
+            if viewModel.detailViewToShow == .exportSuccessfulView {
+                AfterExportSuccessView(isShowingModal: $viewModel.showingModalView)
+            } else if viewModel.detailViewToShow == .episodeDetailView {
+                ArchivedEpisodeDetailView(viewModel: ArchivedEpisodeDetailViewViewModel(episode: viewModel.episodeDetailToShow), isShowingModal: $viewModel.showingModalView)
+            }
         }
     }
 
@@ -244,7 +254,7 @@ struct ArchivedPodcastDetail: View {
 struct ArchivedPodcastDetail_Previews: PreviewProvider {
 
     static var previews: some View {
-        ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: Podcast(id: 1,
+        ArchivedPodcastDetailView(viewModel: ArchivedPodcastDetailViewViewModel(podcast: Podcast(id: 1,
                                                                                          title: "Um Milkshake Chamado Wanda",
                                                                                          author: "PAPELPOP",
                                                                                          episodes: [Episode(title: "#310 - Pais e mães de planta e o terror dos insetos",

@@ -22,6 +22,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func asLongString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+        dateFormatter.dateStyle = .long
+        return dateFormatter.string(from: self)
+    }
+    
     func asShortDateAndShortTimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = .current

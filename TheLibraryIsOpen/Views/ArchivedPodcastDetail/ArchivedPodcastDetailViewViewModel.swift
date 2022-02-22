@@ -1,8 +1,7 @@
 import Combine
 import UIKit
-//import ID3TagEditor
 
-class ArchivedPodcastDetailViewModel: ObservableObject {
+class ArchivedPodcastDetailViewViewModel: ObservableObject {
 
     var podcast: Podcast
     
@@ -18,6 +17,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
     @Published var episodeListSorting: SortOption = .fromNewToOld
     @Published var viewOption: Int = 0
     @Published var displayEpisodeArtwork: Bool
+    @Published var detailViewToShow: ArchivedPodcastSubdetailViewToShow
+    @Published var episodeDetailToShow: Episode?
     
     @Published var progressViewMessage: String = ""
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
@@ -56,6 +57,8 @@ class ArchivedPodcastDetailViewModel: ObservableObject {
         episodes = podcast.episodes!
         
         displayEpisodeArtwork = UserSettings.getDisplayArtworkInArchiveOption()
+        detailViewToShow = .episodeDetailView
+        episodeDetailToShow = nil
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         showOverallDownloadProgress = false

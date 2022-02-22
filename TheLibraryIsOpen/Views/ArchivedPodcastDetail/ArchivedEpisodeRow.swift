@@ -37,7 +37,7 @@ struct ArchivedEpisodeRow: View {
             } else if offlineStatus == .availableOffline {
                 if viewModel.showEpisodeArtwork,
                    let path = viewModel.episodeFilepath,
-                   let data = MP3ArtworkExtractor.getEpisodeArtwork(from: path),
+                   let data = MP3MetadataExtractor.getEpisodeArtwork(from: path),
                    let uiImage = UIImage(data: data) {
                     Image(uiImage: uiImage)
                         .resizable()
