@@ -19,7 +19,7 @@ struct MainView: View {
                 
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
-                        NavigationLink(destination: ArchivedPodcastDetail(viewModel: ArchivedPodcastDetailViewModel(podcast: podcast)),
+                        NavigationLink(destination: ArchivedPodcastDetailView(viewModel: ArchivedPodcastDetailViewViewModel(podcast: podcast)),
                                        tag: podcast.id,
                                        selection: $podcastToAutoOpenAfterAdd,
                                        label: {

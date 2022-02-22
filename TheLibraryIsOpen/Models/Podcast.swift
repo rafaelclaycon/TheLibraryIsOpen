@@ -36,3 +36,9 @@ struct Podcast: Hashable, Codable, Identifiable {
     }
 
 }
+
+enum ArchivedPodcastSubdetailViewToShow: Int, Codable {
+
+    case exportSuccessfulView, episodeDetailView
+
+}
