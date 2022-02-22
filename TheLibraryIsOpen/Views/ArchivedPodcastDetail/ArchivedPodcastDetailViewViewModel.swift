@@ -8,9 +8,9 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
-    @Published var episodeCount: String = ""
-    @Published var totalFilesize: String = ""
-    @Published var lastCheckDate: String = ""
+    @Published var episodeCount: String = .empty
+    @Published var totalFilesize: String = .empty
+    @Published var lastCheckDate: String = .empty
     @Published var displayEpisodeList: Bool = false
     @Published var episodes = [Episode]()
     @Published var areAllSelectEpisodeList: Bool = true
@@ -20,7 +20,7 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
     @Published var detailViewToShow: ArchivedPodcastSubdetailViewToShow
     @Published var episodeDetailToShow: Episode?
     
-    @Published var progressViewMessage: String = ""
+    @Published var progressViewMessage: String = .empty
     @Published var downloadOperationStatus: DownloadOperationStatus = .stopped
     @Published var currentDownloadPercentage = 0.0
     @Published var totalDownloadPercentage = 100.0
@@ -31,18 +31,18 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
     @Published var downloadedKeeper = Set<String>()
     @Published var downloadErrorKeeper = Set<String>()
     
-    @Published var downloadAllButtonTitle = ""
+    @Published var downloadAllButtonTitle = String.empty
     
     @Published var showingFileExplorer: Bool = false
     @Published var zipFileURL: URL? = nil
     
     // ProcessingView
     @Published var isShowingProcessingView = false
-    @Published var processingViewMessage = ""
+    @Published var processingViewMessage = String.empty
     
     // Alerts
-    @Published var alertTitle: String = ""
-    @Published var alertMessage: String = ""
+    @Published var alertTitle: String = .empty
+    @Published var alertMessage: String = .empty
     @Published var displayAlert: Bool = false
     @Published var alertType: AlertType = .singleOption
     @Published var showingModalView = false
@@ -53,7 +53,7 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
         artworkURL = podcast.artworkUrl
         
         title = podcast.title
-        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
+        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : .empty
         episodes = podcast.episodes!
         
         displayEpisodeArtwork = UserSettings.getDisplayArtworkInArchiveOption()

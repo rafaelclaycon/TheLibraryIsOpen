@@ -43,7 +43,7 @@ struct PodcastHistoryRecordRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             // None
-            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: 23, value1: "")))
+            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: 23, value1: .empty)))
             
             // Podcast Archived
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))

@@ -159,7 +159,7 @@ struct PodcastPreview: View {
                 .padding(.horizontal, 25)
                 .padding(.bottom)
         }
-        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarTitle(String.empty, displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
                 self.isShowingAddPodcastModal = false
@@ -174,7 +174,7 @@ struct PodcastPreview: View {
 struct PodcastPreview_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, title: "Um Milkshake Chamado Wanda", author: "PAPELPOP", episodes: [Episode(id: UUID().uuidString, podcastId: 1, title: "Teste", pubDate: Date(), duration: 2.0, remoteUrl: "", filesize: 13000)], feedUrl: "", artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), isShowingAddPodcastModal: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
+        PodcastPreview(viewModel: PodcastPreviewViewModel(podcast: Podcast(id: 1, title: "Um Milkshake Chamado Wanda", author: "PAPELPOP", episodes: [Episode(id: UUID().uuidString, podcastId: 1, title: "Teste", pubDate: Date(), duration: 2.0, remoteUrl: .empty, filesize: 13000)], feedUrl: .empty, artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")), isShowingAddPodcastModal: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }

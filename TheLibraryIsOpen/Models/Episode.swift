@@ -14,10 +14,10 @@ struct Episode: Hashable, Codable, Identifiable {
     
     init(id: String = UUID().uuidString,
          podcastId: Int = 0,
-         title: String = "",
+         title: String = .empty,
          pubDate: Date? = Date(),
          duration: Double = 0,
-         remoteUrl: String = "",
+         remoteUrl: String = .empty,
          localFilepath: String? = nil,
          filesize: Int = 0,
          offlineStatus: EpisodeOfflineStatus = .downloadNotStarted) {

@@ -68,7 +68,7 @@ struct EpisodeCell_Previews: PreviewProvider {
                                                                        title: "Flat-Side Promoter",
                                                                        pubDate: Date(),
                                                                        duration: 300,
-                                                                       remoteUrl: "",
+                                                                       remoteUrl: .empty,
                                                                        filesize: 0)),
                        selectedItems: .constant(Set<String>()))
             
@@ -77,7 +77,7 @@ struct EpisodeCell_Previews: PreviewProvider {
                                                                        title: "With Four Hands Tied Behind Its Back",
                                                                        pubDate: Date(),
                                                                        duration: 3600,
-                                                                       remoteUrl: "",
+                                                                       remoteUrl: .empty,
                                                                        filesize: 13080400)),
                        selectedItems: .constant(Set<String>()))
         }

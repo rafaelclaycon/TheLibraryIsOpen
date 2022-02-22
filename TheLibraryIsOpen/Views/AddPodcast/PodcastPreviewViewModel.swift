@@ -22,12 +22,12 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var yearGroupList_selectionKeeper = Set<String>()
     
     // MARK: - Download button variables
-    @Published var downloadAllButtonTitle = ""
-    @Published var remainingStorageLabel = ""
+    @Published var downloadAllButtonTitle = String.empty
+    @Published var remainingStorageLabel = String.empty
     
     // MARK: - Alert variables
-    @Published var alertTitle: String = ""
-    @Published var alertMessage: String = ""
+    @Published var alertTitle: String = .empty
+    @Published var alertMessage: String = .empty
     @Published var displayAlert: Bool = false
     @Published var alertType: AlertType = .singleOption
 
@@ -38,7 +38,7 @@ class PodcastPreviewViewModel: ObservableObject {
         artworkURL = podcast.artworkUrl
         
         title = podcast.title
-        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : ""
+        details = podcast.episodes?.count ?? 0 > 0 ? Utils.getPodcastSubtitle(episodes: podcast.episodes!) : .empty
         episodes = podcast.episodes ?? [Episode]()
         
         self.podcastPreviewDataManager = podcastPreviewDataManager

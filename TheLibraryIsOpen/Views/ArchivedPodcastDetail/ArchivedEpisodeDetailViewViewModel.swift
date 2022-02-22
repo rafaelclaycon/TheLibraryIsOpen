@@ -23,7 +23,7 @@ class ArchivedEpisodeDetailViewViewModel: ObservableObject {
         artwork = MP3MetadataExtractor.getEpisodeArtwork(from: episode.localFilepath ?? .empty)
         title = episode.title
         fileSize = episode.filesize.toFormattedFileSize()
-        publicationDate = episode.pubDate?.asLongString() ?? "" // "17 de fevereiro de 2022"
+        publicationDate = episode.pubDate?.asLongString() ?? .empty
         duration = episode.duration.toDisplayString()
         description = MP3MetadataExtractor.getEpisodeDescription(from: episode.localFilepath ?? .empty) ?? .empty
     }

@@ -6,14 +6,14 @@ class Utils {
         let firstEpisodePubYear = episodes[episodes.count - 1].pubDate!.get(.year)
         let lastEpisodePubYear = episodes[0].pubDate!.get(.year)
         
-        var yearText = ""
+        var yearText = String.empty
         if firstEpisodePubYear == lastEpisodePubYear {
             yearText = "\(firstEpisodePubYear)"
         } else {
             yearText = "\(firstEpisodePubYear)-\(lastEpisodePubYear)"
         }
         
-        var episodiosText = ""
+        var episodiosText = String.empty
         if episodes.count == 1 {
             episodiosText = LocalizableStrings.episode
         } else {
@@ -46,7 +46,7 @@ class Utils {
     
     static func getSizeOf(episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
         guard episodes.count > 0 else {
-            return ""
+            return .empty
         }
         var totalSize = 0
         for episode in episodes {
@@ -54,7 +54,7 @@ class Utils {
         }
         // Only episodes with the wrong reported size will have less than a MB.
         guard (totalSize / episodes.count) > 999999 else {
-            return ""
+            return .empty
         }
         if withSpaceAndParenteses {
             return " (\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file)))"

@@ -11,8 +11,8 @@ class PodcastRowViewModel: ObservableObject {
     @Published var wasExportedLine: String
     
     init(podcast: Podcast? = nil) {
-        artworkUrl = podcast?.artworkUrl ?? ""
-        podcastTitle = podcast?.title ?? ""
+        artworkUrl = podcast?.artworkUrl ?? .empty
+        podcastTitle = podcast?.title ?? .empty
         
         let downloadedEpisodes = podcast?.episodes?.filter {
             $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue

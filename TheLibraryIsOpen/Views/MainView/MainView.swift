@@ -169,7 +169,7 @@ struct MainView_Previews: PreviewProvider {
                                                                  title: "Um Milkshake Chamado Wanda",
                                                                  author: "Papel Pop",
                                                                  episodes: nil,
-                                                                 feedUrl: "",
+                                                                 feedUrl: .empty,
                                                                  artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")]),
                  showingModalView: false)
     }

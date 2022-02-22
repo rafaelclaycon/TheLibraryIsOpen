@@ -71,7 +71,7 @@ class DataManager {
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
         episodes.forEach {
-            database?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? "", and: $0.offlineStatus)
+            database?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? .empty, and: $0.offlineStatus)
         }
     }
     
@@ -281,7 +281,7 @@ class DataManager {
                     
                     // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
                     // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
-                    var feedUrlAjustado = ""
+                    var feedUrlAjustado = String.empty
                     if feedUrl.contains("https:") {
                         feedUrlAjustado = feedUrl
                     } else {
@@ -323,7 +323,7 @@ class DataManager {
                     podcast.title = feed.title ?? "Sem Título"
                     podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
                     podcast.feedUrl = feedDetails.feedUrl
-                    podcast.artworkUrl = feed.iTunes?.iTunesImage?.attributes?.href ?? feed.image?.url ?? ""
+                    podcast.artworkUrl = feed.iTunes?.iTunesImage?.attributes?.href ?? feed.image?.url ?? .empty
                     
                     if podcast.artworkUrl.isEmpty == false, podcast.artworkUrl.contains("https") == false {
                         do {

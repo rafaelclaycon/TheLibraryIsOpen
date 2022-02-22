@@ -8,8 +8,8 @@ class MainViewViewModel: ObservableObject {
     @Published var viewOption: Int
     
     // Alerts
-    @Published var alertTitle: String = ""
-    @Published var alertMessage: String = ""
+    @Published var alertTitle: String = .empty
+    @Published var alertMessage: String = .empty
     @Published var alertAuxiliaryInfo: Int? = nil
     @Published var showAlert: Bool = false
     @Published var alertType: AlertType = .singleOption

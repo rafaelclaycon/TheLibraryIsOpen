@@ -61,8 +61,8 @@ struct PodcastCell_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(0))
-            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: "", artworkUrl: "")), subtitleInfoOption: .constant(1))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 1, title: "Praia dos Ossos", author: "Rádio Novelo", episodes: nil, feedUrl: .empty, artworkUrl: .empty)), subtitleInfoOption: .constant(0))
+            PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", episodes: nil, feedUrl: .empty, artworkUrl: .empty)), subtitleInfoOption: .constant(1))
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-1 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-4 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-30 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))

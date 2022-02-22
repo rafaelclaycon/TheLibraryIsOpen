@@ -64,8 +64,8 @@ class InternalStorage {
         
         try FileManager.default.createDirectory(at: podcastTempDirURL, withIntermediateDirectories: false, attributes: nil)
         
-        var fromPath = ""
-        var toPath = ""
+        var fromPath = String.empty
+        var toPath = String.empty
         
         for episodeLastPathComponent in paths {
             fromPath = podcastsDirURL.appendingPathComponent(episodeLastPathComponent).path

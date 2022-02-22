@@ -35,7 +35,7 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
             let value2 = Int(record.value2 ?? "0") ?? 0
             
             let exportedToOption = ExportedToOption(rawValue: value2)
-            var exportedToText = ""
+            var exportedToText = String.empty
             
             switch exportedToOption {
             case .icloudFiles:
@@ -87,7 +87,7 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
             symbolColor = .orange
             title = LocalizableStrings.PodcastHistoryRecord.None.title
             description = LocalizableStrings.PodcastHistoryRecord.None.description
-            dateTime = ""
+            dateTime = .empty
         }
     }
 

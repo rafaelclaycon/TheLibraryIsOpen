@@ -270,7 +270,7 @@ struct ArchivedPodcastDetail_Previews: PreviewProvider {
                                                                                                             filesize: 95000000,
                                                                                                             offlineStatus: .downloading)
                                                                                                    ],
-                                                                                        feedUrl: "",
+                                                                                        feedUrl: .empty,
                                                                                          artworkUrl: "https://i1.sndcdn.com/avatars-l7UAPy4c6vYw4Uzb-zLzBYw-original.jpg")))
     }
 

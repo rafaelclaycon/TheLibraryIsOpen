@@ -3,15 +3,15 @@ import Foundation
 
 class PasteLinkViewViewModel: ObservableObject {
 
-    @Published var linkInput = ""
+    @Published var linkInput = String.empty
     @Published var isShowingProcessingView = false
-    @Published var processingViewMessage = ""
+    @Published var processingViewMessage = String.empty
     @Published var podcastDetailViewModel = PodcastPreviewViewModel(podcast: Podcast(id: 0))
     @Published var isShowingPodcastPreview = false
     
     // MARK: - Alert variables
-    @Published var alertTitle: String = ""
-    @Published var alertMessage: String = ""
+    @Published var alertTitle: String = .empty
+    @Published var alertMessage: String = .empty
     @Published var displayAlert: Bool = false
     
     func processLink() {
@@ -55,7 +55,7 @@ class PasteLinkViewViewModel: ObservableObject {
             }
         } catch LinkWizardError.spotifyLink {
             DispatchQueue.main.async {
-                self.linkInput = ""
+                self.linkInput = String.empty
                 self.isShowingProcessingView = false
                 self.showSpotifyLinksNotSupportedAlert()
             }

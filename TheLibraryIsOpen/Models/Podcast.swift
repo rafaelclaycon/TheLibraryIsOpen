@@ -14,11 +14,11 @@ struct Podcast: Hashable, Codable, Identifiable {
     var lastExportedEpisodeCount: Int?
     
     init(id: Int,
-         title: String = "",
-         author: String = "",
+         title: String = .empty,
+         author: String = .empty,
          episodes: [Episode]? = nil,
-         feedUrl: String = "",
-         artworkUrl: String = "",
+         feedUrl: String = .empty,
+         artworkUrl: String = .empty,
          lastCheckDate: Date? = nil,
          totalSize: Int? = nil,
          exportedIn: Date? = nil,

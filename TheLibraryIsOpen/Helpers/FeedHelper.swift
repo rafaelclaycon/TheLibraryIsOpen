@@ -23,7 +23,7 @@ class FeedHelper {
                               title: item.title ?? "UNTITLED EPISODE",
                               pubDate: item.pubDate,
                               duration: item.iTunes?.iTunesDuration ?? 0,
-                              remoteUrl: item.enclosure?.attributes?.url ?? "",
+                              remoteUrl: item.enclosure?.attributes?.url ?? .empty,
                               filesize: Int(item.enclosure?.attributes?.length ?? 0))
         return episode
     }

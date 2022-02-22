@@ -37,7 +37,7 @@ class LinkWizard {
             guard let myURL = URL(string: url) else {
                 throw LinkWizardError.notAValidURL
             }
-            var htmlString = ""
+            var htmlString = String.empty
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
@@ -55,7 +55,7 @@ class LinkWizard {
             guard let myURL = URL(string: url) else {
                 throw LinkWizardError.notAValidURL
             }
-            var htmlString = ""
+            var htmlString = String.empty
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {
@@ -74,7 +74,7 @@ class LinkWizard {
             guard let myURL = URL(string: url) else {
                 throw LinkWizardError.notAValidURL
             }
-            var htmlString = ""
+            var htmlString = String.empty
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
             } catch {

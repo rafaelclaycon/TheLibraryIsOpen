@@ -14,7 +14,7 @@ class EpisodeRowViewModel: ObservableObject {
         episodeID = episode.id
 
         title = episode.title
-        subtitle = (episode.pubDate?.asShortString() ?? "")  + " - " + episode.duration.toDisplayString() + " - " + episode.filesize.toFormattedFileSize()
+        subtitle = (episode.pubDate?.asShortString() ?? .empty)  + " - " + episode.duration.toDisplayString() + " - " + episode.filesize.toFormattedFileSize()
     }
 
 }
