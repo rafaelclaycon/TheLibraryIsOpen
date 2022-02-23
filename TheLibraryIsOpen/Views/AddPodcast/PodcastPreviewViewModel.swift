@@ -47,7 +47,9 @@ class PodcastPreviewViewModel: ObservableObject {
         updateDownloadButton(selectedIDs: Array(episodeList_selectionKeeper))
         
         if (podcast.episodes?.count ?? 0) > 0 {
-            yearGroups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!)
+            if let groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!) {
+                yearGroups = groups
+            }
         }
         
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0

@@ -3,8 +3,20 @@ import Foundation
 class Utils {
 
     static func getPodcastSubtitle(episodes: [Episode]) -> String {
-        let firstEpisodePubYear = episodes[episodes.count - 1].pubDate!.get(.year)
-        let lastEpisodePubYear = episodes[0].pubDate!.get(.year)
+        guard let firstEpisodePubDate = episodes[episodes.count - 1].pubDate,
+              let lastEpisodePubDate = episodes[0].pubDate else {
+            var episodiosText = String.empty
+            if episodes.count == 1 {
+                episodiosText = LocalizableStrings.episode
+            } else {
+                episodiosText = LocalizableStrings.episodes
+            }
+
+            return "\(episodes.count) \(episodiosText)"
+        }
+        
+        let firstEpisodePubYear = firstEpisodePubDate.get(.year)
+        let lastEpisodePubYear = lastEpisodePubDate.get(.year)
         
         var yearText = String.empty
         if firstEpisodePubYear == lastEpisodePubYear {
@@ -23,13 +35,21 @@ class Utils {
         return "\(episodes.count) \(episodiosText) · \(yearText)"
     }
     
-    static func getEpisodesGroupedByYear(from episodes: [Episode]) -> [EpisodeGroup] {
+    static func getEpisodesGroupedByYear(from episodes: [Episode]) -> [EpisodeGroup]? {
+        let nilDateEpisodes = episodes.filter {
+            $0.pubDate == nil
+        }
+        guard nilDateEpisodes.count == 0 else {
+            return nil
+        }
+        
         var groups = [EpisodeGroup]()
         let dic = Dictionary(grouping: episodes, by: { $0.pubDate!.get(.year) })
         for group in dic {
             groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episodes", episodes: group.value))
         }
         groups.sort(by: { $0.title < $1.title })
+        
         return groups
     }
     

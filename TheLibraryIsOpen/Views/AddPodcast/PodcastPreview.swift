@@ -46,14 +46,16 @@ struct PodcastPreview: View {
             .padding(.leading, 5)
             .padding(.trailing, 15)
             
-            Picker(selection: $indicePagina, label: Text("Grouped by")) {
-                Text(LocalizableStrings.PodcastPreview.episodeList).tag(0)
-                Text(LocalizableStrings.PodcastPreview.groupedByYear).tag(1)
+            if viewModel.yearGroups.count > 0 {
+                Picker(selection: $indicePagina, label: Text("Grouped by")) {
+                    Text(LocalizableStrings.PodcastPreview.episodeList).tag(0)
+                    Text(LocalizableStrings.PodcastPreview.groupedByYear).tag(1)
+                }
+                .disabled(viewModel.displayEpisodeList == false)
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.horizontal, 25)
+                .padding(.top, 7)
             }
-            .disabled(viewModel.displayEpisodeList == false)
-            .pickerStyle(SegmentedPickerStyle())
-            .padding(.horizontal, 25)
-            .padding(.top, 7)
             
             if viewModel.displayEpisodeList && (indicePagina == 0) {
                 HStack(spacing: 20) {

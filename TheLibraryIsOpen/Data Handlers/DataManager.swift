@@ -346,7 +346,7 @@ class DataManager {
 
                     completionHandler(podcast, nil)
 
-                case let .failure(_):
+                case .failure(_):
                     completionHandler(nil, .unableToAccessRSSFeed)
                     
                 case .none:
