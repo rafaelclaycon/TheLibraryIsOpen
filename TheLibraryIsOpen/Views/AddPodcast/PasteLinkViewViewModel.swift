@@ -26,7 +26,12 @@ class PasteLinkViewViewModel: ObservableObject {
                     return
                 }
                 guard error == nil else {
-                    fatalError(error!.localizedDescription)
+                    DispatchQueue.main.async {
+                        strongSelf.isShowingProcessingView = false
+                        strongSelf.showOtherError(errorTitle: LocalizableStrings.PasteLinkView.unableToAccessFeedErrorTitle,
+                                                  errorBody: LocalizableStrings.PasteLinkView.unableToAccessFeedErrorMessage)
+                    }
+                    return
                 }
                 guard let podcast = podcast else {
                     fatalError()

@@ -71,5 +71,6 @@ enum FeedHelperError: Error {
     case invalidStreamURL
     case downloadError
     case failedToProvideLocalFileURL
+    case unableToAccessRSSFeed
 
 }

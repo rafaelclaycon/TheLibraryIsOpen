@@ -346,8 +346,9 @@ class DataManager {
 
                     completionHandler(podcast, nil)
 
-                case let .failure(error):
-                    print(error.localizedDescription)
+                case let .failure(_):
+                    completionHandler(nil, .unableToAccessRSSFeed)
+                    
                 case .none:
                     fatalError("None")
                 }
