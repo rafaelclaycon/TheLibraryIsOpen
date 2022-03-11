@@ -103,6 +103,9 @@
 "paste_link_view_unable_to_access_feed_error_title" = "Não Foi Possível Acessar o Feed";
 "paste_link_view_unable_to_access_feed_error_message" = "Por favor, peça ao dono do feed para adicionar suporte a HTTPS.";
 
+"paste_link_view_invalid_apple_podcasts_link_error_title" = "Não Foi Possível Extrair Um Link do Apple Podcasts Válido";
+"paste_link_view_invalid_apple_podcasts_link_error_message" = "Tente obter o link do podcast diretamente do app Podcasts.";
+
 // Podcast Preview
 
 "podcast_preview_episode_list" = "Lista de episódios";

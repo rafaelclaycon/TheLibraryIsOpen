@@ -265,10 +265,10 @@ class DataManager {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     guard let resultCount = json["resultCount"] as? Int else {
-                        return completionHandler(nil, .queryiTunesSemResultados)
+                        return completionHandler(nil, .iTunesQueryReturnedNoResults)
                     }
                     guard resultCount == 1 else {
-                        return completionHandler(nil, .queryiTunesSemResultados)
+                        return completionHandler(nil, .iTunesQueryReturnedNoResults)
                     }
                     guard let results = json["results"] as? [[String: Any]] else {
                         return completionHandler(nil, .naoFoiPossivelInterpretarResultadoiTunes)
@@ -297,10 +297,11 @@ class DataManager {
         }
     }
     
-    func getPodcast(from userProvidedLink: String, completionHandler: @escaping (Podcast?, FeedHelperError?) -> Void) throws {
+    func getPodcast(from userProvidedLink: String, completionHandler: @escaping (Podcast?, Error?) -> Void) throws {
         try getFeedDetails(fromLink: userProvidedLink) { feedDetails, error in
             guard error == nil else {
-                fatalError(error!.localizedDescription)
+                completionHandler(nil, error)
+                return
             }
             guard let feedDetails = feedDetails else {
                 fatalError()
@@ -347,7 +348,7 @@ class DataManager {
                     completionHandler(podcast, nil)
 
                 case .failure(_):
-                    completionHandler(nil, .unableToAccessRSSFeed)
+                    completionHandler(nil, FeedHelperError.unableToAccessRSSFeed)
                     
                 case .none:
                     fatalError("None")
@@ -430,7 +431,7 @@ enum DataManagerError: Error {
     case failedToLoadJSON
     case filePathCameEmpty
     case couldNotCreateURLFromFilePath
-    case queryiTunesSemResultados
+    case iTunesQueryReturnedNoResults
     case naoFoiPossivelInterpretarResultadoiTunes
     case urlNaoEHTTP
     case resultadoiTunesInesperado

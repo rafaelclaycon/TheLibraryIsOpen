@@ -103,6 +103,9 @@
 "paste_link_view_unable_to_access_feed_error_title" = "Impossible D'Accéder Au Flux";
 "paste_link_view_unable_to_access_feed_error_message" = "Veuillez demander au propriétaire du flux de prendre en charge HTTPS.";
 
+"paste_link_view_invalid_apple_podcasts_link_error_title" = "Impossible D'Extraire Un Lien Apple Podcasts Valide";
+"paste_link_view_invalid_apple_podcasts_link_error_message" = "Essayez d'obtenir le lien de ce podcast directement depuis l'application Podcasts.";
+
 // Podcast Preview
 
 "podcast_preview_episode_list" = "Liste des épisodes";

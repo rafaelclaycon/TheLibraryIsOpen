@@ -69,6 +69,11 @@ class PasteLinkViewViewModel: ObservableObject {
                 self.isShowingProcessingView = false
                 self.showInvalidApplePodcastsLinkAlert()
             }
+        } catch DataManagerError.iTunesQueryReturnedNoResults {
+            DispatchQueue.main.async {
+                self.isShowingProcessingView = false
+                self.showOtherError(errorTitle: "Unable iTunesQueryReturnedNoResults", errorBody: "iTunesQueryReturnedNoResults")
+            }
         } catch {
             DispatchQueue.main.async {
                 self.isShowingProcessingView = false
@@ -92,8 +97,8 @@ class PasteLinkViewViewModel: ObservableObject {
     }
     
     private func showInvalidApplePodcastsLinkAlert() {
-        alertTitle = "Unable To Extract a Valid Apple Podcasts Link"
-        alertMessage = "Try obtaining this podcast's link directly from the Podcasts app."
+        alertTitle = LocalizableStrings.PasteLinkView.invalidApplePodcastsLinkErrorTitle
+        alertMessage = LocalizableStrings.PasteLinkView.invalidApplePodcastsLinkErrorMessage
         displayAlert = true
     }
     

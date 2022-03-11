@@ -74,6 +74,7 @@ class LinkWizard {
             guard let myURL = URL(string: url) else {
                 throw LinkWizardError.notAValidURL
             }
+            
             var htmlString = String.empty
             do {
                 htmlString = try String(contentsOf: myURL, encoding: .ascii)
@@ -86,6 +87,7 @@ class LinkWizard {
             let start = htmlString.index(preStart, offsetBy: 43)
             let range = start..<end
             let extractedLink = String(htmlString[range])
+            
             guard isApplePodcastsLink(extractedLink) else {
                 throw LinkWizardError.pocketCastsLink_innerApplePodcastsLinkIsInvalid
             }
@@ -124,6 +126,25 @@ class LinkWizard {
         let range = start..<end
         return "https:" + url[range]
     }
+    
+    /*static func getApplePodcastsLinkFrom() -> String {
+        DispatchQueue.global(qos: .userInitiated).async {
+            var htmlString = String.empty
+            do {
+                htmlString = try String(contentsOf: myURL, encoding: .ascii)
+            } catch {
+                throw LinkWizardError.pocketCastsLink_failedToTransformWebsiteLinkToString
+            }
+            guard let preStart = htmlString.index(of: "<div class=\"button itunes_button\"><a href=\""), let end = htmlString.index(of: "\" target=\"_blank\">Apple Podcasts</a></div>") else {
+                throw LinkWizardError.pocketCastsLink_innerApplePodcastsLinkNotFound
+            }
+            let start = htmlString.index(preStart, offsetBy: 43)
+            let range = start..<end
+            let extractedLink = String(htmlString[range])
+            
+            
+        }
+    }*/
     
 }
 

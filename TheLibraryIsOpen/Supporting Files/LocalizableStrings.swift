@@ -144,6 +144,9 @@ struct LocalizableStrings {
         static let unableToAccessFeedErrorTitle = NSLocalizedString("paste_link_view_unable_to_access_feed_error_title", comment: .empty)
         static let unableToAccessFeedErrorMessage = NSLocalizedString("paste_link_view_unable_to_access_feed_error_message", comment: .empty)
         
+        static let invalidApplePodcastsLinkErrorTitle = NSLocalizedString("paste_link_view_invalid_apple_podcasts_link_error_title", comment: .empty)
+        static let invalidApplePodcastsLinkErrorMessage = NSLocalizedString("paste_link_view_invalid_apple_podcasts_link_error_message", comment: .empty)
+        
     }
     
     struct PodcastPreview {
