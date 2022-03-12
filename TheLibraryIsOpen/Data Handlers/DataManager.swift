@@ -244,55 +244,62 @@ class DataManager {
         }
     }
     
-    func getFeedDetails(fromLink podcastLink: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
-        let podcastId = try LinkWizard.getIdFrom(url: podcastLink)
-        
-        let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
-        
-        downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
-            guard self != nil else {
+    func getFeedDetails(fromLink podcastLink: String, completionHandler: @escaping (FeedDetail?, Error?) -> Void) throws {
+        LinkWizard.getIdFrom(url: podcastLink) { [weak self] result, error in
+            guard error != nil else {
+                return completionHandler(nil, error)
+            }
+            guard let podcastId = result else {
                 return
             }
-            guard error == nil else {
-                return completionHandler(nil, .downloadError)
-            }
-            guard filePath != nil else {
-                return completionHandler(nil, .filePathCameEmpty)
-            }
             
-            let url = URL(fileURLWithPath: filePath!)
-            let data = try! Data(contentsOf: url)
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    guard let resultCount = json["resultCount"] as? Int else {
-                        return completionHandler(nil, .iTunesQueryReturnedNoResults)
-                    }
-                    guard resultCount == 1 else {
-                        return completionHandler(nil, .iTunesQueryReturnedNoResults)
-                    }
-                    guard let results = json["results"] as? [[String: Any]] else {
-                        return completionHandler(nil, .naoFoiPossivelInterpretarResultadoiTunes)
-                    }
-                    let podcast = results[0]
-                    
-                    guard let feedUrl = podcast["feedUrl"] as? String else {
-                        return completionHandler(nil, .resultadoiTunesInesperado)
-                    }
-                    
-                    // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
-                    // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
-                    var feedUrlAjustado = String.empty
-                    if feedUrl.contains("https:") {
-                        feedUrlAjustado = feedUrl
-                    } else {
-                        feedUrlAjustado = try LinkWizard.fixURLfromHTTPToHTTPS(feedUrl)
-                    }
-                    
-                    completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
+            let linkConsulta = "https://itunes.apple.com/lookup?id=\(podcastId)&entity=podcast"
+            
+            self?.downloadiTunesJSON(link: linkConsulta, podcastID: podcastId) { [weak self] filePath, error in
+                guard self != nil else {
+                    return
                 }
-            } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
-                completionHandler(nil, .failedToLoadJSON)
+                guard error == nil else {
+                    return completionHandler(nil, DataManagerError.downloadError)
+                }
+                guard filePath != nil else {
+                    return completionHandler(nil, DataManagerError.filePathCameEmpty)
+                }
+                
+                let url = URL(fileURLWithPath: filePath!)
+                let data = try! Data(contentsOf: url)
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        guard let resultCount = json["resultCount"] as? Int else {
+                            return completionHandler(nil, DataManagerError.iTunesQueryReturnedNoResults)
+                        }
+                        guard resultCount == 1 else {
+                            return completionHandler(nil, DataManagerError.iTunesQueryReturnedNoResults)
+                        }
+                        guard let results = json["results"] as? [[String: Any]] else {
+                            return completionHandler(nil, DataManagerError.naoFoiPossivelInterpretarResultadoiTunes)
+                        }
+                        let podcast = results[0]
+                        
+                        guard let feedUrl = podcast["feedUrl"] as? String else {
+                            return completionHandler(nil, DataManagerError.resultadoiTunesInesperado)
+                        }
+                        
+                        // Ajusta o URL do feed para sempre tentar carregar de uma conexão segura.
+                        // Esse ajuste é necessário para conseguir usar o feed do Wanda, por exemplo.
+                        var feedUrlAjustado = String.empty
+                        if feedUrl.contains("https:") {
+                            feedUrlAjustado = feedUrl
+                        } else {
+                            feedUrlAjustado = try LinkWizard.fixURLfromHTTPToHTTPS(feedUrl)
+                        }
+                        
+                        completionHandler(FeedDetail(feedUrl: feedUrlAjustado, podcastId: podcastId), nil)
+                    }
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
+                    completionHandler(nil, DataManagerError.failedToLoadJSON)
+                }
             }
         }
     }
