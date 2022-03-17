@@ -1,15 +1,34 @@
 import Foundation
 
+enum LinkWizardVariables {
+
+    struct StartingString {
+        static let castro = "Or Listen Elsewhere"
+        static let overcast = "/img/badge-overcast-or-wherever.svg"
+        static let pocketCasts = "<div class=\"button itunes_button\"><a href=\""
+    }
+    
+    struct EndingString {
+        static let castro = "\"><img alt=\"Listen On Apple Podcasts"
+        static let overcast = "><img src=\"/img/badge-apple.svg"
+        static let pocketCasts = "\" target=\"_blank\">Apple Podcasts</a></div>"
+    }
+    
+    struct StartOffset {
+        static let castro = 77
+        static let overcast = 83
+        static let pocketCasts = 43
+    }
+    
+    struct EndOffset {
+        static let castro = 0
+        static let overcast = -18
+        static let pocketCasts = 0
+    }
+
+}
+
 class LinkWizard {
-    
-    static private let castroStartingString = "Or Listen Elsewhere"
-    static private let castroEndingString = "\"><img alt=\"Listen On Apple Podcasts"
-    
-    static private let overcastStartingString = "/img/badge-overcast-or-wherever.svg"
-    static private let overcastEndingString = "><img src=\"/img/badge-apple.svg"
-    
-    static private let pocketCastsStartingString = "<div class=\"button itunes_button\"><a href=\""
-    static private let pocketCastsEndingString = "\" target=\"_blank\">Apple Podcasts</a></div>"
 
     private static func isApplePodcastsLink(_ link: String) -> Bool {
         return link.contains("podcasts.apple.com") || link.contains("itunes.apple.com")
@@ -47,7 +66,11 @@ class LinkWizard {
                 return completionHandler(nil, LinkWizardError.notAValidURL)
             }
             
-            getApplePodcastsLinkFrom(url: castroURL, between: castroStartingString, and: castroEndingString) { result, error in
+            getApplePodcastsLinkFrom(url: castroURL,
+                                     between: LinkWizardVariables.StartingString.castro,
+                                     and: LinkWizardVariables.EndingString.castro,
+                                     startOffset: LinkWizardVariables.StartOffset.castro,
+                                     endOffset: LinkWizardVariables.EndOffset.castro) { result, error in
                 guard error == nil else {
                     return completionHandler(nil, error)
                 }
@@ -69,7 +92,11 @@ class LinkWizard {
                 return completionHandler(nil, LinkWizardError.notAValidURL)
             }
             
-            getApplePodcastsLinkFrom(url: overcastURL, between: overcastStartingString, and: overcastEndingString) { result, error in
+            getApplePodcastsLinkFrom(url: overcastURL,
+                                     between: LinkWizardVariables.StartingString.overcast,
+                                     and: LinkWizardVariables.EndingString.overcast,
+                                     startOffset: LinkWizardVariables.StartOffset.overcast,
+                                     endOffset: LinkWizardVariables.EndOffset.overcast) { result, error in
                 guard error == nil else {
                     return completionHandler(nil, error)
                 }
@@ -91,7 +118,11 @@ class LinkWizard {
                 return completionHandler(nil, LinkWizardError.notAValidURL)
             }
             
-            getApplePodcastsLinkFrom(url: pocketCastsURL, between: pocketCastsStartingString, and: pocketCastsEndingString) { result, error in
+            getApplePodcastsLinkFrom(url: pocketCastsURL,
+                                     between: LinkWizardVariables.StartingString.pocketCasts,
+                                     and: LinkWizardVariables.EndingString.pocketCasts,
+                                     startOffset: LinkWizardVariables.StartOffset.pocketCasts,
+                                     endOffset: LinkWizardVariables.EndOffset.pocketCasts) { result, error in
                 guard error == nil else {
                     return completionHandler(nil, error)
                 }
@@ -152,17 +183,23 @@ class LinkWizard {
         return "https:" + url[range]
     }
     
-    static func getApplePodcastsLinkFrom(url: URL, between startingString: String, and endingString: String, completionHandler: @escaping (String?, LinkWizardError?) -> Void) {
+    static private func getApplePodcastsLinkFrom(url: URL,
+                                                 between startingString: String,
+                                                 and endingString: String,
+                                                 startOffset: Int,
+                                                 endOffset: Int,
+                                                 completionHandler: @escaping (String?, LinkWizardError?) -> Void) {
         var htmlString = String.empty
         do {
             htmlString = try String(contentsOf: url, encoding: .ascii)
         } catch {
             completionHandler(nil, LinkWizardError.pocketCastsLink_failedToTransformWebsiteLinkToString)
         }
-        guard let preStart = htmlString.index(of: startingString), let end = htmlString.index(of: endingString) else {
+        guard let preStart = htmlString.index(of: startingString), let preEnd = htmlString.index(of: endingString) else {
             return completionHandler(nil, LinkWizardError.pocketCastsLink_innerApplePodcastsLinkNotFound)
         }
-        let start = htmlString.index(preStart, offsetBy: 43)
+        let start = htmlString.index(preStart, offsetBy: startOffset)
+        let end = htmlString.index(preEnd, offsetBy: endOffset)
         let range = start..<end
         
         completionHandler(String(htmlString[range]), nil)
