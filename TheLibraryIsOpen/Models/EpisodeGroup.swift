@@ -8,8 +8,8 @@ struct EpisodeGroup: Identifiable {
     var isSelected: Bool
     var episodes: [Episode]
     
-    init(title: String, value: String) {
-        id = UUID().uuidString
+    init(id: String = UUID().uuidString, title: String, value: String) {
+        self.id = id
         self.title = title
         self.value = value
         isSelected = false
