@@ -10,14 +10,14 @@ class Zipper {
         }
         
         // Delete ExportedArchives to avoid naming conflicts
-        if InternalStorage.existsInsideDocumentsDirectory(directoryName: InternalDirectoryNames.exportedArchives) {
-            guard InternalStorage.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
+        if FileSystemOperations.existsInsideDocumentsDirectory(directoryName: InternalDirectoryNames.exportedArchives) {
+            guard FileSystemOperations.deleteDirectoryInDocumentsDirectory(withName: InternalDirectoryNames.exportedArchives) else {
                 throw ZipperError.failedToDeleteExportedArchivesDirectory
             }
         }
         
         // Move selected episodes to a different export folder
-        let sourceURL = try InternalStorage.prepareFilesInPodcastFolderForExport(paths: adaptedPaths, podcastId: podcastId)
+        let sourceURL = try FileSystemOperations.prepareFilesInPodcastFolderForExport(paths: adaptedPaths, podcastId: podcastId)
         
         // Prepare exported .zip file name
         var name = String.empty
@@ -32,7 +32,7 @@ class Zipper {
         destinationURL.appendPathComponent("\(InternalDirectoryNames.exportedArchives)/" + name + ".zip")
         
         // Creates ExportedArchives directory
-        guard InternalStorage.createExportedArchivesDirectory() else {
+        guard FileSystemOperations.createExportedArchivesDirectory() else {
             throw ZipperError.failedToCreateExportedArchivesDirectory
         }
         

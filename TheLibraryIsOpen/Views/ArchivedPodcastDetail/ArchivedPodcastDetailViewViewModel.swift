@@ -182,7 +182,7 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
         
         // Clean
         do {
-            try InternalStorage.flushTmpDirectory()
+            try FileSystemOperations.flushTmpDirectory()
         } catch {
             print(error.localizedDescription)
         }

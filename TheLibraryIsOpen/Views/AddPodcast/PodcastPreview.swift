@@ -102,7 +102,7 @@ struct PodcastPreview: View {
                     }
                     .onChange(of: viewModel.episodeList_selectionKeeper) { value in
                         viewModel.updateDownloadButton(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
-                        // TODO: Update remaining storage label.
+                        viewModel.updateRemainingStorageLabel(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
@@ -155,7 +155,7 @@ struct PodcastPreview: View {
             }
             .padding(.vertical, 5)
             
-            Text("48 GB restantes no iPhone.")
+            Text(viewModel.remainingStorageLabel)
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)

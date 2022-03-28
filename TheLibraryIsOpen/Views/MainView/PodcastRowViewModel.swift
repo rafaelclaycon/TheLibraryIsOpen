@@ -31,7 +31,7 @@ class PodcastRowViewModel: ObservableObject {
         if episodeCount == 0 {
             totalSizeText = LocalizableStrings.MainView.PodcastRow.noSizeInformation
         } else {
-            totalSizeText = Utils.getFormattedFileSize(of: Int64(podcast?.totalSize ?? 0))
+            totalSizeText = Utils.getFormattedFileSize(of: podcast?.totalSize ?? 0)
         }
         
         if let exportDate = podcast?.exportedIn {

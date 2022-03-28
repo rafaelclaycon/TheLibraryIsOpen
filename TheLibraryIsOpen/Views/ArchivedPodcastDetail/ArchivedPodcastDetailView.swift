@@ -146,7 +146,7 @@ struct ArchivedPodcastDetailView: View {
                                             
                                               // Clean
                                               do {
-                                                  try InternalStorage.flushTmpDirectory()
+                                                  try FileSystemOperations.flushTmpDirectory()
                                               } catch {
                                                   print(error.localizedDescription)
                                               }
