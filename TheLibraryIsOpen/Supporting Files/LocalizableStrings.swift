@@ -159,6 +159,8 @@ struct LocalizableStrings {
         static let downloadButtonJustAddTitle = NSLocalizedString("podcast_preview_download_button_just_add_title", comment: .empty);
         static let remainingStorageSingularLabel = NSLocalizedString("podcast_preview_remaining_storage_singular_label", comment: .empty)
         static let remainingStoragePluralLabel = NSLocalizedString("podcast_preview_remaining_storage_plural_label", comment: .empty)
+        static let remainingStorageErrorLabel = NSLocalizedString("podcast_preview_remaining_storage_error_label", comment: .empty)
+        static let remainingStorageOverMinimumFreeStorageError = NSLocalizedString("remaining_storage_over_minimum_free_storage_error", comment: .empty)
         
         struct Messages {
             

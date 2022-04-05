@@ -28,17 +28,17 @@ struct GuideView: View {
                         }
                     }
                     
-                    Text("O que TLIO é")
+                    Text("What TLIO is")
                         .font(.title2)
                         .bold()
                     
                     Text("TLIO permite baixar os seus podcasts favoritos e guardá-los para sempre em um serviço de armazenamento de arquivos de sua escolha.")
                     
-                    Text("O que TLIO não é")
+                    Text("What TLIO is not")
                         .font(.title2)
                         .bold()
                     
-                    Text("TLIO não é um tocador de podcasts.")
+                    Text("TLIO is not a podcast player.")
                         .bold()
                     
                     Text("Para reproduzir um episódio baixado é necessário exportar o arquivo e utilizar um tocador de podcasts como Overcast ou Pocket Casts.")

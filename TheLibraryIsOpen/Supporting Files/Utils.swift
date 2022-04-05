@@ -53,7 +53,7 @@ class Utils {
         return groups
     }
     
-    static func getSizeInBytesOf(_ episodes: [Episode]) -> Int64 {
+    static func getSizeInBytesOf(_ episodes: [Episode]) -> Int {
         guard episodes.count > 0 else {
             return 0
         }
@@ -61,7 +61,7 @@ class Utils {
         for episode in episodes {
             totalSize += episode.filesize
         }
-        return Int64(totalSize)
+        return totalSize
     }
     
     static func getSizeOf(episodes: [Episode], withSpaceAndParenteses: Bool = true) -> String {
@@ -82,8 +82,8 @@ class Utils {
         return "\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))"
     }
     
-    static func getFormattedFileSize(of number: Int64) -> String {
-        return "\(ByteCountFormatter.string(fromByteCount: number, countStyle: .file))"
+    static func getFormattedFileSize(of number: Int) -> String {
+        return "\(ByteCountFormatter.string(fromByteCount: Int64(number), countStyle: .file))"
     }
     
     static func directoryExistsAtPath(_ path: String) -> Bool {

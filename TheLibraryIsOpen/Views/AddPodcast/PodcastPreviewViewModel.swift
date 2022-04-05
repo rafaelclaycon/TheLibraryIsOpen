@@ -5,6 +5,7 @@ class PodcastPreviewViewModel: ObservableObject {
     
     var podcast: Podcast
     var podcastPreviewDataManager: DataManager
+    var deviceFreeStorage: Int
 
     @Published var title: String
     @Published var details: String
@@ -21,8 +22,9 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var yearGroups = [EpisodeGroup]()
     @Published var yearGroupList_selectionKeeper = Set<String>()
     
-    // MARK: - Download button variables
+    // MARK: - Download Area variables
     @Published var downloadAllButtonTitle = String.empty
+    @Published var downloadButtonIsActive = false
     @Published var remainingStorageLabel = String.empty
     
     // MARK: - Alert variables
@@ -42,9 +44,11 @@ class PodcastPreviewViewModel: ObservableObject {
         episodes = podcast.episodes ?? [Episode]()
         
         self.podcastPreviewDataManager = podcastPreviewDataManager
+        self.deviceFreeStorage = DeviceStorageInformation.freeSpaceInBytes()
         
         selectAllEpisodes()
         updateDownloadButton(selectedIDs: Array(episodeList_selectionKeeper))
+        updateRemainingStorageLabel(selectedIDs: Array(episodeList_selectionKeeper))
         
         if (podcast.episodes?.count ?? 0) > 0 {
             if let groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!) {
@@ -94,6 +98,11 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     // MARK: - Download button methods
+    func updateDownloadAreaBasedOn(selectedIDs: [String]) {
+        updateDownloadButton(selectedIDs: selectedIDs)
+        updateRemainingStorageLabel(selectedIDs: selectedIDs)
+    }
+    
     func updateDownloadButton(selectedIDs: [String]) {
         let selectedEpisodes = episodes.filter {
             selectedIDs.contains($0.id)
@@ -107,6 +116,31 @@ class PodcastPreviewViewModel: ObservableObject {
         }
     }
     
+    func updateRemainingStorageLabel(selectedIDs: [String]) {
+        let selectedEpisodes = episodes.filter {
+            selectedIDs.contains($0.id)
+        }
+        var selectedEpisodesSize = 0
+        for episode in selectedEpisodes {
+            selectedEpisodesSize = selectedEpisodesSize + episode.filesize
+        }
+        
+        let remaining = deviceFreeStorage - selectedEpisodesSize
+        
+        guard remaining > 0 else {
+            downloadButtonIsActive = false
+            
+            let overLimitValue = abs(remaining)
+            let overLimitValueString = Utils.getFormattedFileSize(of: overLimitValue)
+            let deviceFreeStorageString = Utils.getFormattedFileSize(of: deviceFreeStorage)
+            return remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStorageOverMinimumFreeStorageError, overLimitValueString, deviceFreeStorageString)
+        }
+        
+        let remainingSpaceString = Utils.getFormattedFileSize(of: remaining)
+        downloadButtonIsActive = true
+        remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStoragePluralLabel, remainingSpaceString)
+    }
+    
     func checkIfMeetsAllRequirementsToContinue() {
         guard episodeList_selectionKeeper.isEmpty == false else {
             return showNoEpisodesSelectedAlert()
@@ -116,7 +150,7 @@ class PodcastPreviewViewModel: ObservableObject {
             episodeList_selectionKeeper.contains($0.id)
         }
         
-        let remainingSpace = InternalStorage.getDeviceFreeStorage() - Utils.getSizeInBytesOf(episodesToDownload)
+        let remainingSpace = DeviceStorageInformation.freeSpaceInBytes() - Utils.getSizeInBytesOf(episodesToDownload)
         
         guard remainingSpace > 2000000000 else {
             return showLowStorageWarning()

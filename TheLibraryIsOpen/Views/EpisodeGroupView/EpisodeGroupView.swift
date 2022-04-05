@@ -4,11 +4,8 @@ struct EpisodeGroupView: View {
 
     @StateObject var viewModel: EpisodeGroupViewViewModel
     @Binding var selectedItems: Set<String>
-    @State var isSelectedForComponent: Bool = false
     var isSelected: Bool {
-        let newValue = selectedItems.contains(viewModel.groupID)
-        isSelectedForComponent = newValue
-        return newValue
+        return selectedItems.contains(viewModel.groupID)
     }
     
     // Unselected
@@ -44,9 +41,15 @@ struct EpisodeGroupView: View {
             .padding(.trailing, 60)
             .padding(.bottom, 35)
             
-            RoundCheckbox(selected: $isSelectedForComponent, showAsHollowButton: true)
-                .padding(.top, 50)
-                .padding(.leading, 110)
+            if isSelected {
+                RoundCheckbox(selected: .constant(true), style: .holePunch)
+                    .padding(.top, 50)
+                    .padding(.leading, 110)
+            } else {
+                RoundCheckbox(selected: .constant(false), style: .holePunch)
+                    .padding(.top, 50)
+                    .padding(.leading, 110)
+            }
         }
         .onTapGesture {
             if isSelected {
@@ -63,8 +66,11 @@ struct EpisodeGroupView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
+            // Unselected
             EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(title: "2014", value: "18 episódios")), selectedItems: .constant(Set<String>()))
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(title: "2020", value: "52 episódios")), selectedItems: .constant(Set<String>()))
+            
+            // Selected
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(id: "001", title: "2020", value: "52 episódios")), selectedItems: .constant(Set<String>(arrayLiteral: "001")))
         }
         .previewLayout(.fixed(width: 250, height: 120))
     }
