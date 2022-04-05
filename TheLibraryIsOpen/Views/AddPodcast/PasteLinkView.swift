@@ -3,7 +3,7 @@ import SwiftUI
 struct PasteLinkView: View {
 
     @StateObject var viewModel = PasteLinkViewViewModel()
-    @Binding var estaSendoExibido: Bool
+    @Binding var isBeingShown: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
     @FocusState private var focusedField: Int?
@@ -42,7 +42,7 @@ struct PasteLinkView: View {
                         HStack {
                             Spacer()
                             
-                            NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, isShowingAddPodcastModal: $estaSendoExibido, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isShowingPodcastPreview) { EmptyView() }
+                            NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, isShowingAddPodcastModal: $isBeingShown, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isShowingPodcastPreview) { EmptyView() }
                             
                             Button(action: {
                                 focusedField = nil
@@ -67,7 +67,7 @@ struct PasteLinkView: View {
                 .navigationBarTitle(Text(LocalizableStrings.PasteLinkView.title))
                 .navigationBarItems(trailing:
                     Button(action: {
-                        self.estaSendoExibido = false
+                        self.isBeingShown = false
                     }) {
                         Text(LocalizableStrings.cancel)
                     }
@@ -86,7 +86,7 @@ struct PasteLinkView: View {
 struct InstrucoesLinkView_Previews: PreviewProvider {
 
     static var previews: some View {
-        PasteLinkView(estaSendoExibido: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
+        PasteLinkView(isBeingShown: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }
