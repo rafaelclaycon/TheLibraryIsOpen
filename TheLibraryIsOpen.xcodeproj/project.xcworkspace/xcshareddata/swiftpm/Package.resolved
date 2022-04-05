@@ -1,61 +1,59 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire",
-        "state": {
-          "branch": null,
-          "revision": "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
-          "version": "5.5.0"
-        }
-      },
-      {
-        "package": "FeedKit",
-        "repositoryURL": "https://github.com/nmdias/FeedKit",
-        "state": {
-          "branch": null,
-          "revision": "68493a33d862c33c9a9f67ec729b3b7df1b20ade",
-          "version": "9.1.2"
-        }
-      },
-      {
-        "package": "ID3TagEditor",
-        "repositoryURL": "https://github.com/chicio/ID3TagEditor",
-        "state": {
-          "branch": null,
-          "revision": "fb35dde9becd24ddfba8ee80ed516cdcb3befd0b",
-          "version": "4.2.1"
-        }
-      },
-      {
-        "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
-        "state": {
-          "branch": null,
-          "revision": "1a0c2df04b31ed7aa318354f3583faea24f006fc",
-          "version": "5.15.8"
-        }
-      },
-      {
-        "package": "SQLite.swift",
-        "repositoryURL": "https://github.com/stephencelis/SQLite.swift",
-        "state": {
-          "branch": null,
-          "revision": "5f5ad81ac0d0a0f3e56e39e646e8423c617df523",
-          "version": "0.13.2"
-        }
-      },
-      {
-        "package": "ZIPFoundation",
-        "repositoryURL": "https://github.com/weichsel/ZIPFoundation",
-        "state": {
-          "branch": null,
-          "revision": "7254c74b49cec2cb81520523ba993c671f71b066",
-          "version": "0.9.14"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
+        "version" : "5.5.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "feedkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nmdias/FeedKit",
+      "state" : {
+        "revision" : "68493a33d862c33c9a9f67ec729b3b7df1b20ade",
+        "version" : "9.1.2"
+      }
+    },
+    {
+      "identity" : "id3tageditor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chicio/ID3TagEditor",
+      "state" : {
+        "revision" : "fb35dde9becd24ddfba8ee80ed516cdcb3befd0b",
+        "version" : "4.2.1"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "1a0c2df04b31ed7aa318354f3583faea24f006fc",
+        "version" : "5.15.8"
+      }
+    },
+    {
+      "identity" : "sqlite.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stephencelis/SQLite.swift",
+      "state" : {
+        "revision" : "4d543d811ee644fa4cc4bfa0be996b4dd6ba0f54",
+        "version" : "0.13.3"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation",
+      "state" : {
+        "revision" : "7254c74b49cec2cb81520523ba993c671f71b066",
+        "version" : "0.9.14"
+      }
+    }
+  ],
+  "version" : 2
 }
