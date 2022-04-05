@@ -22,8 +22,9 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var yearGroups = [EpisodeGroup]()
     @Published var yearGroupList_selectionKeeper = Set<String>()
     
-    // MARK: - Download button variables
+    // MARK: - Download Area variables
     @Published var downloadAllButtonTitle = String.empty
+    @Published var downloadButtonIsActive = false
     @Published var remainingStorageLabel = String.empty
     
     // MARK: - Alert variables
@@ -97,6 +98,11 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     // MARK: - Download button methods
+    func updateDownloadAreaBasedOn(selectedIDs: [String]) {
+        updateDownloadButton(selectedIDs: selectedIDs)
+        updateRemainingStorageLabel(selectedIDs: selectedIDs)
+    }
+    
     func updateDownloadButton(selectedIDs: [String]) {
         let selectedEpisodes = episodes.filter {
             selectedIDs.contains($0.id)
@@ -122,6 +128,8 @@ class PodcastPreviewViewModel: ObservableObject {
         let remaining = deviceFreeStorage - selectedEpisodesSize
         
         guard remaining > 0 else {
+            downloadButtonIsActive = false
+            
             let overLimitValue = abs(remaining)
             let overLimitValueString = Utils.getFormattedFileSize(of: overLimitValue)
             let deviceFreeStorageString = Utils.getFormattedFileSize(of: deviceFreeStorage)
@@ -129,7 +137,7 @@ class PodcastPreviewViewModel: ObservableObject {
         }
         
         let remainingSpaceString = Utils.getFormattedFileSize(of: remaining)
-        
+        downloadButtonIsActive = true
         remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStoragePluralLabel, remainingSpaceString)
     }
     

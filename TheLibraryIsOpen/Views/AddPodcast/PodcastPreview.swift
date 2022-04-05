@@ -101,8 +101,7 @@ struct PodcastPreview: View {
                         }
                     }
                     .onChange(of: viewModel.episodeList_selectionKeeper) { value in
-                        viewModel.updateDownloadButton(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
-                        viewModel.updateRemainingStorageLabel(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
+                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
                     }
                 } else if indicePagina == 1 {
                     ScrollView {
@@ -129,6 +128,8 @@ struct PodcastPreview: View {
             Divider()
                 .padding(.bottom, 5)
             
+            // MARK: - Download Area (Button + Text)
+            
             Button(action: {
                 viewModel.checkIfMeetsAllRequirementsToContinue()
             }) {
@@ -154,6 +155,7 @@ struct PodcastPreview: View {
                 }
             }
             .padding(.vertical, 5)
+            .disabled(!viewModel.downloadButtonIsActive)
             
             Text(viewModel.remainingStorageLabel)
                 .font(.subheadline)
