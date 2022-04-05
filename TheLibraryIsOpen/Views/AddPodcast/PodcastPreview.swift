@@ -4,7 +4,7 @@ import SwiftUI
 struct PodcastPreview: View {
 
     @StateObject var viewModel: PodcastPreviewViewModel
-    @State private var indicePagina = 0
+    @State private var pageIndex = 0
     @Binding var isShowingAddPodcastModal: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
@@ -47,7 +47,7 @@ struct PodcastPreview: View {
             .padding(.trailing, 15)
             
             if viewModel.yearGroups.count > 0 {
-                Picker(selection: $indicePagina, label: Text("Grouped by")) {
+                Picker(selection: $pageIndex, label: Text("Grouped by")) {
                     Text(LocalizableStrings.PodcastPreview.episodeList).tag(0)
                     Text(LocalizableStrings.PodcastPreview.groupedByYear).tag(1)
                 }
@@ -57,7 +57,7 @@ struct PodcastPreview: View {
                 .padding(.top, 7)
             }
             
-            if viewModel.displayEpisodeList && (indicePagina == 0) {
+            if viewModel.displayEpisodeList && (pageIndex == 0) {
                 HStack(spacing: 20) {
                     Button(action: {
                         viewModel.toggleEpisodeListSorting()
@@ -91,7 +91,7 @@ struct PodcastPreview: View {
 
             // List
             if viewModel.displayEpisodeList {
-                if indicePagina == 0 {
+                if pageIndex == 0 {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
@@ -103,7 +103,7 @@ struct PodcastPreview: View {
                     .onChange(of: viewModel.episodeList_selectionKeeper) { value in
                         viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
                     }
-                } else if indicePagina == 1 {
+                } else if pageIndex == 1 {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.yearGroups, id: \.id) { group in
