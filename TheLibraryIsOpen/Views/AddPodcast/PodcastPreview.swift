@@ -21,30 +21,37 @@ struct PodcastPreview: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 15) {                
-                KFImage(URL(string: viewModel.artworkURL))
-                    .placeholder {
-                        Image(systemName: "headphones")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                            .foregroundColor(.gray)
+            // Header
+            if pageIndex == 0 {
+                HStack(spacing: 15) {
+                    KFImage(URL(string: viewModel.artworkURL))
+                        .placeholder {
+                            Image(systemName: "headphones")
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(.gray)
+                        }
+                        .resizable()
+                        .frame(width: artworkSize, height: artworkSize)
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(viewModel.title)
+                            .font(.title3)
+                            .bold()
+                        Text(viewModel.details)
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 2)
                     }
-                    .resizable()
-                    .frame(width: artworkSize, height: artworkSize)
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(viewModel.title)
-                        .font(.title3)
-                        .bold()
-                    Text(viewModel.details)
-                        .font(.subheadline)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 2)
                 }
+                .padding(.top, 5)
+                .padding(.leading, 5)
+                .padding(.trailing, 15)
+            } else {
+                Text(viewModel.title)
+                    .font(.title3)
+                    .bold()
             }
-            .padding(.top, 5)
-            .padding(.leading, 5)
-            .padding(.trailing, 15)
             
             if viewModel.yearGroups.count > 0 {
                 Picker(selection: $pageIndex, label: Text("Grouped by")) {
@@ -107,7 +114,7 @@ struct PodcastPreview: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.yearGroups, id: \.id) { group in
-                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group), selectedItems: $viewModel.yearGroupList_selectionKeeper)
+                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group, useWeightEmojis: viewModel.showWeightEmojis), selectedItems: $viewModel.yearGroupList_selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }

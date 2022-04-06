@@ -84,4 +84,30 @@ class UserSettings {
         UserDefaults.standard.removePersistentDomain(forName: domain)
     }
     
+    static func getShowNewPasteLinkScreenOption() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "showNewPasteLinkScreen") else {
+            return false
+        }
+        return Bool(value as! Bool)
+    }
+    
+    static func setShowNewPasteLinkScreenOption(to newValue: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "showNewPasteLinkScreen")
+    }
+    
+    static func getShowWeightEmojisOnEpisodeGroupList() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "showWeightEmojisOnEpisodeGroupList") else {
+            return false
+        }
+        return Bool(value as! Bool)
+    }
+    
+    static func setShowWeightEmojisOnEpisodeGroupList(to newValue: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "showWeightEmojisOnEpisodeGroupList")
+    }
+
 }

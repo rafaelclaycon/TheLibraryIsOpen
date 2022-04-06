@@ -94,6 +94,16 @@ struct SettingsView: View {
                     Button("Clear UserDefaults") {
                         UserSettings.restoreDefaults()
                     }
+                    
+                    Toggle("New Paste Link screen", isOn: $viewModel.showNewPasteLinkScreen)
+                        .onChange(of: viewModel.showNewPasteLinkScreen) { newValue in
+                            UserSettings.setShowNewPasteLinkScreenOption(to: newValue)
+                        }
+                    
+                    Toggle("Show weight emojis on episode group list", isOn: $viewModel.showWeightEmojisOnEpisodeGroupList)
+                        .onChange(of: viewModel.showWeightEmojisOnEpisodeGroupList) { newValue in
+                            UserSettings.setShowWeightEmojisOnEpisodeGroupList(to: newValue)
+                        }
                 } header: {
                     Text("Developer options")
                 } footer: {
