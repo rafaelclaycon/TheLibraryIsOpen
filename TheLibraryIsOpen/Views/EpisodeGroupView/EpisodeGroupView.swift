@@ -92,14 +92,14 @@ struct EpisodeGroupView_Previews: PreviewProvider {
         
         Group {
             // Unselected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: alphaGroup), selectedItems: .constant(Set<String>()))
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: betaGroup), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: alphaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: betaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
             
             // Selected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: gammaGroup), selectedItems: .constant(Set<String>(arrayLiteral: gammaGroup.id)))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: gammaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>(arrayLiteral: gammaGroup.id)))
             
             // Unselected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: deltaGroup), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: deltaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
         }
         .previewLayout(.fixed(width: 250, height: 120))
     }

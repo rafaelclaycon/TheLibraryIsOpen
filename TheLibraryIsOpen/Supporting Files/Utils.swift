@@ -49,11 +49,14 @@ class Utils {
             groups.append(EpisodeGroup(year: item.key, episodes: item.value))
         }
         
-        groups.sort(by: { $0.size < $1.size })
+        // Tag by relative weight
+        if groups.count > 1 {
+            groups.sort(by: { $0.size < $1.size })
+            groups[0].relativeWeight = .lightest
+            groups[groups.count - 1].relativeWeight = .heaviest
+        }
         
-        groups[0].relativeWeight = .lightest
-        groups[groups.count - 1].relativeWeight = .heaviest
-        
+        // Sort for display
         groups.sort(by: { $0.year < $1.year })
         
         return groups
