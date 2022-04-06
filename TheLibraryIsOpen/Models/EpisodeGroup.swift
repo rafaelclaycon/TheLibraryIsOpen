@@ -7,7 +7,7 @@ struct EpisodeGroup: Identifiable {
     var episodes: [Episode]
     var relativeWeight: EpisodeGroupRelativeWeight
     var size: Int {
-        return episodes.reduce(into: 0) { $0 + $1.filesize }
+        return Utils.getSizeInBytesOf(episodes)
     }
     
     init(id: String = UUID().uuidString,

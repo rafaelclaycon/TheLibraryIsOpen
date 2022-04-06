@@ -18,7 +18,13 @@ class EpisodeGroupViewViewModel: ObservableObject {
         if group.episodes.count == 1 {
             subtitle = LocalizableStrings.PodcastPreview.EpisodeGroupList.episode
         } else {
-            subtitle = String(format: LocalizableStrings.PodcastPreview.EpisodeGroupList.episodes, group.episodes.count, groupSize)
+            var sizeString: String
+            if groupSize.isEmpty {
+                sizeString = .empty
+            } else {
+                sizeString = " ~ \(groupSize)"
+            }
+            subtitle = String(format: LocalizableStrings.PodcastPreview.EpisodeGroupList.episodes, group.episodes.count, sizeString)
         }
         
         if useWeightEmojis {
