@@ -45,10 +45,16 @@ class Utils {
         
         var groups = [EpisodeGroup]()
         let dic = Dictionary(grouping: episodes, by: { $0.pubDate!.get(.year) })
-        for group in dic {
-            groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episodes", episodes: group.value))
+        for item in dic {
+            groups.append(EpisodeGroup(year: item.key, episodes: item.value))
         }
-        groups.sort(by: { $0.title < $1.title })
+        
+        groups.sort(by: { $0.size < $1.size })
+        
+        groups[0].relativeWeight = .lightest
+        groups[groups.count - 1].relativeWeight = .heaviest
+        
+        groups.sort(by: { $0.year < $1.year })
         
         return groups
     }

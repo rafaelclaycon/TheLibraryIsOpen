@@ -57,7 +57,7 @@ struct PodcastPreview: View {
                 .padding(.top, 7)
             }
             
-            if viewModel.displayEpisodeList && (pageIndex == 0) {
+            if viewModel.displayEpisodeList {
                 HStack(spacing: 20) {
                     Button(action: {
                         viewModel.toggleEpisodeListSorting()

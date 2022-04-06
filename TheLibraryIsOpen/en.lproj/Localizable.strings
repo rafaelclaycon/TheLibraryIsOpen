@@ -119,6 +119,9 @@
 "podcast_preview_remaining_storage_error_label" = "Unable to obtain remaining storage.";
 "remaining_storage_over_minimum_free_storage_error" = "Unable to continue. %@ over free storage (%@). Either free up space on the device or select less episodes.";
 
+"podcast_preview_episode_group_list_episode_label_singular" = "1 ep ~ %@";
+"podcast_preview_episode_group_list_episode_label_plural" = "%d ep ~ %@";
+
 "podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Ready To Download a Single Episode of '%@'?";
 "podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Ready To Download %d Episodes of '%@'?";
 "podcast_preview_messages_ready_to_download_confirmation_message" = "You can cancel the download at any time.";

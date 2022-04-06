@@ -162,6 +162,13 @@ struct LocalizableStrings {
         static let remainingStorageErrorLabel = NSLocalizedString("podcast_preview_remaining_storage_error_label", comment: .empty)
         static let remainingStorageOverMinimumFreeStorageError = NSLocalizedString("remaining_storage_over_minimum_free_storage_error", comment: .empty)
         
+        struct EpisodeGroupList {
+            
+            static let episode = NSLocalizedString("podcast_preview_episode_group_list_episode_label_singular", comment: "")
+            static let episodes = NSLocalizedString("podcast_preview_episode_group_list_episode_label_plural", comment: "")
+            
+        }
+        
         struct Messages {
             
             static let readyToDownloadSingleEpisodeConfirmationTitle = NSLocalizedString("podcast_preview_messages_ready_to_download_single_episode_confirmation_title", comment: .empty)
