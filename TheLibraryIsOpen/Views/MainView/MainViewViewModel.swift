@@ -53,7 +53,7 @@ class MainViewViewModel: ObservableObject {
     }
     
     func sortPodcastsByTitleAscending() {
-        podcasts.sort(by: { $0.title < $1.title })
+        podcasts.sort(by: { $0.title.withoutDiacritics() < $1.title.withoutDiacritics() })
     }
     
     func sortPodcastsByTotalSizeDescending() {

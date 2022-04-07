@@ -147,9 +147,9 @@
 "archived_podcast_detail_unknown_last_checked_date" = "Inconnue";
 
 "archived_podcast_detail_export_all_button_label" = "Tout exporter vers...";
-"archived_podcast_detail_export_options_text" = "Veuillez sélectionner une destination";
-"archived_podcast_detail_export_options_files_option_name" = "Fichiers & iCloud Drive";
-"archived_podcast_detail_export_options_other_option_name" = "Autre (Google Disque, Dropbox, OneDrive) 🐢";
+"archived_podcast_detail_export_options_text" = "Sélectionner une destination";
+"archived_podcast_detail_export_options_files_option_name" = "Fichiers/iCloud Drive (plus rapide)";
+"archived_podcast_detail_export_options_other_option_name" = "Google Disque, Dropbox, OneDrive (plus lent)";
 
 "archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 épisode) (archivé dans %@)";
 "archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d épisodes) (archivé dans %@)";
