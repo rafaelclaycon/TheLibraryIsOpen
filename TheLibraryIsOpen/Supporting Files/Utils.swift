@@ -45,10 +45,19 @@ class Utils {
         
         var groups = [EpisodeGroup]()
         let dic = Dictionary(grouping: episodes, by: { $0.pubDate!.get(.year) })
-        for group in dic {
-            groups.append(EpisodeGroup(title: group.key, value: "\(group.value.count) episodes", episodes: group.value))
+        for item in dic {
+            groups.append(EpisodeGroup(year: item.key, episodes: item.value))
         }
-        groups.sort(by: { $0.title < $1.title })
+        
+        // Tag by relative weight
+        if groups.count > 1 {
+            groups.sort(by: { $0.size < $1.size })
+            groups[0].relativeWeight = .lightest
+            groups[groups.count - 1].relativeWeight = .heaviest
+        }
+        
+        // Sort for display
+        groups.sort(by: { $0.year < $1.year })
         
         return groups
     }
@@ -74,6 +83,24 @@ class Utils {
         }
         // Only episodes with the wrong reported size will have less than a MB.
         guard (totalSize / episodes.count) > 999999 else {
+            return .empty
+        }
+        if withSpaceAndParenteses {
+            return " (\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file)))"
+        }
+        return "\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))"
+    }
+    
+    static func getSizeOf(groups: [EpisodeGroup], withSpaceAndParenteses: Bool = true) -> String {
+        guard groups.count > 0 else {
+            return .empty
+        }
+        var totalSize = 0
+        for group in groups {
+            totalSize += group.size
+        }
+        // Only episodes/groups with the wrong reported size will have less than a MB.
+        guard (totalSize / groups.count) > 999999 else {
             return .empty
         }
         if withSpaceAndParenteses {

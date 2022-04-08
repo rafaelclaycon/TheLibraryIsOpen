@@ -7,11 +7,39 @@ class EpisodeGroupViewViewModel: ObservableObject {
 
     @Published var title: String
     @Published var subtitle: String
+    @Published var showWeightEmoji: Bool
+    @Published var weightEmoji: String = .empty
 
-    init(group: EpisodeGroup) {
+    init(group: EpisodeGroup, useWeightEmojis: Bool) {
         groupID = group.id
-        title = group.title
-        subtitle = group.value
+        title = group.year
+        
+        let groupSize = Utils.getSizeOf(episodes: group.episodes, withSpaceAndParenteses: false)
+        if group.episodes.count == 1 {
+            subtitle = LocalizableStrings.PodcastPreview.EpisodeGroupList.episode
+        } else {
+            var sizeString: String
+            if groupSize.isEmpty {
+                sizeString = .empty
+            } else {
+                sizeString = " ~ \(groupSize)"
+            }
+            subtitle = String(format: LocalizableStrings.PodcastPreview.EpisodeGroupList.episodes, group.episodes.count, sizeString)
+        }
+        
+        if useWeightEmojis {
+            showWeightEmoji = group.relativeWeight != .regular
+            switch group.relativeWeight {
+            case .lightest:
+                weightEmoji = "🪶"
+            case .heaviest:
+                weightEmoji = "🐷"
+            default:
+                weightEmoji = .empty
+            }
+        } else {
+            showWeightEmoji = false
+        }
     }
 
 }

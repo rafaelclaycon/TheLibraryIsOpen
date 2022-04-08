@@ -28,18 +28,33 @@ struct EpisodeGroupView: View {
                     .frame(width: 160, height: 100)
             }
             
-            VStack(alignment: .leading) {
-                Text(viewModel.title)
-                    .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
-                    .font(.title)
-                    .bold()
-                
-                Text(viewModel.subtitle)
-                    .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
-                    .font(.footnote)
+            if viewModel.showWeightEmoji {
+                Text(viewModel.weightEmoji)
+                    .font(.system(size: 34))
+                    .opacity(isSelected ? 1.0 : 0.6)
+                    .padding(.trailing, 105)
+                    .padding(.top, 55)
             }
-            .padding(.trailing, 60)
-            .padding(.bottom, 35)
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(viewModel.title)
+                        .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
+                        .font(.title)
+                        .bold()
+                    
+                    Text(viewModel.subtitle)
+                        .foregroundColor(isSelected ? selectedForegroundColor : unselectedForegroundColor)
+                        .font(.subheadline)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 12)
+                .padding(.top, 6)
+                
+                Spacer()
+            }
+            .frame(width: 160, height: 100)
             
             if isSelected {
                 RoundCheckbox(selected: .constant(true), style: .holePunch)
@@ -65,12 +80,26 @@ struct EpisodeGroupView: View {
 struct EpisodeGroupView_Previews: PreviewProvider {
 
     static var previews: some View {
+        let episodeA = Episode(filesize: 738_000_000)
+        let episodeB = Episode(filesize: 885_000_000)
+        let episodeC = Episode(filesize: 1_499_000_000)
+        let episodeD = Episode(filesize: 1_866_000_000)
+        
+        let alphaGroup = EpisodeGroup(id: "alpha", year: "2013", episodes: [episodeA], relativeWeight: .lightest)
+        let betaGroup = EpisodeGroup(id: "beta", year: "2014", episodes: [episodeA, episodeB]) // 18 ep ~ 2.5 GB
+        let gammaGroup = EpisodeGroup(id: "gamma", year: "2020", episodes: [episodeA, episodeB, episodeC]) // 52 ep ~ 6.81 GB
+        let deltaGroup = EpisodeGroup(id: "delta", year: "2021", episodes: [episodeA, episodeB, episodeC, episodeD], relativeWeight: .heaviest)
+        
         Group {
             // Unselected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(title: "2014", value: "18 episódios")), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: alphaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: betaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
             
             // Selected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: EpisodeGroup(id: "001", title: "2020", value: "52 episódios")), selectedItems: .constant(Set<String>(arrayLiteral: "001")))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: gammaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>(arrayLiteral: gammaGroup.id)))
+            
+            // Unselected
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: deltaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
         }
         .previewLayout(.fixed(width: 250, height: 120))
     }

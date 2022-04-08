@@ -8,6 +8,8 @@
 "most_recent_first" = "Recentes primeiro";
 "oldest_first" = "Antigos primeiro";
 "size_not_reported_by_author" = "Tamanho não informado pelo autor";
+"group" = "grupo";
+"groups" = "grupos";
 
 // Main View
 
@@ -27,7 +29,7 @@
 "main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d episódios arquivados";
 "main_view_podcast_row_exported_at" = "Exportado %@";
-"main_view_podcast_row_not_exported_yet" = "Ainda não exportado";
+"main_view_podcast_row_not_exported_yet" = "Não exportado";
 "main_view_podcast_row_no_size_information" = "Tamanho não informado";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Apagar";
 
@@ -119,6 +121,9 @@
 "podcast_preview_remaining_storage_error_label" = "Não foi possível obter o espaço livre.";
 "remaining_storage_over_minimum_free_storage_error" = "Não é possível continuar. %@ acima do armazenamento livre (%@). Libere espaço no dispositivo ou selecione menos episódios.";
 
+"podcast_preview_episode_group_list_episode_label_singular" = "1 ep%@";
+"podcast_preview_episode_group_list_episode_label_plural" = "%d ep%@";
+
 "podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Pronto para Baixar Um Único Episódio de '%@'?";
 "podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Pronto para Baixar %d Episódios de '%@'?";
 "podcast_preview_messages_ready_to_download_confirmation_message" = "Você pode cancelar o download a qualquer momento.";
@@ -144,9 +149,9 @@
 "archived_podcast_detail_unknown_last_checked_date" = "Desconhecida";
 
 "archived_podcast_detail_export_all_button_label" = "Exportar todos para...";
-"archived_podcast_detail_export_options_text" = "Por favor, selecione um destino";
-"archived_podcast_detail_export_options_files_option_name" = "Arquivos & iCloud Drive  🐇";
-"archived_podcast_detail_export_options_other_option_name" = "Outros (Google Drive, Dropbox, OneDrive) 🐢";
+"archived_podcast_detail_export_options_text" = "Selecione um destino";
+"archived_podcast_detail_export_options_files_option_name" = "Arquivos/iCloud Drive (mais rápido)";
+"archived_podcast_detail_export_options_other_option_name" = "Google Drive, Dropbox, OneDrive (mais lento)";
 
 "archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episódio) (arquivado em %@)";
 "archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episódios) (arquivado em %@)";

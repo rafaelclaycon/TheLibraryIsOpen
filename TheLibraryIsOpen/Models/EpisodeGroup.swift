@@ -3,25 +3,28 @@ import Foundation
 struct EpisodeGroup: Identifiable {
 
     var id: String
-    var title: String
-    var value: String
-    var isSelected: Bool
+    var year: String
     var episodes: [Episode]
+    var relativeWeight: EpisodeGroupRelativeWeight
+    var size: Int {
+        return Utils.getSizeInBytesOf(episodes)
+    }
     
-    init(id: String = UUID().uuidString, title: String, value: String) {
+    init(id: String = UUID().uuidString,
+         year: String,
+         episodes: [Episode] = [Episode](),
+         relativeWeight: EpisodeGroupRelativeWeight = .regular
+    ) {
         self.id = id
-        self.title = title
-        self.value = value
-        isSelected = false
-        episodes = [Episode]()
-    }
-    
-    init(title: String, value: String, episodes: [Episode]) {
-        id = UUID().uuidString
-        self.title = title
-        self.value = value
-        isSelected = false
+        self.year = year
         self.episodes = episodes
+        self.relativeWeight = relativeWeight
     }
+
+}
+
+enum EpisodeGroupRelativeWeight {
+
+    case lightest, regular, heaviest
 
 }
