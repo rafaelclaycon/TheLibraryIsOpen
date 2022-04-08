@@ -8,6 +8,8 @@
 "most_recent_first" = "Recentes primeiro";
 "oldest_first" = "Antigos primeiro";
 "size_not_reported_by_author" = "Tamanho não informado pelo autor";
+"group" = "grupo";
+"groups" = "grupos";
 
 // Main View
 

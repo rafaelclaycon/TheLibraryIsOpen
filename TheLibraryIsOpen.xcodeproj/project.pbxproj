@@ -54,6 +54,7 @@
 		D98A227B27C34AE8003F2B77 /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D98A227A27C34AE8003F2B77 /* ID3TagEditor */; };
 		D98D25552798E3AA006DAC22 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D25542798E3AA006DAC22 /* UserSettings.swift */; };
 		D98D25572798E56D006DAC22 /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D25562798E56D006DAC22 /* SettingsViewViewModel.swift */; };
+		D9908D3F280086FF009C8961 /* PodcastPreviewListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9908D3E280086FE009C8961 /* PodcastPreviewListType.swift */; };
 		D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99323412576931E00DB9A72 /* DataManagerTests.swift */; };
 		D997FC78278BB05F00F027CB /* ModernDataVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */; };
 		D999E62B27EF6A9E00E4B7F4 /* MockPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999E62A27EF6A9E00E4B7F4 /* MockPodcast.swift */; };
@@ -149,6 +150,7 @@
 		D98A227727C32737003F2B77 /* ArchivedEpisodeDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeDetailViewViewModel.swift; sourceTree = "<group>"; };
 		D98D25542798E3AA006DAC22 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		D98D25562798E56D006DAC22 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
+		D9908D3E280086FE009C8961 /* PodcastPreviewListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewListType.swift; sourceTree = "<group>"; };
 		D99323412576931E00DB9A72 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernDataVisualizer.swift; sourceTree = "<group>"; };
 		D999E62A27EF6A9E00E4B7F4 /* MockPodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPodcast.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				D98D25542798E3AA006DAC22 /* UserSettings.swift */,
 				D9838400279A924900E5DFAC /* DownloadOperationStatus.swift */,
 				D9CC03D5279C7D04009E90BC /* AlertType.swift */,
+				D9908D3E280086FE009C8961 /* PodcastPreviewListType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				D959E2F8278B434200D48EB1 /* GrowingArcIndicatorView.swift in Sources */,
 				D9A5A964277E53CB00AA1FCC /* EpisodeGroupView.swift in Sources */,
 				D93256BE27C2911A003DDA49 /* MP3MetadataExtractor.swift in Sources */,
+				D9908D3F280086FF009C8961 /* PodcastPreviewListType.swift in Sources */,
 				D9E56BEF278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift in Sources */,
 				D9F17F6B25F999BD00CF2530 /* Utils.swift in Sources */,
 				D94AEC482570BEE9001DEB9B /* MainView.swift in Sources */,

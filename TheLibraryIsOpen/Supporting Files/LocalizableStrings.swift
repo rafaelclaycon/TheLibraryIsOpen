@@ -9,6 +9,8 @@ struct LocalizableStrings {
     static let mostRecentFirst = NSLocalizedString("most_recent_first", comment: .empty);
     static let oldestFirst = NSLocalizedString("oldest_first", comment: .empty);
     static let sizeNotReportedByAuthor = NSLocalizedString("size_not_reported_by_author", comment: .empty)
+    static let group = NSLocalizedString("group", comment: .empty)
+    static let groups = NSLocalizedString("groups", comment: .empty)
     
     struct MainView {
         
