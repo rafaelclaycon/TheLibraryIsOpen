@@ -8,6 +8,8 @@
 "most_recent_first" = "Most recent first";
 "oldest_first" = "Oldest first";
 "size_not_reported_by_author" = "Size not reported by author";
+"group" = "group";
+"groups" = "groups";
 
 // Main View
 
@@ -119,6 +121,9 @@
 "podcast_preview_remaining_storage_error_label" = "Unable to obtain remaining storage.";
 "remaining_storage_over_minimum_free_storage_error" = "Unable to continue. %@ over free storage (%@). Either free up space on the device or select less episodes.";
 
+"podcast_preview_episode_group_list_episode_label_singular" = "1 ep%@";
+"podcast_preview_episode_group_list_episode_label_plural" = "%d ep%@";
+
 "podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Ready To Download a Single Episode of '%@'?";
 "podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Ready To Download %d Episodes of '%@'?";
 "podcast_preview_messages_ready_to_download_confirmation_message" = "You can cancel the download at any time.";
@@ -144,9 +149,9 @@
 "archived_podcast_detail_unknown_last_checked_date" = "Unknown";
 
 "archived_podcast_detail_export_all_button_label" = "Export all to...";
-"archived_podcast_detail_export_options_text" = "Please select a destination";
-"archived_podcast_detail_export_options_files_option_name" = "Files & iCloud Drive  🐇";
-"archived_podcast_detail_export_options_other_option_name" = "Other (Google Drive, Dropbox, OneDrive) 🐢";
+"archived_podcast_detail_export_options_text" = "Select a destination";
+"archived_podcast_detail_export_options_files_option_name" = "Files/iCloud Drive (faster)";
+"archived_podcast_detail_export_options_other_option_name" = "Google Drive, Dropbox, OneDrive (slower)";
 
 "archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episode) (archived in %@)";
 "archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episodes) (archived in %@)";

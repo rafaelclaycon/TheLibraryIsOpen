@@ -9,6 +9,8 @@ struct LocalizableStrings {
     static let mostRecentFirst = NSLocalizedString("most_recent_first", comment: .empty);
     static let oldestFirst = NSLocalizedString("oldest_first", comment: .empty);
     static let sizeNotReportedByAuthor = NSLocalizedString("size_not_reported_by_author", comment: .empty)
+    static let group = NSLocalizedString("group", comment: .empty)
+    static let groups = NSLocalizedString("groups", comment: .empty)
     
     struct MainView {
         
@@ -161,6 +163,13 @@ struct LocalizableStrings {
         static let remainingStoragePluralLabel = NSLocalizedString("podcast_preview_remaining_storage_plural_label", comment: .empty)
         static let remainingStorageErrorLabel = NSLocalizedString("podcast_preview_remaining_storage_error_label", comment: .empty)
         static let remainingStorageOverMinimumFreeStorageError = NSLocalizedString("remaining_storage_over_minimum_free_storage_error", comment: .empty)
+        
+        struct EpisodeGroupList {
+            
+            static let episode = NSLocalizedString("podcast_preview_episode_group_list_episode_label_singular", comment: "")
+            static let episodes = NSLocalizedString("podcast_preview_episode_group_list_episode_label_plural", comment: "")
+            
+        }
         
         struct Messages {
             

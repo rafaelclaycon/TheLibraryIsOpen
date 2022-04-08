@@ -2,7 +2,7 @@ import Combine
 import Foundation
 
 class PodcastPreviewViewModel: ObservableObject {
-    
+
     var podcast: Podcast
     var podcastPreviewDataManager: DataManager
     var deviceFreeStorage: Int
@@ -10,7 +10,7 @@ class PodcastPreviewViewModel: ObservableObject {
     @Published var title: String
     @Published var details: String
     @Published var artworkURL: String
-    @Published var displayEpisodeList: Bool = false
+    @Published var showLists: Bool = false
     
     // MARK: - Episode list variables
     @Published var episodes = [Episode]()
@@ -21,6 +21,7 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Year group list variables
     @Published var yearGroups = [EpisodeGroup]()
     @Published var yearGroupList_selectionKeeper = Set<String>()
+    @Published var showWeightEmojis: Bool
     
     // MARK: - Download Area variables
     @Published var downloadAllButtonTitle = String.empty
@@ -45,10 +46,11 @@ class PodcastPreviewViewModel: ObservableObject {
         
         self.podcastPreviewDataManager = podcastPreviewDataManager
         self.deviceFreeStorage = DeviceStorageInformation.freeSpaceInBytes()
+        self.showWeightEmojis = UserSettings.getShowWeightEmojisOnEpisodeGroupList()
         
         selectAllEpisodes()
-        updateDownloadButton(selectedIDs: Array(episodeList_selectionKeeper))
-        updateRemainingStorageLabel(selectedIDs: Array(episodeList_selectionKeeper))
+        updateDownloadButton_ForEpisodeList(selectedIDs: Array(episodeList_selectionKeeper))
+        updateRemainingStorageLabel_ForEpisodeList(selectedIDs: Array(episodeList_selectionKeeper))
         
         if (podcast.episodes?.count ?? 0) > 0 {
             if let groups = Utils.getEpisodesGroupedByYear(from: podcast.episodes!) {
@@ -56,7 +58,7 @@ class PodcastPreviewViewModel: ObservableObject {
             }
         }
         
-        displayEpisodeList = podcast.episodes?.count ?? 0 > 0
+        showLists = podcast.episodes?.count ?? 0 > 0
     }
     
     // MARK: - Select all methods
@@ -98,12 +100,18 @@ class PodcastPreviewViewModel: ObservableObject {
     }
     
     // MARK: - Download button methods
-    func updateDownloadAreaBasedOn(selectedIDs: [String]) {
-        updateDownloadButton(selectedIDs: selectedIDs)
-        updateRemainingStorageLabel(selectedIDs: selectedIDs)
+    func updateDownloadAreaBasedOn(selectedIDs: [String], listType: PodcastPreviewListType) {
+        if listType == .episodeList {
+            updateDownloadButton_ForEpisodeList(selectedIDs: selectedIDs)
+            updateRemainingStorageLabel_ForEpisodeList(selectedIDs: selectedIDs)
+        } else {
+            updateDownloadButton_ForYearGroupList(selectedIDs: selectedIDs)
+            updateRemainingStorageLabel_ForYearGroupList(selectedIDs: selectedIDs)
+        }
     }
     
-    func updateDownloadButton(selectedIDs: [String]) {
+    // MARK: - Download button methods - Episode list
+    func updateDownloadButton_ForEpisodeList(selectedIDs: [String]) {
         let selectedEpisodes = episodes.filter {
             selectedIDs.contains($0.id)
         }
@@ -116,7 +124,7 @@ class PodcastPreviewViewModel: ObservableObject {
         }
     }
     
-    func updateRemainingStorageLabel(selectedIDs: [String]) {
+    func updateRemainingStorageLabel_ForEpisodeList(selectedIDs: [String]) {
         let selectedEpisodes = episodes.filter {
             selectedIDs.contains($0.id)
         }
@@ -126,6 +134,45 @@ class PodcastPreviewViewModel: ObservableObject {
         }
         
         let remaining = deviceFreeStorage - selectedEpisodesSize
+        
+        guard remaining > 0 else {
+            downloadButtonIsActive = false
+            
+            let overLimitValue = abs(remaining)
+            let overLimitValueString = Utils.getFormattedFileSize(of: overLimitValue)
+            let deviceFreeStorageString = Utils.getFormattedFileSize(of: deviceFreeStorage)
+            return remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStorageOverMinimumFreeStorageError, overLimitValueString, deviceFreeStorageString)
+        }
+        
+        let remainingSpaceString = Utils.getFormattedFileSize(of: remaining)
+        downloadButtonIsActive = true
+        remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStoragePluralLabel, remainingSpaceString)
+    }
+    
+    // MARK: - Download button methods - Year group list
+    func updateDownloadButton_ForYearGroupList(selectedIDs: [String]) {
+        let selectedGroups = yearGroups.filter {
+            selectedIDs.contains($0.id)
+        }
+        if selectedGroups.count == 0 {
+            downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadButtonJustAddTitle
+        } else if selectedGroups.count == 1 {
+            downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " 1 " + LocalizableStrings.group + Utils.getSizeOf(groups: selectedGroups)
+        } else {
+            downloadAllButtonTitle = LocalizableStrings.PodcastPreview.downloadEpisodesButtonTitle + " \(selectedGroups.count) " + LocalizableStrings.groups + Utils.getSizeOf(groups: selectedGroups)
+        }
+    }
+    
+    func updateRemainingStorageLabel_ForYearGroupList(selectedIDs: [String]) {
+        let selectedGroups = yearGroups.filter {
+            selectedIDs.contains($0.id)
+        }
+        var selectedGroupsSize = 0
+        for group in selectedGroups {
+            selectedGroupsSize = selectedGroupsSize + group.size
+        }
+        
+        let remaining = deviceFreeStorage - selectedGroupsSize
         
         guard remaining > 0 else {
             downloadButtonIsActive = false

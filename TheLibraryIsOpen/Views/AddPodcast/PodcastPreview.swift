@@ -4,7 +4,7 @@ import SwiftUI
 struct PodcastPreview: View {
 
     @StateObject var viewModel: PodcastPreviewViewModel
-    @State private var pageIndex = 0
+    @State private var selectedList = PodcastPreviewListType.episodeList.rawValue
     @Binding var isShowingAddPodcastModal: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
@@ -21,43 +21,57 @@ struct PodcastPreview: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 15) {                
-                KFImage(URL(string: viewModel.artworkURL))
-                    .placeholder {
-                        Image(systemName: "headphones")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                            .foregroundColor(.gray)
+            // Header
+            if selectedList == PodcastPreviewListType.episodeList.rawValue {
+                HStack(spacing: 15) {
+                    KFImage(URL(string: viewModel.artworkURL))
+                        .placeholder {
+                            Image(systemName: "headphones")
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(.gray)
+                        }
+                        .resizable()
+                        .frame(width: artworkSize, height: artworkSize)
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(viewModel.title)
+                            .font(.title3)
+                            .bold()
+                        Text(viewModel.details)
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 2)
                     }
-                    .resizable()
-                    .frame(width: artworkSize, height: artworkSize)
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(viewModel.title)
-                        .font(.title3)
-                        .bold()
-                    Text(viewModel.details)
-                        .font(.subheadline)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 2)
                 }
+                .padding(.top, 5)
+                .padding(.leading, 5)
+                .padding(.trailing, 15)
+            } else {
+                Text(viewModel.title)
+                    .font(.title3)
+                    .bold()
             }
-            .padding(.top, 5)
-            .padding(.leading, 5)
-            .padding(.trailing, 15)
             
             if viewModel.yearGroups.count > 0 {
-                Picker(selection: $pageIndex, label: Text("Grouped by")) {
+                Picker(selection: $selectedList, label: Text("Grouped by")) {
                     Text(LocalizableStrings.PodcastPreview.episodeList).tag(0)
                     Text(LocalizableStrings.PodcastPreview.groupedByYear).tag(1)
                 }
-                .disabled(viewModel.displayEpisodeList == false)
+                .disabled(viewModel.showLists == false)
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 25)
                 .padding(.top, 7)
+                .onChange(of: selectedList) { newValue in
+                    if newValue == PodcastPreviewListType.episodeList.rawValue {
+                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.episodeList_selectionKeeper), listType: .episodeList)
+                    } else {
+                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.yearGroupList_selectionKeeper), listType: .yearGroupList)
+                    }
+                }
             }
             
-            if viewModel.displayEpisodeList && (pageIndex == 0) {
+            if viewModel.showLists {
                 HStack(spacing: 20) {
                     Button(action: {
                         viewModel.toggleEpisodeListSorting()
@@ -90,8 +104,8 @@ struct PodcastPreview: View {
             Divider()
 
             // List
-            if viewModel.displayEpisodeList {
-                if pageIndex == 0 {
+            if viewModel.showLists {
+                if selectedList == PodcastPreviewListType.episodeList.rawValue {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.episodes, id: \.id) { episode in
@@ -101,16 +115,19 @@ struct PodcastPreview: View {
                         }
                     }
                     .onChange(of: viewModel.episodeList_selectionKeeper) { value in
-                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.episodeList_selectionKeeper))
+                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.episodeList_selectionKeeper), listType: .episodeList)
                     }
-                } else if pageIndex == 1 {
+                } else if selectedList == PodcastPreviewListType.yearGroupList.rawValue {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.yearGroups, id: \.id) { group in
-                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group), selectedItems: $viewModel.yearGroupList_selectionKeeper)
+                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group, useWeightEmojis: viewModel.showWeightEmojis), selectedItems: $viewModel.yearGroupList_selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
+                    }
+                    .onChange(of: viewModel.yearGroupList_selectionKeeper) { value in
+                        viewModel.updateDownloadAreaBasedOn(selectedIDs: Array(viewModel.yearGroupList_selectionKeeper), listType: .yearGroupList)
                     }
                 }
             } else {
