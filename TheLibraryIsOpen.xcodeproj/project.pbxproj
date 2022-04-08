@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D900DC0D27A465C4002BED98 /* Zipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DC0C27A465C4002BED98 /* Zipper.swift */; };
+		D9089ABB27FF5F4800FDE542 /* BreathingOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9089ABA27FF5F4800FDE542 /* BreathingOrb.swift */; };
 		D90AC9AC27C1E437003DCA6B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AC9AB27C1E437003DCA6B /* FileManager+Extensions.swift */; };
 		D911845C25736024008DB977 /* LocalDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845B25736024008DB977 /* LocalDatabaseTests.swift */; };
 		D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911845F2573612B008DB977 /* FeedHelperTests.swift */; };
@@ -105,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		D900DC0C27A465C4002BED98 /* Zipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zipper.swift; sourceTree = "<group>"; };
+		D9089ABA27FF5F4800FDE542 /* BreathingOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingOrb.swift; sourceTree = "<group>"; };
 		D90AC9AB27C1E437003DCA6B /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		D911845B25736024008DB977 /* LocalDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseTests.swift; sourceTree = "<group>"; };
 		D911845F2573612B008DB977 /* FeedHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelperTests.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				D959E2F7278B434200D48EB1 /* GrowingArcIndicatorView.swift */,
 				D997FC77278BB05F00F027CB /* ModernDataVisualizer.swift */,
 				D9E91540279884450024E45F /* FlatBackgroundButtonStyle.swift */,
+				D9089ABA27FF5F4800FDE542 /* BreathingOrb.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */,
 				D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */,
+				D9089ABB27FF5F4800FDE542 /* BreathingOrb.swift in Sources */,
 				D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */,
 				D9A5A968277E65AE00AA1FCC /* EpisodeGroup.swift in Sources */,
 				D900DC0D27A465C4002BED98 /* Zipper.swift in Sources */,

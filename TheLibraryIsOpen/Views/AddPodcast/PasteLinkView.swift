@@ -15,12 +15,27 @@ struct PasteLinkView: View {
                     VStack {
                         NavigationLink(destination: PodcastPreview(viewModel: viewModel.podcastDetailViewModel, isShowingAddPodcastModal: $isBeingShown, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), isActive: $viewModel.isShowingPodcastPreview) { EmptyView() }
                         
-                        Text("Copy link and return here")
+                        BreathingOrb()
+                            .padding(.vertical)
+                            //.scaleEffect(animationAmount)
+                            //.animation(.default, value: animationAmount)
                         
-                        Button("Inspect Pasteboard", action: {
+                        Text("Looking for podcast link in pasteboard...")
+                            .font(.subheadline)
+                        
+                        Text("Copy link and return here")
+                            .font(.body)
+                            .bold()
+                            .padding()
+                        
+                        Spacer()
+                        
+                        Button("Manually Inspect Pasteboard", action: {
                             viewModel.inspectPasteboard()
+                            //animationAmount += 0.1
                         })
-                        .buttonStyle(PillButtonStyle())
+                        .tint(.accentColor)
+                        .buttonStyle(.bordered)
                         
                         Text(viewModel.pasteboardContents)
                             .padding()
