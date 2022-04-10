@@ -19,7 +19,7 @@ struct PodcastRow: View {
                 .resizable()
                 .frame(width: artworkSize, height: artworkSize)
 
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(viewModel.podcastTitle)
                     .font(.body)
                     .bold()
@@ -31,22 +31,10 @@ struct PodcastRow: View {
                     .padding(.leading, 15)
                 
                 if viewModel.wasExported {
-                    HStack(spacing: 7) {
-                        Image(systemName: "checkmark.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 15)
-                            .foregroundColor(.green)
-                        
-                        Text(viewModel.wasExportedLine)
-                            .font(.footnote)
-                            .foregroundColor(.green)
-                    }
-                    .padding(.leading, 15)
+                    Tag(text: viewModel.wasExportedLine, color: .green)
+                        .padding(.leading, 15)
                 } else {
-                    Text(viewModel.wasExportedLine)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                    Tag(text: viewModel.wasExportedLine, color: .gray)
                         .padding(.leading, 15)
                 }
             }
@@ -67,7 +55,7 @@ struct PodcastCell_Previews: PreviewProvider {
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-4 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
             PodcastRow(viewModel: PodcastRowViewModel(podcast: Podcast(id: 2, title: "Accidental Tech Podcast", author: "Marco Arment, Casey Liss, John Siracusa", exportedIn: Date().addingTimeInterval(-30 * 24 * 60 * 60))), subtitleInfoOption: .constant(1))
         }
-        .previewLayout(.fixed(width: 300, height: 70))
+        .previewLayout(.fixed(width: 380, height: 100))
     }
 
 }
