@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 
 class MainViewViewModel: ObservableObject {
     
@@ -6,6 +7,7 @@ class MainViewViewModel: ObservableObject {
     @Published var displayPodcastList: Bool = false
     @Published var sortOption: Int
     @Published var viewOption: Int
+    @Published var totalSize: String
     
     // Alerts
     @Published var alertTitle: String = .empty
@@ -18,7 +20,8 @@ class MainViewViewModel: ObservableObject {
         self.podcasts = podcasts
         sortOption = UserSettings.getArchiveSortOption()
         viewOption = UserSettings.getArchiveRowAdditionalInfoToShowOption()
-        displayPodcastList = self.podcasts.count > 0
+        totalSize = .empty
+        displayPodcastList = podcasts.count > 0
         updateList()
     }
 
@@ -36,6 +39,12 @@ class MainViewViewModel: ObservableObject {
                 } else {
                     sortPodcastsByTotalSizeDescending()
                 }
+                
+                var localTotalSize: Int = 0
+                for podcast in podcastsFromDB {
+                    localTotalSize += podcast.totalSize == nil ? 0 : podcast.totalSize!
+                }
+                totalSize = String(format: LocalizableStrings.MainView.totalDeviceSpaceTaken, Utils.getFormattedFileSize(of: localTotalSize))
                 
                 displayPodcastList = true
             } else {

@@ -10,11 +10,14 @@
 "size_not_reported_by_author" = "Tamanho não informado pelo autor";
 "group" = "grupo";
 "groups" = "grupos";
+"unknown_title" = "Sem Título";
+"unknown_author" = "Autor Desconhecido";
 
 // Main View
 
 "main_view_title" = "Meu Arquivo";
 "main_view_add_podcast_button_label" = "Adicionar";
+"main_view_total_device_space_taken" = "%@ ocupados no total";
 
 "main_view_empty_state_view_title" = "Nenhum Podcast Arquivado";
 "main_view_empty_state_view_description" = "Para arquivar um novo podcast, toque em Adicionar no canto superior direito da tela.";
@@ -25,9 +28,7 @@
 "main_view_list_options_show_episode_count" = "Mostrar Quantidade de Episódios";
 "main_view_list_options_show_total_size" = "Mostrar Espaço Ocupado";
 
-"main_view_podcast_row_episode_count_no_episodes" = "Nenhum episódio arquivado";
-"main_view_podcast_row_episode_count_single_episode" = "1 episódio arquivado";
-"main_view_podcast_row_episode_count_multiple_episodes" = "%d episódios arquivados";
+"main_view_podcast_row_episode_count_multiple_episodes" = "%d/%d ✓";
 "main_view_podcast_row_exported_at" = "Exportado %@";
 "main_view_podcast_row_not_exported_yet" = "Não exportado";
 "main_view_podcast_row_no_size_information" = "Tamanho não informado";
@@ -97,6 +98,7 @@
 "paste_link_view_title" = "Obter Episódios";
 "paste_link_view_step6" = "6. Cole o link do podcast aqui:";
 "paste_link_view_process_link_button_label" = "Processar Link";
+"paste_link_view_look_for_link_button_label" = "Procurar Link na Área de Transferência";
 "paste_link_view_loader_label" = "Processando link...";
 
 "paste_link_view_spotify_links_not_supported_warning_title" = "Links do Spotify Não São Suportados";
@@ -131,6 +133,7 @@
 
 // Archived Podcast Detail
 
+"archived_podcast_detail_options_publication_date" = "Data de Publicação";
 "archived_podcast_detail_options_show_downloaded_episodes_only" = "Apenas Episódios Baixados";
 "archived_podcast_detail_options_show_all_episodes" = "Todos os Episódios";
 "archived_podcast_detail_options_look_for_new_episodes" = "Procurar Novos Episódios";
@@ -143,6 +146,7 @@
 "archived_podcast_detail_download_summary_message_single_episode" = "Baixando 1 episódio...";
 "archived_podcast_detail_download_summary_message_multiple_episodes" = "Baixando %d episódios...";
 
+"archived_podcast_detail_info_downloaded_episodes" = "Baixados";
 "archived_podcast_detail_total_size" = "Espaço ocupado";
 "archived_podcast_detail_unknown_total_size" = "Desconhecido";
 "archived_podcast_detail_last_checked" = "Última consulta";

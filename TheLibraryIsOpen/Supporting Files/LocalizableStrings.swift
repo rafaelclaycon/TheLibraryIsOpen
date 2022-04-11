@@ -11,11 +11,14 @@ struct LocalizableStrings {
     static let sizeNotReportedByAuthor = NSLocalizedString("size_not_reported_by_author", comment: .empty)
     static let group = NSLocalizedString("group", comment: .empty)
     static let groups = NSLocalizedString("groups", comment: .empty)
+    static let unknownTitle = NSLocalizedString("unknown_title", comment: .empty)
+    static let unknownAuthor = NSLocalizedString("unknown_author", comment: .empty)
     
     struct MainView {
         
         static let title = NSLocalizedString("main_view_title", comment: .empty)
         static let addPodcastButtonLabel = NSLocalizedString("main_view_add_podcast_button_label", comment: .empty)
+        static let totalDeviceSpaceTaken = NSLocalizedString("main_view_total_device_space_taken", comment: .empty)
         
         struct EmptyStateView {
             
@@ -138,6 +141,7 @@ struct LocalizableStrings {
         static let title = NSLocalizedString("paste_link_view_title", comment: .empty)
         static let step6 = NSLocalizedString("paste_link_view_step6", comment: .empty)
         static let processLinkButtonLabel = NSLocalizedString("paste_link_view_process_link_button_label", comment: .empty)
+        static let lookForLinkButtonLabel = NSLocalizedString("paste_link_view_look_for_link_button_label", comment: .empty)
         static let loaderLabel = NSLocalizedString("paste_link_view_loader_label", comment: .empty)
         
         static let spotifyLinksNotSupportedWarningTitle = NSLocalizedString("paste_link_view_spotify_links_not_supported_warning_title", comment: .empty)
@@ -187,6 +191,7 @@ struct LocalizableStrings {
         
         struct Options {
             
+            static let publicationDate = NSLocalizedString("archived_podcast_detail_options_publication_date", comment: .empty)
             static let showDownloadedEpisodesOnly = NSLocalizedString("archived_podcast_detail_options_show_downloaded_episodes_only", comment: .empty)
             static let showAllEpisodes = NSLocalizedString("archived_podcast_detail_options_show_all_episodes", comment: .empty)
             static let lookForNewEpisodes = NSLocalizedString("archived_podcast_detail_options_look_for_new_episodes", comment: .empty)
@@ -211,6 +216,7 @@ struct LocalizableStrings {
         
         struct Info {
             
+            static let downloadedEpisodes = NSLocalizedString("archived_podcast_detail_info_downloaded_episodes", comment: .empty)
             static let totalSize = NSLocalizedString("archived_podcast_detail_total_size", comment: .empty)
             static let unknownTotalSize = NSLocalizedString("archived_podcast_detail_unknown_total_size", comment: .empty)
             static let lastChecked = NSLocalizedString("archived_podcast_detail_last_checked", comment: .empty)

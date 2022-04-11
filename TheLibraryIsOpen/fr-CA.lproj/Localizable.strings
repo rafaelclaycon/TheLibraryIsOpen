@@ -10,11 +10,14 @@
 "size_not_reported_by_author" = "Taille non signalée par l'auteur";
 "group" = "groupe";
 "groups" = "groupes";
+"unknown_title" = "Titre Inconnu";
+"unknown_author" = "Auteur Inconnu";
 
 // Main View
 
 "main_view_title" = "Mes Archives";
 "main_view_add_podcast_button_label" = "Ajouter";
+"main_view_total_device_space_taken" = "%@ occupés au total";
 
 "main_view_empty_state_view_title" = "Aucun podcast archivé";
 "main_view_empty_state_view_description" = "Pour archiver un nouveau podcast, appuyez sur le bouton Ajouter en haut de l'écran.";
@@ -25,10 +28,8 @@
 "main_view_list_options_show_episode_count" = "Afficher le Nombre D'Épisodes";
 "main_view_list_options_show_total_size" = "Afficher la Taille Totale";
 
-"main_view_podcast_row_episode_count_no_episodes" = "Aucun épisode archivé";
-"main_view_podcast_row_episode_count_single_episode" = "1 épisode archivé";
-"main_view_podcast_row_episode_count_multiple_episodes" = "%d épisodes archivés";
-"main_view_podcast_row_exported_at" = "Dernière exportation %@";
+"main_view_podcast_row_episode_count_multiple_episodes" = "%d/%d ✓";
+"main_view_podcast_row_exported_at" = "Exporté il y a %@";
 "main_view_podcast_row_not_exported_yet" = "Pas encore exporté";
 "main_view_podcast_row_no_size_information" = "Informations sur la taille non disponibles";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Supprimer";
@@ -97,6 +98,7 @@
 "paste_link_view_title" = "Obtenir des Épisodes";
 "paste_link_view_step6" = "6. Collez le lien du podcast ici:";
 "paste_link_view_process_link_button_label" = "Traiter le Lien";
+"paste_link_view_look_for_link_button_label" = "Rechercher le Lien Dans le Presse-papiers";
 "paste_link_view_loader_label" = "Traitement le lien...";
 
 "paste_link_view_spotify_links_not_supported_warning_title" = "Les Liens Spotify Ne Sont Pas Pris en Charge";
@@ -131,6 +133,7 @@
 
 // Archived Podcast Detail
 
+"archived_podcast_detail_options_publication_date" = "Date de Publication";
 "archived_podcast_detail_options_show_downloaded_episodes_only" = "Épisodes Téléchargés Uniquement";
 "archived_podcast_detail_options_show_all_episodes" = "Tous Les Épisodes";
 "archived_podcast_detail_options_look_for_new_episodes" = "Vérifiez Les Nouveaux Épisodes";
@@ -143,6 +146,7 @@
 "archived_podcast_detail_download_summary_message_single_episode" = "Téléchargement de 1 épisode...";
 "archived_podcast_detail_download_summary_message_multiple_episodes" = "Téléchargement de %d épisodes...";
 
+"archived_podcast_detail_info_downloaded_episodes" = "Téléchargé";
 "archived_podcast_detail_total_size" = "Taille totale";
 "archived_podcast_detail_unknown_total_size" = "Inconnue";
 "archived_podcast_detail_last_checked" = "Dernière vérification";

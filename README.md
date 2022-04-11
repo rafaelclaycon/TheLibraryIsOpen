@@ -16,17 +16,18 @@ Podcasts started as an [open directory of shows](https://en.wikipedia.org/wiki/H
 - [x] Get episode list
 - [x] Download episodes
 - [x] Store downloaded episodes in a ZIP file
-- [x] Upload the zipped file to iCloud Drive (and later expand to more cloud providers, e. g., Google Drive)
+- [x] Upload the zipped file to iCloud Drive (other cloud providers - e. g., Google Drive - supported through their Share Sheet extension)
 
 ### The extra mile
 
+- [x] Get podcast feed URL from third-party players' share link (Castro, Overcast and Pocket Casts supported)
 - [x] Give specific Get Link instructions based on the podcast player the archiver uses
 - [x] Show download progress for each episode
 - [x] Upload the zipped file to Google Drive
 - [x] Deleting podcasts from the archive
 - [ ] Let the user cancel the whole download with a single click
-- [ ] Persist the archive between runs nicely
-- [ ] Show user full history of exports and downloads
+- [x] Persist the archive between runs nicely
+- [-] Show user full history of exports and downloads
 - [ ] Keep a big download going in the background
 - [ ] Let the user check for new episodes after adding a podcast to the archive
 

@@ -121,7 +121,7 @@ struct PodcastPreview: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.yearGroups, id: \.id) { group in
-                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group, useWeightEmojis: viewModel.showWeightEmojis), selectedItems: $viewModel.yearGroupList_selectionKeeper)
+                                EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: group), selectedItems: $viewModel.yearGroupList_selectionKeeper)
                                     .padding(.vertical, 5)
                             }
                         }
