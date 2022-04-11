@@ -10,11 +10,14 @@
 "size_not_reported_by_author" = "Size not reported by author";
 "group" = "group";
 "groups" = "groups";
+"unknown_title" = "Unknown Title";
+"unknown_author" = "Unknown Author";
 
 // Main View
 
 "main_view_title" = "My Archive";
 "main_view_add_podcast_button_label" = "Add Podcast";
+"main_view_total_device_space_taken" = "%@ taken in total";
 
 "main_view_empty_state_view_title" = "No Archived Podcasts";
 "main_view_empty_state_view_description" = "To archive a new podcast, tap the Add Podcast button at the top of the screen.";
@@ -25,9 +28,7 @@
 "main_view_list_options_show_episode_count" = "Show Episode Count";
 "main_view_list_options_show_total_size" = "Show Total Size";
 
-"main_view_podcast_row_episode_count_no_episodes" = "No archived episodes";
-"main_view_podcast_row_episode_count_single_episode" = "1 archived episode";
-"main_view_podcast_row_episode_count_multiple_episodes" = "%d archived episodes";
+"main_view_podcast_row_episode_count_multiple_episodes" = "%d/%d ✓";
 "main_view_podcast_row_exported_at" = "Exported %@";
 "main_view_podcast_row_not_exported_yet" = "Not exported yet";
 "main_view_podcast_row_no_size_information" = "Size info not available";
@@ -97,6 +98,7 @@
 "paste_link_view_title" = "Get Episodes";
 "paste_link_view_step6" = "6. Paste the podcast link here:";
 "paste_link_view_process_link_button_label" = "Process Link";
+"paste_link_view_look_for_link_button_label" = "Look for Link in Pasteboard";
 "paste_link_view_loader_label" = "Processing link...";
 
 "paste_link_view_spotify_links_not_supported_warning_title" = "Spotify Links Are Not Supported";

@@ -11,11 +11,14 @@ struct LocalizableStrings {
     static let sizeNotReportedByAuthor = NSLocalizedString("size_not_reported_by_author", comment: .empty)
     static let group = NSLocalizedString("group", comment: .empty)
     static let groups = NSLocalizedString("groups", comment: .empty)
+    static let unknownTitle = NSLocalizedString("unknown_title", comment: .empty)
+    static let unknownAuthor = NSLocalizedString("unknown_author", comment: .empty)
     
     struct MainView {
         
         static let title = NSLocalizedString("main_view_title", comment: .empty)
         static let addPodcastButtonLabel = NSLocalizedString("main_view_add_podcast_button_label", comment: .empty)
+        static let totalDeviceSpaceTaken = NSLocalizedString("main_view_total_device_space_taken", comment: .empty)
         
         struct EmptyStateView {
             
@@ -138,6 +141,7 @@ struct LocalizableStrings {
         static let title = NSLocalizedString("paste_link_view_title", comment: .empty)
         static let step6 = NSLocalizedString("paste_link_view_step6", comment: .empty)
         static let processLinkButtonLabel = NSLocalizedString("paste_link_view_process_link_button_label", comment: .empty)
+        static let lookForLinkButtonLabel = NSLocalizedString("paste_link_view_look_for_link_button_label", comment: .empty)
         static let loaderLabel = NSLocalizedString("paste_link_view_loader_label", comment: .empty)
         
         static let spotifyLinksNotSupportedWarningTitle = NSLocalizedString("paste_link_view_spotify_links_not_supported_warning_title", comment: .empty)

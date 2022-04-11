@@ -5,7 +5,7 @@ struct PodcastRow: View {
 
     @StateObject var viewModel = PodcastRowViewModel()
     @Binding var subtitleInfoOption: Int
-    private let artworkSize: CGFloat = 75
+    private let artworkSize: CGFloat = 90
 
     var body: some View {
         HStack {
@@ -17,29 +17,21 @@ struct PodcastRow: View {
                         .foregroundColor(.gray)
                 }
                 .resizable()
-                .frame(width: artworkSize, height: artworkSize)
-
+                .frame(maxWidth: artworkSize, maxHeight: artworkSize)
+            
             VStack(alignment: .leading, spacing: 8) {
                 Text(viewModel.podcastTitle)
                     .font(.body)
                     .bold()
-                    .padding(.leading, 15)
                 
-                Text(subtitleInfoOption == 0 ? viewModel.episodeCountText : viewModel.totalSizeText)
-                    .font(.footnote)
+                Text(viewModel.episodeCountText + "  ·  " + viewModel.totalSizeText)
+                    .font(.subheadline)
                     .foregroundColor(.gray)
-                    .padding(.leading, 15)
                 
-                if viewModel.wasExported {
-                    Tag(text: viewModel.wasExportedLine, color: .green)
-                        .padding(.leading, 15)
-                } else {
-                    Tag(text: viewModel.wasExportedLine, color: .gray)
-                        .padding(.leading, 15)
-                }
+                Tag(text: viewModel.wasExportedLine, color: viewModel.wasExported ? .green : .gray)
+                    .padding(.top, 2)
             }
-
-            Spacer()
+            .padding(.leading, 10)
         }
     }
 

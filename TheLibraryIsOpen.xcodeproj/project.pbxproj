@@ -71,8 +71,8 @@
 		D9CC03D6279C7D04009E90BC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D5279C7D04009E90BC /* AlertType.swift */; };
 		D9CC03D8279C8500009E90BC /* InternalDirectoryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D7279C8500009E90BC /* InternalDirectoryNames.swift */; };
 		D9D2D53925FBB8CC0099AE42 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */; };
-		D9D2D53F25FBE3CA0099AE42 /* PasteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */; };
-		D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */; };
+		D9D2D53F25FBE3CA0099AE42 /* GetLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D53E25FBE3CA0099AE42 /* GetLinkView.swift */; };
+		D9D2D54325FBE42F0099AE42 /* GetLinkViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D54225FBE42F0099AE42 /* GetLinkViewViewModel.swift */; };
 		D9D2D55725FC4D8E0099AE42 /* PillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */; };
 		D9D3DB7F256E7BC00035560E /* TheLibraryIsOpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */; };
 		D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DB80256E7BC00035560E /* GetLinkInstructionsView.swift */; };
@@ -168,8 +168,8 @@
 		D9CC03D5279C7D04009E90BC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		D9CC03D7279C8500009E90BC /* InternalDirectoryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDirectoryNames.swift; sourceTree = "<group>"; };
 		D9D2D53825FBB8CC0099AE42 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
-		D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLinkView.swift; sourceTree = "<group>"; };
-		D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLinkViewViewModel.swift; sourceTree = "<group>"; };
+		D9D2D53E25FBE3CA0099AE42 /* GetLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLinkView.swift; sourceTree = "<group>"; };
+		D9D2D54225FBE42F0099AE42 /* GetLinkViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLinkViewViewModel.swift; sourceTree = "<group>"; };
 		D9D2D55625FC4D8E0099AE42 /* PillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButtonStyle.swift; sourceTree = "<group>"; };
 		D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheLibraryIsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3DB7E256E7BC00035560E /* TheLibraryIsOpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLibraryIsOpenApp.swift; sourceTree = "<group>"; };
@@ -322,8 +322,8 @@
 				D9CA094927964636001DE371 /* PlayerPickerView.swift */,
 				D91823A42798570800193ECB /* UnfortunatelyView.swift */,
 				D9D3DB80256E7BC00035560E /* GetLinkInstructionsView.swift */,
-				D9D2D53E25FBE3CA0099AE42 /* PasteLinkView.swift */,
-				D9D2D54225FBE42F0099AE42 /* PasteLinkViewViewModel.swift */,
+				D9D2D53E25FBE3CA0099AE42 /* GetLinkView.swift */,
+				D9D2D54225FBE42F0099AE42 /* GetLinkViewViewModel.swift */,
 				D9D3DBE1256EA2AE0035560E /* PodcastPreview.swift */,
 				D92A44C2256F0B6B00731EEF /* PodcastPreviewViewModel.swift */,
 				D91AC97225F51CCE0086396D /* ProcessingView.swift */,
@@ -619,7 +619,7 @@
 				D9D3DB81256E7BC00035560E /* GetLinkInstructionsView.swift in Sources */,
 				D997FC78278BB05F00F027CB /* ModernDataVisualizer.swift in Sources */,
 				D90AC9AC27C1E437003DCA6B /* FileManager+Extensions.swift in Sources */,
-				D9D2D54325FBE42F0099AE42 /* PasteLinkViewViewModel.swift in Sources */,
+				D9D2D54325FBE42F0099AE42 /* GetLinkViewViewModel.swift in Sources */,
 				D99E36AF2803660800A65F96 /* Tag.swift in Sources */,
 				D940AD0127831E3000DF7549 /* RoundCheckbox.swift in Sources */,
 				D92A44C3256F0B6B00731EEF /* PodcastPreviewViewModel.swift in Sources */,
@@ -634,7 +634,7 @@
 				D9BADD0A279C99DC00CF2C27 /* FileSystemOperations.swift in Sources */,
 				D94A05FA2572CB4E0065AE2C /* TheLibraryIsOpenService.swift in Sources */,
 				D94A05ED257286C60065AE2C /* DateTime+Extensions.swift in Sources */,
-				D9D2D53F25FBE3CA0099AE42 /* PasteLinkView.swift in Sources */,
+				D9D2D53F25FBE3CA0099AE42 /* GetLinkView.swift in Sources */,
 				D9D3DBE8256EBB510035560E /* FeedHelper.swift in Sources */,
 				D975B2AB278DD29900BEBB6B /* SettingsView.swift in Sources */,
 				D95E798C2790D7B200115606 /* LinkWizard.swift in Sources */,

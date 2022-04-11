@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class Utils {
 
@@ -117,6 +117,13 @@ class Utils {
         var isDirectory = ObjCBool(true)
         let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
         return exists && isDirectory.boolValue
+    }
+    
+    static func deviceHasTopNotch() -> Bool {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+        }
+        return false
     }
 
 }
