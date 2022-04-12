@@ -40,7 +40,7 @@ struct ArchivedPodcastDetailView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Text("Nenhum Episódio")
+                            Text("No episodes")
                             Spacer()
                         }
                         Spacer()
@@ -98,7 +98,7 @@ struct ArchivedPodcastDetailView: View {
                 // MARK: - Info
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        ModernDataVisualizer(title: LocalizableStrings.episodes, imageName: "play.circle", value: viewModel.episodeCount)
+                        ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.Info.downloadedEpisodes, imageName: "play.circle", value: viewModel.episodeCount)
                         Divider()
                             .fixedSize()
                         ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.Info.totalSize, imageName: "tray.full", value: viewModel.totalFilesize)
@@ -192,7 +192,7 @@ struct ArchivedPodcastDetailView: View {
                     Button(action: {
                         viewModel.toggleEpisodeListSorting()
                     }) {
-                        Label("Data de Publicação", systemImage: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down" : "chevron.up")
+                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.publicationDate, systemImage: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down" : "chevron.up")
                     }
                     .onChange(of: viewModel.episodeListSorting) { newValue in
                         if viewModel.episodeListSorting == .fromNewToOld {

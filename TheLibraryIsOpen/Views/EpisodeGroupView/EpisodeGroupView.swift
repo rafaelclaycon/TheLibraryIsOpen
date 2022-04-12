@@ -28,14 +28,6 @@ struct EpisodeGroupView: View {
                     .frame(width: 160, height: 100)
             }
             
-            if viewModel.showWeightEmoji {
-                Text(viewModel.weightEmoji)
-                    .font(.system(size: 34))
-                    .opacity(isSelected ? 1.0 : 0.6)
-                    .padding(.trailing, 105)
-                    .padding(.top, 55)
-            }
-            
             HStack {
                 VStack(alignment: .leading) {
                     Text(viewModel.title)
@@ -92,14 +84,14 @@ struct EpisodeGroupView_Previews: PreviewProvider {
         
         Group {
             // Unselected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: alphaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: betaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: alphaGroup), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: betaGroup), selectedItems: .constant(Set<String>()))
             
             // Selected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: gammaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>(arrayLiteral: gammaGroup.id)))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: gammaGroup), selectedItems: .constant(Set<String>(arrayLiteral: gammaGroup.id)))
             
             // Unselected
-            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: deltaGroup, useWeightEmojis: false), selectedItems: .constant(Set<String>()))
+            EpisodeGroupView(viewModel: EpisodeGroupViewViewModel(group: deltaGroup), selectedItems: .constant(Set<String>()))
         }
         .previewLayout(.fixed(width: 250, height: 120))
     }

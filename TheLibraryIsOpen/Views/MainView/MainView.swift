@@ -38,6 +38,9 @@ struct MainView: View {
                                 .tint(.red)
                             }
                     }
+                    
+                    Text(viewModel.totalSize)
+                        .padding(.bottom, Utils.deviceHasTopNotch() ? 0 : 10)
                 } else {
                     Image("PodcastsEmptyState")
                         .resizable()
@@ -89,15 +92,15 @@ struct MainView: View {
                                 }
                             }
                             
-                            Section {
-                                Picker(selection: $viewModel.viewOption, label: Text("View options")) {
-                                    Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
-                                        .tag(0)
-                                    
-                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
-                                        .tag(1)
-                                }
-                            }
+//                            Section {
+//                                Picker(selection: $viewModel.viewOption, label: Text("View options")) {
+//                                    Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
+//                                        .tag(0)
+//                                    
+//                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
+//                                        .tag(1)
+//                                }
+//                            }
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .foregroundColor(.primary)
@@ -120,7 +123,7 @@ struct MainView: View {
                 switch subviewToOpen {
                 case .addPodcast:
                     if UserSettings.getSkipGetLinkInstructions() {
-                        PasteLinkView(isBeingShown: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                        GetLinkFromPasteboardView(isBeingShown: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     } else {
                         PlayerPickerView(isShowingModal: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     }

@@ -21,7 +21,6 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Year group list variables
     @Published var yearGroups = [EpisodeGroup]()
     @Published var yearGroupList_selectionKeeper = Set<String>()
-    @Published var showWeightEmojis: Bool
     
     // MARK: - Download Area variables
     @Published var downloadAllButtonTitle = String.empty
@@ -46,7 +45,6 @@ class PodcastPreviewViewModel: ObservableObject {
         
         self.podcastPreviewDataManager = podcastPreviewDataManager
         self.deviceFreeStorage = DeviceStorageInformation.freeSpaceInBytes()
-        self.showWeightEmojis = UserSettings.getShowWeightEmojisOnEpisodeGroupList()
         
         selectAllEpisodes()
         updateDownloadButton_ForEpisodeList(selectedIDs: Array(episodeList_selectionKeeper))

@@ -20,13 +20,7 @@ class PodcastRowViewModel: ObservableObject {
         
         let episodeCount: Int = downloadedEpisodes?.count ?? 0
         
-        if episodeCount == 0 {
-            episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountNoEpisodes
-        } else if episodeCount == 1 {
-            episodeCountText = LocalizableStrings.MainView.PodcastRow.episodeCountSingleEpisode
-        } else {
-            episodeCountText = String(format: LocalizableStrings.MainView.PodcastRow.episodeCountMultipleEpisodes, episodeCount)
-        }
+        episodeCountText = String(format: LocalizableStrings.MainView.PodcastRow.episodeCountMultipleEpisodes, episodeCount, podcast!.episodes!.count)
         
         if episodeCount == 0 {
             totalSizeText = LocalizableStrings.MainView.PodcastRow.noSizeInformation

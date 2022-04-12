@@ -63,8 +63,12 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
         displayEpisodeList = podcast.episodes?.count ?? 0 > 0
         showOverallDownloadProgress = false
         
-        self.episodeCount = String(episodes.count)
-        let spaceDescription = Utils.getSizeOf(episodes: episodes, withSpaceAndParenteses: false)
+        // Info
+        let downloadedEpisodes = episodes.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+        }
+        self.episodeCount = String(downloadedEpisodes.count)
+        let spaceDescription = Utils.getSizeOf(episodes: downloadedEpisodes, withSpaceAndParenteses: false)
         self.totalFilesize = spaceDescription.isEmpty == false ? spaceDescription : LocalizableStrings.ArchivedPodcastDetail.Info.unknownTotalSize
         self.lastCheckDate = podcast.lastCheckDate?.asShortString() ?? LocalizableStrings.ArchivedPodcastDetail.Info.unknownLastCheckedDate
         

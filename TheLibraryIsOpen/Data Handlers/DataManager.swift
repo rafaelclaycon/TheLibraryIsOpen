@@ -89,7 +89,12 @@ class DataManager {
         for i in 0...(obtainedPodcasts.count - 1) {
             if let episodes = try database?.getAllEpisodes(forID: obtainedPodcasts[i].id) {
                 obtainedPodcasts[i].episodes = episodes
-                obtainedPodcasts[i].totalSize = Int(Utils.getSizeInBytesOf(episodes))
+                let downloadedEpisodes = obtainedPodcasts[i].episodes?.filter {
+                    $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+                }
+                if downloadedEpisodes != nil {
+                    obtainedPodcasts[i].totalSize = Utils.getSizeInBytesOf(downloadedEpisodes!)
+                }
             }
         }
         var records: [PodcastHistoryRecord]?
@@ -328,8 +333,8 @@ class DataManager {
                     }
 
                     var podcast = Podcast(id: feedDetails.podcastId)
-                    podcast.title = feed.title ?? "Sem Título"
-                    podcast.author = feed.iTunes?.iTunesAuthor ?? "Sem Autor"
+                    podcast.title = feed.title ?? LocalizableStrings.unknownTitle
+                    podcast.author = feed.iTunes?.iTunesAuthor ?? LocalizableStrings.unknownAuthor
                     podcast.feedUrl = feedDetails.feedUrl
                     podcast.artworkUrl = feed.iTunes?.iTunesImage?.attributes?.href ?? feed.image?.url ?? .empty
                     
@@ -349,7 +354,10 @@ class DataManager {
                     }
                     
                     if podcast.episodes != nil {
-                        podcast.totalSize = Int(Utils.getSizeInBytesOf(podcast.episodes!))
+                        let downloadedEpisodes = podcast.episodes!.filter {
+                            $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+                        }
+                        podcast.totalSize = Utils.getSizeInBytesOf(downloadedEpisodes)
                     }
 
                     completionHandler(podcast, nil)
