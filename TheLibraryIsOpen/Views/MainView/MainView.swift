@@ -123,7 +123,7 @@ struct MainView: View {
                 switch subviewToOpen {
                 case .addPodcast:
                     if UserSettings.getSkipGetLinkInstructions() {
-                        GetLinkView(isBeingShown: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
+                        GetLinkFromPasteboardView(isBeingShown: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     } else {
                         PlayerPickerView(isShowingModal: $showingModalView, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd)
                     }

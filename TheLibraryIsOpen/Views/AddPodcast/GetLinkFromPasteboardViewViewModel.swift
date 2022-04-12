@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-class GetLinkViewViewModel: ObservableObject {
+class GetLinkFromPasteboardViewViewModel: ObservableObject {
 
     @Published var linkInput = String.empty
     @Published var isShowingProcessingView = false
@@ -17,7 +17,7 @@ class GetLinkViewViewModel: ObservableObject {
     
     func process(link: String) {
         DispatchQueue.main.async {
-            self.processingViewMessage = LocalizableStrings.PasteLinkView.loaderLabel
+            self.processingViewMessage = LocalizableStrings.GetLinkFromPasteboardView.loaderLabel
             self.isShowingProcessingView = true
         }
         
@@ -29,8 +29,8 @@ class GetLinkViewViewModel: ObservableObject {
                 guard error == nil else {
                     DispatchQueue.main.async {
                         strongSelf.isShowingProcessingView = false
-                        strongSelf.showOtherError(errorTitle: LocalizableStrings.PasteLinkView.unableToAccessFeedErrorTitle,
-                                                  errorBody: LocalizableStrings.PasteLinkView.unableToAccessFeedErrorMessage)
+                        strongSelf.showOtherError(errorTitle: LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.unableToAccessFeedErrorTitle,
+                                                  errorBody: LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.unableToAccessFeedErrorMessage)
                     }
                     return
                 }
@@ -125,14 +125,14 @@ class GetLinkViewViewModel: ObservableObject {
     }
     
     private func showSpotifyLinksNotSupportedAlert() {
-        alertTitle = LocalizableStrings.PasteLinkView.spotifyLinksNotSupportedWarningTitle
-        alertMessage = LocalizableStrings.PasteLinkView.spotifyLinksNotSupportedWarningMessage
+        alertTitle = LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.spotifyLinksNotSupportedWarningTitle
+        alertMessage = LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.spotifyLinksNotSupportedWarningMessage
         displayAlert = true
     }
     
     private func showInvalidApplePodcastsLinkAlert() {
-        alertTitle = LocalizableStrings.PasteLinkView.invalidApplePodcastsLinkErrorTitle
-        alertMessage = LocalizableStrings.PasteLinkView.invalidApplePodcastsLinkErrorMessage
+        alertTitle = LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.invalidApplePodcastsLinkErrorTitle
+        alertMessage = LocalizableStrings.GetLinkFromPasteboardView.ErrorMessages.invalidApplePodcastsLinkErrorMessage
         displayAlert = true
     }
     

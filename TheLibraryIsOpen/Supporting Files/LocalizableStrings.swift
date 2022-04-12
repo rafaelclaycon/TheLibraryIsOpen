@@ -136,22 +136,26 @@ struct LocalizableStrings {
         
     }
     
-    struct PasteLinkView {
+    struct GetLinkFromPasteboardView {
         
-        static let title = NSLocalizedString("paste_link_view_title", comment: .empty)
-        static let step6 = NSLocalizedString("paste_link_view_step6", comment: .empty)
-        static let processLinkButtonLabel = NSLocalizedString("paste_link_view_process_link_button_label", comment: .empty)
-        static let lookForLinkButtonLabel = NSLocalizedString("paste_link_view_look_for_link_button_label", comment: .empty)
-        static let loaderLabel = NSLocalizedString("paste_link_view_loader_label", comment: .empty)
+        static let title = NSLocalizedString("get_link_from_pasteboard_view_title", comment: .empty)
+        static let text = NSLocalizedString("get_link_from_pasteboard_view_text", comment: .empty)
+        static let processLinkButtonLabel = NSLocalizedString("get_link_from_pasteboard_view_process_link_button_label", comment: .empty)
+        static let lookForLinkButtonLabel = NSLocalizedString("get_link_from_pasteboard_view_look_for_link_button_label", comment: .empty)
+        static let loaderLabel = NSLocalizedString("get_link_from_pasteboard_view_loader_label", comment: .empty)
         
-        static let spotifyLinksNotSupportedWarningTitle = NSLocalizedString("paste_link_view_spotify_links_not_supported_warning_title", comment: .empty)
-        static let spotifyLinksNotSupportedWarningMessage = NSLocalizedString("paste_link_view_spotify_links_not_supported_warning_message", comment: .empty)
-        
-        static let unableToAccessFeedErrorTitle = NSLocalizedString("paste_link_view_unable_to_access_feed_error_title", comment: .empty)
-        static let unableToAccessFeedErrorMessage = NSLocalizedString("paste_link_view_unable_to_access_feed_error_message", comment: .empty)
-        
-        static let invalidApplePodcastsLinkErrorTitle = NSLocalizedString("paste_link_view_invalid_apple_podcasts_link_error_title", comment: .empty)
-        static let invalidApplePodcastsLinkErrorMessage = NSLocalizedString("paste_link_view_invalid_apple_podcasts_link_error_message", comment: .empty)
+        struct ErrorMessages {
+            
+            static let spotifyLinksNotSupportedWarningTitle = NSLocalizedString("get_link_from_pasteboard_view_spotify_links_not_supported_warning_title", comment: .empty)
+            static let spotifyLinksNotSupportedWarningMessage = NSLocalizedString("get_link_from_pasteboard_view_spotify_links_not_supported_warning_message", comment: .empty)
+            
+            static let unableToAccessFeedErrorTitle = NSLocalizedString("get_link_from_pasteboard_view_unable_to_access_feed_error_title", comment: .empty)
+            static let unableToAccessFeedErrorMessage = NSLocalizedString("get_link_from_pasteboard_view_unable_to_access_feed_error_message", comment: .empty)
+            
+            static let invalidApplePodcastsLinkErrorTitle = NSLocalizedString("get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_title", comment: .empty)
+            static let invalidApplePodcastsLinkErrorMessage = NSLocalizedString("get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_message", comment: .empty)
+            
+        }
         
     }
     

@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct GetLinkView: View {
+struct GetLinkFromPasteboardView: View {
 
-    @StateObject var viewModel = GetLinkViewViewModel()
+    @StateObject var viewModel = GetLinkFromPasteboardViewViewModel()
     @Binding var isBeingShown: Bool
     @Binding var podcastToAutoOpenAfterAdd: Int?
     
@@ -22,12 +22,12 @@ struct GetLinkView: View {
 //                    Text("Looking for podcast link in pasteboard...")
 //                        .font(.subheadline)
                     
-                    Text("Copy the podcast link, come back here and press the button below.")
+                    Text(LocalizableStrings.GetLinkFromPasteboardView.text)
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    Button(LocalizableStrings.PasteLinkView.lookForLinkButtonLabel, action: {
+                    Button(LocalizableStrings.GetLinkFromPasteboardView.lookForLinkButtonLabel, action: {
                         viewModel.inspectPasteboard()
                         //animationAmount += 0.1
                     })
@@ -38,7 +38,7 @@ struct GetLinkView: View {
                     
                     Spacer()
                 }
-                .navigationBarTitle(Text(LocalizableStrings.PasteLinkView.title))
+                .navigationBarTitle(Text(LocalizableStrings.GetLinkFromPasteboardView.title))
                 .navigationBarItems(trailing:
                     Button(action: {
                         self.isBeingShown = false
@@ -60,7 +60,7 @@ struct GetLinkView: View {
 struct InstrucoesLinkView_Previews: PreviewProvider {
 
     static var previews: some View {
-        GetLinkView(isBeingShown: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
+        GetLinkFromPasteboardView(isBeingShown: .constant(true), podcastToAutoOpenAfterAdd: .constant(0))
     }
 
 }
