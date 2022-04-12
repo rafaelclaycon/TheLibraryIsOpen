@@ -151,7 +151,7 @@ struct GetLinkInstructionsView: View {
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: GetLinkView(isBeingShown: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: 1, selection: $action, label: {
+                        NavigationLink(destination: GetLinkFromPasteboardView(isBeingShown: $isShowingModal, podcastToAutoOpenAfterAdd: $podcastToAutoOpenAfterAdd), tag: 1, selection: $action, label: {
                             Text(LocalizableStrings.GetLinkInstructionsView.nextButtonLabel)
                                 .bold()
                                 .foregroundColor(.white)

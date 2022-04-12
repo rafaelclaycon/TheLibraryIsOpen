@@ -93,22 +93,22 @@
 
 "get_link_instructions_view_next_button_label" = "Suivant";
 
-// Paste Link View
+// Get Link From Pasteboard View
 
-"paste_link_view_title" = "Obtenir des Épisodes";
-"paste_link_view_step6" = "6. Collez le lien du podcast ici:";
-"paste_link_view_process_link_button_label" = "Traiter le Lien";
-"paste_link_view_look_for_link_button_label" = "Rechercher le Lien Dans le Presse-papiers";
-"paste_link_view_loader_label" = "Traitement le lien...";
+"get_link_from_pasteboard_view_title" = "Obtenir des Épisodes";
+"get_link_from_pasteboard_view_text" = "Copiez le lien du podcast, revenez ici et appuyez sur le bouton ci-dessous.";
+"get_link_from_pasteboard_view_process_link_button_label" = "Traiter le Lien";
+"get_link_from_pasteboard_view_look_for_link_button_label" = "Rechercher le Lien Dans le Presse-papiers";
+"get_link_from_pasteboard_view_loader_label" = "Traitement le lien...";
 
-"paste_link_view_spotify_links_not_supported_warning_title" = "Les Liens Spotify Ne Sont Pas Pris en Charge";
-"paste_link_view_spotify_links_not_supported_warning_message" = "Veuillez essayer d'obtenir un lien de l'un des services pris en charge.";
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_title" = "Les Liens Spotify Ne Sont Pas Pris en Charge";
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_message" = "Veuillez essayer d'obtenir un lien de l'un des services pris en charge.";
 
-"paste_link_view_unable_to_access_feed_error_title" = "Impossible D'Accéder Au Flux";
-"paste_link_view_unable_to_access_feed_error_message" = "Veuillez demander au propriétaire du flux de prendre en charge HTTPS.";
+"get_link_from_pasteboard_view_unable_to_access_feed_error_title" = "Impossible D'Accéder Au Flux";
+"get_link_from_pasteboard_view_unable_to_access_feed_error_message" = "Veuillez demander au propriétaire du flux de prendre en charge HTTPS.";
 
-"paste_link_view_invalid_apple_podcasts_link_error_title" = "Impossible D'Extraire Un Lien Apple Podcasts Valide";
-"paste_link_view_invalid_apple_podcasts_link_error_message" = "Essayez d'obtenir le lien de ce podcast directement depuis l'application Podcasts.";
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_title" = "Impossible D'Extraire Un Lien Apple Podcasts Valide";
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_message" = "Essayez d'obtenir le lien de ce podcast directement depuis l'application Podcasts.";
 
 // Podcast Preview
 

@@ -93,22 +93,22 @@
 
 "get_link_instructions_view_next_button_label" = "Próximo";
 
-// Paste Link View
+// Get Link From Pasteboard View
 
-"paste_link_view_title" = "Obter Episódios";
-"paste_link_view_step6" = "6. Cole o link do podcast aqui:";
-"paste_link_view_process_link_button_label" = "Processar Link";
-"paste_link_view_look_for_link_button_label" = "Procurar Link na Área de Transferência";
-"paste_link_view_loader_label" = "Processando link...";
+"get_link_from_pasteboard_view_title" = "Obter Episódios";
+"get_link_from_pasteboard_view_text" = "Copie o link do podcast, volte aqui e aperte o botão abaixo.";
+"get_link_from_pasteboard_view_process_link_button_label" = "Processar Link";
+"get_link_from_pasteboard_view_look_for_link_button_label" = "Procurar Link na Área de Transferência";
+"get_link_from_pasteboard_view_loader_label" = "Processando link...";
 
-"paste_link_view_spotify_links_not_supported_warning_title" = "Links do Spotify Não São Suportados";
-"paste_link_view_spotify_links_not_supported_warning_message" = "Por favor, tente obter um link de um dos serviços suportados.";
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_title" = "Links do Spotify Não São Suportados";
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_message" = "Por favor, tente obter um link de um dos serviços suportados.";
 
-"paste_link_view_unable_to_access_feed_error_title" = "Não Foi Possível Acessar o Feed";
-"paste_link_view_unable_to_access_feed_error_message" = "Por favor, peça ao dono do feed para adicionar suporte a HTTPS.";
+"get_link_from_pasteboard_view_unable_to_access_feed_error_title" = "Não Foi Possível Acessar o Feed";
+"get_link_from_pasteboard_view_unable_to_access_feed_error_message" = "Por favor, peça ao dono do feed para adicionar suporte a HTTPS.";
 
-"paste_link_view_invalid_apple_podcasts_link_error_title" = "Não Foi Possível Extrair Um Link do Apple Podcasts Válido";
-"paste_link_view_invalid_apple_podcasts_link_error_message" = "Tente obter o link do podcast diretamente do app Podcasts.";
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_title" = "Não Foi Possível Extrair Um Link do Apple Podcasts Válido";
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_message" = "Tente obter o link do podcast diretamente do app Podcasts.";
 
 // Podcast Preview
 
