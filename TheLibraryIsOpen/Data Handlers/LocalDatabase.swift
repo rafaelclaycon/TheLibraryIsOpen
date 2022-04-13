@@ -53,7 +53,7 @@ class LocalDatabase {
         let duration = Expression<Double>("duration")
         let remote_url = Expression<String>("remoteUrl")
         let local_filepath = Expression<String?>("localFilepath")
-        let filesize = Expression<Int64>("filesize")
+        let filesize = Expression<Int>("filesize")
         let offline_status = Expression<Int>("offlineStatus")
 
         try db.run(episode.create(ifNotExists: true) { t in
@@ -170,11 +170,15 @@ class LocalDatabase {
         try db.run(episodesOfPodcast.delete())
     }
 
-    func updateLocalFilepath(forEpisode episodeId: String, with newFilepath: String, and newOfflineStatus: Int) {
+    func updateLocalFileAttributes(forEpisode episodeId: String,
+                                   filepath newFilepath: String,
+                                   offlineStatus newOfflineStatus: Int,
+                                   filesize newFilesize: Int) {
         let id = Expression<String>("id")
         let episode = episode.filter(id == episodeId)
         let local_filepath = Expression<String?>("localFilepath")
         let offline_status = Expression<Int>("offlineStatus")
+        let filesize = Expression<Int>("filesize")
         
         do {
             if try db.run(episode.update(local_filepath <- newFilepath)) > 0 {
@@ -185,6 +189,12 @@ class LocalDatabase {
             
             if try db.run(episode.update(offline_status <- newOfflineStatus)) > 0 {
                 print("Episode \(episodeId) updated with status: \(newOfflineStatus)")
+            } else {
+                print("Episode \(episodeId) not found.")
+            }
+            
+            if try db.run(episode.update(filesize <- newFilesize)) > 0 {
+                print("Episode \(episodeId) updated with size: \(newFilesize)")
             } else {
                 print("Episode \(episodeId) not found.")
             }

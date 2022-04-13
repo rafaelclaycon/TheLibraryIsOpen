@@ -68,5 +68,24 @@ class FileSystemOperations {
     static func flushTmpDirectory() throws {
         FileManager.default.clearTmpDirectory()
     }
+    
+    static func getActualSizeOfFile(atPath filePath: String) -> Int? {
+        let documentsDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsDirURL.appendingPathComponent("\(InternalDirectoryNames.podcasts)/\(filePath)")
+        
+        guard FileManager.default.fileExists(atPath: fileURL.path) else {
+            return nil
+        }
+        
+        var fileSize: Int
+        do {
+            let attr = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            fileSize = attr[FileAttributeKey.size] as! Int
+            return fileSize
+        } catch {
+            print("Error: \(error)")
+            return nil
+        }
+    }
 
 }
