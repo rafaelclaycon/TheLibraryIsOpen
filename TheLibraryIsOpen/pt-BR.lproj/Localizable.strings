@@ -35,8 +35,8 @@
 "main_view_podcast_delete_podcast_swipe_action_label" = "Apagar";
 
 "main_view_error_messages_error_loading_podcasts" = "Erro Ao Tentar Carregar os Podcasts";
-"main_view_error_messages_podcast_deletion_confirmation_title" = "Apagar Esse Podcast?";
-"main_view_error_messages_podcast_deletion_confirmation_message" = "Todos os episódios baixados e o histórico de checagem do feed serão perdidos. Essa alteração não pode ser desfeita.";
+"main_view_error_messages_podcast_deletion_confirmation_title" = "Apagar '%@'?";
+"main_view_error_messages_podcast_deletion_confirmation_message" = "Todos os episódios e o histórico serão perdidos. Essa alteração não pode ser desfeita.";
 "main_view_error_messages_deletion_failure_title" = "Falha Ao Apagar Podcast";
 
 // Player Picker View
@@ -152,6 +152,7 @@
 "archived_podcast_detail_last_checked" = "Última consulta";
 "archived_podcast_detail_unknown_last_checked_date" = "Desconhecida";
 
+"archived_podcast_detail_history_button_label" = "Histórico";
 "archived_podcast_detail_export_all_button_label" = "Exportar todos para...";
 "archived_podcast_detail_export_options_text" = "Selecione um destino";
 "archived_podcast_detail_export_options_files_option_name" = "Arquivos/iCloud Drive (mais rápido)";
@@ -191,6 +192,10 @@
 "settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Reportar um erro";
 "settings_screen_feedback_section_report_a_translation_error_button_label" = "🇧🇷  Reportar um erro de tradução";
 "settings_screen_feedback_section_footer" = "O suporte ao app é bastante limitado pois sou uma única pessoa cuidando de tudo :)";
+
+// Podcast History View
+
+"podcast_history_view_nav_bar_title" = "Histórico de %@";
 
 // Podcast History Record
 

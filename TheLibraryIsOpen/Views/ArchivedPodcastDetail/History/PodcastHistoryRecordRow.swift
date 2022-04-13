@@ -5,35 +5,32 @@ struct PodcastHistoryRecordRow: View {
     @StateObject var viewModel: PodcastHistoryRecordRowViewModel
 
     var body: some View {
-        VStack {
-            HStack {
-                if viewModel.sfSymbolName.isEmpty == false {
-                    Image(systemName: viewModel.sfSymbolName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: viewModel.symbolHeight)
-                        .foregroundColor(viewModel.symbolColor)
-                        .padding(.all, 4)
-                }
+        HStack(alignment: .center) {
+            if viewModel.sfSymbolName.isEmpty == false {
+                Image(systemName: viewModel.sfSymbolName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: viewModel.symbolHeight)
+                    .foregroundColor(viewModel.symbolColor)
+            }
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text(viewModel.title)
+                    .bold()
                 
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(viewModel.title)
-                        .bold()
-                    
-                    Text(viewModel.description)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
-                
-                Spacer()
-                
-                Text(viewModel.dateTime)
+                Text(viewModel.description)
                     .font(.subheadline)
-                    .multilineTextAlignment(.trailing)
                     .foregroundColor(.gray)
             }
-            .padding(.all, 5)
+            
+            Spacer()
+            
+            Text(viewModel.dateTime)
+                .font(.subheadline)
+                .multilineTextAlignment(.trailing)
+                .foregroundColor(.gray)
         }
+        .padding(.all, 5)
     }
 
 }
@@ -46,7 +43,7 @@ struct PodcastHistoryRecordRow_Previews: PreviewProvider {
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: 23, value1: .empty)))
             
             // Podcast Archived
-            //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))
+            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.podcastArchived.rawValue, value1: "38")))
             
             // Archive Exported
             PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.archiveExported.rawValue, value1: "5", value2: "Files")))

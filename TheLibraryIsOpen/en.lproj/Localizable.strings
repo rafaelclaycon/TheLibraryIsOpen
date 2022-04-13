@@ -35,8 +35,8 @@
 "main_view_podcast_delete_podcast_swipe_action_label" = "Delete";
 
 "main_view_error_messages_error_loading_podcasts" = "Error While Trying To Load Podcasts";
-"main_view_error_messages_podcast_deletion_confirmation_title" = "Delete This Podcast?";
-"main_view_error_messages_podcast_deletion_confirmation_message" = "All downloaded episodes and feed check history will be lost. This change cannot be undone.";
+"main_view_error_messages_podcast_deletion_confirmation_title" = "Delete '%@'?";
+"main_view_error_messages_podcast_deletion_confirmation_message" = "All episodes and history will be lost. This change cannot be undone.";
 "main_view_error_messages_deletion_failure_title" = "Failed To Delete Podcast";
 
 // Player Picker View
@@ -152,6 +152,7 @@
 "archived_podcast_detail_last_checked" = "Last checked";
 "archived_podcast_detail_unknown_last_checked_date" = "Unknown";
 
+"archived_podcast_detail_history_button_label" = "History";
 "archived_podcast_detail_export_all_button_label" = "Export all to...";
 "archived_podcast_detail_export_options_text" = "Select a destination";
 "archived_podcast_detail_export_options_files_option_name" = "Files/iCloud Drive (faster)";
@@ -191,6 +192,10 @@
 "settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Report a bug";
 "settings_screen_feedback_section_report_a_translation_error_button_label" = "🇺🇸  Report a translation error";
 "settings_screen_feedback_section_footer" = "Support is very limited because I'm a single person running this app :)";
+
+// Podcast History View
+
+"podcast_history_view_nav_bar_title" = "%@ History";
 
 // Podcast History Record
 

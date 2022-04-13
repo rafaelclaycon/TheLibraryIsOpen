@@ -28,7 +28,7 @@ struct MainView: View {
                             .swipeActions {
                                 Button {
                                     viewModel.alertAuxiliaryInfo = podcast.id
-                                    viewModel.showPodcastDeletionConfirmation()
+                                    viewModel.showPodcastDeletionConfirmation(podcastTitle: podcast.title)
                                 } label: {
                                     VStack {
                                         Image(systemName: "trash")
@@ -91,16 +91,6 @@ struct MainView: View {
                                         .tag(1)
                                 }
                             }
-                            
-//                            Section {
-//                                Picker(selection: $viewModel.viewOption, label: Text("View options")) {
-//                                    Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
-//                                        .tag(0)
-//                                    
-//                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
-//                                        .tag(1)
-//                                }
-//                            }
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .foregroundColor(.primary)

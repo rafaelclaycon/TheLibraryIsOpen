@@ -230,6 +230,7 @@ struct LocalizableStrings {
         
         struct Export {
             
+            static let historyButtonLabel = NSLocalizedString("archived_podcast_detail_history_button_label", comment: .empty)
             static let exportAllButtonLabel = NSLocalizedString("archived_podcast_detail_export_all_button_label", comment: .empty)
             static let exportOptionsText = NSLocalizedString("archived_podcast_detail_export_options_text", comment: .empty)
             
@@ -250,6 +251,7 @@ struct LocalizableStrings {
     }
     
     // MARK: - After Export Success View
+    
     struct AfterExportSuccessView {
         
         static let exportSuccessfulTitle = NSLocalizedString("after_export_success_view_export_successful_title", comment: .empty)
@@ -260,6 +262,7 @@ struct LocalizableStrings {
     }
     
     // MARK: - Settings View
+    
     struct SettingsView {
         
         static let title = NSLocalizedString("settings_screen_title", comment: .empty)
@@ -306,6 +309,13 @@ struct LocalizableStrings {
     }
     
     // MARK: - Podcast History Record
+    
+    struct PodcastHistoryView {
+        
+        static let navBarTitle = NSLocalizedString("podcast_history_view_nav_bar_title", comment: .empty)
+        
+    }
+    
     struct PodcastHistoryRecord {
         
         struct None {

@@ -13,7 +13,7 @@ struct ArchivedPodcastDetailView: View {
     var body: some View {
         ZStack {
             VStack {
-                NavigationLink(destination: PodcastHistoryView(viewModel: PodcastHistoryViewViewModel(podcastId: viewModel.podcast.id)), isActive: $showingHistory) { EmptyView() }
+                NavigationLink(destination: PodcastHistoryView(viewModel: PodcastHistoryViewViewModel(podcastId: viewModel.podcast.id, podcastTitle: viewModel.podcast.title)), isActive: $showingHistory) { EmptyView() }
                 
                 Divider()
 
@@ -107,77 +107,94 @@ struct ArchivedPodcastDetailView: View {
                         ModernDataVisualizer(title: LocalizableStrings.ArchivedPodcastDetail.Info.lastChecked, imageName: "calendar", value: viewModel.lastCheckDate)
                     }
                 }
-                .padding()
+                .padding(.vertical, 6)
+                .padding(.horizontal)
                 
-                // MARK: - Export All button
-                Button(action: {
-                    showingExportOptions = true
-                }) {
-                    Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportAllButtonLabel)
-                        .bold()
-                }
-                .padding(.vertical, 15)
-                .padding(.horizontal, 25)
-                .foregroundColor(.white)
-                .background(Color.accentColor)
-                .cornerRadius(30)
-                .alert(isPresented: $viewModel.displayAlert) {
-                    switch viewModel.alertType {
-                    case .singleOption:
-                        return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
-                    default:
-                        return Alert(title: Text("Other Option Relies on Installed Apps"), message: Text("To export to your prefered cloud service, please make sure its app is installed on this device before continuing."), dismissButton: Alert.Button.default(Text(LocalizableStrings.ok), action: {
-                            viewModel.showShareSheet()
-                        }))
-                    }
-                }
-                .padding(.vertical, 5)
-                .disabled(viewModel.downloadingKeeper.isEmpty == false)
-                .actionSheet(isPresented: $showingExportOptions) {
-                    ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
-                                message: nil,
-                                buttons: [.default(Text(files)) {
-                                              // Zip
-                                              viewModel.zipAllEpisodes()
-                        
-                                              guard viewModel.zipFileURL != nil else {
-                                                  return
-                                              }
-                                            
-                                              // Clean
-                                              do {
-                                                  try FileSystemOperations.flushTmpDirectory()
-                                              } catch {
-                                                  print(error.localizedDescription)
-                                              }
-                        
-                                              // Show
-                                              viewModel.showingFileExplorer = true
-                                          },
-                                          .default(Text(other)) {
-                                              viewModel.alertType = .speciallyPreparedOption
-                                              viewModel.displayAlert = true
-                                          },
-                                          .cancel(Text(LocalizableStrings.cancel))])
-                }
-                .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
-                    switch result {
-                    case .success:
-                        // Log
-                        do {
-                            try dataManager.addHistoryRecord(for: viewModel.podcast.id, with: HistoryRecordType.archiveExported, value1: "\(viewModel.getExportedEpisodeCount())", value2: "\(ExportedToOption.icloudFiles.rawValue)")
-                        } catch {
-                            print(error.localizedDescription)
+                HStack {
+                    Button {
+                        showingHistory = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "clock")
+                                .font(.headline)
+                            Text(LocalizableStrings.ArchivedPodcastDetail.Export.historyButtonLabel)
                         }
-                        
-                        viewModel.isShowingProcessingView = false
-                        viewModel.detailViewToShow = .exportSuccessfulView
-                        viewModel.showingModalView = true
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                        viewModel.showAlert(withTitle: "Failed to Export Archive", message: error.localizedDescription)
                     }
-                })
+                    .tint(.accentColor)
+                    .controlSize(.large)
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    
+                    // MARK: - Export All button
+                    Button(action: {
+                        showingExportOptions = true
+                    }) {
+                        Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportAllButtonLabel)
+                            .bold()
+                    }
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 25)
+                    .foregroundColor(.white)
+                    .background(Color.accentColor)
+                    .cornerRadius(30)
+                    .alert(isPresented: $viewModel.displayAlert) {
+                        switch viewModel.alertType {
+                        case .singleOption:
+                            return Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
+                        default:
+                            return Alert(title: Text("Other Option Relies on Installed Apps"), message: Text("To export to your prefered cloud service, please make sure its app is installed on this device before continuing."), dismissButton: Alert.Button.default(Text(LocalizableStrings.ok), action: {
+                                viewModel.showShareSheet()
+                            }))
+                        }
+                    }
+                    .disabled(viewModel.downloadingKeeper.isEmpty == false)
+                    .actionSheet(isPresented: $showingExportOptions) {
+                        ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
+                                    message: nil,
+                                    buttons: [.default(Text(files)) {
+                                                  // Zip
+                                                  viewModel.zipAllEpisodes()
+                            
+                                                  guard viewModel.zipFileURL != nil else {
+                                                      return
+                                                  }
+                                                
+                                                  // Clean
+                                                  do {
+                                                      try FileSystemOperations.flushTmpDirectory()
+                                                  } catch {
+                                                      print(error.localizedDescription)
+                                                  }
+                            
+                                                  // Show
+                                                  viewModel.showingFileExplorer = true
+                                              },
+                                              .default(Text(other)) {
+                                                  viewModel.alertType = .speciallyPreparedOption
+                                                  viewModel.displayAlert = true
+                                              },
+                                              .cancel(Text(LocalizableStrings.cancel))])
+                    }
+                    .fileMover(isPresented: $viewModel.showingFileExplorer, file: viewModel.zipFileURL, onCompletion: { result in
+                        switch result {
+                        case .success:
+                            // Log
+                            do {
+                                try dataManager.addHistoryRecord(for: viewModel.podcast.id, with: HistoryRecordType.archiveExported, value1: "\(viewModel.getExportedEpisodeCount())", value2: "\(ExportedToOption.icloudFiles.rawValue)")
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                            
+                            viewModel.isShowingProcessingView = false
+                            viewModel.detailViewToShow = .exportSuccessfulView
+                            viewModel.showingModalView = true
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                            viewModel.showAlert(withTitle: "Failed to Export Archive", message: error.localizedDescription)
+                        }
+                    })
+                }
+                .padding(.vertical, 6)
             }
             
             if viewModel.isShowingProcessingView {

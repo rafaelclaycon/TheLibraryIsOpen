@@ -12,7 +12,7 @@ struct PodcastHistoryView: View {
                 }
             }
         }
-        .navigationTitle("Histórico")
+        .navigationTitle(viewModel.navBarTitle)
     }
 
 }
@@ -20,7 +20,7 @@ struct PodcastHistoryView: View {
 struct PodcastHistoryView_Previews: PreviewProvider {
 
     static var previews: some View {
-        PodcastHistoryView(viewModel: PodcastHistoryViewViewModel(podcastId: 1))
+        PodcastHistoryView(viewModel: PodcastHistoryViewViewModel(podcastId: 1, podcastTitle: "The Vergecast"))
     }
 
 }
