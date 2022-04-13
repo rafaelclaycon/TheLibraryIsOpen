@@ -71,7 +71,7 @@ class DataManager {
     
     func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
         episodes.forEach {
-            database?.updateLocalFilepath(forEpisode: $0.id, with: $0.localFilepath ?? .empty, and: $0.offlineStatus)
+            database?.updateLocalFileAttributes(forEpisode: $0.id, filepath: $0.localFilepath ?? .empty, offlineStatus: $0.offlineStatus, filesize: $0.filesize)
         }
     }
     
@@ -208,7 +208,7 @@ class DataManager {
         // Update it on the in-memory array.
         try updateInMemoryEpisodeLocalFilePath(podcastID: episode.podcastId, episodeID: episode.id, filePath: filePath)
         // Update it on the database.
-        database!.updateLocalFilepath(forEpisode: episode.id, with: filePath, and: EpisodeOfflineStatus.availableOffline.rawValue)
+        database!.updateLocalFileAttributes(forEpisode: episode.id, filepath: filePath, offlineStatus: EpisodeOfflineStatus.availableOffline.rawValue, filesize: episode.filesize)
     }
 
     private func updateInMemoryEpisodeLocalFilePath(podcastID: Int, episodeID: String, filePath: String) throws {

@@ -152,6 +152,10 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
                         strongSelf.episodes[i].localFilepath = "Podcasts/\(strongSelf.podcast.id)/\(url.lastPathComponent)"
                         
                         strongSelf.episodes[i].offlineStatus = EpisodeOfflineStatus.availableOffline.rawValue
+                        
+                        if let newSize = FileSystemOperations.getActualSizeOfFile(atPath: "\(strongSelf.podcast.id)/\(url.lastPathComponent)") {
+                            strongSelf.episodes[i].filesize = newSize
+                        }
                     }
                 }
                 

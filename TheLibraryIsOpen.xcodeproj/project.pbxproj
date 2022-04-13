@@ -47,6 +47,7 @@
 		D975B2A4278C793D00BEBB6B /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D975B2A3278C793D00BEBB6B /* LocalizableStrings.swift */; };
 		D975B2A7278C8DBC00BEBB6B /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */; };
 		D975B2AB278DD29900BEBB6B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D975B2AA278DD29900BEBB6B /* SettingsView.swift */; };
+		D976E3432806058A00703CCC /* o-wanda-agora-esta-no-spotify.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D976E3422806058A00703CCC /* o-wanda-agora-esta-no-spotify.mp3 */; };
 		D9838401279A924900E5DFAC /* DownloadOperationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9838400279A924900E5DFAC /* DownloadOperationStatus.swift */; };
 		D989067427F159F100602AC1 /* DeviceStorageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D989067327F159F100602AC1 /* DeviceStorageInformation.swift */; };
 		D98A227627C317BA003F2B77 /* ArchivedEpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A227527C317BA003F2B77 /* ArchivedEpisodeDetailView.swift */; };
@@ -67,6 +68,7 @@
 		D9AA57D82795281B0027B392 /* PodcastRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA57D72795281B0027B392 /* PodcastRowViewModel.swift */; };
 		D9B2432D2793980E0014384E /* ExportDestinationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */; };
 		D9BADD0A279C99DC00CF2C27 /* FileSystemOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BADD09279C99DC00CF2C27 /* FileSystemOperations.swift */; };
+		D9BF08502805FF0700F54C55 /* FileSystemOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF084F2805FF0700F54C55 /* FileSystemOperationsTests.swift */; };
 		D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA094927964636001DE371 /* PlayerPickerView.swift */; };
 		D9CC03D6279C7D04009E90BC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D5279C7D04009E90BC /* AlertType.swift */; };
 		D9CC03D8279C8500009E90BC /* InternalDirectoryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D7279C8500009E90BC /* InternalDirectoryNames.swift */; };
@@ -145,6 +147,7 @@
 		D975B2A3278C793D00BEBB6B /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		D975B2A8278CA56600BEBB6B /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D975B2AA278DD29900BEBB6B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D976E3422806058A00703CCC /* o-wanda-agora-esta-no-spotify.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "o-wanda-agora-esta-no-spotify.mp3"; sourceTree = "<group>"; };
 		D9838400279A924900E5DFAC /* DownloadOperationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOperationStatus.swift; sourceTree = "<group>"; };
 		D989067327F159F100602AC1 /* DeviceStorageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStorageInformation.swift; sourceTree = "<group>"; };
 		D98A227527C317BA003F2B77 /* ArchivedEpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeDetailView.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		D9AA57D72795281B0027B392 /* PodcastRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRowViewModel.swift; sourceTree = "<group>"; };
 		D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDestinationOptions.swift; sourceTree = "<group>"; };
 		D9BADD09279C99DC00CF2C27 /* FileSystemOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemOperations.swift; sourceTree = "<group>"; };
+		D9BF084F2805FF0700F54C55 /* FileSystemOperationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemOperationsTests.swift; sourceTree = "<group>"; };
 		D9CA094927964636001DE371 /* PlayerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPickerView.swift; sourceTree = "<group>"; };
 		D9CC03D5279C7D04009E90BC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		D9CC03D7279C8500009E90BC /* InternalDirectoryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDirectoryNames.swift; sourceTree = "<group>"; };
@@ -388,6 +392,22 @@
 			path = Doubles;
 			sourceTree = "<group>";
 		};
+		D9BF084E2805FEEC00F54C55 /* Data Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				D9BF084F2805FF0700F54C55 /* FileSystemOperationsTests.swift */,
+			);
+			path = "Data Handlers";
+			sourceTree = "<group>";
+		};
+		D9BF0853280603D700F54C55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D976E3422806058A00703CCC /* o-wanda-agora-esta-no-spotify.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D9D3DB72256E7BC00035560E = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +444,9 @@
 		D9D3DB8F256E7BC30035560E /* TheLibraryIsOpenTests */ = {
 			isa = PBXGroup;
 			children = (
+				D9BF0853280603D700F54C55 /* Resources */,
 				D999E62727EF6A5A00E4B7F4 /* Views */,
+				D9BF084E2805FEEC00F54C55 /* Data Handlers */,
 				D911845F2573612B008DB977 /* FeedHelperTests.swift */,
 				D911845B25736024008DB977 /* LocalDatabaseTests.swift */,
 				D99323412576931E00DB9A72 /* DataManagerTests.swift */,
@@ -595,6 +617,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D976E3432806058A00703CCC /* o-wanda-agora-esta-no-spotify.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +712,7 @@
 				D930264627B33D7600153EBF /* PodcastPreviewViewModelTests.swift in Sources */,
 				D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */,
 				D911845C25736024008DB977 /* LocalDatabaseTests.swift in Sources */,
+				D9BF08502805FF0700F54C55 /* FileSystemOperationsTests.swift in Sources */,
 				D9F17F7925F99E5D00CF2530 /* UtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
