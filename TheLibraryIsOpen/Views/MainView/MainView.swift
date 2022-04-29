@@ -6,7 +6,7 @@ struct MainView: View {
         case addPodcast, guide
     }
 
-    @StateObject var viewModel = MainViewViewModel()
+    @ObservedObject var viewModel = MainViewViewModel()
     @State var showingModalView = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0

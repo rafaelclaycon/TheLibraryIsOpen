@@ -6,6 +6,7 @@ struct PodcastRow: View {
     @StateObject var viewModel = PodcastRowViewModel()
     @Binding var subtitleInfoOption: Int
     private let artworkSize: CGFloat = 90
+    private let placeholderSize: CGFloat = 50
 
     var body: some View {
         HStack {
@@ -13,7 +14,7 @@ struct PodcastRow: View {
                 .placeholder {
                     Image(systemName: "headphones")
                         .resizable()
-                        .frame(width: 35, height: 35)
+                        .frame(width: placeholderSize, height: placeholderSize)
                         .foregroundColor(.gray)
                 }
                 .resizable()

@@ -27,7 +27,7 @@ struct PodcastHistoryRecord: Hashable, Codable, Identifiable {
 
 enum HistoryRecordType: Int, Codable {
 
-    case podcastArchived, archiveExported, checkedForNewEpisodes, newEpisodesDownloaded
+    case podcastArchived, episodesDownloaded, archiveExported, checkedForNewEpisodes
 
 }
 

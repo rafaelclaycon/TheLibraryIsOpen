@@ -5,13 +5,14 @@ struct PodcastHistoryRecordRow: View {
     @StateObject var viewModel: PodcastHistoryRecordRowViewModel
 
     var body: some View {
-        HStack(alignment: .center) {
+        HStack() {
             if viewModel.sfSymbolName.isEmpty == false {
                 Image(systemName: viewModel.sfSymbolName)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: viewModel.symbolHeight)
                     .foregroundColor(viewModel.symbolColor)
+                    .padding(.trailing, 10)
             }
             
             VStack(alignment: .leading, spacing: 5) {
@@ -21,14 +22,13 @@ struct PodcastHistoryRecordRow: View {
                 Text(viewModel.description)
                     .font(.subheadline)
                     .foregroundColor(.gray)
+                
+                Text(viewModel.dateTime)
+                    .font(.subheadline)
+                    .bold()
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(.gray)
             }
-            
-            Spacer()
-            
-            Text(viewModel.dateTime)
-                .font(.subheadline)
-                .multilineTextAlignment(.trailing)
-                .foregroundColor(.gray)
         }
         .padding(.all, 5)
     }
@@ -47,6 +47,9 @@ struct PodcastHistoryRecordRow_Previews: PreviewProvider {
             
             // Archive Exported
             PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.archiveExported.rawValue, value1: "5", value2: "Files")))
+            
+            // Archive Exported
+            PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.episodesDownloaded.rawValue, value1: "5")))
             
             // Checked For New Episodes
             //PodcastHistoryRecordRow(viewModel: PodcastHistoryRecordRowViewModel(record: PodcastHistoryRecord(type: HistoryRecordType.checkedForNewEpisodes.rawValue, value1: "0", value2: "https://feeds.soundcloud.com/users/soundcloud:users:110149054/sounds.rss")))
