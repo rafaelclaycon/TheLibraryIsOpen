@@ -164,6 +164,11 @@
 "archived_podcast_detail_export_export_successful_message_title" = "Archive Exported Successfully";
 "archived_podcast_detail_export_export_successful_message_body" = "Diamonds might be a sham by De Beers but these episodes really stand a chance of lasting forever now. 💍";
 
+// Archived Episode Detail View
+
+"archived_episode_detail_view_download_episode_button_label" = "Download episode";
+"archived_episode_detail_view_export_episode_button_label" = "Export episode";
+
 // After Export Success View
 
 "after_export_success_view_export_successful_title" = "Export Successful!";

@@ -250,6 +250,15 @@ struct LocalizableStrings {
         
     }
     
+    // MARK: - Archived Episode Detail View
+    
+    struct ArchivedEpisodeDetailView {
+        
+        static let downloadEpisodeButtonLabel = NSLocalizedString("archived_episode_detail_view_download_episode_button_label", comment: .empty)
+        static let exportEpisodeButtonLabel = NSLocalizedString("archived_episode_detail_view_export_episode_button_label", comment: .empty)
+        
+    }
+    
     // MARK: - After Export Success View
     
     struct AfterExportSuccessView {
