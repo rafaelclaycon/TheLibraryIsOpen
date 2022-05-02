@@ -117,10 +117,6 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
             return
         }
         
-        /*episodes.forEach { episode in
-            print(episode.filesize)
-        }*/
-        
         totalDownloadPercentage = Double(episodes.count)
         
         downloadOperationStatus = .activelyDownloading
@@ -159,8 +155,16 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
                     }
                 }
                 
-                // Persist
-                dataManager.updateEpisodesLocalFilepathAndOfflineStatus(strongSelf.episodes)
+                // Some episodes do not report filesize before being downloaded, so this is important.
+                dataManager.updateLocalFileAttributesOnDatabase(for: strongSelf.episodes)
+                
+                // Log download so that it happears on History
+                let downloadedEpisodeCount = ArchivedPodcastDetailViewViewModel.getDownloadedEpisodeCount(from: strongSelf.episodes)
+                do {
+                    try dataManager.addHistoryRecord(for: strongSelf.podcast.id, with: HistoryRecordType.episodesDownloaded, value1: "\(downloadedEpisodeCount)")
+                } catch {
+                    print("Unable to log download of \(downloadedEpisodeCount) episode(s) for podcast '\(strongSelf.podcast.title)'.")
+                }
             } else {
                 for i in 0...(episodes.count - 1) {
                     strongSelf.downloadErrorKeeper.insert(strongSelf.episodes[i].id)
@@ -178,6 +182,13 @@ class ArchivedPodcastDetailViewViewModel: ObservableObject {
             $0.localFilepath?.isEmpty == false
         }
         return exportedEpisodeCount.count
+    }
+    
+    static func getDownloadedEpisodeCount(from theseEpisodes: [Episode]) -> Int {
+        let downloadedEpisodeCount = theseEpisodes.filter {
+            $0.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
+        }
+        return downloadedEpisodeCount.count
     }
     
     func showShareSheet() {

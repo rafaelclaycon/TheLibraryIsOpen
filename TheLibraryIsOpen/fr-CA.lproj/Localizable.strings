@@ -29,14 +29,14 @@
 "main_view_list_options_show_total_size" = "Afficher la Taille Totale";
 
 "main_view_podcast_row_episode_count_multiple_episodes" = "%d/%d ✓";
-"main_view_podcast_row_exported_at" = "Exporté il y a %@";
+"main_view_podcast_row_exported_at" = "Exporté %@";
 "main_view_podcast_row_not_exported_yet" = "Pas encore exporté";
 "main_view_podcast_row_no_size_information" = "Informations sur la taille non disponibles";
 "main_view_podcast_delete_podcast_swipe_action_label" = "Supprimer";
 
 "main_view_error_messages_error_loading_podcasts" = "Erreur Lors de la Tentative de Chargement des Podcasts";
-"main_view_error_messages_podcast_deletion_confirmation_title" = "Supprimer Ce Podcast?";
-"main_view_error_messages_podcast_deletion_confirmation_message" = "Tous les épisodes téléchargés et l'historique de vérification des flux seront perdus. Cette modification ne peut pas être annulée.";
+"main_view_error_messages_podcast_deletion_confirmation_title" = "Supprimer '%@'?";
+"main_view_error_messages_podcast_deletion_confirmation_message" = "Tous les épisodes et l'historique seront perdus. Cette modification ne peut pas être annulée.";
 "main_view_error_messages_deletion_failure_title" = "Échec de la Suppression du Podcast";
 
 // Player Picker View
@@ -152,7 +152,8 @@
 "archived_podcast_detail_last_checked" = "Dernière vérification";
 "archived_podcast_detail_unknown_last_checked_date" = "Inconnue";
 
-"archived_podcast_detail_export_all_button_label" = "Tout exporter vers...";
+"archived_podcast_detail_history_button_label" = "Historique";
+"archived_podcast_detail_export_all_button_label" = "Exporter tout vers...";
 "archived_podcast_detail_export_options_text" = "Sélectionner une destination";
 "archived_podcast_detail_export_options_files_option_name" = "Fichiers/iCloud Drive (plus rapide)";
 "archived_podcast_detail_export_options_other_option_name" = "Google Disque, Dropbox, OneDrive (plus lent)";
@@ -162,6 +163,11 @@
 
 "archived_podcast_detail_export_export_successful_message_title" = "Archive Exportée Avec Succès";
 "archived_podcast_detail_export_export_successful_message_body" = "Insérez une blague hilarante ici";
+
+// Archived Episode Detail View
+
+"archived_episode_detail_view_download_episode_button_label" = "Télécharger l'épisode";
+"archived_episode_detail_view_export_episode_button_label" = "Exporter l'épisode";
 
 // After Export Success View
 
@@ -191,6 +197,10 @@
 "settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Signaler un bug";
 "settings_screen_feedback_section_report_a_translation_error_button_label" = "🇨🇦  Signaler une erreur de traduction";
 "settings_screen_feedback_section_footer" = "Le support est très limité car je suis une personne seule travaillant sur cette application :)";
+
+// Podcast History View
+
+"podcast_history_view_nav_bar_title" = "Historique de %@";
 
 // Podcast History Record
 

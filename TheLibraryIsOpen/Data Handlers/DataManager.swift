@@ -69,7 +69,7 @@ class DataManager {
                                                           value2: value2))
     }
     
-    func updateEpisodesLocalFilepathAndOfflineStatus(_ episodes: [Episode]) {
+    func updateLocalFileAttributesOnDatabase(for episodes: [Episode]) {
         episodes.forEach {
             database?.updateLocalFileAttributes(forEpisode: $0.id, filepath: $0.localFilepath ?? .empty, offlineStatus: $0.offlineStatus, filesize: $0.filesize)
         }

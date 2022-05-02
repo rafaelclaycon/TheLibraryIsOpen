@@ -6,7 +6,7 @@ struct MainView: View {
         case addPodcast, guide
     }
 
-    @StateObject var viewModel = MainViewViewModel()
+    @ObservedObject var viewModel = MainViewViewModel()
     @State var showingModalView = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
@@ -28,7 +28,7 @@ struct MainView: View {
                             .swipeActions {
                                 Button {
                                     viewModel.alertAuxiliaryInfo = podcast.id
-                                    viewModel.showPodcastDeletionConfirmation()
+                                    viewModel.showPodcastDeletionConfirmation(podcastTitle: podcast.title)
                                 } label: {
                                     VStack {
                                         Image(systemName: "trash")
@@ -91,16 +91,6 @@ struct MainView: View {
                                         .tag(1)
                                 }
                             }
-                            
-//                            Section {
-//                                Picker(selection: $viewModel.viewOption, label: Text("View options")) {
-//                                    Text(LocalizableStrings.MainView.ListOptions.showEpisodeCount)
-//                                        .tag(0)
-//                                    
-//                                    Text(LocalizableStrings.MainView.ListOptions.showTotalSize)
-//                                        .tag(1)
-//                                }
-//                            }
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .foregroundColor(.primary)

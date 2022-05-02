@@ -34,11 +34,12 @@ struct ArchivedEpisodeDetailView: View {
                     .bold()
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
+                    .padding(.horizontal)
                 
                 Button {
                     print("Button tapped")
                 } label: {
-                    Text("Exportar esse episódio")
+                    Text(viewModel.episodeIsDownloaded ? LocalizableStrings.ArchivedEpisodeDetailView.exportEpisodeButtonLabel : LocalizableStrings.ArchivedEpisodeDetailView.downloadEpisodeButtonLabel)
                         .bold()
                 }
                 .buttonStyle(.bordered)
@@ -46,11 +47,19 @@ struct ArchivedEpisodeDetailView: View {
                 .controlSize(.large)
                 
                 HStack(spacing: 12) {
-                    Image(systemName: "checkmark")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 14)
-                        .foregroundColor(.green)
+                    if viewModel.episodeIsDownloaded {
+                        Image(systemName: "checkmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 14)
+                            .foregroundColor(.green)
+                    } else {
+                        Image(systemName: "icloud")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 14)
+                            .foregroundColor(.gray)
+                    }
                     
                     Text(viewModel.fileSize)
                         .foregroundColor(.gray)

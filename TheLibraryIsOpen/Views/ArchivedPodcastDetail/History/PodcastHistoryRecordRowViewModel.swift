@@ -25,6 +25,19 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
                 description = String(format: LocalizableStrings.PodcastHistoryRecord.PodcastArchived.multipleEpisodesDescription, record.value1)
             }
             self.dateTime = record.dateTime.asShortDateAndShortTimeString()
+            
+        case .episodesDownloaded:
+            sfSymbolName = "arrow.down.circle.fill"
+            symbolHeight = 38
+            symbolColor = .green
+            title = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.title
+            let value1 = Int(record.value1) ?? 0
+            if value1 == 1 {
+                description = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.singleAddedEpisodeDescription
+            } else {
+                description = String(format: LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.multipleAddedEpisodesDescription, record.value1)
+            }
+            self.dateTime = record.dateTime.asShortDateAndShortTimeString()
         
         case .archiveExported:
             sfSymbolName = "folder.fill" // doc.zipper
@@ -65,19 +78,6 @@ class PodcastHistoryRecordRowViewModel: ObservableObject {
                 description = LocalizableStrings.PodcastHistoryRecord.CheckedForNewEpisodes.singleNewEpisodeDescription
             } else {
                 description = String(format: LocalizableStrings.PodcastHistoryRecord.CheckedForNewEpisodes.multipleNewEpisodesDescription, record.value1)
-            }
-            self.dateTime = record.dateTime.asShortDateAndShortTimeString()
-            
-        case .newEpisodesDownloaded:
-            sfSymbolName = "arrow.down.circle.fill"
-            symbolHeight = 38
-            symbolColor = .green
-            title = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.title
-            let value1 = Int(record.value1) ?? 0
-            if value1 == 1 {
-                description = LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.singleAddedEpisodeDescription
-            } else {
-                description = String(format: LocalizableStrings.PodcastHistoryRecord.NewEpisodesDownloaded.multipleAddedEpisodesDescription, record.value1)
             }
             self.dateTime = record.dateTime.asShortDateAndShortTimeString()
             

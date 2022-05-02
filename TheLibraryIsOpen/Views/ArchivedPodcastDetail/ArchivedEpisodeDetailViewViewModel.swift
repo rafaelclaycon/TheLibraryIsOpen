@@ -3,6 +3,7 @@ import UIKit
 
 class ArchivedEpisodeDetailViewViewModel: ObservableObject {
 
+    @Published var episodeIsDownloaded: Bool
     @Published var artwork: Data?
     @Published var title: String
     @Published var fileSize: String
@@ -12,6 +13,7 @@ class ArchivedEpisodeDetailViewViewModel: ObservableObject {
     
     init(episode: Episode?) {
         guard let episode = episode else {
+            episodeIsDownloaded = false
             artwork = nil
             title = "Error"
             fileSize = .empty
@@ -20,6 +22,7 @@ class ArchivedEpisodeDetailViewViewModel: ObservableObject {
             description = .empty
             return
         }
+        episodeIsDownloaded = episode.offlineStatus == EpisodeOfflineStatus.availableOffline.rawValue
         artwork = MP3MetadataExtractor.getEpisodeArtwork(from: episode.localFilepath ?? .empty)
         title = episode.title
         fileSize = episode.filesize.toFormattedFileSize()

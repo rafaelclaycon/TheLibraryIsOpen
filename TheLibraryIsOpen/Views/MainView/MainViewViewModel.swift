@@ -81,8 +81,8 @@ class MainViewViewModel: ObservableObject {
         updateList()
     }
     
-    func showPodcastDeletionConfirmation() {
-        alertTitle = LocalizableStrings.MainView.ErrorMessages.podcastDeletionConfirmationTitle
+    func showPodcastDeletionConfirmation(podcastTitle: String) {
+        alertTitle = String(format: LocalizableStrings.MainView.ErrorMessages.podcastDeletionConfirmationTitle, podcastTitle)
         alertMessage = LocalizableStrings.MainView.ErrorMessages.podcastDeletionConfirmationMessage
         alertType = .speciallyPreparedOption
         showAlert = true
