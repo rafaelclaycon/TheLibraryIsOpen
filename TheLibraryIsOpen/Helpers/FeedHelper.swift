@@ -1,6 +1,5 @@
 import Foundation
 import FeedKit
-import Alamofire
 
 class FeedHelper {
 
