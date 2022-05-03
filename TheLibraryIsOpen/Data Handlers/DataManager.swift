@@ -1,5 +1,4 @@
 import Foundation
-import Alamofire
 
 class DataManager {
 
@@ -228,25 +227,23 @@ class DataManager {
     }
     
     func downloadiTunesJSON(link: String, podcastID: Int, completionHandler: @escaping (String?, DataManagerError?) -> Void) {
-        let destination: DownloadRequest.Destination = { _, _ in
-            let tempURL = FileManager.default.temporaryDirectory
-            let fileURL = tempURL.appendingPathComponent("iTunesAPIRequest_\(podcastID).json")
-
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-
-        AF.download(link, to: destination).response { response in
-            debugPrint(response)
-
-            guard response.error == nil else {
+        let originURL = URL(string: link)!
+        
+        let downloadTask = URLSession.shared.downloadTask(with: originURL) { localURL, urlResponse, error in
+            guard error == nil else {
                 return completionHandler(nil, .downloadError)
             }
-            guard let filePath = response.fileURL?.path else {
+            guard let filePath = localURL?.path else {
                 return completionHandler(nil, .failedToProvideLocalFileURL)
             }
-
+            guard let httpResponse = urlResponse as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                return completionHandler(nil, .applePodcastsQueryUnsuccessful)
+            }
+            
             completionHandler(filePath, nil)
         }
+
+        downloadTask.resume()
     }
     
     func getFeedDetails(fromLink podcastLink: String, completionHandler: @escaping (FeedDetail?, DataManagerError?) -> Void) throws {
@@ -375,31 +372,25 @@ class DataManager {
             guard !episodio.remoteUrl.isEmpty else {
                 fatalError("URL vazio.")
             }
-            guard let url = URL(string: episodio.remoteUrl) else {
+            guard let originURL = URL(string: episodio.remoteUrl) else {
                 fatalError("Não foi possível gerar URL a partir da string.")
             }
             
-            let destino: DownloadRequest.Destination = { _, _ in
-                let cachesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let fileURL = cachesURL.appendingPathComponent("Podcasts/\(podcastId)/\(url.lastPathComponent)")
-
-                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-            }
-            
-            AF.download(episodio.remoteUrl, to: destino)
-                .downloadProgress(closure: { progress in
-                    progressCallback(episodio.id, progress.fractionCompleted)
-                })
-                .response { response in
-                    /*guard response.error == nil else {
-                        return completionHandler(nil, .downloadError)
-                    }
-                    guard let filePath = response.fileURL?.path else {
-                        return completionHandler(nil, .failedToProvideLocalFileURL)
-                    }*/
-                
-                    self.download(episodeArray: array, podcastId: podcastId, progressCallback: progressCallback, completionHandler: completionHandler)
+            let downloadTask = URLSession.shared.downloadTask(with: originURL) { localURL, urlResponse, error in
+                /*guard response.error == nil else {
+                    return completionHandler(nil, .downloadError)
                 }
+                guard let filePath = response.fileURL?.path else {
+                    return completionHandler(nil, .failedToProvideLocalFileURL)
+                }
+                guard let httpResponse = urlResponse as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    return completionHandler(nil, .applePodcastsQueryUnsuccessful)
+                }*/
+                
+                self.download(episodeArray: array, podcastId: podcastId, progressCallback: progressCallback, completionHandler: completionHandler)
+            }
+
+            downloadTask.resume()
         } else {
             completionHandler(true)
         }
@@ -444,5 +435,6 @@ enum DataManagerError: Error {
     case urlNaoEHTTP
     case resultadoiTunesInesperado
     case noPodcasts
+    case applePodcastsQueryUnsuccessful
 
 }

@@ -34,7 +34,6 @@
 		D94A05FA2572CB4E0065AE2C /* TheLibraryIsOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05F92572CB4E0065AE2C /* TheLibraryIsOpenService.swift */; };
 		D94A05FE2572CDD70065AE2C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A05FD2572CDD70065AE2C /* DataManager.swift */; };
 		D94AEC482570BEE9001DEB9B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94AEC472570BEE9001DEB9B /* MainView.swift */; };
-		D94AEC5E2571358F001DEB9B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D94AEC5D2571358F001DEB9B /* Alamofire */; };
 		D94E8EEA27A083B200EA917C /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94E8EE927A083B200EA917C /* GuideView.swift */; };
 		D959E2F4278B3EC800D48EB1 /* ArchivedEpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F3278B3EC800D48EB1 /* ArchivedEpisodeRow.swift */; };
 		D959E2F6278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959E2F5278B3F2600D48EB1 /* ArchivedEpisodeRowViewModel.swift */; };
@@ -207,7 +206,6 @@
 			files = (
 				D94A05F2257296E70065AE2C /* SQLite in Frameworks */,
 				D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */,
-				D94AEC5E2571358F001DEB9B /* Alamofire in Frameworks */,
 				D98A227B27C34AE8003F2B77 /* ID3TagEditor in Frameworks */,
 				D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */,
 				D975B2A7278C8DBC00BEBB6B /* ZIPFoundation in Frameworks */,
@@ -528,7 +526,6 @@
 			packageProductDependencies = (
 				D9D3DBF0256EE9760035560E /* FeedKit */,
 				D95EF9E425705F0F00D03D4F /* KingfisherSwiftUI */,
-				D94AEC5D2571358F001DEB9B /* Alamofire */,
 				D94A05F1257296E70065AE2C /* SQLite */,
 				D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */,
 				D98A227A27C34AE8003F2B77 /* ID3TagEditor */,
@@ -587,7 +584,6 @@
 			packageReferences = (
 				D9D3DBEF256EE9760035560E /* XCRemoteSwiftPackageReference "FeedKit" */,
 				D95EF9E325705F0F00D03D4F /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				D94AEC5C2571358F001DEB9B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D94A05F0257296E70065AE2C /* XCRemoteSwiftPackageReference "SQLite" */,
 				D975B2A5278C8DBC00BEBB6B /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				D98A227927C34AE8003F2B77 /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
@@ -988,14 +984,6 @@
 				minimumVersion = 0.12.2;
 			};
 		};
-		D94AEC5C2571358F001DEB9B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
 		D95EF9E325705F0F00D03D4F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1035,11 +1023,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D94A05F0257296E70065AE2C /* XCRemoteSwiftPackageReference "SQLite" */;
 			productName = SQLite;
-		};
-		D94AEC5D2571358F001DEB9B /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D94AEC5C2571358F001DEB9B /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		D95EF9E425705F0F00D03D4F /* KingfisherSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
