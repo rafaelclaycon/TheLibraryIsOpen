@@ -67,7 +67,6 @@
 		D9AA57D82795281B0027B392 /* PodcastRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA57D72795281B0027B392 /* PodcastRowViewModel.swift */; };
 		D9B2432D2793980E0014384E /* ExportDestinationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */; };
 		D9BADD0A279C99DC00CF2C27 /* FileSystemOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BADD09279C99DC00CF2C27 /* FileSystemOperations.swift */; };
-		D9BC1645282DC8F600BD5C13 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */; };
 		D9BF08502805FF0700F54C55 /* FileSystemOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF084F2805FF0700F54C55 /* FileSystemOperationsTests.swift */; };
 		D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA094927964636001DE371 /* PlayerPickerView.swift */; };
 		D9CC03D6279C7D04009E90BC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D5279C7D04009E90BC /* AlertType.swift */; };
@@ -86,6 +85,8 @@
 		D9D3DBE2256EA2AE0035560E /* PodcastPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBE1256EA2AE0035560E /* PodcastPreview.swift */; };
 		D9D3DBE8256EBB510035560E /* FeedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3DBE7256EBB510035560E /* FeedHelper.swift */; };
 		D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D9D3DBF0256EE9760035560E /* FeedKit */; };
+		D9D46F9B282DCD8A00B78B65 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = D9D46F9A282DCD8A00B78B65 /* iOSSnapshotTestCase */; };
+		D9D46F9E282DCE3400B78B65 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D46F9D282DCE3400B78B65 /* SnapshotTests.swift */; };
 		D9D5A936279777B8002749CC /* PodcastPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5A935279777B8002749CC /* PodcastPlayer.swift */; };
 		D9E56BED278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E56BEC278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift */; };
 		D9E56BEF278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E56BEE278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift */; };
@@ -188,6 +189,7 @@
 		D9D3DBD9256E9C0D0035560E /* PodcastRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRow.swift; sourceTree = "<group>"; };
 		D9D3DBE1256EA2AE0035560E /* PodcastPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreview.swift; sourceTree = "<group>"; };
 		D9D3DBE7256EBB510035560E /* FeedHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelper.swift; sourceTree = "<group>"; };
+		D9D46F9D282DCE3400B78B65 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		D9D5A935279777B8002749CC /* PodcastPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayer.swift; sourceTree = "<group>"; };
 		D9E56BEC278B511200AA0DD9 /* FileAvailableOfflineSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAvailableOfflineSymbol.swift; sourceTree = "<group>"; };
 		D9E56BEE278B62EA00AA0DD9 /* FileDownloadErrorSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadErrorSymbol.swift; sourceTree = "<group>"; };
@@ -209,7 +211,6 @@
 				D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */,
 				D98A227B27C34AE8003F2B77 /* ID3TagEditor in Frameworks */,
 				D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */,
-				D9BC1645282DC8F600BD5C13 /* iOSSnapshotTestCase in Frameworks */,
 				D975B2A7278C8DBC00BEBB6B /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D46F9B282DCD8A00B78B65 /* iOSSnapshotTestCase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +446,7 @@
 		D9D3DB8F256E7BC30035560E /* TheLibraryIsOpenTests */ = {
 			isa = PBXGroup;
 			children = (
+				D9D46F9C282DCDE400B78B65 /* Snapshot tests */,
 				D9BF0853280603D700F54C55 /* Resources */,
 				D999E62727EF6A5A00E4B7F4 /* Views */,
 				D9BF084E2805FEEC00F54C55 /* Data Handlers */,
@@ -509,6 +512,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D9D46F9C282DCDE400B78B65 /* Snapshot tests */ = {
+			isa = PBXGroup;
+			children = (
+				D9D46F9D282DCE3400B78B65 /* SnapshotTests.swift */,
+			);
+			path = "Snapshot tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -531,7 +542,6 @@
 				D94A05F1257296E70065AE2C /* SQLite */,
 				D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */,
 				D98A227A27C34AE8003F2B77 /* ID3TagEditor */,
-				D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */,
 			);
 			productName = TheLibraryIsOpen;
 			productReference = D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */;
@@ -551,6 +561,9 @@
 				D9D3DB8E256E7BC30035560E /* PBXTargetDependency */,
 			);
 			name = TheLibraryIsOpenTests;
+			packageProductDependencies = (
+				D9D46F9A282DCD8A00B78B65 /* iOSSnapshotTestCase */,
+			);
 			productName = TheLibraryIsOpenTests;
 			productReference = D9D3DB8C256E7BC30035560E /* TheLibraryIsOpenTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -590,7 +603,7 @@
 				D94A05F0257296E70065AE2C /* XCRemoteSwiftPackageReference "SQLite" */,
 				D975B2A5278C8DBC00BEBB6B /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				D98A227927C34AE8003F2B77 /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
-				D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
+				D9D46F99282DCD8A00B78B65 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 			);
 			productRefGroup = D9D3DB7C256E7BC00035560E /* Products */;
 			projectDirPath = "";
@@ -708,6 +721,7 @@
 			files = (
 				D999E62B27EF6A9E00E4B7F4 /* MockPodcast.swift in Sources */,
 				D91184602573612B008DB977 /* FeedHelperTests.swift in Sources */,
+				D9D46F9E282DCE3400B78B65 /* SnapshotTests.swift in Sources */,
 				D95E798E2790DE0C00115606 /* LinkWizardTests.swift in Sources */,
 				D930264627B33D7600153EBF /* PodcastPreviewViewModelTests.swift in Sources */,
 				D99323422576931E00DB9A72 /* DataManagerTests.swift in Sources */,
@@ -1012,20 +1026,20 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 		D9D3DBEF256EE9760035560E /* XCRemoteSwiftPackageReference "FeedKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nmdias/FeedKit";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.1.2;
+			};
+		};
+		D9D46F99282DCD8A00B78B65 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1051,15 +1065,15 @@
 			package = D98A227927C34AE8003F2B77 /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
 			productName = ID3TagEditor;
 		};
-		D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
-			productName = iOSSnapshotTestCase;
-		};
 		D9D3DBF0256EE9760035560E /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D9D3DBEF256EE9760035560E /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
+		};
+		D9D46F9A282DCD8A00B78B65 /* iOSSnapshotTestCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9D46F99282DCD8A00B78B65 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
+			productName = iOSSnapshotTestCase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
