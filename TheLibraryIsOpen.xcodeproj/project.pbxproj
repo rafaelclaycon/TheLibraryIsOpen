@@ -67,6 +67,7 @@
 		D9AA57D82795281B0027B392 /* PodcastRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA57D72795281B0027B392 /* PodcastRowViewModel.swift */; };
 		D9B2432D2793980E0014384E /* ExportDestinationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B2432C2793980E0014384E /* ExportDestinationOptions.swift */; };
 		D9BADD0A279C99DC00CF2C27 /* FileSystemOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BADD09279C99DC00CF2C27 /* FileSystemOperations.swift */; };
+		D9BC1645282DC8F600BD5C13 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */; };
 		D9BF08502805FF0700F54C55 /* FileSystemOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF084F2805FF0700F54C55 /* FileSystemOperationsTests.swift */; };
 		D9CA094A27964636001DE371 /* PlayerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA094927964636001DE371 /* PlayerPickerView.swift */; };
 		D9CC03D6279C7D04009E90BC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC03D5279C7D04009E90BC /* AlertType.swift */; };
@@ -208,6 +209,7 @@
 				D95EF9E525705F0F00D03D4F /* KingfisherSwiftUI in Frameworks */,
 				D98A227B27C34AE8003F2B77 /* ID3TagEditor in Frameworks */,
 				D9D3DBF1256EE9760035560E /* FeedKit in Frameworks */,
+				D9BC1645282DC8F600BD5C13 /* iOSSnapshotTestCase in Frameworks */,
 				D975B2A7278C8DBC00BEBB6B /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +531,7 @@
 				D94A05F1257296E70065AE2C /* SQLite */,
 				D975B2A6278C8DBC00BEBB6B /* ZIPFoundation */,
 				D98A227A27C34AE8003F2B77 /* ID3TagEditor */,
+				D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */,
 			);
 			productName = TheLibraryIsOpen;
 			productReference = D9D3DB7B256E7BC00035560E /* TheLibraryIsOpen.app */;
@@ -587,6 +590,7 @@
 				D94A05F0257296E70065AE2C /* XCRemoteSwiftPackageReference "SQLite" */,
 				D975B2A5278C8DBC00BEBB6B /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				D98A227927C34AE8003F2B77 /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
+				D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 			);
 			productRefGroup = D9D3DB7C256E7BC00035560E /* Products */;
 			projectDirPath = "";
@@ -1008,6 +1012,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		D9D3DBEF256EE9760035560E /* XCRemoteSwiftPackageReference "FeedKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nmdias/FeedKit";
@@ -1038,6 +1050,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D98A227927C34AE8003F2B77 /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
 			productName = ID3TagEditor;
+		};
+		D9BC1644282DC8F600BD5C13 /* iOSSnapshotTestCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9BC1643282DC8F600BD5C13 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
+			productName = iOSSnapshotTestCase;
 		};
 		D9D3DBF0256EE9760035560E /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
