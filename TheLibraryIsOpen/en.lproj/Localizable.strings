@@ -96,7 +96,7 @@
 // Get Link From Pasteboard View
 
 "get_link_from_pasteboard_view_title" = "Get Episodes";
-"get_link_from_pasteboard_view_text" = "Copy the podcast link, come back here and press the button below.";
+"get_link_from_pasteboard_view_text" = "After you copy the podcast link, come back here and press the button below.";
 "get_link_from_pasteboard_view_process_link_button_label" = "Process Link";
 "get_link_from_pasteboard_view_look_for_link_button_label" = "Look for Link in Pasteboard";
 "get_link_from_pasteboard_view_loader_label" = "Processing link...";

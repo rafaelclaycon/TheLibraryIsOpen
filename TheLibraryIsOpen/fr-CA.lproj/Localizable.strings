@@ -96,7 +96,7 @@
 // Get Link From Pasteboard View
 
 "get_link_from_pasteboard_view_title" = "Obtenir des Épisodes";
-"get_link_from_pasteboard_view_text" = "Copiez le lien du podcast, revenez ici et appuyez sur le bouton ci-dessous.";
+"get_link_from_pasteboard_view_text" = "Après avoir copié le lien du podcast, revenez ici et appuyez sur le bouton ci-dessous.";
 "get_link_from_pasteboard_view_process_link_button_label" = "Traiter le Lien";
 "get_link_from_pasteboard_view_look_for_link_button_label" = "Rechercher le Lien Dans le Presse-papiers";
 "get_link_from_pasteboard_view_loader_label" = "Traitement le lien...";
