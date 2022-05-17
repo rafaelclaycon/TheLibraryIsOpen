@@ -1,0 +1,228 @@
+
+// General
+
+"ok" = "OK";
+"episode" = "episode";
+"episodes" = "episodes";
+"cancel" = "Cancel";
+"most_recent_first" = "Most recent first";
+"oldest_first" = "Oldest first";
+"size_not_reported_by_author" = "Size not reported by author";
+"group" = "group";
+"groups" = "groups";
+"unknown_title" = "Unknown Title";
+"unknown_author" = "Unknown Author";
+
+// Main View
+
+"main_view_title" = "Mi Archivo";
+"main_view_add_podcast_button_label" = "Agregar Podcast";
+"main_view_total_device_space_taken" = "%@ tomados en total";
+
+"main_view_empty_state_view_title" = "No Hay Podcasts Archivados";
+"main_view_empty_state_view_description" = "Para archivar un nuevo podcast, toque el botón Agregar Podcast en la parte superior de la pantalla.";
+"main_view_empty_state_view_how_does_this_work_button_label" = "¿Cómo funciona esto?";
+
+"main_view_list_options_sort_by_title" = "Sort by Title";
+"main_view_list_options_sort_by_total_size" = "Sort by Total Size";
+"main_view_list_options_show_episode_count" = "Show Episode Count";
+"main_view_list_options_show_total_size" = "Show Total Size";
+
+"main_view_podcast_row_episode_count_multiple_episodes" = "%d/%d ✓";
+"main_view_podcast_row_exported_at" = "Exported %@";
+"main_view_podcast_row_not_exported_yet" = "Not exported yet";
+"main_view_podcast_row_no_size_information" = "Size info not available";
+"main_view_podcast_delete_podcast_swipe_action_label" = "Delete";
+
+"main_view_error_messages_error_loading_podcasts" = "Error While Trying To Load Podcasts";
+"main_view_error_messages_podcast_deletion_confirmation_title" = "Delete '%@'?";
+"main_view_error_messages_podcast_deletion_confirmation_message" = "All episodes and history will be lost. This change cannot be undone.";
+"main_view_error_messages_deletion_failure_title" = "Failed To Delete Podcast";
+
+// Player Picker View
+
+"player_picker_view_title" = "What podcast player do you use?";
+"player_picker_view_other" = "Other";
+
+// Unfortunately View
+
+"unfortunately_view_title" = "Unfortunately, %@ does not support the open podcast ecosystem";
+"unfortunately_view_explanation_1st_paragraph" = "Podcasts started as an open repository of RSS feeds for all to share, but %@ does not give that information to others.";
+"unfortunately_view_explanation_2nd_paragraph" = "The simplest way to get access to all publicly available episodes is through the Podcasts app that already came installed on your iPhone.";
+"unfortunately_view_explanation_3rd_paragraph" = "Open the app and follow the instructions in the next screen to get de podcast feed.";
+"unfortunately_view_open_apple_podcasts_button_title" = "Open Apple Podcasts";
+"unfortunately_view_could_not_open_podcasts_app_alert_title" = "Could Not Open the Podcasts App";
+"unfortunately_view_could_not_open_podcasts_app_alert_message" = "Please search for the Podcasts app on your device to continue.";
+
+// Get Link Instructions View
+
+"get_link_instructions_view_title" = "How to Get the Link";
+"get_link_instructions_view_general_explanation_text" = "To proceed, you need to get the podcast link. Follow the steps below.";
+
+"get_link_instructions_view_apple_podcasts_image_name" = "apple_podcasts_inst_en";
+"get_link_instructions_view_apple_podcasts_step1" = "1. Open the Podcasts app";
+"get_link_instructions_view_apple_podcasts_step2" = "2. Tap the magnifying glass at the bottom (Search)";
+"get_link_instructions_view_apple_podcasts_step3" = "3. Type the name of the podcast you want to archive in the search bar and open the show's page";
+"get_link_instructions_view_apple_podcasts_step4" = "4. Tap the ... button on the top right of the show page";
+"get_link_instructions_view_apple_podcasts_step5" = "5. Tap Copy Link";
+"get_link_instructions_view_apple_podcasts_step6" = "6. Come back here and tap Next";
+
+"get_link_instructions_view_castro_image_name" = "castro_inst_en";
+"get_link_instructions_view_castro_step1" = "1. Open Castro";
+"get_link_instructions_view_castro_step2" = "2. Tap the third icon in the bottom bar (Library)";
+"get_link_instructions_view_castro_step3" = "3. In the Library, tap the podcast you want to archive";
+"get_link_instructions_view_castro_step4" = "4. Tap the share icon at the top right of the screen (an arrow pointing upwards)";
+"get_link_instructions_view_castro_step5" = "5. In the share sheet, tap Copy";
+"get_link_instructions_view_castro_step5" = "6. Come back here and tap Next";
+
+"get_link_instructions_view_overcast_image_name" = "overcast_inst_en";
+"get_link_instructions_view_overcast_step1" = "1. Open Overcast";
+"get_link_instructions_view_overcast_step2" = "2. In the podcast list, tap a show to open it";
+"get_link_instructions_view_overcast_step3" = "3. Tap the little i icon at the right of an episode";
+"get_link_instructions_view_overcast_step4" = "4. In the episode detail screen, tap Share in the bottom right (an arrow pointing upwards)";
+"get_link_instructions_view_overcast_step5" = "5. Tap Share Link and then Copy in the share sheet that follows";
+"get_link_instructions_view_overcast_step6" = "6. Come back here and tap Next";
+
+"get_link_instructions_view_pocket_casts_image_name" = "pocket_casts_inst_ptbr";
+"get_link_instructions_view_pocket_casts_step1" = "1. Open Pocket Casts";
+"get_link_instructions_view_pocket_casts_step2" = "2. In the bottom bar, tap Podcasts";
+"get_link_instructions_view_pocket_casts_step3" = "3. Pick a podcast from the list";
+"get_link_instructions_view_pocket_casts_step4" = "4. In the podcast detail screen, tap Share on the bottom right (an arrow pointing upwards)";
+"get_link_instructions_view_pocket_casts_step5" = "5. Tap Copy in the share sheet";
+"get_link_instructions_view_pocket_casts_step6" = "6. Come back here and tap Next";
+
+"get_link_instructions_view_next_button_label" = "Next";
+
+// Get Link From Pasteboard View
+
+"get_link_from_pasteboard_view_title" = "Get Episodes";
+"get_link_from_pasteboard_view_text" = "Copy the podcast link, come back here and press the button below.";
+"get_link_from_pasteboard_view_process_link_button_label" = "Process Link";
+"get_link_from_pasteboard_view_look_for_link_button_label" = "Look for Link in Pasteboard";
+"get_link_from_pasteboard_view_loader_label" = "Processing link...";
+
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_title" = "Spotify Links Are Not Supported";
+"get_link_from_pasteboard_view_spotify_links_not_supported_warning_message" = "Please try obtaining a link from one of the supported services.";
+
+"get_link_from_pasteboard_view_unable_to_access_feed_error_title" = "Unable to Access Feed";
+"get_link_from_pasteboard_view_unable_to_access_feed_error_message" = "Please ask the feed owner to support HTTPS.";
+
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_title" = "Unable To Extract a Valid Apple Podcasts Link";
+"get_link_from_pasteboard_view_invalid_apple_podcasts_link_error_message" = "Try obtaining this podcast's link directly from the Podcasts app.";
+
+// Podcast Preview
+
+"podcast_preview_episode_list" = "Episode list";
+"podcast_preview_grouped_by_year" = "Grouped by year";
+"podcast_preview_select_all" = "Select all";
+"podcast_preview_unselect_all" = "Unselect all";
+"podcast_preview_download_episodes_button_title" = "Download";
+"podcast_preview_download_button_just_add_title" = "Just add to archive";
+"podcast_preview_remaining_storage_singular_label" = "%@ remaining on this iPhone.";
+"podcast_preview_remaining_storage_plural_label" = "%@ remaining on this iPhone.";
+"podcast_preview_remaining_storage_error_label" = "Unable to obtain remaining storage.";
+"remaining_storage_over_minimum_free_storage_error" = "Unable to continue. %@ over free storage (%@). Either free up space on the device or select less episodes.";
+
+"podcast_preview_episode_group_list_episode_label_singular" = "1 ep%@";
+"podcast_preview_episode_group_list_episode_label_plural" = "%d ep%@";
+
+"podcast_preview_messages_ready_to_download_single_episode_confirmation_title" = "Ready To Download a Single Episode of '%@'?";
+"podcast_preview_messages_ready_to_download_multiple_episodes_confirmation_title" = "Ready To Download %d Episodes of '%@'?";
+"podcast_preview_messages_ready_to_download_confirmation_message" = "You can cancel the download at any time.";
+"continue_button_label" = "Continue";
+
+// Archived Podcast Detail
+
+"archived_podcast_detail_options_publication_date" = "Publication Date";
+"archived_podcast_detail_options_show_downloaded_episodes_only" = "Downloaded Episodes Only";
+"archived_podcast_detail_options_show_all_episodes" = "All Episodes";
+"archived_podcast_detail_options_look_for_new_episodes" = "Check For New Episodes";
+"archived_podcast_detail_options_view_history" = "View History";
+"archived_podcast_detail_options_delete_podcast" = "Delete Podcast";
+
+"archived_podcast_detail_downloading_episode" = "Downloading episode... %.0f%%";
+"archived_podcast_detail_available_offline" = "Available offline";
+
+"archived_podcast_detail_download_summary_message_single_episode" = "Downloading 1 episode...";
+"archived_podcast_detail_download_summary_message_multiple_episodes" = "Downloading %d episodes...";
+
+"archived_podcast_detail_info_downloaded_episodes" = "Downloaded";
+"archived_podcast_detail_total_size" = "Total size";
+"archived_podcast_detail_unknown_total_size" = "Unknown";
+"archived_podcast_detail_last_checked" = "Last checked";
+"archived_podcast_detail_unknown_last_checked_date" = "Unknown";
+
+"archived_podcast_detail_history_button_label" = "History";
+"archived_podcast_detail_export_all_button_label" = "Export all to...";
+"archived_podcast_detail_export_options_text" = "Select a destination";
+"archived_podcast_detail_export_options_files_option_name" = "Files/iCloud Drive (faster)";
+"archived_podcast_detail_export_options_other_option_name" = "Google Drive, Dropbox, OneDrive (slower)";
+
+"archived_podcast_detail_exported_file_name_single_episode" = "%@ (1 episode) (archived in %@)";
+"archived_podcast_detail_exported_file_name_multiple_episodes" = "%@ (%d episodes) (archived in %@)";
+
+"archived_podcast_detail_export_export_successful_message_title" = "Archive Exported Successfully";
+"archived_podcast_detail_export_export_successful_message_body" = "Diamonds might be a sham by De Beers but these episodes really stand a chance of lasting forever now. 💍";
+
+// Archived Episode Detail View
+
+"archived_episode_detail_view_download_episode_button_label" = "Download episode";
+"archived_episode_detail_view_export_episode_button_label" = "Export episode";
+
+// After Export Success View
+
+"after_export_success_view_export_successful_title" = "Export Successful!";
+"after_export_success_view_what_now_subtitle" = "What now?";
+"after_export_success_view_explanation_text_first_paragraph" = "Now that you've exported your archived episodes to an external service, you can unzip and play them on your phone or computer.";
+"after_export_success_view_explanation_text_second_paragraph" = "Happy listening!";
+
+// Settings View
+
+"settings_screen_title" = "Settings";
+
+"settings_screen_add_podcast_section_header" = "Add podcast";
+"settings_screen_add_podcast_skip_get_link_instructions_label" = "Skip link tutorial";
+"settings_screen_when_adding_option_label" = "When adding";
+"settings_screen_when_adding_preview_first_option" = "Preview first";
+"settings_screen_when_adding_just_add_to_archive_option" = "Just add to archive";
+"settings_screen_when_adding_add_and_download_all_episodes_option" = "Add and download all episodes";
+
+"settings_screen_archived_podcast_section_header" = "Archived podcast";
+"settings_screen_archived_podcast_display_episode_artwork_option" = "Display episode artwork";
+"settings_screen_archived_podcast_section_footer" = "Episode artwork will be displayed when available.";
+
+"settings_screen_tip_jar_section_header" = "Tip jar";
+
+"settings_screen_feedback_section_header" = "Feedback";
+"settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Report a bug";
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "Informar de un error de traducción";
+"settings_screen_feedback_section_footer" = "Support is very limited because I'm a single person running this app :)";
+
+// Podcast History View
+
+"podcast_history_view_nav_bar_title" = "%@ History";
+
+// Podcast History Record
+
+"podcast_history_record_none_title" = "No title provided";
+"podcast_history_record_none_description" = "No description provided.";
+
+"podcast_history_record_podcast_archived_title" = "Podcast archived";
+"podcast_history_record_podcast_archived_single_episode_description" = "1 episode added.";
+"podcast_history_record_podcast_archived_multiple_episodes_description" = "%@ episodes added.";
+
+"podcast_history_record_archive_exported_title" = "Archive exported";
+"podcast_history_record_archive_exported_single_episode_description" = "1 episode exported to %@.";
+"podcast_history_record_archive_exported_multiple_episodes_description" = "%@ episodes exported to %@.";
+"podcast_history_record_archive_exported_exported_to_unknown" = "Unknown";
+"podcast_history_record_archive_exported_exported_to_files" = "Files";
+"podcast_history_record_archive_exported_exported_to_third_party_service" = "third party service";
+
+"podcast_history_record_checked_for_new_episodes_title" = "Checked for new episodes";
+"podcast_history_record_checked_for_new_episodes_no_new_episodes_description" = "No new episodes found on feed %@.";
+"podcast_history_record_checked_for_new_episodes_single_new_episode_description" = "1 new episode found.";
+"podcast_history_record_checked_for_new_episodes_multiple_new_episodes_description" = "%@ new episodes found.";
+
+"podcast_history_record_new_episodes_downloaded_title" = "New episodes downloaded";
+"podcast_history_record_new_episodes_downloaded_single_added_episode_description" = "1 episode added to the archive.";
+"podcast_history_record_new_episodes_downloaded_multiple_added_episodes_description" = "%@ new episodes added to the archive.";

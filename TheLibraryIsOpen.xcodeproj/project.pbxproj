@@ -151,6 +151,7 @@
 		D989067327F159F100602AC1 /* DeviceStorageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStorageInformation.swift; sourceTree = "<group>"; };
 		D98A227527C317BA003F2B77 /* ArchivedEpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeDetailView.swift; sourceTree = "<group>"; };
 		D98A227727C32737003F2B77 /* ArchivedEpisodeDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedEpisodeDetailViewViewModel.swift; sourceTree = "<group>"; };
+		D98B8B4B28345535002C7DDB /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D98D25542798E3AA006DAC22 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		D98D25562798E56D006DAC22 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
 		D9908D3E280086FE009C8961 /* PodcastPreviewListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPreviewListType.swift; sourceTree = "<group>"; };
@@ -579,6 +580,7 @@
 				Base,
 				"pt-BR",
 				"fr-CA",
+				"es-419",
 			);
 			mainGroup = D9D3DB72256E7BC00035560E;
 			packageReferences = (
@@ -730,6 +732,7 @@
 				D975B29E278C6F6B00BEBB6B /* en */,
 				D975B2A0278C6F9B00BEBB6B /* pt-BR */,
 				D975B2A8278CA56600BEBB6B /* fr-CA */,
+				D98B8B4B28345535002C7DDB /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
