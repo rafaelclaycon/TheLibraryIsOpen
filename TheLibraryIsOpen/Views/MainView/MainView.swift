@@ -8,6 +8,7 @@ struct MainView: View {
 
     @ObservedObject var viewModel = MainViewViewModel()
     @State var showingModalView = false
+    @State var showingPrivateFolderScreen = false
     @State var showingSettingsScreen = false
     @State var podcastToAutoOpenAfterAdd: Int? = 0
     @State private var subviewToOpen: MainViewSubviewToOpen = .addPodcast
@@ -16,6 +17,7 @@ struct MainView: View {
         NavigationView {
             VStack {
                 NavigationLink(destination: SettingsView(), isActive: $showingSettingsScreen) { EmptyView() }
+                NavigationLink(destination: PrivateFolderView(), isActive: $showingPrivateFolderScreen) { EmptyView() }
                 
                 if viewModel.displayPodcastList {
                     List(viewModel.podcasts) { podcast in
@@ -38,6 +40,29 @@ struct MainView: View {
                                 .tint(.red)
                             }
                     }
+                    
+                    Button {
+//                        viewModel.alertType = .twoOptions
+//                        viewModel.alertTitle = "Welcome to Private Folder"
+//                        viewModel.alertMessage = "This is a place to keep feeds you might not want anyone with access to your unlocked phone to see."
+//                        viewModel.showAlert = true
+                        
+                        viewModel.authSidekick.authenticated(reasonToAuthenticate: "Access secured podcasts in your Private Folder.") { result in
+                            if result {
+                                showingPrivateFolderScreen = true
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "lock.fill")
+                            Text("Private Folder (Empty)")
+                        }
+                    }
+                    .tint(.accentColor)
+                    .controlSize(.large)
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.roundedRectangle)
+                    .padding(.vertical, 5)
                     
                     Text(viewModel.totalSize)
                         .padding(.bottom, Utils.deviceHasTopNotch() ? 0 : 10)

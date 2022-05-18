@@ -53,6 +53,11 @@ struct SettingsView: View {
                     }
                 }*/
                 
+                Toggle("Enable Private Folder", isOn: $viewModel.displayPrivateFolder)
+                    .onChange(of: viewModel.displayPrivateFolder) { newValue in
+                        UserSettings.setDisplayPrivateFolder(to: newValue)
+                    }
+                
                 Toggle(LocalizableStrings.SettingsView.ArchivedPodcast.displayEpisodeArtworkOption, isOn: $viewModel.displayArtworkInArchive)
                     .onChange(of: viewModel.displayHowToGetLinkInstructions) { newValue in
                         UserSettings.setDisplayArtworkInArchiveOption(to: newValue)
@@ -69,25 +74,6 @@ struct SettingsView: View {
                 }
                 .alert(isPresented: $showingTipJarThankYouAlert) {
                     Alert(title: Text("And She Is the Moment"), message: Text("Thank you so much for your support."), dismissButton: .default(Text(LocalizableStrings.ok)))
-                }
-                
-                Button("Test Local Authentication") {
-                    var error: NSError?
-                    
-                    let context: LAContext = LAContext()
-                    
-                    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                        localAuthenticationAlertTitle = "Authentication Successful"
-                        localAuthenticationAlertMessage = "You're good to go!"
-                        showingLocalAuthenticationAlert = true
-                    } else {
-                        localAuthenticationAlertTitle = "Authentication Unsuccessful"
-                        localAuthenticationAlertMessage = "Please try again."
-                        showingLocalAuthenticationAlert = true
-                    }
-                }
-                .alert(isPresented: $showingLocalAuthenticationAlert) {
-                    Alert(title: Text(localAuthenticationAlertTitle), message: Text(localAuthenticationAlertMessage), dismissButton: .default(Text(LocalizableStrings.ok)))
                 }
             } header: {
                 Text(LocalizableStrings.SettingsView.TipJar.sectionHeader)

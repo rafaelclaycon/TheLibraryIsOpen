@@ -241,6 +241,12 @@ struct ArchivedPodcastDetailView: View {
                     } label: {
                         Label(LocalizableStrings.ArchivedPodcastDetail.Options.viewHistory, systemImage: "clock")
                     }
+                    
+                    Button {
+                        showingHistory = true
+                    } label: {
+                        Label("Move to Private Folder", systemImage: "lock.fill")
+                    }
                 }
             
                 Section {

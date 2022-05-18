@@ -45,7 +45,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSFaceIDUsageDescription</key>
-	<string>The Library is Open needs authentication for Secret Folder.</string>
+	<string>Authentication is needed to make sure that only you can access the Private Folder.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

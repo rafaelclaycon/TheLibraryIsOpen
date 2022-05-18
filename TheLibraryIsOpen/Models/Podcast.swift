@@ -12,6 +12,7 @@ struct Podcast: Hashable, Codable, Identifiable {
     var totalSize: Int?
     var exportedIn: Date?
     var lastExportedEpisodeCount: Int?
+    var isSecured: Bool
     
     init(id: Int,
          title: String = .empty,
@@ -22,7 +23,8 @@ struct Podcast: Hashable, Codable, Identifiable {
          lastCheckDate: Date? = nil,
          totalSize: Int? = nil,
          exportedIn: Date? = nil,
-         lastExportedEpisodeCount: Int? = nil) {
+         lastExportedEpisodeCount: Int? = nil,
+         isSecured: Bool = false) {
         self.id = id
         self.title = title
         self.author = author
@@ -33,6 +35,7 @@ struct Podcast: Hashable, Codable, Identifiable {
         self.totalSize = totalSize
         self.exportedIn = exportedIn
         self.lastExportedEpisodeCount = lastExportedEpisodeCount
+        self.isSecured = isSecured
     }
 
 }

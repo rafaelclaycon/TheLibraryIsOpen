@@ -23,6 +23,14 @@ class UserSettings {
         return String(value as! String)
     }
     
+    static func getDisplayPrivateFolder() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let value = userDefaults.object(forKey: "displayPrivateFolder") else {
+            return false
+        }
+        return Bool(value as! Bool)
+    }
+    
     static func getDisplayArtworkInArchiveOption() -> Bool {
         let userDefaults = UserDefaults.standard
         guard let value = userDefaults.object(forKey: "displayArtworkInArchive") else {
@@ -65,6 +73,11 @@ class UserSettings {
     static func setDisplayArtworkInArchiveOption(to newValue: Bool) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(newValue, forKey: "displayArtworkInArchive")
+    }
+    
+    static func setDisplayPrivateFolder(to newValue: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(newValue, forKey: "displayPrivateFolder")
     }
     
     static func setArchiveSortOption(to newValue: Int) {

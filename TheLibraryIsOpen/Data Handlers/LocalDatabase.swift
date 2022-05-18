@@ -33,6 +33,7 @@ class LocalDatabase {
         let artwork_url = Expression<String>("artworkUrl")
         let last_check_date = Expression<Date?>("lastCheckDate")
         let total_size = Expression<Int?>("totalSize")
+        let is_secured = Expression<Int?>("isSecured")
 
         try db.run(podcast.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
@@ -42,6 +43,7 @@ class LocalDatabase {
             t.column(artwork_url)
             t.column(last_check_date)
             t.column(total_size)
+            t.column(is_secured)
         })
     }
 

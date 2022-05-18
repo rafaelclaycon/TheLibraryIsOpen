@@ -1,5 +1,6 @@
 import Combine
 import UIKit
+import LocalAuthentication
 
 class MainViewViewModel: ObservableObject {
     
@@ -8,6 +9,9 @@ class MainViewViewModel: ObservableObject {
     @Published var sortOption: Int
     @Published var viewOption: Int
     @Published var totalSize: String
+    
+    // Private Folder
+    @Published var authSidekick = LocalAuthenticationSidekick(context: LAContext())
     
     // Alerts
     @Published var alertTitle: String = .empty
