@@ -309,9 +309,36 @@ struct LocalizableStrings {
         struct Feedback {
             
             static let sectionHeader = NSLocalizedString("settings_screen_feedback_section_header", comment: .empty)
-            static let reportABugButtonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_bug_button_label", comment: .empty)
-            static let reportATranslationErrorButtonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_translation_error_button_label", comment: .empty)
             static let sectionFooter = NSLocalizedString("settings_screen_feedback_section_footer", comment: .empty)
+            
+            struct ReportABug {
+                
+                static let buttonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_bug_button_label", comment: .empty)
+                static let emailSubject = NSLocalizedString("settings_screen_feedback_section_report_a_bug_email_subject", comment: .empty)
+                static let emailMessage = NSLocalizedString("settings_screen_feedback_section_report_a_bug_email_message", comment: .empty)
+                
+            }
+            
+            struct ReportATranslationError {
+                
+                static let buttonLabel = NSLocalizedString("settings_screen_feedback_section_report_a_translation_error_button_label", comment: .empty)
+                static let emailSubject = NSLocalizedString("settings_screen_feedback_section_report_a_translation_error_email_subject", comment: .empty)
+                static let emailMessage = NSLocalizedString("settings_screen_feedback_section_report_a_translation_error_email_message", comment: .empty)
+                
+            }
+            
+        }
+        
+        struct About {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_about_section_header", comment: .empty)
+            static let sectionText = NSLocalizedString("settings_screen_about_section_text", comment: .empty)
+            
+        }
+        
+        struct Version {
+            
+            static let sectionHeader = NSLocalizedString("settings_screen_version_section_header", comment: .empty)
             
         }
         

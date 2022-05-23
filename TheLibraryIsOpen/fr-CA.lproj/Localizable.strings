@@ -194,9 +194,20 @@
 "settings_screen_tip_jar_section_header" = "Pot à pourboire";
 
 "settings_screen_feedback_section_header" = "Avis";
-"settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Signaler un bug";
-"settings_screen_feedback_section_report_a_translation_error_button_label" = "🇨🇦  Signaler une erreur de traduction";
 "settings_screen_feedback_section_footer" = "Le support est très limité car je suis une personne seule travaillant sur cette application :)";
+
+"settings_screen_feedback_section_report_a_bug_button_label" = "🐞  Signaler un bug";
+"settings_screen_feedback_section_report_a_bug_email_subject" = "[Assistance] Rapport de bogue";
+"settings_screen_feedback_section_report_a_bug_email_message" = "Veuillez saisir ici les étapes pour reproduire le bogue. Ce serait génial si vous pouviez inclure une capture d'écran.";
+
+"settings_screen_feedback_section_report_a_translation_error_button_label" = "🇨🇦  Signaler une erreur de traduction";
+"settings_screen_feedback_section_report_a_translation_error_email_subject" = "[Support] Erreur de traduction (FR-CA)";
+"settings_screen_feedback_section_report_a_translation_error_email_message" = "Veuillez indiquer ici où l'erreur a été trouvée et ce que vous pensez être une traduction plus appropriée.";
+
+"settings_screen_about_section_header" = "À propos";
+"settings_screen_about_section_text" = "Créé par @mitt_rafael";
+
+"settings_screen_version_section_header" = "Version";
 
 // Podcast History View
 
