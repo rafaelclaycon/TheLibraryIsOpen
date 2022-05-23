@@ -27,7 +27,7 @@ Podcasts started as an [open directory of shows](https://en.wikipedia.org/wiki/H
 - [x] Deleting podcasts from the archive
 - [ ] Let the user cancel the whole download with a single click
 - [x] Persist the archive between runs nicely
-- [-] Show user full history of exports and downloads
+- [x] Show user full history of exports and downloads
 - [ ] Keep a big download going in the background
 - [ ] Let the user check for new episodes after adding a podcast to the archive
 
@@ -40,6 +40,7 @@ Here's this project's backlog: https://trello.com/b/RvZ82ZLx
 - 🇺🇸 English
 - 🇧🇷 Brazilian Portuguese (native)
 - 🇨🇦 Canadian French (not perfect, open to contributions :)
+- 🇲🇽 Spanish (very basic at the moment)
 
 To use a different language, either:
 1. Change the simulator language in Settings or;
