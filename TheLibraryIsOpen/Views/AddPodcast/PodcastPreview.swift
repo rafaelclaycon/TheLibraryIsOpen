@@ -1,4 +1,4 @@
-import KingfisherSwiftUI
+import Kingfisher
 import SwiftUI
 
 struct PodcastPreview: View {

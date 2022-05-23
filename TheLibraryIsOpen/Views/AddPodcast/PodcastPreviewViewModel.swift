@@ -15,7 +15,8 @@ class PodcastPreviewViewModel: ObservableObject {
     // MARK: - Episode list variables
     @Published var episodes = [Episode]()
     @Published var episodeList_selectionKeeper = Set<String>()
-    @Published var episodeList_allEpisodesSelected: Bool = true
+    // TODO: Change Bool below to true for a future release
+    @Published var episodeList_allEpisodesSelected: Bool = false
     @Published var episodeListSorting: SortOption = .fromNewToOld
     
     // MARK: - Year group list variables
