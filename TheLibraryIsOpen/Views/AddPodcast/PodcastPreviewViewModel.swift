@@ -46,7 +46,7 @@ class PodcastPreviewViewModel: ObservableObject {
         self.podcastPreviewDataManager = podcastPreviewDataManager
         self.deviceFreeStorage = DeviceStorageInformation.freeSpaceInBytes()
         
-        selectAllEpisodes()
+        //selectAllEpisodes()
         updateDownloadButton_ForEpisodeList(selectedIDs: Array(episodeList_selectionKeeper))
         updateRemainingStorageLabel_ForEpisodeList(selectedIDs: Array(episodeList_selectionKeeper))
         
@@ -186,7 +186,11 @@ class PodcastPreviewViewModel: ObservableObject {
         remainingStorageLabel = String(format: LocalizableStrings.PodcastPreview.remainingStoragePluralLabel, remainingSpaceString)
     }
     
-    func checkIfMeetsAllRequirementsToContinue() {
+    func checkIfMeetsAllRequirementsToContinue(selectedList: Int) {
+        guard selectedList == 0 else {
+            return showGroupedByYearNotSupportedYetAlert()
+        }
+        
         guard episodeList_selectionKeeper.isEmpty == false else {
             return showNoEpisodesSelectedAlert()
         }
@@ -268,6 +272,13 @@ class PodcastPreviewViewModel: ObservableObject {
     private func showPodcastHadNoEpisodesAlert() {
         alertTitle = "This Podcast Has No Episodes"
         alertMessage = "No episodes were found for this podcast."
+        alertType = .singleOption
+        displayAlert = true
+    }
+    
+    private func showGroupedByYearNotSupportedYetAlert() {
+        alertTitle = "Grouped By Year Is Not Supported Yet"
+        alertMessage = "Coming soon."
         alertType = .singleOption
         displayAlert = true
     }

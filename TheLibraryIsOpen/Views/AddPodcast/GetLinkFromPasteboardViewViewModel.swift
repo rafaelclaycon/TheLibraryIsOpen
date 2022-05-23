@@ -96,7 +96,9 @@ class GetLinkFromPasteboardViewViewModel: ObservableObject {
                 
                 if detectedPatterns.contains(UIPasteboard.DetectionPattern.probableWebURL) {
                     // Will match if the pasteboard string has a URL within it
-                    let detectedURL = UIPasteboard.general.string!
+                    guard let detectedURL = UIPasteboard.general.string else {
+                        return
+                    }
                     DispatchQueue.main.async {
                         self?.pasteboardContents = detectedURL
                     }

@@ -147,7 +147,8 @@ struct ArchivedPodcastDetailView: View {
                             }))
                         }
                     }
-                    .disabled(viewModel.downloadingKeeper.isEmpty == false)
+                    .disabled(true)
+                    //viewModel.downloadingKeeper.isEmpty == false)
                     .actionSheet(isPresented: $showingExportOptions) {
                         ActionSheet(title: Text(LocalizableStrings.ArchivedPodcastDetail.Export.exportOptionsText),
                                     message: nil,

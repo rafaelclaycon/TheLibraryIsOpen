@@ -148,7 +148,7 @@ struct PodcastPreview: View {
             // MARK: - Download Area (Button + Text)
             
             Button(action: {
-                viewModel.checkIfMeetsAllRequirementsToContinue()
+                viewModel.checkIfMeetsAllRequirementsToContinue(selectedList: selectedList)
             }) {
                 Text(viewModel.downloadAllButtonTitle)
                     .bold()
