@@ -140,7 +140,7 @@
 "archived_podcast_detail_options_view_history" = "Ver Histórico";
 "archived_podcast_detail_options_delete_podcast" = "Apagar Podcast";
 
-"archived_podcast_detail_downloading_episode" = "Baixando episódio... %.0f%%";
+"archived_podcast_detail_downloading_episode" = "Baixando episódio...";
 "archived_podcast_detail_available_offline" = "Baixado";
 
 "archived_podcast_detail_download_summary_message_single_episode" = "Baixando 1 episódio...";

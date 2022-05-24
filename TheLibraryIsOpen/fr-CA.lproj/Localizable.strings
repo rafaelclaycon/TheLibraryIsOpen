@@ -140,7 +140,7 @@
 "archived_podcast_detail_options_view_history" = "Voir L'historique";
 "archived_podcast_detail_options_delete_podcast" = "Supprimer Le Podcast";
 
-"archived_podcast_detail_downloading_episode" = "Téléchargement de l'épisode... %.0f%%";
+"archived_podcast_detail_downloading_episode" = "Téléchargement de l'épisode...";
 "archived_podcast_detail_available_offline" = "Disponible hors ligne";
 
 "archived_podcast_detail_download_summary_message_single_episode" = "Téléchargement de 1 épisode...";

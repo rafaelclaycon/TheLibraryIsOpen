@@ -80,22 +80,22 @@ struct MainView: View {
                             .foregroundColor(.primary)
                     }
                 
-                    if viewModel.displayPodcastList {
-                        Menu {
-                            Section {
-                                Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
-                                    Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
-                                        .tag(0)
-                                    
-                                    Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
-                                        .tag(1)
-                                }
-                            }
-                        } label: {
-                            Image(systemName: "arrow.up.arrow.down")
-                                .foregroundColor(.primary)
-                        }
-                    }
+//                    if viewModel.displayPodcastList {
+//                        Menu {
+//                            Section {
+//                                Picker(selection: $viewModel.sortOption, label: Text("Sorting options")) {
+//                                    Text(LocalizableStrings.MainView.ListOptions.sortByTitle)
+//                                        .tag(0)
+//                                    
+//                                    Text(LocalizableStrings.MainView.ListOptions.sortByTotalSize)
+//                                        .tag(1)
+//                                }
+//                            }
+//                        } label: {
+//                            Image(systemName: "arrow.up.arrow.down")
+//                                .foregroundColor(.primary)
+//                        }
+//                    }
                 }
             )
             .navigationBarItems(trailing:

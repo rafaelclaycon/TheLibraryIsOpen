@@ -51,49 +51,49 @@ struct ArchivedPodcastDetailView: View {
                     .padding(.bottom, 5)
                 
                 // MARK: - Downloading...
-                if viewModel.showOverallDownloadProgress {
-                    HStack(spacing: 20) {
-                        ProgressView(viewModel.progressViewMessage, value: viewModel.currentDownloadPercentage, total: viewModel.totalDownloadPercentage)
-                            .animation(.linear, value: viewModel.currentDownloadPercentage)
-                        
-                        Button {
-                            print("Download paused")
-                        } label: {
-                            Image(systemName: "pause.fill")
-                                .font(.title2)
-                        }
-                        .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 12, horizontalPadding: 18))
-                        
-                        Button {
-                            print("Download cancelled")
-                        } label: {
-                            Image(systemName: "stop.circle.fill")
-                                .font(.title2)
-                        }
-                        .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 10, horizontalPadding: 14))
-                    }
-                    .padding(.horizontal)
-                    .onChange(of: viewModel.currentDownloadPercentage) { newValue in
-                        if newValue == viewModel.totalDownloadPercentage {
-                            viewModel.showOverallDownloadProgress = false
-                        }
-                    }
-                
-                    switch viewModel.downloadOperationStatus {
-                    case .activelyDownloading:
-                        Text("ACTIVELY DOWNLOADING")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    case .paused:
-                        Text("DOWNLOAD PAUSED")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    case .stopped:
-                        Text("DOWNLOAD STOPPED")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                }
+//                if viewModel.showOverallDownloadProgress {
+//                    HStack(spacing: 20) {
+//                        ProgressView(viewModel.progressViewMessage, value: viewModel.currentDownloadPercentage, total: viewModel.totalDownloadPercentage)
+//                            .animation(.linear, value: viewModel.currentDownloadPercentage)
+//
+//                        Button {
+//                            print("Download paused")
+//                        } label: {
+//                            Image(systemName: "pause.fill")
+//                                .font(.title2)
+//                        }
+//                        .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 12, horizontalPadding: 18))
+//
+//                        Button {
+//                            print("Download cancelled")
+//                        } label: {
+//                            Image(systemName: "stop.circle.fill")
+//                                .font(.title2)
+//                        }
+//                        .buttonStyle(FlatBackgroundButtonStyle(foregroundColor: .accentColor, verticalPadding: 10, horizontalPadding: 14))
+//                    }
+//                    .padding(.horizontal)
+//                    .onChange(of: viewModel.currentDownloadPercentage) { newValue in
+//                        if newValue == viewModel.totalDownloadPercentage {
+//                            viewModel.showOverallDownloadProgress = false
+//                        }
+//                    }
+//
+//                    switch viewModel.downloadOperationStatus {
+//                    case .activelyDownloading:
+//                        Text("ACTIVELY DOWNLOADING")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
+//                    case .paused:
+//                        Text("DOWNLOAD PAUSED")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
+//                    case .stopped:
+//                        Text("DOWNLOAD STOPPED")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
+//                    }
+//                }
                 
                 // MARK: - Info
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -207,36 +207,36 @@ struct ArchivedPodcastDetailView: View {
         .navigationBarTitle(viewModel.title, displayMode: .inline)
         .navigationBarItems(trailing:
             Menu {
-                Section {
-                    Button(action: {
-                        viewModel.toggleEpisodeListSorting()
-                    }) {
-                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.publicationDate, systemImage: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down" : "chevron.up")
-                    }
-                    .onChange(of: viewModel.episodeListSorting) { newValue in
-                        if viewModel.episodeListSorting == .fromNewToOld {
-                            viewModel.sortEpisodesByPubDateDescending()
-                        } else {
-                            viewModel.sortEpisodesByPubDateAscending()
-                        }
-                    }
-                }
+//                Section {
+//                    Button(action: {
+//                        viewModel.toggleEpisodeListSorting()
+//                    }) {
+//                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.publicationDate, systemImage: viewModel.episodeListSorting == .fromNewToOld ? "chevron.down" : "chevron.up")
+//                    }
+//                    .onChange(of: viewModel.episodeListSorting) { newValue in
+//                        if viewModel.episodeListSorting == .fromNewToOld {
+//                            viewModel.sortEpisodesByPubDateDescending()
+//                        } else {
+//                            viewModel.sortEpisodesByPubDateAscending()
+//                        }
+//                    }
+//                }
+                
+//                Section {
+//                    Picker(selection: $viewModel.viewOption) {
+//                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showDownloadedEpisodesOnly).tag(0)
+//                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showAllEpisodes).tag(1)
+//                    } label: {
+//                        Text("Sorting options")
+//                    }
+//                }
                 
                 Section {
-                    Picker(selection: $viewModel.viewOption) {
-                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showDownloadedEpisodesOnly).tag(0)
-                        Text(LocalizableStrings.ArchivedPodcastDetail.Options.showAllEpisodes).tag(1)
-                    } label: {
-                        Text("Sorting options")
-                    }
-                }
-                
-                Section {
-                    Button {
-                        print("Look for new episodes pressed")
-                    } label: {
-                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.lookForNewEpisodes, systemImage: "arrow.clockwise")
-                    }
+//                    Button {
+//                        print("Look for new episodes pressed")
+//                    } label: {
+//                        Label(LocalizableStrings.ArchivedPodcastDetail.Options.lookForNewEpisodes, systemImage: "arrow.clockwise")
+//                    }
                     
                     Button {
                         showingHistory = true
@@ -245,16 +245,16 @@ struct ArchivedPodcastDetailView: View {
                     }
                 }
             
-                Section {
-                    Button(role: .destructive, action: {
-                        viewModel.dummyCall()
-                    }, label: {
-                        HStack {
-                            Text(LocalizableStrings.ArchivedPodcastDetail.Options.deletePodcast)
-                            Image(systemName: "trash")
-                        }
-                    })
-                }
+//                Section {
+//                    Button(role: .destructive, action: {
+//                        viewModel.dummyCall()
+//                    }, label: {
+//                        HStack {
+//                            Text(LocalizableStrings.ArchivedPodcastDetail.Options.deletePodcast)
+//                            Image(systemName: "trash")
+//                        }
+//                    })
+//                }
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
