@@ -6,6 +6,8 @@ Did you ever listen to a show and loved it so much that you wished you could kee
 
 Podcasts started as an [open directory of shows](https://en.wikipedia.org/wiki/History_of_podcasting#Apple_adds_podcasts_to_iTunes) and TLIO is meant as a celebration of that. Download all episodes of your favorite podcasts before their public feed is taken private or stops working.
 
+**Wanna join my TestFlight? Just [DM me on Twitter](https://twitter.com/TLIOTheApp).**
+
 ![A GIF showing the main app flow, from the user choosing to add a new show to the podcast episodes being downloaded and exported.](TheLibraryIsOpen/Resources/main-flow.gif)
 
 ## Features
