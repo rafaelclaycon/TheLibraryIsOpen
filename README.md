@@ -8,7 +8,9 @@ Podcasts started as an [open directory of shows](https://en.wikipedia.org/wiki/H
 
 🌟 Star this repo! ↗️
 
-**Wanna join my TestFlight? Just DM me on [Twitter](https://twitter.com/TLIOTheApp) or [Mastodon](https://uiuxdev.social/web/@TLIOTheApp).**
+**Wanna try my Alpha out? Just [follow this link on your iPhone or iPad](https://testflight.apple.com/join/fSLlgwH1) (TestFlight app from Apple required).**
+
+For up-to-date news, follow me on social media: [Twitter](https://twitter.com/TLIOTheApp) / [Mastodon](https://uiuxdev.social/web/@TLIOTheApp)
 
 ![A GIF showing the main app flow, from the user choosing to add a new show to the podcast episodes being downloaded and exported.](TheLibraryIsOpen/Resources/main-flow.gif)
 
