@@ -79,6 +79,6 @@ To use a different language, either:
 
 ## About this repo
 
-Rafael Claycon Schmitt – [@mitt_rafael](https://twitter.com/mitt_rafael) – rafael.claycon@gmail.com
+Rafael C. Schmitt – [@mitt_rafael@toot.wales](https://toot.wales/@mitt_rafael)
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
